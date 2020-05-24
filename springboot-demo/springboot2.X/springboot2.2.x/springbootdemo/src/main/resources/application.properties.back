@@ -1,0 +1,14 @@
+#配置 Web 容器的服务名称
+server.servlet.context-path=/ds/
+#配置 Servlet 扫描根路径
+#spring.mvc.servlet.path=/ds/
+#启动时候是否开启 Banner 启动标志输出
+spring.main.banner-mode=off
+#配置静态文件的访问的 URL 匹配
+#spring.mvc.static-path-pattern=/**
+spring.thymeleaf.cache=false
+spring.thymeleaf.mode=HTML5
+spring.thymeleaf.encoding=utf-8
+spring.thymeleaf.servlet.content-type=text/html
+spring.thymeleaf.prefix: classpath:/templates/
+

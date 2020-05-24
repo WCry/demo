@@ -1,0 +1,32 @@
+[INFO] Scanning for projects...
+Downloading from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/eclipse/m2e/lifecycle-mapping/1.0.0/lifecycle-mapping-1.0.0.pom
+[WARNING] Failed to retrieve plugin descriptor for org.eclipse.m2e:lifecycle-mapping:1.0.0: Plugin org.eclipse.m2e:lifecycle-mapping:1.0.0 or one of its dependencies could not be resolved: Failed to read artifact descriptor for org.eclipse.m2e:lifecycle-mapping:jar:1.0.0
+Downloading from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/eclipse/jetty/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Downloading from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/apache/maven/plugins/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/maven-metadata.xml
+Progress (1): 408 B                   Downloaded from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/eclipse/jetty/maven-metadata.xml (408 B at 2.5 kB/s)
+Downloading from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 0.7/12 kBProgress (1): 4.8/12 kBProgress (1): 8.9/12 kBProgress (1): 12 kB    Progress (2): 12 kB | 0.7/23 kB                               Downloaded from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/apache/maven/plugins/maven-metadata.xml (12 kB at 49 kB/s)
+Progress (1): 4.8/23 kBProgress (1): 8.9/23 kBProgress (1): 13/23 kB Progress (1): 17/23 kB                      Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (1): 21/23 kBProgress (1): 23 kB                      Downloaded from maven-down: http://af.hikvision.com.cn:80/artifactory/maven-down/org/codehaus/mojo/maven-metadata.xml (23 kB at 172 kB/s)
+Progress (1): 1.4/20 kBProgress (2): 1.4/20 kB | 1.4/14 kBProgress (2): 1.4/20 kB | 2.7/14 kBProgress (2): 1.4/20 kB | 4.1/14 kBProgress (2): 1.4/20 kB | 5.5/14 kBProgress (2): 2.7/20 kB | 5.5/14 kBProgress (2): 4.1/20 kB | 5.5/14 kBProgress (2): 5.5/20 kB | 5.5/14 kBProgress (2): 6.9/20 kB | 5.5/14 kBProgress (2): 8.2/20 kB | 5.5/14 kBProgress (2): 9.6/20 kB | 5.5/14 kBProgress (2): 11/20 kB | 5.5/14 kB Progress (2): 12/20 kB | 5.5/14 kBProgress (2): 14/20 kB | 5.5/14 kBProgress (2): 15/20 kB | 5.5/14 kBProgress (2): 15/20 kB | 6.9/14 kBProgress (2): 16/20 kB | 6.9/14 kBProgress (2): 18/20 kB | 6.9/14 kBProgress (2): 19/20 kB | 6.9/14 kBProgress (2): 20 kB | 6.9/14 kB   Progress (3): 20 kB | 6.9/14 kB | 408 B                                       [WARNING] Could not validate integrity of download from https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml: Checksum validation failed, no checksums available
+[WARNING] Checksum validation failed, no checksums available from central for https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 56 B/s)
+[WARNING] Could not validate integrity of download from https://repo.maven.apache.org/maven2/org/eclipse/jetty/maven-metadata.xml: Checksum validation failed, no checksums available
+[WARNING] Checksum validation failed, no checksums available from central for https://repo.maven.apache.org/maven2/org/eclipse/jetty/maven-metadata.xml
+Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/jetty/maven-metadata.xml (408 B at 1 B/s)
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to central (https://repo.maven.apache.org/maven2): GET request of: org/apache/maven/plugins/maven-metadata.xml from central failed
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  06:08 min
+[INFO] Finished at: 2020-04-08T18:35:59+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] No plugin found for prefix 'dependecy' in the current project and in the plugin groups [org.eclipse.jetty, org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (D:\repository-hgis), maven-down (http://af.hikvision.com.cn:80/artifactory/maven-down/), central (https://repo.maven.apache.org/maven2)] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoPluginFoundForPrefixException

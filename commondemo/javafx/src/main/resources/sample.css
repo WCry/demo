@@ -1,0 +1,187 @@
+/*全局根设置*/
+.root
+{
+    -fx-font-family: PingFangSC-Regular;
+    -fx-font-size: 12;
+}
+/*左上角logo图片*/
+#logo {
+    -fx-background-image: url(images/LeftMenu/bg2.png);
+    -fx-background-size: stretch stretch;
+}
+#formClose
+{
+    -fx-border-radius:0;
+    -fx-background-radius: 0;
+    -fx-background-image: url(/images/MainPage/close.png);
+    -fx-background-size: stretch stretch;
+}
+#formMin
+{
+    -fx-border-radius:0;
+    -fx-background-radius: 0;
+    -fx-background-image: url(/images/MainPage/minisize.png);
+    -fx-background-size: stretch stretch;
+}
+
+
+
+
+/*左侧菜单样式*/
+/*菜单悬停样式!*/
+.customerMenu:hover
+{
+    -fx-background-color: yellow;
+}
+/*设置菜单背景图片*/
+#menu{
+    -fx-background-image: url(images/LeftMenu/bg.png);
+    -fx-background-size: stretch stretch;
+}
+/*#MDLMENU > #menueImageView
+{
+    -fx-image:url(/images/mdlicon.png);
+}
+#FLOORMAPMENU > #menueImageView
+{
+    -fx-image:url(/images/floormapicon.png);
+}
+#CDTMENU >#menueImageView
+{
+    -fx-image:url(/images/cdtico.png);
+}
+#DBMENU >#menueImageView
+{
+    -fx-image:url(/images/dbimporticon.png);
+}*/
+
+
+
+/*左侧菜单结束*/
+/*地图下载模块中的 点击菜单*/
+
+.context-menu  {
+     -fx-padding: 0;
+     -fx-background-color: #a0ff48;
+ }
+.context-menu .menu-item
+{
+    -fx-pref-height: 32;
+}
+/*继承自 menuItem 所以Item 设置高度在这里也使用
+所以需要主动设置成为-1*/
+.context-menu .custom-menu-item
+{
+    -fx-pref-height: -1;
+    -fx-background-color: #ffffff;
+}
+.context-menu .custom-menu-item:hover
+{
+    -fx-pref-height: -1;
+    -fx-background-color: #ffffff;
+}
+
+
+.context-menu .menu:hover {
+    -fx-pref-height: 32;
+    -fx-background-color: #ff5789;
+}
+.context-menu .menu:focused {
+    -fx-pref-height: 32;
+    -fx-background-color: #ff5789;
+}
+/*.context-menu .menu-item:hover*/
+/*{*/
+    /*-fx-pref-height: 32;*/
+    /*-fx-background-color: #ff5789;*/
+/*}*/
+/*.context-menu .menu-item:focused*/
+/*{*/
+    /*-fx-pref-height: 32;*/
+    /*-fx-background-color: #ff5789;*/
+/*}*/
+
+
+
+
+.context-menu .menu .right-container .arrow
+{
+    -fx-background-color: rgb(40, 43, 255);
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+    -fx-shape:"M 0 0 L 50 50 L 0 100 L 0 94 L 50 46 L 0 4 Z";
+    -fx-scale-shape: true;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+}
+
+#test
+{
+    -fx-background-color: rgb(40, 43, 255);
+}
+.combo-box
+{
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1;
+    -fx-border-color: rgba(7, 6, 6, 0.58);
+}
+.combo-box .list-cell
+{
+    -fx-text-fill: rgba(56, 63, 60, 0.83);
+}
+.combo-box>.text-input
+{
+    -fx-text-fill: rgba(255, 3, 0, 0.83);
+}
+
+
+
+.combo-box .arrow-button
+{
+    -fx-background-color: #ffffff;
+}
+.combo-box .arrow-button .arrow
+{
+    -fx-background-color: #070606;
+    -fx-shape:"M 0 0 L 25 25 L 50 0 L 48 0 L 25 24 L 0 2 Z";
+}
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
+.tool-bar-overflow-button{
+    -fx-border-color:red;
+}
+.tool-bar
+{
+    -fx-padding:0;
+    -fx-effect: dropshadow(three-pass-box, rgba(130, 138, 140, 0.76), 10.0,0, 0, 0);
+    -fx-background-color: #ffffff;
+}
+.tool-bar .separator:vertical
+ {
+     -fx-padding: 10 0;
+ }
+.tool-bar .separator:horizontal
+{
+    -fx-padding: 0 10;
+}
+
+.button{
+    /*-fx-background-color: #ffffff;*/
+}
+
+
+
+/*.button
+{
+    -fx-background-color: red;
+    -fx-text-fill: #006464;
+    -fx-border-radius:0;
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+}*/
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example.springclouddemo</groupId>
+        <artifactId>springclouddemo-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.example.springclouddemo</groupId>
+    <artifactId>eurekaserver</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>eurekaserver</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+    </properties>
+    <!-- <profiles>
+         <profile>
+             &lt;!&ndash;本地开发环境&ndash;&gt;
+             <id>dev</id>
+             <properties>
+                 <profiles.active>dev</profiles.active>
+             </properties>
+             <activation>
+                 <activeByDefault>true</activeByDefault>
+             </activation>
+         </profile>
+         <profile>
+             &lt;!&ndash;测试环境&ndash;&gt;
+             <id>test</id>
+             <properties>
+                 <profiles.active>test</profiles.active>
+             </properties>
+         </profile>
+         <profile>
+             &lt;!&ndash;生产环境&ndash;&gt;
+             <id>pro</id>
+             <properties>
+                 <profiles.active>pro</profiles.active>
+             </properties>
+         </profile>
+     </profiles>-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>eurakaserver</finalName>
+                    <mainClass>com.example.srpingclouddemo.eurekaserver.EurekaserverApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

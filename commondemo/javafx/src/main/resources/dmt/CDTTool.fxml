@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="519.0" style="-fx-background-color: #ffffff;" type="Pane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button fx:id="browse" layoutX="429.0" layoutY="275.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="41.0" text="浏览" />
+        <TextField fx:id="choseDirectory" editable="false" layoutX="150.0" layoutY="275.0" prefHeight="32.0" prefWidth="281.0" />
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="64.0" layoutY="161.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="15.0" prefWidth="70.0" text="县：" />
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="103.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="70.0" text="市：">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="47.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="18.0" prefWidth="70.0" text="省：">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <Button fx:id="startExtractBtn" layoutX="215.0" layoutY="537.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.0" text="立即抽取">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <ComboBox fx:id="county" layoutX="150.0" layoutY="152.0" prefHeight="32.0" prefWidth="312.0" promptText="区县" />
+        <ComboBox fx:id="city" layoutX="150.0" layoutY="96.0" prefHeight="32.0" prefWidth="312.0" promptText="地级市" />
+        <ComboBox fx:id="province" layoutX="150.0" layoutY="40.0" prefHeight="32.0" prefWidth="312.0" promptText="省份" />
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="282.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="0.0" prefWidth="70.0" text="保存路径：">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+        <ComboBox fx:id="choseSRID" layoutX="150.0" layoutY="208.0" prefHeight="32.0" prefWidth="312.0" promptText="坐标系" visibleRowCount="5">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="项 1" />
+                    <String fx:value="项 2" />
+                    <String fx:value="项 3" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="488.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="70.0" text="索引设置：">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <CheckBox fx:id="m_checkboxEnPOI" layoutX="150.0" layoutY="481.0" mnemonicParsing="false" prefHeight="32.0" text="英文POI" />
+        <CheckBox fx:id="m_checkboxChAddress" layoutX="272.0" layoutY="481.0" mnemonicParsing="false" prefHeight="32.0" text="中文地址" />
+        <CheckBox fx:id="m_checkboxEnAddress" layoutX="397.0" layoutY="481.0" mnemonicParsing="false" prefHeight="32.0" text="英文地址" />
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="215.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="70.0" text="坐标系：">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="383.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="70.0" text="基础数据：">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="327.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="70.0" text="路网数据：">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="60.0" layoutY="439.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="70.0" text="用户词典：">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <RadioButton fx:id="m_radioButtonRoadNo" layoutX="230.0" layoutY="320.0" mnemonicParsing="false" prefHeight="32.0" text="否" />
+        <RadioButton fx:id="m_radioButtonRoadOk" layoutX="150.0" layoutY="320.0" mnemonicParsing="false" prefHeight="32.0" text="抽取" />
+        <RadioButton fx:id="m_radioButtonBgdNo" layoutX="230.0" layoutY="376.0" mnemonicParsing="false" prefHeight="32.0" text="否" />
+        <RadioButton fx:id="m_radioButtonBgdOk" layoutX="150.0" layoutY="376.0" mnemonicParsing="false" prefHeight="32.0" text="抽取" />
+        <RadioButton fx:id="m_radioButtonCustomDictionaryNo" layoutX="230.0" layoutY="432.0" mnemonicParsing="false" prefHeight="32.0" text="否" />
+        <RadioButton fx:id="m_radioButtonCustomDictionaryYES" layoutX="150.0" layoutY="432.0" mnemonicParsing="false" prefHeight="32.0" text="生成" />
+    </children>
+</fx:root>

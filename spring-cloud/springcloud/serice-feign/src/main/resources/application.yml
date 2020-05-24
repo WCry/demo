@@ -1,0 +1,16 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: FEIGN
+  cloud:
+    consul:
+      host: 10.19.154.66
+      port: 8500
+      discovery:
+        register: true
+        enabled: true
+        serviceName: serfeign
+        port: ${server.port}
+        hostname: ${spring.cloud.client.ip-address}
+      enabled: true

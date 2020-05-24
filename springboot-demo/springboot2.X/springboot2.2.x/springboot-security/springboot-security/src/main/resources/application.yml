@@ -1,0 +1,11 @@
+spring:
+  thymeleaf:
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.2.131:3306/test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456

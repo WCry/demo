@@ -1,0 +1,19 @@
+##thymeleaf页面模板配置
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  thymeleaf:
+      #prefix:
+        ##默认的根路径 是从resource 开始 不是从 static 中开始
+       # classpath: /templates/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      cache: false
+      servlet:
+        content-type: text/html
+  main:
+    ##注意 必须加上引号 不可能会出错
+    banner-mode: "off"

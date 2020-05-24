@@ -1,0 +1,22 @@
+server:
+  port: 8081
+auth-server: http://localhost:8080
+security:
+  oauth2:
+    resource:
+      token-info-uri: ${auth-server}/auth/oauth/check_token
+      user-info-uri: ${auth-server}/auth/me
+      prefer-token-info: true
+    client:
+      client-id: clientapp # 授权服务器配置的client id
+      client-secret: 123 # 授权服务器配置的client secret
+      scope: test
+      access-token-uri: ${auth-server}/oauth/token # 获取access token接口
+      user-authorization-uri: ${auth-server}/oauth/authorize #  获取Authorization Code接口
+      check-token-access: ${auth-server}/auth/oauth/check_token
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          oauth2: debug

@@ -1,0 +1,28 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: service-hi
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  cloud:
+    sentinel:
+      transport:
+        #sentinel 动态检测端口
+        port: 8719
+        #仪表
+        dashboard: 10.19.154.187:8080
+    consul:
+      enabled: true
+      host: 10.19.154.66
+      port: 8500
+      # 健康检查 一定要配置 结合 spring-boot-starter-actuator 使用
+      discovery:
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        enabled: true
+        #提前预处理IP 获取真实IP只有在bootstrap 的配置文件生效
+        prefer-ip-address: true
+        #自动取消注册
+        deregister: true

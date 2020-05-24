@@ -1,0 +1,14 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: service-hi
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.19.154.149:8509/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+    hostname: 10.17.80.14

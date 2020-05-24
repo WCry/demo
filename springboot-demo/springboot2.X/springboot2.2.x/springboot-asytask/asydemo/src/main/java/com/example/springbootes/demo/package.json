@@ -1,0 +1,7 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "dependencies": {
+    "demo":"测试SpringBoot异步执行过程，配置线程池"
+  }
+}

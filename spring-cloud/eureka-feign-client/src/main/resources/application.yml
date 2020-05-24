@@ -1,0 +1,14 @@
+spring:
+  application:
+    name:  eureka-feign-client
+server:
+  port: 2101
+eureka:
+  client:
+    service-url:
+    defaultZone: http://10.19.154.149:8509/eureka/
+  instance:
+    hostname: 10.17.80.14
+    instance-id: ${eureka.instance.hostname}:${server.port}
+    prefer-ip-address: true
+
