@@ -1,6 +1,6 @@
-package com.wyj.service.impl;
+package com.zxp.service.impl;
 
-import com.wyj.service.MailService;
+import com.zxp.service.MailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,14 @@ public class MailServiceImpl implements MailService {
 
     private final Logger logger = LoggerFactory.getLogger(MailServiceImpl.class);
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
     private String from;
+    @Autowired
+    public MailServiceImpl(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
     @Override
     public void sendSimpleMail(String to, String subject, String content) {

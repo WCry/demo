@@ -1,4 +1,4 @@
-package com.wyj.service;
+package com.zxp.service;
 
 public interface MailService {
 

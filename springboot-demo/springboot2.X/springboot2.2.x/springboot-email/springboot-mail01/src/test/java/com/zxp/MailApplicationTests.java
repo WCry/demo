@@ -1,6 +1,6 @@
-package com.wyj;
+package com.zxp;
 
-import com.wyj.service.MailService;
+import com.zxp.service.MailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class MailApplicationTests {
      */
     @Test
     public void simpleMail() throws Exception {
-        String to = "wanyingjing@163.com";
+        String to = "627292959@qq.com";
         String subject = "简单邮件";
         String content = "测试发送简单邮件";
         mailService.sendSimpleMail(to, subject, content);
@@ -44,7 +44,7 @@ public class MailApplicationTests {
      */
     @Test
     public void htmlMail() throws Exception {
-        String to = "wanyingjing@163.com";
+        String to = "627292959@qq.com";
         String subject = "html邮件";
         String content = "<html>\n" + "<body>\n" + "    <h1>hello world ! 这是一封html邮件!</h1>\n" + "</body>\n" + "</html>";
         mailService.sendHtmlMail(to, subject, content);
@@ -58,7 +58,7 @@ public class MailApplicationTests {
      */
     @Test
     public void attachmentsMail() throws Exception {
-        String to = "wanyingjing@163.com";
+        String to = "627292959@qq.com";
         String subject = "带附件的邮件";
         String content = "您有附件，请注意查收！";
         String filePath = "C:\\Users\\EDZ\\Desktop\\application.log";//附件
@@ -73,7 +73,7 @@ public class MailApplicationTests {
      */
     @Test
     public void staticResourceMail() throws Exception {
-        String to = "wanyingjing@163.com";
+        String to = "627292959@qq.com";
         String subject = "带图片的邮件";
         String rscId = "neo006";
         String content = "<html><body>详情请看：<img src=\'cid:" + rscId + "\' ></body></html>";
@@ -90,7 +90,7 @@ public class MailApplicationTests {
         Context context = new Context();
         String emailContent = templateEngine.process("emailTemplate", context);
         System.out.println(emailContent);
-        String to = "wanyingjing@163.com";
+        String to = "627292959@qq.com";
         String sbuject = "模板邮件";
         mailService.sendHtmlMail(to, sbuject, emailContent);
     }

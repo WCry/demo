@@ -1,4 +1,4 @@
-package com.wyj;
+package com.zxp;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class JasyptApplicationTests {
 
     @Test
     public void contextLoads() {
-        System.out.println(stringEncryptor.encrypt("root"));
+        System.out.println(stringEncryptor.encrypt("wlz@140629"));
     }
 
     @Test
