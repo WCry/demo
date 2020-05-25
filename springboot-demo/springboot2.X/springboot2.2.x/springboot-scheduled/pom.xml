@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
+        <version>2.2.5.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.wyj</groupId>
-    <artifactId>springboot-scheduled01</artifactId>
+    <groupId>com.zxp</groupId>
+    <artifactId>springboot-scheduled</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-scheduled01</name>
     <description>springboot定时任务</description>
@@ -45,7 +45,7 @@
     </dependencies>
 
     <build>
-        <finalName>springboot-scheduled01</finalName>
+        <finalName>springboot-scheduled</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

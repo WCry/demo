@@ -1,0 +1,8 @@
+#debug: false
+#trace: true
+logging:
+  file: /tmp/temp.log
+#  config: classpath:logback-spring.xml
+#  path: /tmp
+server:
+  port: 8091
