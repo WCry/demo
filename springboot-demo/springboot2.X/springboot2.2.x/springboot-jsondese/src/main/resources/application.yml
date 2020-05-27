@@ -1,0 +1,6 @@
+#这里采用.yml文件方式设置属性，也可以使用.properties文件设置属性
+#bootstrap最先加载 一些需要提处理放在bootstrap文件中进行处理
+
+spring:
+  profiles:
+    active: dev
