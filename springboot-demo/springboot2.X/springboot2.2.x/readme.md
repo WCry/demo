@@ -14,6 +14,8 @@ springboot 的基本配置使用：
 
 ​          springboot配置多环境启动
 
+​        springboot参数校验
+
 springboot高级使用：
 
 ​        springboot启动执行分析
@@ -33,3 +35,5 @@ springboot高级使用：
 ​        springboot的运行性能监控 
 
 ​        springboot异常处理
+
+​        springboot结合WebSocket实现通信
