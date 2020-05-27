@@ -1,6 +1,6 @@
-package com.example.eurekafeignconsumer;
+package com.example.consulfeignconsumer;
 
-import com.example.eurekafeignapi.HelloService;
+import com.example.consulfeignapi.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-public class EurekaFeignConsumerApplication {
+public class ConsulFeignConsumerApplication {
     @FeignClient("${clientname}")
-    interface HelloServiceClient extends HelloService { }
+    interface HelloServiceClient extends HelloService {
+    }
 
     @RestController
     class TestController {
-        @Autowired
-        private HelloServiceClient helloServiceClient;
+        private final HelloServiceClient helloServiceClient;
+
+        public TestController(HelloServiceClient helloServiceClient) {
+            this.helloServiceClient = helloServiceClient;
+        }
+
         @GetMapping("/test")
         public String test(String name) {
             return helloServiceClient.hello(name);
@@ -28,7 +33,7 @@ public class EurekaFeignConsumerApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaFeignConsumerApplication.class, args);
+        SpringApplication.run(ConsulFeignConsumerApplication.class, args);
     }
 
 }
