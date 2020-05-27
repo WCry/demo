@@ -16,6 +16,8 @@ springboot 的基本配置使用：
 
 ​        springboot参数校验
 
+​        springboot实现自定义系列化
+
 springboot高级使用：
 
 ​        springboot启动执行分析
