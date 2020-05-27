@@ -1,5 +1,6 @@
 package com.example.consulfeignclient;
 
+
 import com.example.consulfeignapi.HelloService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
