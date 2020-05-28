@@ -1,0 +1,13 @@
+spring:
+  application:
+    name:  consul-feign-consumer
+server:
+  port: 2102
+consul:
+  client:
+    service-url:
+    defaultZone: http://10.19.154.149:8509/consul/
+  instance:
+    hostname: 10.17.80.14
+    instance-id: ${consul.instance.hostname}:${server.port}
+    prefer-ip-address: true
