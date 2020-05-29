@@ -49,6 +49,7 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
+        //合适位置增加自定义过滤器处理
         http.addFilterBefore(new BeforeLoginFilter(), ChannelProcessingFilter.class);
     }
 
