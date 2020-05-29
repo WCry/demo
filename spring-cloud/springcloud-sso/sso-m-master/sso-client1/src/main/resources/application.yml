@@ -1,4 +1,5 @@
 auth-server: http://localhost:8082/uaa # sso-server地址
 server:
-  context-path: /client1
   port: 8083
+  servlet:
+    context-path: /client1

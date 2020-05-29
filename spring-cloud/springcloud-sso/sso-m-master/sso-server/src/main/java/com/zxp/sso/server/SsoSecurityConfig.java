@@ -22,8 +22,10 @@ import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 @Configuration
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
+
+    public SsoSecurityConfig(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;}
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -47,7 +49,7 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
-        http.addFilterAfter(new BeforeLoginFilter(), ChannelProcessingFilter.class);
+        http.addFilterBefore(new BeforeLoginFilter(), ChannelProcessingFilter.class);
     }
 
     @Override

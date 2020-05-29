@@ -1,7 +1,8 @@
 auth-server: http://localhost:8082/uaa # sso-server地址
 server:
   port: 8085
-  context-path: /resource
+  servlet:
+    context-path: /resource
 security:
   oauth2:
     client:

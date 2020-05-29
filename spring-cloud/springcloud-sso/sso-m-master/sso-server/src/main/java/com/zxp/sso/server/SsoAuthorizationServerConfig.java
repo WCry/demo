@@ -29,14 +29,14 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("merryyou1")
-                .secret("merryyousecrect1")
+                .withClient("clinet1")
+                .secret("123456")
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all","read","write")
                 .autoApprove(true)
                 .and()
-                .withClient("merryyou2")
-                .secret("merryyousecrect2")
+                .withClient("client2")
+                .secret("123456")
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all","read","write")
                 .autoApprove(true);
