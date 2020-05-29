@@ -2,11 +2,12 @@ package com.test.web2.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 
-public class User implements java.io.Serializable{
+public class User implements Serializable {
     private Long id;
     private String name;
     private String email;

@@ -49,7 +49,6 @@ public class ImageCode {
             String str = strEnsure.substring(i, i + 1);
             g.drawString(str, 13 * i + 6, 16);
         }
-
         // 释放图形上下文
         g.dispose();
         returnMap.put("image",image);
@@ -57,7 +56,6 @@ public class ImageCode {
         return returnMap;
     }
 
-    //给定范围获得随机颜色
     static Color getRandColor(int fc, int bc) {
         Random random = new Random();
         if (fc > 255) fc = 255;
