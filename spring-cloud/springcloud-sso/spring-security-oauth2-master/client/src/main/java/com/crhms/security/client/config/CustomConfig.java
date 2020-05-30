@@ -39,7 +39,8 @@ public class CustomConfig {
 
     @Bean("serviceOAuth2RestTemplate")
     @ConditionalOnMissingBean(name = "serviceOAuth2RestTemplate")
-    public ServiceOAuth2RestTemplate serviceOAuth2RestTemplate(@Qualifier("serviceClientCredentialsResourceDetails") ClientCredentialsResourceDetails details) {
+    public ServiceOAuth2RestTemplate serviceOAuth2RestTemplate(@Qualifier("serviceClientCredentialsResourceDetails")
+                                                                           ClientCredentialsResourceDetails details) {
         AccessTokenRequest request = new DefaultAccessTokenRequest();
         ServiceOAuth2RestTemplate oAuth2RestTemplate = new ServiceOAuth2RestTemplate(details,new DefaultOAuth2ClientContext(request));
 

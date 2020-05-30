@@ -12,15 +12,11 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
- */
+
 @SpringBootApplication
 @RestController
 @EnableOAuth2Sso
@@ -59,10 +55,8 @@ public class SsoClient1Application {
         String result = oAuth2RestTemplate.getForObject(messagesUrl + "/2", String.class);
         return result;
     }
-
-//    @Bean
-//    OAuth2RestTemplate oAuth2RestTemplate(OAuth2ClientContext oAuth2ClientContext,
-//                                          OAuth2ProtectedResourceDetails details){
-//        return new OAuth2RestTemplate(details,oAuth2ClientContext);
-//    }
+    @PostMapping("/login")
+    public String dsdb() {
+        return "bbbbbbbbbbbbbbbbbbbkkkkkkkkkkkkkkkkkkkkkkkkkkk";
+    }
 }

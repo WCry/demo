@@ -5,7 +5,6 @@ server:
     session:
       cookie:
         name: JSESSIONID_OAUTH2_SSO
-
 spring:
   thymeleaf:
     prefix: classpath:/templates/

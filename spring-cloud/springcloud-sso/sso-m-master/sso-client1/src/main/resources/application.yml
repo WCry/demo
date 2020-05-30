@@ -3,3 +3,15 @@ server:
   port: 8083
   servlet:
     context-path: /client1
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: 123456
+    resource:
+      token-info-uri: ${auth-server}/oauth/check-token
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key #解析jwt令牌所需要密钥的地址
+    sso:
+    #配置在sso环境下，sso验证成功 回调登录地址
+      login-path: /logind

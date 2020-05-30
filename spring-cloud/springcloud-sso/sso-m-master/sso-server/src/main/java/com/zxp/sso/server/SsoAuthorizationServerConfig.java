@@ -2,6 +2,7 @@ package com.zxp.sso.server;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -11,12 +12,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-/**
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
- */
+
 @Configuration
 @EnableAuthorizationServer
 public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -30,15 +26,15 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("clinet1")
-                .secret("123456")
+                .secret(new BCryptPasswordEncoder().encode("123456"))
                 .authorizedGrantTypes("authorization_code", "refresh_token")
-                .scopes("all","read","write")
+                .scopes("all","read","write").redirectUris("http://localhost:8084/client2/login")
                 .autoApprove(true)
                 .and()
                 .withClient("client2")
-                .secret("123456")
+                .secret(new BCryptPasswordEncoder().encode("123456"))
                 .authorizedGrantTypes("authorization_code", "refresh_token")
-                .scopes("all","read","write")
+                .scopes("all","read","write").redirectUris("http://localhost:8084/client2/login")
                 .autoApprove(true);
     }
 
@@ -53,7 +49,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     }
 
     /**
-     * springSecurity 授权表达式，访问merryyou tokenkey时需要经过认证
+     * springSecurity 授权表达式，访问tokenkey时需要经过认证
      * @param security
      * @throws Exception
      */
@@ -78,7 +74,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter(){
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("merryyou");
+        converter.setSigningKey("clent");
         return converter;
     }
 }

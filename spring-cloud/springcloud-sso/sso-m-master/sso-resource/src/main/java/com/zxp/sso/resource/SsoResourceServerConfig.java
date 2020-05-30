@@ -10,13 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
-/**
- * Created on 2018/1/27 0027.
- *
- * @author zlf
- * @email i@merryyou.cn
- * @since 1.0
- */
+
 @Configuration
 @EnableResourceServer
 public class SsoResourceServerConfig extends ResourceServerConfigurerAdapter {

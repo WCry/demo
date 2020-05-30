@@ -12,13 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
-/**
- * spring Security配置
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
- */
+
 @Configuration
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -27,10 +21,7 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
     public SsoSecurityConfig(UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,11 +41,11 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable();
         //合适位置增加自定义过滤器处理
-        http.addFilterBefore(new BeforeLoginFilter(), ChannelProcessingFilter.class);
+       // http.addFilterBefore(new BeforeLoginFilter(), ChannelProcessingFilter.class);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService);
     }
 }

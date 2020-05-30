@@ -8,9 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
-/**
- * 登录之前实现过滤
- **/
+
 public class BeforeLoginFilter extends GenericFilterBean {
 
     @Override
