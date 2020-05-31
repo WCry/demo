@@ -227,12 +227,29 @@ security:
 ## update2018年05月09日
 升级[springboot2.0单点登录](https://github.com/longfeizheng/springboot2.0-sso-merryyou)
 
----
-[![https://niocoder.com/assets/images/qrcode.jpg](https://niocoder.com/assets/images/qrcode.jpg "https://niocoder.com/assets/images/qrcode.jpg")](https://niocoder.com/assets/images/qrcode.jpg "https://niocoder.com/assets/images/qrcode.jpg")
 
-> 🙂🙂🙂关注微信公众号**java干货**
-不定期分享干货资料
 
-## Start统计
 
-[![Stargazers over time](https://starcharts.herokuapp.com/longfeizheng/sso-merryyou.svg)](https://starcharts.herokuapp.com/longfeizheng/sso-merryyou)
+##  依赖注意实现
+    不需要这么多依赖  
+         <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+		</dependency>
+    一个依赖项搞定：
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-oauth2</artifactId>
+                </dependency>

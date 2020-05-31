@@ -43,17 +43,17 @@ public class DepartmentController {
         return "department/show";
     }
 
-    @RequestMapping(value = "/list")
-    @ResponseBody
-    public Page<Department> getList(DepartmentQo departmentQo) {
-        try {
-            Pageable pageable = new PageRequest(departmentQo.getPage(), departmentQo.getSize(), new Sort(Sort.Direction.ASC, "id"));
-            return departmentRepository.findByName(departmentQo.getName()==null?"%":"%"+departmentQo.getName()+"%", pageable);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    @RequestMapping(value = "/list")
+//    @ResponseBody
+//    public Page<Department> getList(DepartmentQo departmentQo) {
+//        try {
+//            Pageable pageable = new PageRequest(departmentQo.getPage(), departmentQo.getSize(), new Sort(Sort.Direction.ASC, "id"));
+//            return departmentRepository.findByName(departmentQo.getName()==null?"%":"%"+departmentQo.getName()+"%", pageable);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     @RequestMapping("/new")
     public String create(){
