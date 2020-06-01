@@ -12,16 +12,11 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @Controller
 public class HtmlCotroller {
-//    @Autowired
-//    private  CsrfTokenRepository tokenRepository;
-
 
     @RequestMapping(value = "/")
     public ModelAndView index(HttpServletRequest httpRequest) {
         ModelAndView modelAndView = new ModelAndView();
-//        CsrfToken csrfToken= tokenRepository.loadToken(httpRequest);
-//        modelAndView.addObject(csrfToken);
-        modelAndView.setViewName("index.ftl");
+        modelAndView.setViewName("index.html");
         return modelAndView;
     }
 }

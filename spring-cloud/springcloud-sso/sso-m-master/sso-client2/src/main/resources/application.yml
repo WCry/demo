@@ -16,10 +16,11 @@ security:
     sso:
         #配置在sso环境下，sso验证成功 回调登录地址，应该和在注册中心注册地址一样
         login-path: /login
-#  thymeleaf:
-#      prefix: classpath:/templates/
-#      mode: HTML5
-#      encoding: UTF-8
-#      cache: false
-#  mvc:
-#    static-path-pattern: /static/**
+  thymeleaf:
+      suffix: .html
+      prefix: classpath:/templates
+      mode: HTML5
+      encoding: UTF-8
+      cache: false
+  mvc:
+    static-path-pattern: /static/**

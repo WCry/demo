@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>home</title>
+    <title>SSO client2</title>
+    <script src="jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+<h1>SSO tmall Client2</h1>
+<a href="http://sso-taobao:8083/client1/index.html">访问Client1</a>
+<a href="http://localhost:8082/uaa/logout">退出</a>
+<a href="http://localhost:8084/client2/logout">退出</a>
+<form action="/client2/logout" method="post">
+    <div>
+        <input th:name="${(_csrf.parameterName)}" th:value="${(_csrf.token)}" type="hidden">
+    </div>
+    <div>
+       <input type="button" value="ajax" onclick="send()" />
+    </div>
+</form>
+<script type="text/javascript">
+    function send() {
+        $.ajax({
+            url:"/client2/logout",
+            type:"post",
+            data:{
+                "url":"dsdddd"
+            },
+            dataType:"json",
+            contentType:"application/json",
+            error: function (data) {
+                alert(data);
+
+            }});
+    	// $.post('/client2/logout', {
+    	//     "url":"dsdddd"
+    	// }, function(data) {
+    	// 	alert("success")
+    	// });
+        // $.post('http://localhost:8082/uaa/logout', {
+        // }, function(data) {
+        //     alert("success")
+        // });
+    }
+</script>
+</body>
+</html>
