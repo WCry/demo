@@ -1,9 +1,5 @@
 package com.zxp.soo.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +21,7 @@ public class HtmlCotroller {
         ModelAndView modelAndView = new ModelAndView();
 //        CsrfToken csrfToken= tokenRepository.loadToken(httpRequest);
 //        modelAndView.addObject(csrfToken);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("index.ftl");
         return modelAndView;
     }
 }

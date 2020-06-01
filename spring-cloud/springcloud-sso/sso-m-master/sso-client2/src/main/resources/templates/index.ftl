@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>home</title>
+    <script src="js/jquery.min.js"></script>
     <title>SSO client2</title>
 </head>
 <body>

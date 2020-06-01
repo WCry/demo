@@ -27,7 +27,9 @@ public class SsoClient2Config extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         //配置所有的请求 都需要经过验证
-        http.csrf().requireCsrfProtectionMatcher().antMatcher("/**")
+        http.csrf().requireCsrfProtectionMatcher(
+                new AntPathRequestMatcher("/*", "POST")).and()
+                .antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/","/**.ico","/token").permitAll()
                 .anyRequest()
