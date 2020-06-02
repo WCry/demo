@@ -21,7 +21,7 @@ public class HtmlCotroller {
     @RequestMapping(value = "/")
     public ModelAndView index(HttpServletRequest httpRequest) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index.html");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 

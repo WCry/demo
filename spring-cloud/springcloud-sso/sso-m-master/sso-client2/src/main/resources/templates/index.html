@@ -31,7 +31,7 @@
             formObject[formData[item].name] = formData[item].value;
         }
         formData = JSON.stringify(formObject);
-        console.log(formData);
+        alert(formData);
         $.ajax({
             url: "update",
             type: "post",

@@ -28,14 +28,11 @@ import java.io.IOException;
 public class SsoClient2Config extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        //配置所有的请求 都需要经过验证
-        http.csrf().and()
-                .antMatcher("/**")
-                .authorizeRequests()
-                .antMatchers("/","/**.ico","/token").permitAll()
-                .anyRequest()
-                .authenticated().and()
-                .logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler()).permitAll();
+        http.authorizeRequests()
+                .antMatchers("/**.ico","**/update").permitAll()
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler())
+                .permitAll();
     }
   class logoutSuccessHandler implements LogoutSuccessHandler{
       @Override
