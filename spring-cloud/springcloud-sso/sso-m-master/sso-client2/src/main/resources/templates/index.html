@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <title>home</title>
     <title>SSO client2</title>
     <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
@@ -18,32 +18,23 @@
         <input th:name="${(_csrf.parameterName)}" th:value="${(_csrf.token)}" type="hidden">
     </div>
     <div>
-       <input type="button" value="ajax" onclick="send()" />
+        <input onclick="send()" type="button" value="ajax"/>
     </div>
 </form>
 <script type="text/javascript">
     function send() {
         $.ajax({
-            url:"/client2/logout",
-            type:"post",
-            data:{
-                "url":"dsdddd"
+            url: "/client2/update",
+            type: "post",
+            data: {
+                "url": "dsdddd"
             },
-            dataType:"json",
-            contentType:"application/json",
+            dataType: "json",
+            contentType: "application/json",
             error: function (data) {
                 alert(data);
-
-            }});
-    	// $.post('/client2/logout', {
-    	//     "url":"dsdddd"
-    	// }, function(data) {
-    	// 	alert("success")
-    	// });
-        // $.post('http://localhost:8082/uaa/logout', {
-        // }, function(data) {
-        //     alert("success")
-        // });
+            }
+        });
     }
 </script>
 </body>
