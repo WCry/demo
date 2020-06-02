@@ -13,7 +13,7 @@
 <a href="http://sso-taobao:8083/client1/index.html">访问Client1</a>
 <a href="http://localhost:8082/uaa/logout">退出</a>
 <a href="http://localhost:8084/client2/logout">退出</a>
-<form action="/client2/logout" method="post">
+<form id="logout-form" action="/client2/logout" method="post">
     <div>
         <input th:name="${(_csrf.parameterName)}" th:value="${(_csrf.token)}" type="hidden">
     </div>
@@ -23,14 +23,20 @@
 </form>
 <script type="text/javascript">
     function send() {
+        //获取表单数据，并序列化
+        var formData = $("#logout-form").serializeArray();
+        //将序列化数据转为对象
+        var formObject = {};
+        for (var item in formData) {
+            formObject[formData[item].name] = formData[item].value;
+        }
+        formData = JSON.stringify(formObject);
+        console.log(formData);
         $.ajax({
-            url: "/client2/update",
+            url: "update",
             type: "post",
-            data: {
-                "url": "dsdddd"
-            },
-            dataType: "json",
-            contentType: "application/json",
+            data:formData,
+            dataType:"json",
             error: function (data) {
                 alert(data);
             }
