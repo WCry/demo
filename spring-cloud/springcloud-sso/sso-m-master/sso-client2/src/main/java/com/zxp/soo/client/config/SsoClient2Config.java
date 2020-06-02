@@ -32,7 +32,7 @@ public class SsoClient2Config extends WebSecurityConfigurerAdapter {
         http.csrf().and()
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/","/**.ico","/token","/static/*").permitAll()
+                .antMatchers("/","/**.ico","/token").permitAll()
                 .anyRequest()
                 .authenticated().and()
                 .logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler()).permitAll();
