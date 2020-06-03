@@ -1,14 +1,14 @@
 spring:
   application:
-    name:  consul-feign-client
+    name: consul-feign-client
 server:
   port: 2101
 consul:
   client:
-    service-url:
-    defaultZone: http://10.19.154.149:8509/consul/
-  instance:
-    hostname: 10.17.80.14
-    instance-id: ${consul.instance.hostname}:${server.port}
-    prefer-ip-address: true
+    host: 10.19.154.66
+    port: 8500
+    discovery:
+      preferIpAddress: true
+      health-check-path: ${server.servlet.context-path}/actuator/health
+      health-check-interval: 15s
 

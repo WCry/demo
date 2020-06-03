@@ -19,9 +19,9 @@
         <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
     </properties>
     <modules>
-        <module>feign-api</module>
-        <module>feign-client</module>
-        <module>consumer</module>
+        <module>consoul-feign-api</module>
+        <module>consoul-feign-client</module>
+        <module>consoul-feign-consumer</module>
     </modules>
     <dependencies>
         <dependency>
