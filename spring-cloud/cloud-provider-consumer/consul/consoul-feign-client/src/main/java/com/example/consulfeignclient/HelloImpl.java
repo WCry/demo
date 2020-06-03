@@ -2,7 +2,6 @@ package com.example.consulfeignclient;
 
 import com.example.consulfeignapi.Gender;
 import com.example.consulfeignapi.HelloService;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

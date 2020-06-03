@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: consul-feign-consumer
@@ -9,5 +11,5 @@ spring:
         preferIpAddress: true
         health-check-path: ${server.servlet.context-path}/actuator/health
         health-check-interval: 15s
-server:
-  port: 8081
+customer:
+  client: consul-feign-client
