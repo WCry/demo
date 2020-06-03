@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @SpringBootApplication
-
 @RestController
 public class SsoClient2Application {
 
     /**
+     * https://docs.spring.io/spring-security/site/docs/current/reference/html5/#csrf-include-csrf-token
      *  该接口测试将 认证信息 传递到接口当中 共接口使用
-     * @param user
-     * @return
      */
 
     @GetMapping("/user")
