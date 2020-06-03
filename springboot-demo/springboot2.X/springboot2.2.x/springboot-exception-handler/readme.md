@@ -1,6 +1,6 @@
-# springboot-exceptionhandler01
+# springboot-exceptionhandler
 
-**springboot捕获全局异常**
+**springboot捕获全局异常和局部异常特殊处理**
 
 ## springboot捕获全局异常关键点
     1、创建全局异常处理类
@@ -10,8 +10,7 @@
     3、isAjax()方法是通过判断request请求是否为Ajax请求
         如果是Ajax请求的方法抛出异常，就返回错误信息
         如果不是Ajax请求的方法抛出异常，就跳转到错误页面，例如404页面、系统异常页面
-
-## springboot捕获全局异常说明
-    1、请求127.0.0.1:8080/ajaxerror，发起Ajax请求
-    2、请求127.0.0.1:8080/getException，发起非Ajax请求
-    3、请求127.0.0.1:8080/ajaxerror，发起非Ajax请求
+## SpringBoot 其他异常处理方式         
+    https://blog.csdn.net/qq_24598601/article/details/89243914
+    SimpleMappingExceptionResolver 异常处理映射
+    HandlerExceptionResolver 异常处理

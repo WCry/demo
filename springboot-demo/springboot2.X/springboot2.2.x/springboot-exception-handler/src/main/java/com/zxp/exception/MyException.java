@@ -2,9 +2,7 @@ package com.zxp.exception;
 
 /**
  * 自定义异常
- *
- * @author wyj
- * @date 2019-05-27 11:00
+ *  todo:项目自定义异常
  */
 public class MyException extends Exception {
 

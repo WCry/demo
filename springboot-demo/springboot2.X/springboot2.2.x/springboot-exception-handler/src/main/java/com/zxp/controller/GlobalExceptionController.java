@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AjaxErrorController {
+public class GlobalExceptionController {
 
     @RequestMapping("/ajaxerror")
     public ModelAndView ajaxerror() {
@@ -17,14 +17,17 @@ public class AjaxErrorController {
         return modelAndView;
     }
 
-    @RequestMapping("/getException")
+    @RequestMapping("/getOK")
     @ResponseBody
     public ApiResponse getAjaxerror() {
         int a = 1 / 0;
         return ApiResponse.ok();
     }
 
-    @RequestMapping("/getMyException")
+    /*
+       todo：Controller 层将异常抛出 有异常处理进行处理掉 我需要全局处理
+     */
+    @RequestMapping("/getGlobalException")
     @ResponseBody
     public ApiResponse getMyException() throws MyException {
         String str = null;

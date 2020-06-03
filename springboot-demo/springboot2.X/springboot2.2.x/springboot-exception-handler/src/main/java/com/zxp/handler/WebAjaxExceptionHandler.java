@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @ControllerAdvice
 public class WebAjaxExceptionHandler {
-
+    /**
+     *异常处理
+     */
     @ExceptionHandler(value = MyException.class)
     public Object myExceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) throws Exception {
-        e.printStackTrace();
+        System.out.println("=====================全局异常处理了===================================");
         //判断请求是否为Ajax请求
         if (isAjax(request)) { //如果是的话，就直接返回错误信息
             return ApiResponse.errorException(e.getMessage());
@@ -52,7 +54,7 @@ public class WebAjaxExceptionHandler {
      */
     public boolean isAjax(HttpServletRequest request) {
         return (request.getHeader("X-Requested-With") != null &&
-                "XMLHttpRequest".equals(request.getHeader("X-Requested-With").toString()));
+                "XMLHttpRequest".equals(request.getHeader("X-Requested-With")));
     }
 
 }
