@@ -1,13 +1,13 @@
 spring:
   application:
     name: consul-feign-consumer
+  cloud:
+    consul:
+      host: 10.19.154.66
+      port: 8500
+      discovery:
+        preferIpAddress: true
+        health-check-path: ${server.servlet.context-path}/actuator/health
+        health-check-interval: 15s
 server:
-  port: 2102
-consul:
-  client:
-    host: 10.19.154.66
-    port: 8500
-    discovery:
-      preferIpAddress: true
-      health-check-path: ${server.servlet.context-path}/actuator/health
-      health-check-interval: 15s
+  port: 8081

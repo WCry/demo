@@ -1,6 +1,8 @@
 package com.example.consulfeignconsumer;
 
+import com.ecwid.consul.v1.ConsulClient;
 import com.example.consulfeignapi.Gender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @author zhangxuepei
  * @since 3.0
  */
-@RestController
+@RestController("/test")
 public class HelloTestController {
     private final HelloServiceClient helloServiceClient;
-
+    @Autowired
+    private ConsulClient consulClient;
     public HelloTestController(HelloServiceClient helloServiceClient) {
         this.helloServiceClient = helloServiceClient;
     }
@@ -23,6 +26,7 @@ public class HelloTestController {
 
     @GetMapping("/gender")
     public Gender getGender(String name) {
+        consulClient.getAgentServices().getValue().keySet().forEach(System.out::println);
         return helloServiceClient.getGender(name);
     }
 }

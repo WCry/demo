@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
 public interface HelloService {
     @GetMapping("/hello")
     String hello(@RequestParam(value = "name") String name);
