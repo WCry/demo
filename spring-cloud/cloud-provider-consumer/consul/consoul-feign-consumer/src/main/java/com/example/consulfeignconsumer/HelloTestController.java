@@ -26,9 +26,10 @@ public class HelloTestController {
         return helloServiceClient.hello(name);
     }
 
-//    @GetMapping("/gender")
-//    public Gender getGender(String name) {
-//        consulClient.getAgentServices().getValue().keySet().forEach(System.out::println);
-//        return helloServiceClient.getGender(name);
-//    }
+    @GetMapping("/gender")
+    public Gender getGender(String name) {
+        consulClient.getAgentServices().getValue().keySet().forEach(System.out::println);
+        Gender gender=helloServiceClient.getGender(name);
+        return gender;
+    }
 }
