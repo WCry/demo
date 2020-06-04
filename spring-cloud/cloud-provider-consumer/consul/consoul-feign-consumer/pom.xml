@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.cloud.consul</groupId>
+        <groupId>com.cloud.consuldemo</groupId>
         <artifactId>consul-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.cloud.consul</groupId>
+    <groupId>com.cloud.consuldemo</groupId>
     <artifactId>consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>consumer</name>
@@ -21,14 +21,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.cloud.consul</groupId>
+            <groupId>com.cloud.consuldemo</groupId>
             <artifactId>feign-api</artifactId>
         </dependency>
     </dependencies>

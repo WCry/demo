@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author zhangxuepei
- * @since 3.0
  */
-@FeignClient(value = "${customer.client}")
-interface HelloServiceClient extends HelloService {}
+@FeignClient(name = "consul-feign-client",path = "/consul-feign-client")
+interface HelloServiceClient extends HelloService{
+}

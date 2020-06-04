@@ -16,6 +16,11 @@ public class HelloImpl implements HelloService {
     }
 
     @Override
+    public String hello22() {
+        return "hello ";
+    }
+
+    @Override
     public Gender getGender(String name) {
         return Gender.MAN;
     }

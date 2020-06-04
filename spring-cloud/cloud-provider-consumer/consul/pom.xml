@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -8,7 +8,7 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cloud.consul</groupId>
+    <groupId>com.cloud.consuldemo</groupId>
     <artifactId>consul-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>consul-demo</name>
@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
-        <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
+        <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
     </properties>
     <modules>
         <module>consoul-feign-api</module>
@@ -25,14 +25,21 @@
     </modules>
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -44,7 +51,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.cloud.consul</groupId>
+                <groupId>com.cloud.consuldemo</groupId>
                 <artifactId>feign-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
