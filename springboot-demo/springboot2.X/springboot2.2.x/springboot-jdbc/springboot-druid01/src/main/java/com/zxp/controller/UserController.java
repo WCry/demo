@@ -1,8 +1,9 @@
-package com.wyj.controller;
+package com.zxp.controller;
 
-import com.wyj.entity.po.User;
-import com.wyj.service.UserService;
+import com.zxp.entity.po.User;
+import com.zxp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,12 @@ public class UserController {
         List<User> userList = userService.findAll();
         return userList;
     }
+
+//    @PostMapping(value = "addUser")
+//    public List<User> findAll() {
+//        List<User> userList = userService.findAll();
+//        return userList;
+//    }
+
 
 }
