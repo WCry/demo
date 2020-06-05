@@ -1,6 +1,4 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -27,44 +25,14 @@ public class TimeOperationTest {
         System.currentTimeMillis();
         //获取纳秒级别的时间
         System.nanoTime();
-    }
+        // parseToDate方法作用是将String转为LocalDate，略。
+        LocalDate date1 =LocalDate.of(2020,05,12);
+        LocalDate date2 = LocalDate.of(2021,05,13);
+        System.out.println(Period.between(date1, date2).getYears());
+        // 计算日期间隔
+        int period = Period.between(date1,date2).getDays();
+        System.out.println(period+"");
 
-    public void TestMyMaxHeap(int[] numbers, int k) {
-        int[] heapMax = new int[numbers.length];
-        for (int i = 0; i < numbers.length; i++) {
-            if (i == 0) {
-                heapMax[0] = numbers[0];
-            } else {
-                int cu = numbers[i];
-                int currIndex=0;
-                for (int j = 0; j < i; j++) {
-                    int heapleft = j << 1 + 1;
-                    if(cu>heapMax[currIndex]){
-                        int temp=cu;
-                        cu =heapMax[currIndex];
-                        heapMax[currIndex]=temp;
-                    }
-                    if(heapleft>((i-1)>>1)){
-                        heapMax[heapleft]=cu;
-                    }else{
-                        int heapright = (j + 1) << 1;
-                        if(heapright>(i<<1)){
-                            //如果超出 直接进行赋值
-                            heapMax[heapright]=cu;
-                        }else{
-                            if (heapright<i*2){
-                                currIndex=heapleft;
-                                if(heapMax[heapleft]>heapMax[heapright]){
-                                    currIndex=heapright;
-                                }
-                            }
-                            if(heapMax[currIndex]>cu){
-                            }else{
-                            }
-                        }
-                    }
-                }
-            }
-        }
+
     }
 }

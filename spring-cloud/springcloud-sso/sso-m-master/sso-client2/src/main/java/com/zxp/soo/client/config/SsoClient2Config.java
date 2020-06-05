@@ -1,5 +1,6 @@
 package com.zxp.soo.client.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,13 +10,15 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**-
+/**
+ * -
  * [简要描述]: 配置安全验证适配器
  * [详细描述]:
  */
@@ -26,18 +29,24 @@ import java.io.IOException;
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 //@EnableOAuth2Client  这个是是 单独使用Oath2的时候使用 在sso模式不使用
 public class SsoClient2Config extends WebSecurityConfigurerAdapter {
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        http.securityContext(null);
         http.authorizeRequests()
-                .antMatchers("/**.ico","**/update").permitAll()
+                .antMatchers("/**.ico", "**/update").permitAll()
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler())
                 .permitAll();
     }
-  class logoutSuccessHandler implements LogoutSuccessHandler{
-      @Override
-      public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-          System.out.printf("dasdasd");
-      }
-  }
+
+    class logoutSuccessHandler implements LogoutSuccessHandler {
+
+        @Autowired
+        RestTemplate restTemplate;
+
+        @Override
+        public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+        }
+    }
 }

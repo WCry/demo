@@ -1,15 +1,11 @@
 package com.zxp.soo.client;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * user:zxp
@@ -25,8 +21,7 @@ public class HtmlCotroller {
         return modelAndView;
     }
 
-    @ResponseBody
-    @PostMapping(value = "/update",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/update")
     public String update() {
        // System.out.println(httpRequest);
         return "url";

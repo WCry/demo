@@ -16,8 +16,10 @@
 <form id="logout-form" action="/client2/logout" method="post">
     <div>
         <input th:name="${(_csrf.parameterName)}" th:value="${(_csrf.token)}" type="hidden">
+        <input th:name="url" th:value="www.baidu.com" type="hidden">
     </div>
     <div>
+        <input  type="submit"/>
         <input onclick="send()" type="button" value="ajax"/>
     </div>
 </form>
@@ -26,17 +28,17 @@
         //获取表单数据，并序列化
         var formData = $("#logout-form").serializeArray();
         //将序列化数据转为对象
-        var formObject = {};
-        for (var item in formData) {
-            formObject[formData[item].name] = formData[item].value;
-        }
-        formData = JSON.stringify(formObject);
+        // var formObject = {};
+        // for (var item in formData) {
+        //     formObject[formData[item].name] = formData[item].value;
+        // }
+        // formData = JSON.stringify(formObject);
         alert(formData);
         $.ajax({
-            url: "update",
+            url: "http://localhost:8082/uaa/logout",
             type: "post",
             data:formData,
-            dataType:"json",
+            processData:true,
             error: function (data) {
                 alert(data);
             }
