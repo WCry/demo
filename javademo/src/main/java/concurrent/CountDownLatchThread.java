@@ -1,7 +1,5 @@
 package concurrent;
 
-import sun.awt.Mutex;
-
 import java.util.concurrent.CountDownLatch;
 
 /**
