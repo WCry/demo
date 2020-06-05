@@ -1,4 +1,4 @@
-package com.wyj.entity.po;
+package com.zxp.entity.po;
 
 import lombok.Data;
 
@@ -9,9 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Data
-@Table(name = "user")
+@Table(name = "user_info")
 public class User {
-
     @Id
     @GeneratedValue
     private int id;
@@ -19,5 +18,4 @@ public class User {
     private Integer age;
     private String sex;
     private String address;
-
 }
