@@ -9,15 +9,13 @@
         <relativePath/>
     </parent>
     <groupId>com.zxp</groupId>
-    <artifactId>springboot-aop01</artifactId>
+    <artifactId>springboot-aop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-aop01</name>
+    <name>springboot-aop</name>
     <description>springboot AOP</description>
-
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
     <dependencies>
         <!-- springboot -->
         <dependency>
@@ -42,7 +40,7 @@
     </dependencies>
 
     <build>
-        <finalName>springboot-aop01</finalName>
+        <finalName>springboot-aop</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
