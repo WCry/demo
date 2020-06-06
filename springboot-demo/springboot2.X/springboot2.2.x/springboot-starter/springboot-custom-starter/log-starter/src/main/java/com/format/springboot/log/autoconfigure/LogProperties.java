@@ -1,4 +1,4 @@
-package me.format.springboot.log.autoconfigure;
+package com.format.springboot.log.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StringUtils;

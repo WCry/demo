@@ -1,4 +1,4 @@
-package me.format.springboot.log.aop;
+package com.format.springboot.log.aop;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

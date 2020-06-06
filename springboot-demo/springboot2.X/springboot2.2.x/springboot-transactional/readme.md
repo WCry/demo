@@ -37,3 +37,6 @@ https://blog.csdn.net/qq_35493807/article/details/105790266
     frameborder=0 
     allowfullscreen>
 </iframe>
+
+
+接下来对于分布式条件 还有分布式事务
