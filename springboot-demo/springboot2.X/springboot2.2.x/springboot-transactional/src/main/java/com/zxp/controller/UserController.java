@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private UserWithCardService withCardService;
+    private UserWithCardService userWithCardService;
 
     @RequestMapping(value = "findAll")
     public List<User> findAll() {
@@ -29,9 +29,9 @@ public class UserController {
 
     @PostMapping(value = "addUserCard")
     public Boolean addUser(@RequestBody UserWithCard userWithCard) {
-       User user=new User();
-        BeanUtils.copyProperties(userWithCard,user);
-        withCardService.addUser(user, userWithCard.getCount());
+        User user = new User();
+        BeanUtils.copyProperties(userWithCard, user);
+        userWithCardService.addUser(user, userWithCard.getCount());
         return true;
     }
 }
