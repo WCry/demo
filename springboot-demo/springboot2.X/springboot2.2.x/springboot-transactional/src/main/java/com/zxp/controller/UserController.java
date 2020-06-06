@@ -16,10 +16,13 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    private final UserService userService;
+    private final UserWithCardService userWithCardService;
     @Autowired
-    private UserService userService;
-    @Autowired
-    private UserWithCardService userWithCardService;
+    public UserController(UserService userService, UserWithCardService userWithCardService) {
+        this.userService = userService;
+        this.userWithCardService = userWithCardService;
+    }
 
     @RequestMapping(value = "findAll")
     public List<User> findAll() {

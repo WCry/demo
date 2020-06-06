@@ -18,10 +18,15 @@ import java.util.UUID;
  */
 @Service
 public class UserWithCardServiceImpl implements UserWithCardService {
+    private final UserService userService;
+    private final UserCardService userCardService;
+    private final UserWithCardServiceImpl userWithCardService;
     @Autowired
-    private UserService userService;
-    @Autowired
-    private UserCardService userCardService;
+    public UserWithCardServiceImpl(UserService userService, UserCardService userCardService, UserWithCardServiceImpl userWithCardService) {
+        this.userService = userService;
+        this.userCardService = userCardService;
+        this.userWithCardService = userWithCardService;
+    }
 
     @Override
     /**
@@ -38,8 +43,11 @@ public class UserWithCardServiceImpl implements UserWithCardService {
      * dontRollbackOn：在某些异常下 不进行回滚操作
      *  注意引用的类：Transactional注解包有JAVAX和Springboot的
      */
-    @Transactional(isolation = Isolation.DEFAULT, rollbackFor = {RuntimeException.class, Error.class})
     public void addUser(User user, int cardCount) {
+        userWithCardService.addUserWitCard(user,cardCount);
+    }
+    @Transactional(isolation = Isolation.DEFAULT, rollbackFor = {RuntimeException.class, Error.class})
+    public void addUserWitCard(User user, int cardCount){
         UUID uuid = UUID.randomUUID();
         user.setUserID(uuid.toString());
         userService.addUser(user);
@@ -48,4 +56,5 @@ public class UserWithCardServiceImpl implements UserWithCardService {
         userCard.setUserID(uuid.toString());
         userCardService.addUserCard(userCard);
     }
+
 }
