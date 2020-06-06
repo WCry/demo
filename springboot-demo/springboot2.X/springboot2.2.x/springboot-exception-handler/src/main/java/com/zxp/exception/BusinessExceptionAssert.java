@@ -6,7 +6,7 @@ import java.text.MessageFormat;
 /**
  * @author zhangxuepei
  * @since 3.0
- * 业务异常
+ * 业务异常  某一个业务异常
  */
 public interface BusinessExceptionAssert extends Assert, IResponseEnum {
     @Override

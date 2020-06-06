@@ -1,11 +1,10 @@
 package com.zxp.exception;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import org.springframework.util.Assert;
-
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 将错误码异常信息的枚举和断言加到一起进行使用
+ * 错误类型的枚举同时具有断言判断的功能
  */
 
 public enum ResponseEnum implements BusinessExceptionAssert {
