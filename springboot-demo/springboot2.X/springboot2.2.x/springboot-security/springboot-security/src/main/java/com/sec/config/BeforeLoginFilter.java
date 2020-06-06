@@ -14,7 +14,11 @@ import java.io.IOException;
 /**
  * user:zxp
  * Day:2020,04,19
+ *  主要继承Srpingboot的 OncePerRequestFilter，每次请求值过滤一次
+ *
+ *
  **/
+
 public class BeforeLoginFilter extends OncePerRequestFilter implements ApplicationContextAware {
 //    @Override
 //    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
