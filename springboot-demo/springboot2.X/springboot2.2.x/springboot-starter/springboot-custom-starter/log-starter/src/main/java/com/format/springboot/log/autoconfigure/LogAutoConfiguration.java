@@ -1,7 +1,7 @@
-package me.format.springboot.log.autoconfigure;
+package com.format.springboot.log.autoconfigure;
 
-import me.format.springboot.log.annotation.Log;
-import me.format.springboot.log.aop.LogMethodInterceptor;
+import com.format.springboot.log.annotation.Log;
+import com.format.springboot.log.aop.LogMethodInterceptor;
 import org.aopalliance.aop.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

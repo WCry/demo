@@ -10,16 +10,13 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class WebLogAspect {
-
     private Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
-
     /**
      * 定义切入点，切入点为com.wyj下的所有函数
      */
     @Pointcut("execution(public * com.zxp.*.*(..))")
     public void webLog() {
     }
-
     /**
      * 前置通知：在连接点之前执行的通知
      *
