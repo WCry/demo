@@ -1,8 +1,12 @@
 package com.zxp.soo.client.config;
 
+import com.zxp.soo.client.login.mobile.MobileCodeAuthenticationProvider;
+import com.zxp.soo.client.login.mobile.UsernamePasswordAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
@@ -33,11 +37,21 @@ public class SsoClient2Config extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.securityContext(null);
+       // http.authenticationProvider(mobileCodeAuthenticationProvider());
         http.authorizeRequests()
                 .antMatchers("/**.ico", "**/update").permitAll()
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler())
                 .permitAll();
+    }
+
+    public UsernamePasswordAuthenticationProvider usernamePasswordAuthenticationProvider() {
+        return new UsernamePasswordAuthenticationProvider();
+    }
+
+
+    public MobileCodeAuthenticationProvider mobileCodeAuthenticationProvider() {
+        return new MobileCodeAuthenticationProvider();
     }
 
     class logoutSuccessHandler implements LogoutSuccessHandler {

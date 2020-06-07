@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example</title>
+</head>
+<body>
+密码登录：
+<hr/>
+<form th:action="@{/login}" method="post">
+    <div>
+        <label> 用户名: <input type="text" name="username"/>
+        </label>
+    </div>
+    <div>
+        <label> 密码: <input type="password" name="password"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="登录"/>
+    </div>
+</form>
+<hr/>
+验证码登录：
+<hr/>
+<form th:action="@{/mobileCodeLogin}" method="post">
+    <div>
+        <label> 手机号: <input type="text" name="mobile"/>
+        </label>
+    </div>
+    <div>
+        <label> 验证码: <input type="password" name="code"/>
+        </label>
+    </div>
+    <div>
+        <input type="submit" value="登录"/>
+    </div>
+</form>
+</body>
+</html>
