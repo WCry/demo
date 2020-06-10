@@ -25,9 +25,13 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/authentication/require")
+        OpenIDConsumer
+        http.openidLogin().loginProcessingUrl()
+        http.formLogin()
+                .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
-                .and().authorizeRequests()
+                .and()
+                .authorizeRequests()
                 .antMatchers("/authentication/require",
                         "/authentication/form",
                         "/**/*.js",
@@ -37,7 +41,8 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.woff2"
                 )
                 .permitAll()
-                .anyRequest().authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .csrf().disable();
         //合适位置增加自定义过滤器处理
