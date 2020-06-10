@@ -3,21 +3,18 @@ package concurrent.lock;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Author: zhangxuepei
  * Date: 2020/3/16 19:08
  * Content:
- *    测试读写锁互斥锁
- *    特点：支持重入
- *          写锁是互斥的
- *          读锁是共享
- *          写锁可以降级为读锁，读锁不可以升级为写锁
+ *    测试锁互斥锁
  */
-public class TestReentrantWriteLock {
+public class TestReentrantLock {
     public static void main(String[] args) throws InterruptedException {
-        TestReentrantWriteLock testReentrantWriteLock=new TestReentrantWriteLock();
+        TestReentrantLock testReentrantWriteLock=new TestReentrantLock();
         Thread thread=new Thread(() -> {
             testReentrantWriteLock.put("test","2222");
             System.out.println("线程1获取："+testReentrantWriteLock.get("test"));
@@ -31,12 +28,10 @@ public class TestReentrantWriteLock {
         Thread.sleep(1000);
     }
     private final Map<String, String> m = new TreeMap<String, String>();
-    private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
-    private final Lock r = rwl.readLock();
-    private final Lock w = rwl.writeLock();
+    private final ReentrantLock rwl = new ReentrantLock();
 
     public String get(String key) {
-        r.lock();
+        rwl.lock();
         try {
             try {
                 System.out.println(key);
@@ -46,12 +41,12 @@ public class TestReentrantWriteLock {
             }
             return m.get(key);
         } finally {
-            r.unlock();
+            rwl.unlock();
         }
     }
 
     public String[] allKeys() {
-        r.lock();
+        rwl.lock();
         try {
             System.out.println("获取全部");
             String[] returnd=new String[m.size()];
@@ -63,25 +58,25 @@ public class TestReentrantWriteLock {
             System.out.println("获取全部结束");
             return  m.keySet().toArray(returnd);
         } finally {
-            r.unlock();
+            rwl.unlock();
         }
     }
 
     public String put(String key, String value) {
-        w.lock();
+        rwl.lock();
         try {
             return m.put(key, value);
         } finally {
-            w.unlock();
+            rwl.unlock();
         }
     }
 
     public void clear() {
-        w.lock();
+        rwl.lock();
         try {
             m.clear();
         } finally {
-            w.unlock();
+            rwl.unlock();
         }
     }
 }
