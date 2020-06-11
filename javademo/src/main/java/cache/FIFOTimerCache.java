@@ -19,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author zhangxuepei
  * @since 3.0
  * 实现 FIFO和定时的缓存
+ * 该方法包含了对象是否正在使用
  */
 public class FIFOTimerCache<V> {
     protected Logger logger = LoggerFactory.getLogger(FIFOTimerCache.class);
