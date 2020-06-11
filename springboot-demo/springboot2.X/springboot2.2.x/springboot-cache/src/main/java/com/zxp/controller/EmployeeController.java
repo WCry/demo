@@ -69,8 +69,10 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "")
-    public String postEmployee(@RequestParam(value = "lastName", required = true) String lastName,
-                               @RequestParam(value = "email", required = true) String email, @RequestParam(value = "gender", required = true) int gender, @RequestParam(value = "dId", required = true) int dId) {
+    public String postEmployee(@RequestParam(value = "lastName") String lastName,
+                               @RequestParam(value = "email") String email,
+                               @RequestParam(value = "gender") int gender,
+                               @RequestParam(value = "dId") int dId) {
 
         Employee employee = new Employee();
         employee.setLastName(lastName);
@@ -83,7 +85,6 @@ public class EmployeeController {
         } else {
             return "sava fail";
         }
-
     }
 
 

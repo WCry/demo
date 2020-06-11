@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.Closeable;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author zhangxuepei
  * @since 3.0
  * 实现 FIFO和定时的缓存
+ * 该方法包含了对象是否正在使用
  */
 public class FIFOTimerCache<V> {
     protected Logger logger = LoggerFactory.getLogger(FIFOTimerCache.class);
@@ -28,6 +29,7 @@ public class FIFOTimerCache<V> {
     private String timeOutToCloseObject;
     private Long cacheTime;
     private Lock lock;
+    private HashMap<String, LocalDateTime> cacheTimeManager=new HashMap<>();
     /**
      * 缓存时间是毫秒为单位
      *
@@ -40,29 +42,12 @@ public class FIFOTimerCache<V> {
         lock = new ReentrantLock();
     }
 
-    public static void main(String[] args) throws IOException {
-        FIFOTimerCache<FileOutputStream> fileOutputStreamFIFOTimerCache = new FIFOTimerCache<>(3, 5000);
-        for (int i = 0; i < 100000; i++) {
-            int remainderNumber = i % 5;
-            File file = new File("C:\\Users\\zhangxuepei\\Desktop\\新建文件夹\\path" + remainderNumber);
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            FileOutputStream fileInputStream =fileOutputStreamFIFOTimerCache.get(file.getPath());
-            if(fileInputStream==null){
-                fileInputStream=new FileOutputStream(file);
-                fileOutputStreamFIFOTimerCache.put(file.getPath(),fileInputStream);
-            }
-            byte[] bytes=new byte[1024*10*10];
-            fileInputStream.write(bytes);
-            fileOutputStreamFIFOTimerCache.canRemove();
-        }
-    }
+
 
     public void cleanCache() {
         //将缓存对象清空
         cacheObjectLinkedHashMap.forEach((key, value) -> {
-            closeObject(value);
+            closeObject(key,value);
         });
         //将时间调度清空
         cacheScheduleTask.forEach((key, value) -> {
@@ -70,10 +55,16 @@ public class FIFOTimerCache<V> {
         });
     }
 
-    private void closeObject(V cacheObject) {
+    private void closeObject(String key,V cacheObject) {
         if (cacheObject instanceof Closeable) {
             try {
                 logger.info("关闭缓存对象！");
+                long times= cacheTimeManager.get(key).until(LocalDateTime.now(), ChronoUnit.MILLIS);
+                System.out.println(times);
+                if(times>cacheTime){
+                    logger.error("超时关闭！！！！！！！！！！！！！！！！！！！！！！！！！");
+                    System.out.println(times);
+                }
                 ((Closeable) cacheObject).close();
             } catch (Exception ex) {
                 logger.error("对象关闭出错", ex);
@@ -87,6 +78,7 @@ public class FIFOTimerCache<V> {
         CacheTask cacheTask = new CacheTask(key);
         Timer timer = new Timer();
         timer.schedule(cacheTask, cacheTime);
+        cacheTimeManager.put(key,LocalDateTime.now());
         cacheScheduleTask.put(key, timer);
         changeUsingObject(key);
         cacheObjectLinkedHashMap.put(key, value);
@@ -117,7 +109,7 @@ public class FIFOTimerCache<V> {
                 changeTimeOutObject(key);
             } else {
                 V cache = cacheObjectLinkedHashMap.remove(key);
-                closeObject(cache);
+                closeObject(key,cache);
                 Timer timer = cacheScheduleTask.remove(key);
                 timer.cancel();
                 changeTimeOutObject(null);
