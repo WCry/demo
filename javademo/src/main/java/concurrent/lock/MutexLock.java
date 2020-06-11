@@ -5,6 +5,10 @@ package concurrent.lock;
  * Day:2020,04,25
  **/
 
+import sun.misc.Unsafe;
+
+import java.util.Collections;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 /**
