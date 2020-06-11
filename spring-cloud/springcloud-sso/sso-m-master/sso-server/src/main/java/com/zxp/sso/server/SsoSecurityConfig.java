@@ -25,10 +25,10 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        OpenIDConsumer
-        http.openidLogin().loginProcessingUrl()
         http.formLogin()
+                //展示登录界面的URL
                 .loginPage("/authentication/require")
+                //配置登录处理的URL 在认证中心的登录界面 登录表单的提交地方
                 .loginProcessingUrl("/authentication/form")
                 .and()
                 .authorizeRequests()
