@@ -29,6 +29,7 @@ public class SpringbootElasticsearchApplicationTests {
 		book.setId(1);
 		book.setBookName("西游记");
 		book.setAuthor( "吴承恩" );
+		bookRepository.save(book);
 		bookRepository.index( book );
 	}
 
