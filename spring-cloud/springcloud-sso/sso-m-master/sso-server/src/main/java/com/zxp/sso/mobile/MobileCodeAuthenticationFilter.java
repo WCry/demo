@@ -1,4 +1,4 @@
-package com.zxp.soo.client.login.mobile;
+package com.zxp.sso.mobile;
 
 /**
  * user:zxp
@@ -35,29 +35,21 @@ public class MobileCodeAuthenticationFilter extends AbstractAuthenticationProces
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
         if (postOnly && !request.getMethod().equals("POST")) {
-            throw new AuthenticationServiceException(
-                    "Authentication method not supported: " + request.getMethod());
+            throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
-
         String mobile = obtainMobile(request);
         String code = obtainCode(request);
-
         if (mobile == null) {
             mobile = "";
         }
-
         if (code == null) {
             code = "";
         }
-
         mobile = mobile.trim();
         code = code.trim();
-
         AbstractAuthenticationToken authRequest = new MobileCodeAuthenticationToken(mobile, code);
-
         // Allow subclasses to set the "details" property
         setDetails(request, authRequest);
-
         return this.getAuthenticationManager().authenticate(authRequest);
     }
 
@@ -69,9 +61,7 @@ public class MobileCodeAuthenticationFilter extends AbstractAuthenticationProces
         return request.getParameter(codeParameter);
     }
 
-    protected void setDetails(HttpServletRequest request,
-                              AbstractAuthenticationToken authRequest) {
+    protected void setDetails(HttpServletRequest request, AbstractAuthenticationToken authRequest) {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
     }
-
 }

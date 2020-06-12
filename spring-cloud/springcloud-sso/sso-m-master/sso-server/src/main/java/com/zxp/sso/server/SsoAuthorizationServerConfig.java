@@ -24,6 +24,7 @@ public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerA
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+       //配置客户客户端的详细信息
         clients.inMemory()
                 .withClient("clinet1")
                 .secret(new BCryptPasswordEncoder().encode("123456"))
