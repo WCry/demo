@@ -1,13 +1,10 @@
 package demo.curator;
 
-import org.apache.curator.framework.recipes.locks.InterProcessSemaphore;
 import org.apache.curator.framework.recipes.locks.InterProcessSemaphoreV2;
 import org.apache.curator.framework.recipes.locks.Lease;
 import org.apache.curator.framework.recipes.shared.SharedCount;
-import org.apache.curator.framework.recipes.shared.SharedCountReader;
 
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Author: zhangxuepei
@@ -41,14 +38,6 @@ public class TestInterProcessSemaphoreV2 {
         System.out.println("客户二获取租约干事情");
         Collection<Lease> leases3=semaphore2.acquire(3);
         System.out.println("客户二获取租约干事情");
-
-
-
-
-
-
-
-
 //        // 释放一个许可
 //       // semaphore.returnLease(lease);
 //        semaphore2.returnLease(lease2);
