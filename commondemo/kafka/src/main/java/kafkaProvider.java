@@ -6,7 +6,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 /**
- * kafka生产者
+ * kafka生产者  通过属性文件配置Producer
  */
 public class kafkaProvider {
     public static void main(String[] args) {

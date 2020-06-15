@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 /**
- * kafka 进行消费
+ * kafka 进行消费 通过配置文件配置 Consumer
  */
 public class kafkaConsumer {
     public static void main(String[] args) {

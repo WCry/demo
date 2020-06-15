@@ -29,11 +29,20 @@ public class TestProducer {
     public NewTopic teststs(){
         return new NewTopic("teststs",2,(short)1);
     }
+
+    /**
+     * 产生新的Topic 主题的名称  主题的分区数量  副本数量
+     *
+     * @return
+     */
     @Bean
     public NewTopic teststA(){
         return new NewTopic("teststA",5,(short)1);
     }
 
+    /**
+     * 通过管理客户端产生topic
+     */
     public void createTopics(){
         //kafka创建客户topic的方式
         //AdminClient adminClient= AdminClient.create(kafkaAdmin.getConfig());

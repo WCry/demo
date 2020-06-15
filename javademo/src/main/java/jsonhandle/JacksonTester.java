@@ -79,7 +79,8 @@ public class JacksonTester {
         students.add(student2);
         ObjectMapper objectMapper = new ObjectMapper();
         //转换一个Json的 集合对象
-        List<Student> studentsConvert = objectMapper.readValue(objectMapper.writeValueAsString(students), new TypeReference<List<Student>>() {});
+        List<Student> studentsConvert = objectMapper.readValue(objectMapper.writeValueAsString(students),
+                new TypeReference<List<Student>>() {});
         System.out.println(studentsConvert.get(0).getName());
     }
 
