@@ -1,4 +1,4 @@
-package com.example.order;
+package com.example.order.reference;
 
 import com.example.consulfeignapi.StockService;
 import org.springframework.cloud.openfeign.FeignClient;

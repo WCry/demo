@@ -1,7 +1,3 @@
-server:
-  port: 8082
-  servlet:
-    context-path: /consul-feign-client
 spring:
   application:
     name: consul-feign-client

@@ -4,6 +4,7 @@ package com.example.stock.service;
 import com.example.consulfeignapi.config.RabbitMqConfig;
 import com.example.consulfeignapi.dto.StockDto;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
