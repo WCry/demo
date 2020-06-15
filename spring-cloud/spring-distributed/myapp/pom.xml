@@ -8,7 +8,7 @@
         <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cloud.consuldemo</groupId>
+    <groupId>com.cloud.ecommerce</groupId>
     <artifactId>ecommerce-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>consul-demo</name>
@@ -20,8 +20,8 @@
     </properties>
     <modules>
         <module>stock-api</module>
-        <module>ecommerce-stock</module>
         <module>ecommerce-order</module>
+        <module>ecommerce-stock</module>
     </modules>
     <dependencies>
         <dependency>
@@ -60,8 +60,8 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.cloud.consuldemo</groupId>
-                <artifactId>order-api</artifactId>
+                <groupId>com.cloud.ecommerce</groupId>
+                <artifactId>stock-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

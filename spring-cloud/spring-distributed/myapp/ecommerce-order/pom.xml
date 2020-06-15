@@ -3,21 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.cloud.consuldemo</groupId>
+        <groupId>com.cloud.ecommerce</groupId>
         <artifactId>ecommerce-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.cloud.consuldemo</groupId>
-    <artifactId>feign-client</artifactId>
+    <groupId>com.cloud.ecommerce</groupId>
+    <artifactId>order-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>client</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
-
         <dependency>
-            <groupId>com.cloud.consuldemo</groupId>
-            <artifactId>order-api</artifactId>
+            <groupId>com.cloud.ecommerce</groupId>
+            <artifactId>stock-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.ecommerce</groupId>
+            <artifactId>stock-api</artifactId>
         </dependency>
     </dependencies>
     <build>
