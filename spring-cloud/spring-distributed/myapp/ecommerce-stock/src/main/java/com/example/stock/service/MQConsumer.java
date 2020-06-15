@@ -13,10 +13,10 @@ public class MQConsumer {
     /**
      * 消费库存中的队列消息 直接消费的方式
      * @param stockDto 库存信息
+     * https://www.jianshu.com/p/5585b1c65a45
      */
     @RabbitListener(queues = RabbitMqConfig.QUEUE_INFORM_STOCK)
     public void receive(StockDto stockDto) {
-
         System.out.println("收到消息 : " + stockDto.getGoodsID());
     }
 }
