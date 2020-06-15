@@ -48,6 +48,7 @@
                     <div class="left other_left">
                         <span>其它登录方式</span>&nbsp;&nbsp;<a href="/authentication/mobilePage">短信登录</a>
                     </div>
+                    <div id="wixin" style="height: 100px;width:100px"></div>
                     <div class="right other_right">
                         <a href="/login/qq"><i class="fa fa-qq fa-2x"></i></a>
                         <a href="/login/weixin"><i class="fa fa-weixin fa-2x"></i></a>
@@ -58,7 +59,24 @@
         </div>
     </div>
 </div>
+<script>
+    function setWxerwma (){
+        const wxElement = document.body.appendChild(s)
+        wxElement.onload = function () {
+            var obj = new WxLogin({
+                id: 'wixin', // 需要显示的容器id
+                appid: '', // 公众号appid wx*******
+                scope: 'snsapi_login', // 网页默认即可
+                redirect_uri: encodeURIComponent(''), // 授权成功后回调的url
+                state: Math.ceil(Math.random() * 1000), // 可设置为简单的随机数加session用来校验
+                style: 'black', // 提供"black"、"white"可选。二维码的样式
+                href: '' // 外部css文件url，需要https
+            })
+        }
+    }
+</script>
 <script type="text/javascript" src="/uaa/js/jquery.min.js"></script>
 <script type="text/javascript" src="/uaa/js/common.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
 </body>
 </html>
