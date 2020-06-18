@@ -21,8 +21,13 @@ public class JacksonTester {
 
 
     public static void main(String args[]) throws IOException {
-       // TestList();
-        TestMap();
+        Integer a = 111111111;
+        Integer b = 20;
+        Integer c = a * b;
+        System.out.println(c);
+        System.out.println(Integer.MAX_VALUE);
+        // TestList();
+        // TestMap();
     }
 
 
@@ -79,8 +84,7 @@ public class JacksonTester {
         students.add(student2);
         ObjectMapper objectMapper = new ObjectMapper();
         //转换一个Json的 集合对象
-        List<Student> studentsConvert = objectMapper.readValue(objectMapper.writeValueAsString(students),
-                new TypeReference<List<Student>>() {});
+        List<Student> studentsConvert = objectMapper.readValue(objectMapper.writeValueAsString(students), new TypeReference<List<Student>>() {});
         System.out.println(studentsConvert.get(0).getName());
     }
 
