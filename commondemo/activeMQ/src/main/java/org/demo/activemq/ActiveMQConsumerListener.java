@@ -28,15 +28,13 @@ public class ActiveMQConsumerListener {
         // 创建消费者
         MessageConsumer messageConsumer = session.createConsumer(queue);
         //设置消费监听
-        messageConsumer.setMessageListener(new MessageListener() {
-            // 每次接收消息，自动调用 onMessage
-            public void onMessage(Message message) {
-                TextMessage textMessage = (TextMessage) message;
-                try {
-                    System.out.println(textMessage.getText());
-                } catch (JMSException e) {
-                    e.printStackTrace();
-                }
+        // 每次接收消息，自动调用 onMessage
+        messageConsumer.setMessageListener(message -> {
+            TextMessage textMessage = (TextMessage) message;
+            try {
+                System.out.println(textMessage.getText());
+            } catch (JMSException e) {
+                e.printStackTrace();
             }
         });
         while (true) {
