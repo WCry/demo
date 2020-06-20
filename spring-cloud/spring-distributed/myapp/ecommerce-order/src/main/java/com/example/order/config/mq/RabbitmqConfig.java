@@ -32,10 +32,17 @@ public class RabbitmqConfig {
     public Queue StockQueue() {
         return new Queue(RabbitMqConfig.QUEUE_INFORM_STOCK, true);
     }
-
     @Bean
     public DirectExchange StockExchange() {
         return new DirectExchange(RabbitMqConfig.EXCHANGE_TOPICS_STOCK, true, true);
+    }
+    @Bean
+    public DirectExchange StockExchange2() {
+        return new DirectExchange("exchage2", true, true);
+    }
+    @Bean
+    Binding bindingStockExchange22Queue(@Qualifier("StockExchange2")DirectExchange queue,@Qualifier("StockExchange")DirectExchange stockExchange ) {
+        return BindingBuilder.bind(stockExchange).to(queue ).with(RabbitMqConfig.ROUTINGKEY_STOCK);
     }
     @Bean
     Binding bindingStockExchange2Queue(@Qualifier("StockQueue")Queue queue,@Qualifier("StockExchange")DirectExchange stockExchange ) {

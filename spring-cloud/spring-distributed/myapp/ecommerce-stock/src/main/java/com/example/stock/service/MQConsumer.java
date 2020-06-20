@@ -20,4 +20,9 @@ public class MQConsumer {
     public void receive(StockDto stockDto) {
         System.out.println("收到消息 : " + stockDto.getGoodsID());
     }
+
+//    @RabbitListener(queues = RabbitMqConfig.QUEUE_INFORM_STOCK)
+//    public void receive(Message message) {
+//        System.out.println("收到消息 : ");
+//    }
 }
