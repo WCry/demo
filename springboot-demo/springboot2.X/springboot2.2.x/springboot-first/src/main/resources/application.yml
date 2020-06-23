@@ -4,3 +4,7 @@
 spring:
   profiles:
     active: dev
+  cache:
+    type: ehcache
+    ehcache:
+      config: dasd

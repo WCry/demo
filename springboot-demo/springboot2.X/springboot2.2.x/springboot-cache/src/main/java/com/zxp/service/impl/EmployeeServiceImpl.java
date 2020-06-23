@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -26,7 +27,6 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         System.out.println("getById");
         return super.getById( id );
     }
-
     @Override
     @CachePut(value = "emp", key = "#root.args[0].id", unless = "#result eq null ")
     public Employee updateEmployeeById(Employee entity) {
