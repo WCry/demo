@@ -1,5 +1,7 @@
 package com.zxp.controller;
 
+import com.zxp.TestInstance;
+import com.zxp.TestServer;
 import com.zxp.service.ClassAService;
 import com.zxp.service.ClassC;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +23,15 @@ public class HelloController {
     @GetMapping("/{name}")
     @CachePut("dsad")
     public String hello(@PathVariable(name = "name")  String name) {
-        classAService.printClass();
-        classC.setName(name);
-        System.out.println("classC：："+classC.getName());
-        classAService.setName(name);
-        System.out.println("classAService::"+classAService.getName());
+        System.out.println(TestInstance.getInstance());
+//        classAService.printClass();
+//        classC.setName(name);
+//        System.out.println("classC：："+classC.getName());
+//        classAService.setName(name);
+//        System.out.println("classAService::"+classAService.getName());
         return "hello , " +port+":"+ name;
     }
-    @GetMapping("/gteName")
+    @GetMapping("/getName")
     public String hello() {
         System.out.println("classC::"+classC.getName());
         System.out.println("classAService::"+classAService.getName());
