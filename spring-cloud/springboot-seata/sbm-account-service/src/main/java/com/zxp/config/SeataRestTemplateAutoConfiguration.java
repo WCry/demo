@@ -15,14 +15,12 @@ import java.util.List;
 
 @Configuration
 public class SeataRestTemplateAutoConfiguration {
-    @Autowired(
-            required = false
-    )
-    private Collection<RestTemplate> restTemplates;
-    @Autowired
-    private SeataRestTemplateInterceptor seataRestTemplateInterceptor;
+    private final Collection<RestTemplate> restTemplates;
+    private final SeataRestTemplateInterceptor seataRestTemplateInterceptor;
 
-    public SeataRestTemplateAutoConfiguration() {
+    public SeataRestTemplateAutoConfiguration(Collection<RestTemplate> restTemplates, SeataRestTemplateInterceptor seataRestTemplateInterceptor) {
+        this.restTemplates = restTemplates;
+        this.seataRestTemplateInterceptor = seataRestTemplateInterceptor;
     }
 
     @Bean
