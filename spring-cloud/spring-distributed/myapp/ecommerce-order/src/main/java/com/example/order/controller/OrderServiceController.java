@@ -5,6 +5,8 @@ import com.example.order.service.OrderServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 /**
  * @author zhangxuepei
  */
@@ -25,7 +27,9 @@ public class OrderServiceController {
     @GetMapping(value="/finish1")
     public Boolean get() {
         System.out.printf("dasd");
-        return true;
+        OrderDto orderDto=new OrderDto();
+        orderDto.setOrderID(UUID.randomUUID().toString());
+        return orderServer.finishOrder(orderDto);
     }
 
 }

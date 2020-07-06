@@ -1,12 +1,10 @@
 package com.example.order.service.impl;
 
+import com.example.consulfeignapi.config.RabbitMqConfig;
 import com.example.consulfeignapi.dto.StockDto;
 import com.example.order.dto.OrderDto;
 import com.example.order.service.OrderServer;
 import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.amqp.rabbit.annotation.Queue;
-import org.springframework.amqp.rabbit.core.RabbitMessagingTemplate;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +37,8 @@ public class OrderServerImpl implements OrderServer {
         stockDto.setGoodsID(UUID.randomUUID().toString());
         //发送消息到队列当中 为什么有消息 队列 因为产生消息的速度比消费消息的速度快，无法及时的处理
         //所以对于订单和库存的扣减的 如果是内部的系统可以不用消息对队列
-        amqpTemplate.convertSendAndReceive("stock.exchange", "stock", stockDto);
+        amqpTemplate.convertAndSend("exchage2", RabbitMqConfig.ROUTINGKEY_STOCK, stockDto);
+       // System.out.println(amqpTemplate.convertSendAndReceive(RabbitMqConfig.EXCHANGE_TOPICS_STOCK, RabbitMqConfig.ROUTINGKEY_STOCK, stockDto));
         return true;
     }
 

@@ -23,7 +23,7 @@ import java.util.Date;
 @Controller
 public class LoginController {
 
-    @GetMapping("/login")
+    @GetMapping("/aa/login")
     public String login(Model model, HttpServletRequest request) {
         Long ts = new Date().getTime();
         model.addAttribute("ts", ts);
@@ -37,7 +37,6 @@ public class LoginController {
                 model.addAttribute("updatePwd", true);
             }
         }
-
         return "login";
     }
 
