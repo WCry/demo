@@ -22,48 +22,51 @@ public class NIOClient {
     private int port;
     private SocketChannel socketChannel;
     private volatile boolean stop;
-    private boolean needSendMessage=false;
-    private String senMessage="";
+    private boolean needSendMessage = false;
+    private String senMessage = "";
+
     public static void main(String[] args) throws IOException {
         NIOClient nioClient = new NIOClient();
         nioClient.begin();
     }
-    public void sendMessage(String senMessage){
-        this.senMessage=senMessage;
-        needSendMessage=true;
+
+    public void sendMessage(String senMessage) {
+        this.senMessage = senMessage;
+        needSendMessage = true;
     }
 
     public void begin() throws IOException {
-        this.host="localhost";
-        this.port = 8080;
+        this.host = "localhost";
+        this.port = 8082;
         //创建选择器
         selector = Selector.open();
-        selector.select(1000);
+        selector.select(10);
         // SocketChannel 绑定客户端的本地地址
         socketChannel = SocketChannel.open();
         // 客户端设置为非阻塞模式
         socketChannel.configureBlocking(false);
         //根据IP和端口号做连接，并将socketChannel绑定到 selector上
-        if (socketChannel.connect(new InetSocketAddress(host, port))) {
-            socketChannel.register(selector, SelectionKey.OP_READ);
-            doWrite(socketChannel,"你好服务端!");
-        } else {
-            socketChannel.register(selector, SelectionKey.OP_CONNECT);
-        }
-        Set<SelectionKey> selectionKeys = selector.selectedKeys();
-        Iterator<SelectionKey> iterator = selectionKeys.iterator();
-        SelectionKey key = null;
-        while (iterator.hasNext()) {
-            key = iterator.next();
-            iterator.remove();
-            try {
-                //将将要通信的key
-                handleInput(key);
-            } catch (Exception e) {
-                if (key != null) {
-                    key.cancel();
-                    if (key.channel() != null) {
-                        key.channel().close();
+        socketChannel.connect(new InetSocketAddress(host, port));
+        socketChannel.register(selector, SelectionKey.OP_CONNECT);
+        while (true){
+            int selectInt = selector.select();
+            if (selectInt == 0)
+                continue;
+            Set<SelectionKey> selectionKeys = selector.selectedKeys();
+            Iterator<SelectionKey> iterator = selectionKeys.iterator();
+            SelectionKey key;
+            while (iterator.hasNext()) {
+                key = iterator.next();
+                iterator.remove();
+                try {
+                    //将将要通信的key
+                    handleInput(key);
+                } catch (Exception e) {
+                    if (key != null) {
+                        key.cancel();
+                        if (key.channel() != null) {
+                            key.channel().close();
+                        }
                     }
                 }
             }
@@ -74,6 +77,7 @@ public class NIOClient {
      * 真正处理网络请求
      *
      * @param key
+     *
      * @throws IOException
      */
     private void handleInput(SelectionKey key) throws IOException {
@@ -87,7 +91,7 @@ public class NIOClient {
                     //连接成功，将key注册到 Selector上 ，SelectionKey.OP_READ：监听网络中的读操作
                     socketChannel.register(selector, SelectionKey.OP_READ);
                     // 将信息发送给 服务端
-                    doWrite(socketChannel,"你好服务端");
+                    doWrite(socketChannel, "你好服务端");
                 }
             }
             //当期的key 是可读的 ，那么读取服务端的消息（异步的读取）
@@ -106,21 +110,24 @@ public class NIOClient {
                     socketChannel.close();
                 }
             }
-            if(key.isWritable()&&needSendMessage){
+            if (key.isWritable() && needSendMessage) {
                 //处理不间断的消息
                 // 将信息发送给 服务端
-                doWrite(socketChannel,senMessage);
+                doWrite(socketChannel, "你好服务");
             }
         }
     }
+
     /**
      * 向服务端 发送消息
+     *
      * @param socketChannel
+     *
      * @throws IOException
      */
-    private void doWrite(SocketChannel socketChannel,String message) throws IOException {
+    private void doWrite(SocketChannel socketChannel, String message) throws IOException {
         /***  将String类型的字符串 转化 成 byte数组 */
-        byte[] clientMessage = (message).getBytes() ;
+        byte[] clientMessage = (message).getBytes("UTF8");
         //申请缓冲区
         ByteBuffer buffer = ByteBuffer.allocate(clientMessage.length);
         //将数组的数据写入缓冲区中

@@ -16,7 +16,7 @@ import java.util.Iterator;
  **/
 public class NIOServer {
     private static final int BUF_SIZE=1024;
-    private static final int PORT = 8080;
+    private static final int PORT = 8082;
     private static final int TIMEOUT = 3000;
     public static void main(String[] args)
     {
@@ -41,7 +41,6 @@ public class NIOServer {
             while(true){
                 //判断在时间内 是否读取到对象
                 if(selector.select(TIMEOUT) == 0){
-                    System.out.println("==");
                     continue;
                 }
                 //读取到对象，遍历读取到的对象

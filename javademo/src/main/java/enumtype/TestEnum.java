@@ -1,4 +1,4 @@
-package numtype;
+package enumtype;
 
 public class TestEnum {
     public static void main(String[] args) {

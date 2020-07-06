@@ -1,4 +1,4 @@
-package numtype;
+package enumtype;
 
 /**
  * user:zxp
