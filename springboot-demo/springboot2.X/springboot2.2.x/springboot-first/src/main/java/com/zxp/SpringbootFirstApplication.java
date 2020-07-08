@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.context.annotation.Bean;
 
 import java.net.InetAddress;
 
@@ -20,4 +21,8 @@ public class SpringbootFirstApplication {
 		//Spring 应用启动起来
 		SpringApplication.run(SpringbootFirstApplication.class, args);
 	}
+//	@Bean(initMethod = "",destroyMethod = "")
+//	public TestIniBean testIniBean(){
+//		return new TestIniBean();
+//	}
 }
