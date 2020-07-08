@@ -129,7 +129,6 @@ public class ChatRoomServer {
                 socketChannelList.remove(socketChannel);
                 socketChannel.close();//关闭通道
                 broadcastMsg(nickname + "已经退出了群聊" + ",当前在线人数：" + clientMap.size());
-
                 return;
             }
             if (msgArray.length == 1 && !"".equals(msg)) {
