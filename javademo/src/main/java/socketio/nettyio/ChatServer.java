@@ -18,6 +18,13 @@ import io.netty.handler.codec.string.StringEncoder;
  * @since 3.0
  * bossGroup 事件循环，主要处理Accept事件
  * WorkGroup 事件循环，主要处理Write，Reader事件
+ * ServerBootstrap 启动加载器
+ * NioServerSocketChannel 处理通道
+ * ChannelInitializer 链接通道初始化操作
+ *
+ * 这里Parent和Children主要是处理Parent处理Accept和处Children理Write和Reader事件
+ * 管道处理按照顺序进行处理 首先进行编解码处理，然后自己具体业务处理
+ *
  */
 
 public class ChatServer {
@@ -36,7 +43,10 @@ public class ChatServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true).childHandler(new ChannelInitializer<SocketChannel>() {
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).
+                    option(ChannelOption.SO_BACKLOG, 128).
+                    childOption(ChannelOption.SO_KEEPALIVE, true).
+                    childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) {
                     ChannelPipeline pipeline = ch.pipeline();
@@ -52,6 +62,7 @@ public class ChatServer {
             ChannelFuture f = b.bind(port).sync();
             f.channel().closeFuture().sync();
         } finally {
+            //优雅的关闭线程操作
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
             System.out.println("Netty Chat Server关闭......");

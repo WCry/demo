@@ -38,6 +38,12 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
                 channel.writeAndFlush("[" + inChannel.remoteAddress().toString().substring(1) + "]" + "说：" + msg + "\n");
             }
         }
+        this.disconnect(ctx,ctx.newProgressivePromise());
+    }
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+         //关闭连接 主动调用Ctx的关闭
+        ctx.close();
     }
 }
 
