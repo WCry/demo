@@ -33,9 +33,11 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
         Channel inChannel = ctx.channel();
+        System.out.println(inChannel.remoteAddress().toString().substring(1)+"发布消息"+msg);
         for (Channel channel : channels) {
             if (channel != inChannel) {
-                channel.writeAndFlush("[" + inChannel.remoteAddress().toString().substring(1) + "]" + "说：" + msg + "\n");
+                channel.writeAndFlush("[" + inChannel.remoteAddress().toString().substring(1)
+                        + "]" + "说：" + msg + "\n");
             }
         }
     }

@@ -52,6 +52,8 @@ public class ChatClient {
                 String msg = scanner.nextLine();
                 channel.writeAndFlush(msg + "\r\n");
             }
+            //关闭连接
+            channel.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
