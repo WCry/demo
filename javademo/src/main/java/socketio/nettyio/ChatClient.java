@@ -44,7 +44,6 @@ public class ChatClient {
                     pipeline.addLast(new ChatClientHandler());
                 }
             });
-
             ChannelFuture cf = bootstrap.connect(host, port).sync();
             Channel channel = cf.channel();
             System.out.println("------" + channel.localAddress().toString().substring(1) + "------");

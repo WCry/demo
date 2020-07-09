@@ -60,6 +60,7 @@ public class ChatServer {
             });
             System.out.println("Netty Chat Server启动......");
             ChannelFuture f = b.bind(port).sync();
+            //获取通道的关闭事件， 并且实行同步操作
             f.channel().closeFuture().sync();
         } finally {
             //优雅的关闭线程操作
