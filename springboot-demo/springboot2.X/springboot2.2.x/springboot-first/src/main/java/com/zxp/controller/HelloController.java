@@ -18,9 +18,12 @@ public class HelloController {
     private String port;
     @Autowired
     private ClassAService classAService;
+
+
+
     @Autowired
     private ClassC classC;
-    @GetMapping("/{name}")
+    @GetMapping("/dsad/{name}")
     @CachePut("dsad")
     public String hello(@PathVariable(name = "name")  String name) {
         System.out.println(TestInstance.getInstance());

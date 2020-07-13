@@ -16,8 +16,8 @@ import java.net.InetAddress;
 public class SpringbootFirstApplication {
 
 	public static void main(String[] args) {
-		TestServer testServer=new TestServer();
-		testServer.start();
+//		TestServer testServer=new TestServer();
+//		testServer.start();
 		//Spring 应用启动起来
 		SpringApplication.run(SpringbootFirstApplication.class, args);
 	}
