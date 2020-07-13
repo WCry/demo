@@ -1,4 +1,4 @@
-package com.zxp;
+package com.zxp.service;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -9,8 +9,9 @@ import org.springframework.stereotype.Component;
  * @since 3.0
  */
 @Component
+//采用原型模式
 @Scope(value= ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ClassB {
+public class ScopeBInstance {
     private String name="1";
 
     public String getName() {

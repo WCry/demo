@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @since 3.0
  */
 @Component
-public class BeanLifty implements BeanNameAware, BeanPostProcessor, InitializingBean,
+public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingBean,
         DisposableBean, BeanFactoryAware, BeanFactoryPostProcessor {
     private String name;
     @Autowired
@@ -33,7 +32,7 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
      */
     @Override
     public void setBeanName(String name) {
-
+        System.out.println("设置对象的Name"+name);
     }
 
     /**
@@ -46,6 +45,7 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
     @Nullable
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("处理在构造对象在Bean的初始化之前");
         return bean;
     }
 
@@ -59,6 +59,7 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
     @Nullable
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("处理在构造对象之后");
         return bean;
     }
 
@@ -68,7 +69,7 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
      */
     @Override
     public void destroy() throws Exception {
-
+        System.out.println("程序结束，对象销毁");
     }
 
     /**
@@ -77,7 +78,7 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-
+        System.out.println("属性设置之后处理");
     }
 
     public String getName() {
@@ -90,11 +91,11 @@ public class BeanLifty implements BeanNameAware, BeanPostProcessor, Initializing
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-
+        System.out.println("设置Bean对象的工厂");
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
+        System.out.println("配置Bean对象工厂");
     }
 }

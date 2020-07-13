@@ -1,4 +1,4 @@
-package com.zxp;
+package com.zxp.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
@@ -9,10 +9,8 @@ import org.springframework.web.context.annotation.SessionScope;
  * @since 3.0
  */
 @Component
-//可以直接使用  针对一个Request创建一个对象
-//@SessionScope
-@RequestScope
-public class LoginAction {
+@SessionScope
+public class SessionScopeAction {
     private String name;
 
     public String getName() {
