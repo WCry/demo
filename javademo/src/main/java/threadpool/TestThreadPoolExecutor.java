@@ -102,6 +102,7 @@ public class TestThreadPoolExecutor {
         Iterator<Future<String>> resultIter = results.iterator();
         while (resultIter.hasNext()) {
             try{
+                //get操作会处于阻塞状态
                 System.out.println(resultIter.next().get());
             }catch (Exception ex){
                  //输出异常
