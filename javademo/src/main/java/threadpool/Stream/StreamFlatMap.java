@@ -1,4 +1,4 @@
-package Stream;
+package threadpool.Stream;
 
 import java.util.ArrayList;
 import java.util.HashMap;

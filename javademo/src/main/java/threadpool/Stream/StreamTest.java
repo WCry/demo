@@ -1,4 +1,4 @@
-package Stream;
+package threadpool.Stream;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +25,7 @@ public class StreamTest {
         testString=testString.parallelStream().filter(a->{return a.equals("bc");}).collect(Collectors.toList());
         testString.forEach(System.out::println);
                 List<String> words = Arrays.asList("Hello", "World");
-      //  Stream.concat(Stream.of("Java", "Python"), Stream.of("C++", "Ruby")).forEach(System.out::println);
+      //  threadpool.Stream.concat(threadpool.Stream.of("Java", "Python"), threadpool.Stream.of("C++", "Ruby")).forEach(System.out::println);
 
         System.out.println(words.stream().reduce("", (a, b) -> a + " " + b));
 

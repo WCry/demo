@@ -1,4 +1,4 @@
-package threadpool;
+package threadpool.forkjoin;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
