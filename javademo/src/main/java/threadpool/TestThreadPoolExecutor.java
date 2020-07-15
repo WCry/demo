@@ -50,7 +50,7 @@ public class TestThreadPoolExecutor {
                 }
             }
         }
-        //等待线程执行完成 继续完成其他工作
+        //等待线程执行完成 继续完成其他工作。如果规定时间内没有完成任务将会结束
         threadPoolExecutor.awaitTermination(100,TimeUnit.DAYS);
     }
 
