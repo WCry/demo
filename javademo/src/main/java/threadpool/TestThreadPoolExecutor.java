@@ -15,6 +15,11 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 线程池 执行器
+ * 多线程执行器：
+ *    对于耗时比较长任务比较少的多任务，采用生成线程数量多一点
+ *     CPU密集型时，任务可以少配置线程数，大概和机器的cpu核数相当，这样可以使得每个线程都在执行任务
+ *    IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数
+ *    https://www.cnblogs.com/ming-blogs/p/10897242.html
  */
 public class TestThreadPoolExecutor {
     //处理任务的行数
