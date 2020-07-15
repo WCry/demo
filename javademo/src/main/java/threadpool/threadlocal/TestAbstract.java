@@ -1,13 +1,13 @@
 package threadpool.threadlocal;
 
 public abstract  class TestAbstract {
-    public Integer getDsad() {
-        return dsad;
+    public Integer getInterValue() {
+        return InterValue;
     }
 
-    public void setDsad(Integer dsad) {
-        this.dsad = dsad;
+    public void setInterValue(Integer interValue) {
+        this.InterValue = interValue;
     }
 
-    private Integer dsad;
+    private Integer InterValue;
 }

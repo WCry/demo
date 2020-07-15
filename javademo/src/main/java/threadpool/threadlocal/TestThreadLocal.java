@@ -5,32 +5,30 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.locks.Lock;
 
 public class TestThreadLocal {
     static ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
-        TestSer testSer = new TestSer();
-        TestAbstract testAbstract = testSer;
+        TestAbstractImpl testAbstractImpl = new TestAbstractImpl();
+        TestAbstract testAbstract = testAbstractImpl;
         ExecutorService threadPool = Executors.newFixedThreadPool(20);
         threadPool.submit(() -> {
-            testSer.setDsad(23);
-            System.out.println(testSer.getDsad());
-            testAbstract.setDsad(24);
-            System.out.println(testSer.getDsad());
+            testAbstractImpl.setInterValue(23);
+            System.out.println(testAbstractImpl.getInterValue());
+            testAbstract.setInterValue(24);
+            System.out.println(testAbstractImpl.getInterValue());
             try {
                 ObjectOutputStream oos = new ObjectOutputStream(new ByteArrayOutputStream());
-                oos.writeObject(testSer);
+                oos.writeObject(testAbstractImpl);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         threadPool.submit(() -> {
-            System.out.println(testAbstract.getDsad());
-            testSer.setDsad(12);
-            System.out.println(testSer.getDsad());
+            System.out.println(testAbstract.getInterValue());
+            testAbstractImpl.setInterValue(12);
+            System.out.println(testAbstractImpl.getInterValue());
             System.out.printf("%-13.3s",threadLocal.get());
             System.out.println(threadLocal.get());
             if(threadLocal.get()==null){

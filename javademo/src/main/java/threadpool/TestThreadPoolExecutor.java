@@ -1,6 +1,8 @@
 package threadpool;
 
 
+import threadpool.dto.DownloadTask;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,9 +22,9 @@ public class TestThreadPoolExecutor {
     //处理任务的列数
     private static int levelCount = 10;
     //线程处理队列 是一个链表阻塞队列
-    private LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque();
+    private static LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque();
     //启动线程池进行处理
-    private ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20,
+    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20,
             20, TimeUnit.SECONDS, linkedBlockingDeque);
     //线程处理结
     private List<Future<String>> results = new LinkedList<>();
@@ -48,6 +50,8 @@ public class TestThreadPoolExecutor {
                 }
             }
         }
+        //等待线程执行完成 继续完成其他工作
+        threadPoolExecutor.awaitTermination(100,TimeUnit.DAYS);
     }
 
     /**

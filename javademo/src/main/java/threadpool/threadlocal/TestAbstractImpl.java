@@ -2,13 +2,13 @@ package threadpool.threadlocal;
 
 import java.io.Serializable;
 
-public class TestSer extends TestAbstract implements Serializable {
+public class TestAbstractImpl extends TestAbstract implements Serializable {
 
     transient ThreadLocal<Integer> threadLocal=new ThreadLocal();
-    public void setDsad(Integer ds){
+    public void setInterValue(Integer ds){
         threadLocal.set(ds);
     }
-    public Integer getDsad(){
+    public Integer getInterValue(){
         return threadLocal.get();
     }
 }

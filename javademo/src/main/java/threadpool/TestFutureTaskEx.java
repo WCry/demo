@@ -1,14 +1,19 @@
 package threadpool;
 
-import java.util.HashMap;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 /**
  * user:zxp
  * Day:2020,03,21
  * 测试FeatureTask 可以取消将来任务
  **/
-public class TestFutureTask {
+public class TestFutureTaskEx {
     private final ConcurrentMap<Object, Future<String>> taskCache = new ConcurrentHashMap<>();
     private final ConcurrentMap<Object, String> tadskCache = new ConcurrentHashMap<>();
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -16,7 +21,7 @@ public class TestFutureTask {
         //利用FutureTask get阻塞方法  等待任务执行结束
         //不建议使用  没什么用处  除非是单个任务耗时
         //不阻塞主线程任务 主线程先执行其他的 等到摸个时刻自己在回来必须取结果的时候取出结果
-        TestFutureTask testFutureTask = new TestFutureTask();
+        TestFutureTaskEx testFutureTask = new TestFutureTaskEx();
         System.out.println(testFutureTask.executionTask("test"));
     }
 
