@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
  * @since 3.0
  * https://www.jianshu.com/p/73aaec23009d
  * https://leokongwq.github.io/2017/11/30/java8-CompletableFuture-1.html
+ * https://blog.csdn.net/wysnxzm/article/details/81708591
  */
 public class TestCompletableFuture {
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class TestCompletableFuture {
         // 全流式处理转换成CompletableFuture[]+组装成一个无返回值CompletableFuture，join等待执行完毕。返回结果whenComplete获取
         CompletableFuture[] cfs = taskList.stream()
                 //这个map操作简单的将对象传递给CompletableFuture.supplyAsync的异步方法
+                //supply供应
                 .map(integer -> CompletableFuture.supplyAsync(() -> calc(integer), executorService)
                         //异步犯法执行完成之后将整型的参数转换成为字符串
                         //ThenApply是上一步完成之后，对于上一步完成的结果进行转换
