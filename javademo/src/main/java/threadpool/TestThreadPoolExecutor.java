@@ -20,6 +20,9 @@ import java.util.concurrent.TimeUnit;
  *     CPU密集型时，任务可以少配置线程数，大概和机器的cpu核数相当，这样可以使得每个线程都在执行任务
  *    IO密集型时，大部分线程都阻塞，故需要多配置线程数，2*cpu核数
  *    https://www.cnblogs.com/ming-blogs/p/10897242.html
+ *    对于耗时短，高并发任务线程数量设置
+ *    高并发，耗时任务短的线程池的数量需要少一点，避免并发导致线程切换
+ *    https://www.cnblogs.com/dangjunhui/p/5481435.html
  */
 public class TestThreadPoolExecutor {
     //处理任务的行数
