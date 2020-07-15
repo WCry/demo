@@ -31,7 +31,7 @@ public class TimeOperationTest {
         LocalDate date1 =LocalDate.of(2020,05,12);
         LocalDate date2 = LocalDate.of(2021,05,13);
         System.out.println(Period.between(date1, date2).getYears());
-        // 计算日期间隔
+        // 计算日期间隔获取
         int period = Period.between(date1,date2).getDays();
         System.out.println(period+"");
 

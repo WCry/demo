@@ -1,6 +1,5 @@
-package threadpool;
+package threadpool.futureTask;
 
-import java.util.HashMap;
 import java.util.concurrent.*;
 
 /**
