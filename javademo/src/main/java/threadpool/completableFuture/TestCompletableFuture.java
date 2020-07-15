@@ -1,9 +1,12 @@
 package threadpool.completableFuture;
 
+import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,6 +17,11 @@ import java.util.concurrent.Executors;
  * https://www.jianshu.com/p/73aaec23009d
  * https://leokongwq.github.io/2017/11/30/java8-CompletableFuture-1.html
  * https://blog.csdn.net/wysnxzm/article/details/81708591
+ * https://www.jianshu.com/p/807e6822292a
+ *
+ * Cpu计算形式的采用并行流计算
+ * CPU+IO形式可以采用CompletableFuture进行计算，可以指定线程池，设置多线程的线层数量
+ *
  */
 public class TestCompletableFuture {
     public static void main(String[] args) {
