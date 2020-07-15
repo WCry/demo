@@ -24,8 +24,17 @@ public class TestThreadPoolExecutor {
     //线程处理队列 是一个链表阻塞队列
     private static LinkedBlockingDeque linkedBlockingDeque = new LinkedBlockingDeque();
     //启动线程池进行处理
-    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20,
-            20, TimeUnit.SECONDS, linkedBlockingDeque);
+    //默认的拒绝策略是超过之后进行抛弃
+    // AbortPolicy:抛弃并且抛出异常
+    //DiscardPolicy：直接抛弃不抛出异常
+    //DiscardOldestPolicy：抛弃等待最久的一个任务
+    //CallerRunsPolicy:重试增加到当前任务，知道增加成功
+   //BlockingDeque：阻塞队列
+    //有边界无边界
+    private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10,
+            20,
+            20,
+            TimeUnit.SECONDS, linkedBlockingDeque);
     //线程处理结
     private List<Future<String>> results = new LinkedList<>();
     //最大允许排队数是50
