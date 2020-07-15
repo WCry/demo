@@ -8,6 +8,8 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 所有的锁都是基于操作系统的
+ * 自旋锁和监视锁实现
  */
 public class TestLock {
     private static Lock lock;
