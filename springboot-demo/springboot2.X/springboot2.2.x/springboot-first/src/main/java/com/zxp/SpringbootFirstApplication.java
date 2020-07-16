@@ -6,6 +6,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.net.InetAddress;
 
@@ -13,6 +14,7 @@ import java.net.InetAddress;
  * @SpringBootApplication 来标注一个主程序，说明是一个Spring Boot 应用
  */
 @SpringBootApplication
+@EnableAsync
 public class SpringbootFirstApplication {
 
 	public static void main(String[] args) {

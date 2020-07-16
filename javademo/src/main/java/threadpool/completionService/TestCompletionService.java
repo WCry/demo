@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 /**
  * @author zhangxuepei
@@ -40,7 +39,6 @@ public class TestCompletionService {
             //                System.out.println("任务result="+result+"获取到结果!"+new Date());
             //                list.add(result);
             //            }
-
             //            //方法2.使用内部阻塞队列的take()
             for (int i = 0; i < taskCount; i++) {
                 //采用completionService.take()，内部维护阻塞队列，任务先完成的先获取到
