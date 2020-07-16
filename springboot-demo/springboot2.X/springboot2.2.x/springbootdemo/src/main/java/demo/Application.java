@@ -2,6 +2,8 @@ package demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletPath;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -12,6 +14,11 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);
     }
+
+    /**
+     * 需要禁用 / 的 DispatcherServlet
+     * @return
+     */
     @Bean
     public ServletRegistrationBean restServlet(){
         //这里注册的 Servelt 能够拦截对应包中的Controller
