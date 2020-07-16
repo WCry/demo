@@ -19,7 +19,7 @@ public class Application {
         //注解扫描上下文
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
         //扫描对应的包
-        applicationContext.scan("com.example.demo.controller");
+        applicationContext.scan("demo.controller");
         //通过构造函数指定dispatcherServlet的上下文
         DispatcherServlet rest_dispatcherServlet = new DispatcherServlet(applicationContext);
         //用ServletRegistrationBean包装servlet
