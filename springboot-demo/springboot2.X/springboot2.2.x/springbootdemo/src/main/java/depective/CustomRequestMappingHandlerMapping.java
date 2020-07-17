@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 /**
  * @Description:
  * 重写RequestMappingHandlerMapping类的一些方法
+ * 重新版本增加版本信息 自定义处理增加版本信息
  */
 public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
 

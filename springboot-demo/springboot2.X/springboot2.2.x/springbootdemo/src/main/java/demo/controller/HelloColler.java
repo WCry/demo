@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.websocket.server.PathParam;
 
 @Controller
-@RequestMapping(value="/rest")
 public class HelloColler {
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     @ResponseBody
@@ -16,9 +15,9 @@ public class HelloColler {
         return "Hello World";
     }
     @GetMapping(value = "/hello23")
-    public String indexds(Model model) {
+    public String indexds() {
         System.out.println(">>login>>>>");
-        model.addAttribute("title","dsad");
-        return "/test";
+        // model.addAttribute("title","dsad");
+        return "login";
     }
 }
