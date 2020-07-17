@@ -7,11 +7,14 @@ import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletPath;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @SpringBootApplication
-        //(exclude = {DispatcherServletAutoConfiguration.class})
+//开启AOP
+@EnableAspectJAutoProxy
+//(exclude = {DispatcherServletAutoConfiguration.class})
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);

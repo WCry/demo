@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 public class Login {
     @GetMapping(value = "/")
     public String index() {
+        //返回一个Model的名称
         return "login";
     }
-
 }

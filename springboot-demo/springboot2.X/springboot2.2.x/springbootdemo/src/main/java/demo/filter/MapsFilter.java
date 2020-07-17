@@ -1,4 +1,4 @@
-package depective;
+package demo.filter;
 
 import org.springframework.stereotype.Component;
 
@@ -9,32 +9,25 @@ import java.io.IOException;
 
 /**
  * URL映射过滤器
- * @author pengjunlee
- * @date 2017年11月23日上午11:31:52
- * */
+ */
 
 @Component
-@WebFilter(urlPatterns = { "/my2/spring/boot/*"}, filterName = "urlMappingFilter")
+@WebFilter(urlPatterns = {"/my2/spring/boot/*"}, filterName = "urlMappingFilter")
 public class MapsFilter implements Filter {
-
     @Override
     public void destroy() {
 
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse response, FilterChain filterChain)
-            throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
-
-        if(request.getRequestURI().contains("/rest/spring"))
-        {
-            System.out.println("/rest/spring");
-            req.getRequestDispatcher(request.getRequestURI().replace("/rest/spring","")).
+        if (request.getRequestURI().contains("/rest/spring")) {
+            //对于特定URL进行过滤，重定向
+            req.getRequestDispatcher(request.getRequestURI().replace("/rest/spring", "")).
                     forward(req, response);
-        }
-        else
-        {
+        } else {
+            //直接进行放行处理URL
             filterChain.doFilter(request, response);
         }
     }
@@ -43,6 +36,5 @@ public class MapsFilter implements Filter {
     public void init(FilterConfig arg0) throws ServletException {
 
     }
-
 }
 

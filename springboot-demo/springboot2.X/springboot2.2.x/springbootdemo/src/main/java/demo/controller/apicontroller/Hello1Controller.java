@@ -1,14 +1,12 @@
-package depective;
+package demo.controller.apicontroller;
 
+import demo.apiversion.ApiVersion;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 /**
- * create by jack 2018/8/19
- *
- * @auther jack
- * @date: 2018/8/19 10:52
- * @Description:
+ * Api版本信息
  */
 @ApiVersion(1)
 @RestController

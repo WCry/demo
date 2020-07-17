@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.websocket.server.PathParam;
 
 @Controller
-public class HelloColler {
+public class HelloController {
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     @ResponseBody
     public String index(@RequestParam("abc") String abc) {
