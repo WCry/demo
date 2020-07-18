@@ -4,18 +4,12 @@ package demo.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
@@ -24,13 +18,16 @@ import java.util.Arrays;
  * @Description: 日志处理切片
  */
 @Aspect
-
+//必须使用Compoent注解和@Aspect注解同事使用
+//@Order配置注解的顺序
+@Order(1)
+@Component
 public class LogAspect {
-    SimpleUrlHandlerMapping dsa;
     /**
      * 指定切点
-     * 匹配 com.example.demo.controller包及其子包下的所有类的所有方法
-     *"execution(public * com.example.demo.controller.*.*(..))"
+     * 匹配 demo.controller包及其子包下的所有类的所有方法
+     * 更多的匹配规则参见Aspect的规则
+     *"execution(public * demo.controller.*.*(..))"
      */
     @Pointcut("execution(public * demo.controller.*.*(..))")
     public void webLog(){

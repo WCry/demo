@@ -12,6 +12,7 @@ import java.io.IOException;
  */
 
 @Component
+//urlPatterns url的匹配规则 过滤器名称
 @WebFilter(urlPatterns = {"/my2/spring/boot/*"}, filterName = "urlMappingFilter")
 public class MapsFilter implements Filter {
     @Override

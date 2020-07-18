@@ -8,7 +8,8 @@ import javax.websocket.server.PathParam;
 
 @Controller
 public class HelloController {
-    @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    // @GetMapping(value = "/hello")
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public String index(@RequestParam("abc") String abc) {
        // System.out.println(">>>>>>>>>>>>>>>>>>>>>login>>>>>>>>>>>>>>>>>>>>>>");
