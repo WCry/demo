@@ -13,7 +13,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 @SpringBootApplication
-@EnableAspectJAutoProxy
+
 //(exclude = {DispatcherServletAutoConfiguration.class})
 public class Application {
     public static void main(String[] args) {
