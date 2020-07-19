@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StorageController {
 
+    private final StorageService storageService;
+
     @Autowired
-    private StorageService storageService;
+    public StorageController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @GetMapping(path = "/deduct")
     public Boolean deduct(String commodityCode, Integer count) {

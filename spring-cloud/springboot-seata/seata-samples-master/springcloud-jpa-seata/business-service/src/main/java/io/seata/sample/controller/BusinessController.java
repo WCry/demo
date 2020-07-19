@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BusinessController {
 
+    private final BusinessService businessService;
     @Autowired
-    private BusinessService businessService;
+    public BusinessController(BusinessService businessService) {
+        this.businessService = businessService;
+    }
 
     /**
      * 购买下单，模拟全局事务提交

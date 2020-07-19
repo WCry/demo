@@ -16,13 +16,16 @@ import java.math.BigDecimal;
 @RestController
 public class AccountController {
 
+    private final AccountService accountService;
+
     @Autowired
-    private AccountService accountService;
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @RequestMapping("/debit")
     public Boolean debit(String userId, BigDecimal money) {
         accountService.debit(userId, money);
-
         return true;
     }
 }
