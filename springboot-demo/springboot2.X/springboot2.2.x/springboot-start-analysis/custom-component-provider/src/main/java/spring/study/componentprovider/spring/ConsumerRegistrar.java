@@ -17,24 +17,23 @@ import java.util.Set;
 /**
  * 自定义注入类
  */
-public class ConsumerRegistrar implements ImportBeanDefinitionRegistrar{
+public class ConsumerRegistrar implements ImportBeanDefinitionRegistrar {
     private BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
 
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata,
-                                        BeanDefinitionRegistry registry) {
-        ClassPathScanningCandidateComponentProvider provider = new
-                ClassPathScanningCandidateComponentProvider(false);
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
         provider.addIncludeFilter(new AnnotationTypeFilter(Consumer.class));
+
         provider.addIncludeFilter(new AssignableTypeFilter(IConsumer.class));
         //扫描对应包下面的类
         Set<BeanDefinition> beanDefinitionSet = provider.findCandidateComponents(
                 "spring.study.componentprovider.bean");
-        for(BeanDefinition beanDefinition : beanDefinitionSet) {
+        for (BeanDefinition beanDefinition : beanDefinitionSet) {
             String beanName = beanNameGenerator.generateBeanName(beanDefinition, registry);
-            if(!registry.containsBeanDefinition(beanName)) {
+            if (!registry.containsBeanDefinition(beanName)) {
                 registry.registerBeanDefinition(beanName, beanDefinition);
-                registry.registerBeanDefinition("11", beanDefinition);
+               // registry.registerBeanDefinition("11", beanDefinition);
             }
         }
     }

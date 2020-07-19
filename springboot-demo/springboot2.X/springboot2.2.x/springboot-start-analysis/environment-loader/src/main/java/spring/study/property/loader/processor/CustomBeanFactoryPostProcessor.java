@@ -15,9 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Format on 2017/6/9.
- */
+
 @Component
 public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
         ApplicationContextAware {

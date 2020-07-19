@@ -6,5 +6,4 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
     <bean id="consumerWithNothing1" class="other.pkg.OtherBean"/>
-<!--    <bean id="consumerWithNothing2" class="spring.study.componentprovider.bean.ConsumerWithNothing"/>-->
 </beans>

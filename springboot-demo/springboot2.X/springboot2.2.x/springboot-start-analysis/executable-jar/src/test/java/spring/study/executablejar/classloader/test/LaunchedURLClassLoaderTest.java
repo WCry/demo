@@ -6,9 +6,7 @@ import org.springframework.boot.loader.jar.JarFile;
 
 import java.net.URL;
 
-/**
- * Created by Format on 2017/5/30.
- */
+
 public class LaunchedURLClassLoaderTest {
 
     @Test

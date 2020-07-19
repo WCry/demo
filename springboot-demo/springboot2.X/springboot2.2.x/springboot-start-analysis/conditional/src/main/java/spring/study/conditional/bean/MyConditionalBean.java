@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-/**
- * Created by Format on 2017/6/2.
- */
+
 @Conditional(MyCondition.class)
 @Component
 public class MyConditionalBean {

@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import spring.study.conditional.condition.ConditionBeanInImport;
 
-/**
- * Created by Format on 2017/5/11.
- */
+
 @SpringBootApplication
 @ImportResource("classpath:import.xml")
 @Import(ConditionBeanInImport.class)

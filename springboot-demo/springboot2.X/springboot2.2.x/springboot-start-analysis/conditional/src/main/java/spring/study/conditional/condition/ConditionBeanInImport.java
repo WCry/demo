@@ -1,12 +1,10 @@
 package spring.study.conditional.condition;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.system.JavaVersion;
 
-/**
- *
- */
-@ConditionalOnJava(ConditionalOnJava.JavaVersion.NINE)
+
+@ConditionalOnJava(JavaVersion.NINE)
 public class ConditionBeanInImport {
 
 
