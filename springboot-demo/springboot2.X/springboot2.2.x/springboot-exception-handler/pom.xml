@@ -11,7 +11,7 @@
     <groupId>com.wyj</groupId>
     <artifactId>springboot-exceptionhandler</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-exceptionhandler</name>
+    <name>springboot-exception-handler</name>
     <description>springboot全局异常处理</description>
 
     <properties>
