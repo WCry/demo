@@ -19,7 +19,7 @@
         <seata.version>1.2.0</seata.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
