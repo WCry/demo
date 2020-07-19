@@ -1,6 +1,7 @@
 package demo.controller.apicontroller;
 
 import demo.apiversion.ApiVersion;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("{version}/hello")
 public class Hello1Controller {
 
-    @RequestMapping("/world")
+    @GetMapping("/world")
     public String helloWorld(){
         System.out.println("版本是1的接口");
         return "hello,world .version is 1";

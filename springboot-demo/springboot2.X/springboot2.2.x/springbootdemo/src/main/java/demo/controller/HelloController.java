@@ -9,10 +9,11 @@ import javax.websocket.server.PathParam;
 @Controller
 public class HelloController {
     // @GetMapping(value = "/hello")
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @GetMapping(value = "/hello")
     @ResponseBody
     public String index(@RequestParam("abc") String abc) {
-       // System.out.println(">>>>>>>>>>>>>>>>>>>>>login>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println(this.getClass());
+        // System.out.println(">>>>>>>>>>>>>>>>>>>>>login>>>>>>>>>>>>>>>>>>>>>>");
         return "Hello World";
     }
     @GetMapping(value = "/hello23")

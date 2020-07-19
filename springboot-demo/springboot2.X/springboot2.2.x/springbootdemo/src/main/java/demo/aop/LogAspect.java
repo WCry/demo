@@ -31,7 +31,7 @@ public class LogAspect {
      * 更多的匹配规则参见Aspect的规则
      * "execution(public * demo.controller.*.*(..))"
      */
-    @Pointcut("execution(public * demo.controller.*.*(..))")
+    @Pointcut("execution(public * demo.controller..*.*(..))")
     public void webLog() {
 
     }
