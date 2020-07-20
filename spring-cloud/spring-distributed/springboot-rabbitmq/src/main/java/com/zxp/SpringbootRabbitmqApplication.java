@@ -12,6 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 4. RabbitTemplate : 给RabbitMQ发送和接受消息
  * 5. AmqpAdmin : RabbitMQ系统管理功能组件
  * 6. @EnableRabbit + @RabbitListener
+ * Rabbitmq一个队列只能有一个消费者进行消费，
+ *  如果一个队列被多个消费同时绑定，将会在消费者之间共同消费
+ *  谁消费的快，谁处理的多
  */
 @EnableRabbit
 @SpringBootApplication
