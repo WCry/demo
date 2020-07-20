@@ -1,6 +1,6 @@
-package com.wyj.Service.impl;
+package com.zxp.Service.impl;
 
-import com.wyj.Service.RedisService;
+import com.zxp.Service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,10 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements RedisService {
 
+    private final StringRedisTemplate redisTemplate;
+
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    public RedisServiceImpl(StringRedisTemplate redisTemplate) {this.redisTemplate = redisTemplate;}
 
     @Override
     public Long getExpire(String key) {
@@ -51,7 +53,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public String get(String key) {
-        return (String) redisTemplate.opsForValue().get(key);
+        return redisTemplate.opsForValue().get(key);
     }
 
 }

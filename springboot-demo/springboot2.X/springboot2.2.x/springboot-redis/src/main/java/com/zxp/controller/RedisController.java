@@ -1,8 +1,8 @@
-package com.wyj.controller;
+package com.zxp.controller;
 
-import com.wyj.entity.po.User;
-import com.wyj.entity.vo.ApiResponse;
-import com.wyj.utils.JsonUtils;
+import com.zxp.entity.po.User;
+import com.zxp.entity.vo.ApiResponse;
+import com.zxp.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +25,8 @@ public class RedisController {
         user.setPassword("abc");
         redisTemplate.opsForValue().set("json", JsonUtils.objectToJson(user));
         User jsonUser = JsonUtils.jsonToPojo(redisTemplate.opsForValue().get("json"), User.class);
+        System.out.println(jsonUser.toString());
         redisTemplate.opsForValue().set("aaa", "哈哈哈");
         return ApiResponse.ok(redisTemplate.opsForValue().get("aaa"));
     }
-
 }

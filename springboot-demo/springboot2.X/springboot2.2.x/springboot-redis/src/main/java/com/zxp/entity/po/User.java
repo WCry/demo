@@ -1,16 +1,15 @@
-package com.wyj.entity.po;
+package com.zxp.entity.po;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
-/**
- * @author wyj
- * @create 2019-03-24 22:46
- */
+
 public class User implements Serializable {
 
     private int id;
     private String username;
     private String password;
+    private LocalDate birthday;
 
     public User() {
     }

@@ -1,4 +1,4 @@
-package com.wyj.utils;
+package com.zxp.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
