@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisServiceImpl implements RedisService {
 
     private final StringRedisTemplate redisTemplate;
+
     @Autowired
     public RedisServiceImpl(StringRedisTemplate redisTemplate) {this.redisTemplate = redisTemplate;}
 
@@ -52,7 +53,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public String get(String key) {
-        return (String) redisTemplate.opsForValue().get(key);
+        return redisTemplate.opsForValue().get(key);
     }
 
 }
