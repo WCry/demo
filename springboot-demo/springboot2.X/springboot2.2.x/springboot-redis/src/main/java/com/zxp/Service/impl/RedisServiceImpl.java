@@ -1,6 +1,6 @@
-package com.wyj.Service.impl;
+package com.zxp.Service.impl;
 
-import com.wyj.Service.RedisService;
+import com.zxp.Service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

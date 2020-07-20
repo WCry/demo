@@ -19,13 +19,13 @@
     </properties>
 
     <dependencies>
-        <!-- redis -->
+        <!-- redis操作 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <!-- springboot -->
+        <!-- springboot web项目必须 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -45,5 +45,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
