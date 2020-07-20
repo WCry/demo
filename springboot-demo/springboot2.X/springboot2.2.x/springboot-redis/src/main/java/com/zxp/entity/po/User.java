@@ -1,6 +1,7 @@
 package com.zxp.entity.po;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
 public class User implements Serializable {
@@ -8,6 +9,7 @@ public class User implements Serializable {
     private int id;
     private String username;
     private String password;
+    private LocalDate birthday;
 
     public User() {
     }

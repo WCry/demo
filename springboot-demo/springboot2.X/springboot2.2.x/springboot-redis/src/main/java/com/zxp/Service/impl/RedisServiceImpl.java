@@ -11,8 +11,9 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements RedisService {
 
+    private final StringRedisTemplate redisTemplate;
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    public RedisServiceImpl(StringRedisTemplate redisTemplate) {this.redisTemplate = redisTemplate;}
 
     @Override
     public Long getExpire(String key) {
