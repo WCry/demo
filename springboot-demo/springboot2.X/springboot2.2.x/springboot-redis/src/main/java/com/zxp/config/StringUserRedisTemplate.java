@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
  * @since 3.0
  */
 @Component
-public class StringUserRedisTemple extends StringObjectRedisTemple<User> {
+public class StringUserRedisTemplate extends StringObjectRedisTemple<User> {
 
-    public StringUserRedisTemple(RedisConnectionFactory connectionFactory) {
+    public StringUserRedisTemplate(RedisConnectionFactory connectionFactory) {
         super(connectionFactory);
     }
 }

@@ -1,24 +1,22 @@
 package com.zxp.entity.po;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 
 public class User implements Serializable {
 
-    private int id;
+    private Integer id;
     private String username;
     private String password;
-    private LocalDate birthday;
 
     public User() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,11 +37,28 @@ public class User implements Serializable {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof User)) {
+            return false;
+        }
+        User otherUser = (User) object;
+        if (otherUser.id == this.id) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * this.id.hashCode();
+    }
+
+
+    @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "User{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
     }
 }
