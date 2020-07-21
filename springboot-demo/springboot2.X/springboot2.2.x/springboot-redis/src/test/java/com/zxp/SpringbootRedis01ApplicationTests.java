@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.geo.Point;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -88,6 +89,8 @@ public class SpringbootRedis01ApplicationTests {
             //无法进行准确的替换
             stringUserRedisTemplate.opsForSet().add(uerInfoKey, users);
         }
+        // pop操作取出对象，并且直接删除删除 弹出对象
+        //stringUserRedisTemplate.opsForSet().pop(uerInfoKey,1);
         System.out.println("redis");
         for (User member : stringUserRedisTemplate.opsForSet().members(uerInfoKey)) {
             System.out.println(member.getUsername());
@@ -124,23 +127,12 @@ public class SpringbootRedis01ApplicationTests {
 
     @Test
     public void testRedisTempleGeo() {
-        String uerInfoKey = "user_info";
-        //stringUserRedisTemple.opsForGeo().add
-
-        //删除对应的key，所有的缓存时间都是相对于key进行设置
+        String uerInfoKey = "user_info_point";
         stringUserRedisTemplate.delete(uerInfoKey);
-        for (int i = 0; i < 10; i++) {
-            User[] users = new User[100];
-            for (int j = 0; j < 100; j++) {
-                User user = new User();
-                user.setId(i * 100 + j);
-                user.setUsername("张三");
-                user.setPassword("abc");
-                users[j] = user;
-            }
-            //写入集合
-            stringUserRedisTemplate.opsForSet().add(uerInfoKey, users);
-        }
-        System.out.println("总数量" + stringUserRedisTemplate.opsForSet().size(uerInfoKey));
+        User liSi= new User();
+        liSi.setId(1);
+        liSi.setUsername("liSi");
+        stringUserRedisTemplate.opsForGeo().add(uerInfoKey,new Point(120,30),liSi);
+        System.out.println(stringUserRedisTemplate.opsForGeo().position(uerInfoKey, liSi).get(0));
     }
 }
