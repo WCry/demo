@@ -15,6 +15,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Rabbitmq一个队列只能有一个消费者进行消费，
  *  如果一个队列被多个消费同时绑定，将会在消费者之间共同消费
  *  谁消费的快，谁处理的多
+ *
+ *  一个队列一个线程去处理
+ *
+ *  RabbitMq使用
+ *  https://www.jianshu.com/p/090ed51006d5
  */
 @EnableRabbit
 @SpringBootApplication

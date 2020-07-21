@@ -26,7 +26,15 @@ public class SpringbootRabbitmqApplicationTests {
     public void contextLoads() throws InterruptedException {
         System.out.println(12323);
     }
+    @Test
+    public void sendBDirectAndListener() {
+        String routeKey = "b";
+        String message = "路由key：" + routeKey;
 
+        //发送和接收 同步被消费才会执行返回
+       // rabbitTemplate.sendAndReceive()
+        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message));
+    }
     @Test
     public void sendBDirect() {
         String routeKey = "b";
