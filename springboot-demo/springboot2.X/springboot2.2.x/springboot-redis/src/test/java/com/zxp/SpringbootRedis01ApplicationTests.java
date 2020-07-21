@@ -104,17 +104,17 @@ public class SpringbootRedis01ApplicationTests {
         stringUserRedisTemplate.delete(uerInfoKey);
 
         for (int i = 0; i < 2; i++) {
-            int count=2;
+            int count = 2;
             for (int j = 0; j < 1000000; j++) {
                 User user = new User();
                 user.setId(j);
                 user.setUsername("张三" + j);
                 user.setPassword("abc");
-                if(i==1){
-                    stringUserRedisTemplate.delete(uerInfoKey+count);
+                if (i == 1) {
+                    stringUserRedisTemplate.delete(uerInfoKey + count);
                 }
                 //Redis对于set的hash相同取舍那个数据是随机的，Java的Set 中Hash中存在冲突是不进行替换
-                stringUserRedisTemplate.opsForValue().set(uerInfoKey+count, user);
+                stringUserRedisTemplate.opsForValue().set(uerInfoKey + count, user);
             }
         }
         //不是很好获取一段时间的全部对象
@@ -129,10 +129,10 @@ public class SpringbootRedis01ApplicationTests {
     public void testRedisTempleGeo() {
         String uerInfoKey = "user_info_point";
         stringUserRedisTemplate.delete(uerInfoKey);
-        User liSi= new User();
+        User liSi = new User();
         liSi.setId(1);
         liSi.setUsername("liSi");
-        stringUserRedisTemplate.opsForGeo().add(uerInfoKey,new Point(120,30),liSi);
+        stringUserRedisTemplate.opsForGeo().add(uerInfoKey, new Point(120, 30), liSi);
         System.out.println(stringUserRedisTemplate.opsForGeo().position(uerInfoKey, liSi).get(0));
     }
 }
