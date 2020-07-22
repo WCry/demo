@@ -19,13 +19,17 @@ public class RabbitmqAnnotationProviderConfig {
     public void RabbitMqAConfig() {
     }
 
-    @RabbitListener(bindings = @QueueBinding(exchange = @Exchange(value = "topic.exchange", type = "topic"), value = @Queue(value = "topic.queue.b", durable = "true"), key = "key.b.#"))
+    @RabbitListener(bindings = @QueueBinding(exchange = @Exchange(value = "topic.exchange", type = "topic"),
+            value = @Queue(value = "topic.queue.b", durable = "true"), key = "key.b.#"))
     public void RabbitMqBConfig() {
     }
 
     @RabbitListener(bindings = @QueueBinding(exchange = @Exchange(value = "header.exchange",
             type = ExchangeTypes.HEADERS), value = @Queue(value = "header.queue", durable = "true"),
-            arguments = {@Argument(name = "one", value = "a"), @Argument(name = "two", value = "b")}))
+            //header中参数
+            arguments = {@Argument(name = "one", value = "a"),
+                    @Argument(name = "two", value = "b")}))
     public void RabbitMqHeaderConfig() {
     }
+
 }

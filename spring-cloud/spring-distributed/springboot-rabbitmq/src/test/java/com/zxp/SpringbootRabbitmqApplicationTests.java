@@ -1,11 +1,14 @@
 package com.zxp;
 
+import com.zxp.service.Confirm;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,31 +18,44 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootRabbitmqApplicationTests {
     @Autowired
-    RabbitTemplate rabbitTemplate;
+    public RabbitTemplate rabbitTemplate;
 
     @Test
     public void contextLoads() throws InterruptedException {
-        System.out.println(12323);
+        Thread threadaq = new Thread(() -> sendBDirectAndListener());
+        Thread threadbq = new Thread(() -> sendBDirect());
+        threadbq.start();
+        threadaq.start();
     }
+
     @Test
     public void sendBDirectAndListener() {
         String routeKey = "b";
         String message = "路由key：" + routeKey;
+        //设置消息唯一标识，生产上可以准确定位消息
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
 
-        //发送和接收 同步被消费才会执行返回
-       // rabbitTemplate.sendAndReceive()
-        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message));
+        rabbitTemplate.setConfirmCallback(Confirm.confirmCallback);
+        rabbitTemplate.setReturnCallback(Confirm.returnCallback);
+        rabbitTemplate.setMandatory(true);
+        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message), correlationData);
     }
+
     @Test
     public void sendBDirect() {
         String routeKey = "b";
         String message = "路由key：" + routeKey;
-        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message));
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
+        rabbitTemplate.setConfirmCallback(Confirm.confirmCallback2);
+        rabbitTemplate.setReturnCallback(Confirm.returnCallback);
+        rabbitTemplate.setMandatory(true);
+        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message), correlationData);
     }
 
     @Test
@@ -69,14 +85,15 @@ public class SpringbootRabbitmqApplicationTests {
         String message = "路由key：" + routeKey;
         rabbitTemplate.convertAndSend("topic.exchange", routeKey, getMessage(message));
     }
-	@Test
-	public void send2Header() throws InterruptedException {
-		String message = "email inform to user";
-		Map<String,Object> headers =  new HashMap<>();
-		headers.put("inform_type", "email");//匹配email通知消费者绑定的header
-		rabbitTemplate.convertAndSend("topic.exchange", "a", getMessage(message),
-				(MessagePostProcessor) headers);
-	}
+
+    @Test
+    public void send2Header() throws InterruptedException {
+        String message = "email inform to user";
+        Map<String, Object> headers = new HashMap<>();
+        headers.put("inform_type", "email");//匹配email通知消费者绑定的header
+        rabbitTemplate.convertAndSend("topic.exchange", "a", getMessage(message), (MessagePostProcessor) headers);
+    }
+
     private Map<String, Object> getMessage(String message) {
         Map<String, Object> map = new HashMap<>();
         map.put("msg", message);
