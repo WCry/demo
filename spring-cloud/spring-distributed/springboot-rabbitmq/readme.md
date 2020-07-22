@@ -109,7 +109,19 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
  
  
  header交换器和队列使用比较少
- 
+ 消息发送到交换机确认机制,是否返回回馈
+ publisher-returns单一设置就开启发送端确认模式
+ 或者单一个开启publisher-confirm-type=correlated
+开启采用correlated模式手动确认，此时需要发送方法中包括CorrelationData参数
+  CorrelationData主要是设置发送端设置的消息ID，可以通过ID知道哪些消息成功和失败
+  publisher-confirm-type=simple模式表明自己调用
+    rabbitTemplate.invoke()
+    rabbitTemplate.waitForConfirms(10);
+  进行自定义手动确认方式
+  publisher-confirm-type=none 表示不需要发送方进行确认
+  spring.rabbitmq.publisher-confirm-type=correlated
+  publisher-returns暂时不清楚为什么这个总开关意图
+ spring.rabbitmq.publisher-returns= true
 
 
 

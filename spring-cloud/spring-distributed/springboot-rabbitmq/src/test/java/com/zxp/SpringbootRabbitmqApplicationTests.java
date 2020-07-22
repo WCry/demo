@@ -38,13 +38,16 @@ public class SpringbootRabbitmqApplicationTests {
     public void sendBDirectAndListener() {
         String routeKey = "b";
         String message = "路由key：" + routeKey;
-        //设置消息唯一标识，生产上可以准确定位消息
+        //设置消息唯一标识，生产上可以准确定位消息,用来在方法方法和事件之间传递唯一标识
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
-
         rabbitTemplate.setConfirmCallback(Confirm.confirmCallback);
         rabbitTemplate.setReturnCallback(Confirm.returnCallback);
-        rabbitTemplate.setMandatory(true);
-        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message), correlationData);
+        //rabbitTemplate.setMandatory(true);
+//        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
+//        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
+
+        rabbitTemplate.convertAndSend("direct", routeKey, getMessage(message),correlationData);
+
     }
 
     @Test
@@ -52,8 +55,6 @@ public class SpringbootRabbitmqApplicationTests {
         String routeKey = "b";
         String message = "路由key：" + routeKey;
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
-        rabbitTemplate.setConfirmCallback(Confirm.confirmCallback2);
-        rabbitTemplate.setReturnCallback(Confirm.returnCallback);
         rabbitTemplate.setMandatory(true);
         rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message), correlationData);
     }
