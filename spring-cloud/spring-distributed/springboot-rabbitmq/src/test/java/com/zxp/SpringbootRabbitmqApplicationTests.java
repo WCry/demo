@@ -42,6 +42,8 @@ public class SpringbootRabbitmqApplicationTests {
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
         rabbitTemplate.setConfirmCallback(Confirm.confirmCallback);
         rabbitTemplate.setReturnCallback(Confirm.returnCallback);
+        //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
+        rabbitTemplate.setUsePublisherConnection(true);
         //rabbitTemplate.setMandatory(true);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);

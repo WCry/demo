@@ -121,9 +121,16 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
   publisher-confirm-type=none 表示不需要发送方进行确认
   spring.rabbitmq.publisher-confirm-type=correlated
   publisher-returns暂时不清楚为什么这个总开关意图
- spring.rabbitmq.publisher-returns= true
+  spring.rabbitmq.publisher-returns= true
+  只有设置成为True时候消息在未进入队列时候进行返回
+  spring.rabbitmq.template.mandatory=true
 
 
+  //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
+ rabbitTemplate.setUsePublisherConnection(true);
 
+RabbitMQ的ack或nack机制使用不当导致的队列堵塞或死循环问题
+https://blog.csdn.net/youbl/article/details/80425959?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param
 
-
+Rabbitmq超过内存限制，进行流控限制
+https://blog.csdn.net/linzhiqiang0316/article/details/90738856
