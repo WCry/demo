@@ -1,4 +1,6 @@
 
+rabbitMq官网
+https://www.rabbitmq.com/production-checklist.html
 
 rabbitMQ 下载安装
 
@@ -126,11 +128,37 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
   spring.rabbitmq.template.mandatory=true
 
 
-  //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
+ 针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
  rabbitTemplate.setUsePublisherConnection(true);
 
 RabbitMQ的ack或nack机制使用不当导致的队列堵塞或死循环问题
 https://blog.csdn.net/youbl/article/details/80425959?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param
 
+
+RabbitMQ中的流控限制
+https://blog.csdn.net/qq_20892953/article/details/80593282
 Rabbitmq超过内存限制，进行流控限制
 https://blog.csdn.net/linzhiqiang0316/article/details/90738856
+Rabbitmq关于队列中消息积压影响消费速率
+https://blog.csdn.net/qq_20892953/article/details/80617305?fps=1&locationNum=2
+
+对于生产者需要监控绑定Mq消息阻塞事件，放置继续持续的往里面写入数据
+
+QoS进行流控
+https://www.jianshu.com/p/ae38e29f7db1
+
+1千万消息积压大概占用内存40个G
+1千万消息按照正常消费大概需要两个小时
+
+rabbitmq监听Rabbitmq的服务器上消息：
+打开RabbitMq事件插件
+https://www.rabbitmq.com/event-exchange.html
+注册监听RabbitMq服务daunt事件Bean
+BrokerEventListener
+开启Springboot事件监听监听BrokerEvent事件获取来自于RabbitMq服务端的事件
+还可以使用这样监听
+Springboot 通过ConnectionBlockedListener将阻塞事件转换成为Springboot 的系统事件
+ConnectionUnblockedEvent
+ConnectionBlockedEvent
+
+如果RabbitMQ的能力达不到要求，换用kafka消息队里，kafka的吞吐量是RabbitMq的十倍

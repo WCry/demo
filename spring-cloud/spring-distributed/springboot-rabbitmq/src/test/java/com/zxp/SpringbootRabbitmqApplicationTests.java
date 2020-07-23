@@ -25,14 +25,35 @@ import java.util.UUID;
 public class SpringbootRabbitmqApplicationTests {
     @Autowired
     public RabbitTemplate rabbitTemplate;
-
+    @Autowired
+    public AmqpAdmin amqpAdmin;
     @Test
     public void contextLoads() throws InterruptedException {
-        Thread threadaq = new Thread(() -> sendBDirectAndListener());
-        Thread threadbq = new Thread(() -> sendBDirect());
-        threadbq.start();
-        threadaq.start();
+        Thread topicA = new Thread(() -> {
+            for (int i = 0; i < 10000000; i++) {
+                try {
+                    send2ATopic();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Thread topicB = new Thread(() -> {
+            for (int i = 0; i < 100000; i++) {
+                try {
+                    send2BTopic();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        topicA.start();
+        topicA.join();
+        //topicB.start();
     }
+
+
+
 
     @Test
     public void sendBDirectAndListener() {
@@ -44,6 +65,7 @@ public class SpringbootRabbitmqApplicationTests {
         rabbitTemplate.setReturnCallback(Confirm.returnCallback);
         //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
         rabbitTemplate.setUsePublisherConnection(true);
+
         //rabbitTemplate.setMandatory(true);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);

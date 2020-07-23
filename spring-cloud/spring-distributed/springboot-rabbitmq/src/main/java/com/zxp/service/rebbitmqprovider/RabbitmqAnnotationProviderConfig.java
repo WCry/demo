@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @author zhangxuepei
  * @since 3.0
  */
-@Component
+//@Component
 public class RabbitmqAnnotationProviderConfig {
     @RabbitListener(bindings = @QueueBinding(exchange = @Exchange(value = "topic.exchange", type = "topic"), value = @Queue(value = "topic.queue.a", durable = "true"), key = "key.a.#"))
     public void RabbitMqAConfig() {
