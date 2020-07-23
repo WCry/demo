@@ -134,7 +134,8 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
 RabbitMQ的ack或nack机制使用不当导致的队列堵塞或死循环问题
 https://blog.csdn.net/youbl/article/details/80425959?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param
 
-
+MQ中间件-rabbitmq-消费者消息获取及异常处理的实现（SpringBoot2.0环境下）
+https://www.jianshu.com/p/090ed51006d5
 RabbitMQ中的流控限制
 https://blog.csdn.net/qq_20892953/article/details/80593282
 Rabbitmq超过内存限制，进行流控限制
