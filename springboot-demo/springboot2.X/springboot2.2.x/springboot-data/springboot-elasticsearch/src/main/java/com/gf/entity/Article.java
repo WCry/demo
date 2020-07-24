@@ -1,11 +1,11 @@
 package com.gf.entity;
 
 
-import io.searchbox.annotations.JestId;
+import org.springframework.data.annotation.Id;
 
 public class Article {
 
-    @JestId
+    @Id
     private Integer id;
     private String author;
     private String title;
@@ -45,16 +45,12 @@ public class Article {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder( "{\"Article\":{" );
-        sb.append( "\"id\":" )
-                .append( id );
-        sb.append( ",\"author\":\"" )
-                .append( author ).append( '\"' );
-        sb.append( ",\"title\":\"" )
-                .append( title ).append( '\"' );
-        sb.append( ",\"content\":\"" )
-                .append( content ).append( '\"' );
-        sb.append( "}}" );
+        final StringBuilder sb = new StringBuilder("{\"Article\":{");
+        sb.append("\"id\":").append(id);
+        sb.append(",\"author\":\"").append(author).append('\"');
+        sb.append(",\"title\":\"").append(title).append('\"');
+        sb.append(",\"content\":\"").append(content).append('\"');
+        sb.append("}}");
         return sb.toString();
     }
 

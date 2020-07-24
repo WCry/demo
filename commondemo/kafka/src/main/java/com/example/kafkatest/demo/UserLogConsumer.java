@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Component
 public class UserLogConsumer {
-    @KafkaListener(id="c2",topicPartitions = { @TopicPartition(topic = "test22", partitions = { "1" })})
+    @KafkaListener(id="qqq",containerGroup = "aaa",topicPartitions = { @TopicPartition(topic = "test22", partitions = { "1" })})
     public void consumer(ConsumerRecord<?,?> consumerRecord){
         System.out.println("分区："+consumerRecord.partition());
         //判断是否为null
@@ -17,7 +17,7 @@ public class UserLogConsumer {
         if(kafkaMessage.isPresent()){
             //得到Optional实例中的值
             Object message = kafkaMessage.get();
-            System.err.println("消费消息0:"+message);
+            System.err.println("消费消息1:"+message);
         }
     }
 }

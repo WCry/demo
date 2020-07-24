@@ -10,7 +10,7 @@ import java.util.Optional;
 //Spring boot 一定需要注册成为组件 才能使用
 @Component
 public class UserLogConsumer2 {
-    @KafkaListener(id="c3",topicPartitions ={@TopicPartition(topic = "test22", partitions = { "0" })})
+    @KafkaListener(id="c3",containerGroup = "aaa",topicPartitions ={@TopicPartition(topic = "test22", partitions = { "0" })})
     public void consumer1(ConsumerRecord<?,?> consumerRecord){
         System.out.println("分区"+consumerRecord.partition());
         //判断是否为null

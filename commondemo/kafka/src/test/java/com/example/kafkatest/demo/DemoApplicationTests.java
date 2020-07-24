@@ -30,7 +30,7 @@ class DemoApplicationTests {
     }
     @Test
     void testConsumerGroup() throws InterruptedException {
-
+        System.out.println(kafkaAdmin.getConfig());
         for (int i = 0; i < 2; i++) {
             try {
                 userLogProducer.sendLog(String.valueOf(i));

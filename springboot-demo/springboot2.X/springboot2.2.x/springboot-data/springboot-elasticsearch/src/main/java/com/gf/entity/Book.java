@@ -2,7 +2,7 @@ package com.gf.entity;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document( indexName = "gf" , type = "book")
+@Document( indexName = "gf")
 public class Book {
     private Integer id;
     private String bookName;
