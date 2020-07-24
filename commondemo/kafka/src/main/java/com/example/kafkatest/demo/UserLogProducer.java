@@ -31,15 +31,7 @@ public class UserLogProducer {
         userLog.setState("0");
         //System.err.println("发送用户日志数据:"+userLog);
         ObjectMapper objectMapper = new ObjectMapper();
-        int pa=1;
-        System.out.println(Integer.valueOf(userid));
-        if(Integer.valueOf(userid)%2==0){
-            System.out.println("=========================222===");
-            pa=2;
-        }
         //设置两个分区
-        kafkaTemplate.send("test",pa ,pa+userid,objectMapper.writeValueAsString(userLog));
-       // System.out.println("分区数量："+kafkaTemplate.partitionsFor("test").size());
-
+        kafkaTemplate.send("test22",userid,objectMapper.writeValueAsString(userLog));
     }
 }

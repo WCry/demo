@@ -10,9 +10,9 @@ import java.util.Optional;
 //Spring boot 一定需要注册成为组件 才能使用
 @Component
 public class UserLogConsumer2 {
-    @KafkaListener(id="ddddd",topicPartitions ={@TopicPartition(topic = "test", partitions = { "2" })})
+    @KafkaListener(id="c3",topicPartitions ={@TopicPartition(topic = "test22", partitions = { "0" })})
     public void consumer1(ConsumerRecord<?,?> consumerRecord){
-        System.err.println("2222222222222222");
+        System.out.println("分区"+consumerRecord.partition());
         //判断是否为null
         Optional<?> kafkaMessage = Optional.ofNullable(consumerRecord.value());
         if(kafkaMessage.isPresent()){

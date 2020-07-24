@@ -9,9 +9,9 @@ import java.util.Optional;
 
 @Component
 public class UserLogConsumer {
-    @KafkaListener(id="dd",topicPartitions = { @TopicPartition(topic = "test", partitions = { "1" })})
+    @KafkaListener(id="c2",topicPartitions = { @TopicPartition(topic = "test22", partitions = { "1" })})
     public void consumer(ConsumerRecord<?,?> consumerRecord){
-        System.out.println("fenqu"+consumerRecord.partition());
+        System.out.println("分区："+consumerRecord.partition());
         //判断是否为null
         Optional<?> kafkaMessage = Optional.ofNullable(consumerRecord.value());
         if(kafkaMessage.isPresent()){
