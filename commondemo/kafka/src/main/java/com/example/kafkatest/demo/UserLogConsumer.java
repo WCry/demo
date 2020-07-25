@@ -9,7 +9,11 @@ import java.util.Optional;
 
 @Component
 public class UserLogConsumer {
-    @KafkaListener(id="qqq",containerGroup = "aaa",topicPartitions = { @TopicPartition(topic = "test22", partitions = { "1" })})
+    //
+    // topicPartitions =
+            //{ @TopicPartition(topic = "test22")})
+//, partitions = { "1" }
+@KafkaListener(id="qqq",groupId = "aaa",topics={"test22"})
     public void consumer(ConsumerRecord<?,?> consumerRecord){
         System.out.println("分区："+consumerRecord.partition());
         //判断是否为null

@@ -2,8 +2,11 @@ package com.gf;
 
 import com.gf.entity.Book;
 import com.gf.repository.BookRepository;
+import org.apache.lucene.analysis.commongrams.CommonGramsQueryFilterFactory;
 import org.elasticsearch.common.io.stream.InputStreamStreamInput;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryParser;
+import org.elasticsearch.index.query.QueryStringQueryBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
