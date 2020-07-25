@@ -1,4 +1,4 @@
-package com.example.kafkatest.demo.bean;
+package com.example.kafkatest.springdemo.bean;
 
 import java.io.Serializable;
 

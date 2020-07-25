@@ -1,4 +1,4 @@
-package com.example.kafkatest.demo;
+package com.example.kafkatest.springdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

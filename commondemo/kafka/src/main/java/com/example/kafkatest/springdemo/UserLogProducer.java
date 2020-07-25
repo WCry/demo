@@ -1,4 +1,4 @@
-package com.example.kafkatest.demo;
+package com.example.kafkatest.springdemo;
 
 /**
  * Author: zhangxuepei
@@ -6,18 +6,12 @@ package com.example.kafkatest.demo;
  * Content:
  */
 
-import com.example.kafkatest.demo.bean.UserLog;
+import com.example.kafkatest.springdemo.bean.UserLog;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.kafka.clients.KafkaClient;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-
-import javax.sound.midi.Soundbank;
 
 @Component
 public class UserLogProducer {

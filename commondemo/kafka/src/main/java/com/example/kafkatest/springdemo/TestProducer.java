@@ -1,4 +1,4 @@
-package com.example.kafkatest.demo;
+package com.example.kafkatest.springdemo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.kafka.clients.admin.NewTopic;
