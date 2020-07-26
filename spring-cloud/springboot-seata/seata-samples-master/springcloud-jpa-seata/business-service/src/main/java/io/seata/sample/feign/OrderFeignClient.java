@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author fangliangsheng
  * @date 2019-04-04
  */
-@FeignClient(name = "order-service", url = "127.0.0.1:8082")
+@FeignClient(name = "order-service", url = "localhost:8082")
 public interface OrderFeignClient {
 
     @GetMapping("/create")

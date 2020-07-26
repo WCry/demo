@@ -55,7 +55,7 @@ public class DataSourceConfig {
 
     /**
      * 需要将 DataSourceProxy 设置为主数据源，否则事务无法回滚
-     *
+     *  最新版本采用在Bean构造成功之后，就主动代理datasource，不需要在自己注册了
      * @param druidDataSource The DruidDataSource
      * @return The default datasource
      */

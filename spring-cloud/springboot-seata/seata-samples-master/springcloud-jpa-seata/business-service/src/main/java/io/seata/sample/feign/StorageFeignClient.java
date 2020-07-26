@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author fangliangsheng
  * @date 2019-04-04
  */
-@FeignClient(name = "storage-service", url = "127.0.0.1:8081")
+@FeignClient(name = "storage-service", url = "localhost:8081")
 public interface StorageFeignClient {
 
     @GetMapping("/deduct")
