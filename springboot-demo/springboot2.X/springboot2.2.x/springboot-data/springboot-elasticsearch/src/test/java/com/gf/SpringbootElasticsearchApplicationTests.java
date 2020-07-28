@@ -3,6 +3,7 @@ package com.gf;
 import com.gf.entity.Book;
 import com.gf.repository.BookRepository;
 import org.apache.lucene.analysis.commongrams.CommonGramsQueryFilterFactory;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.io.stream.InputStreamStreamInput;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryParser;
@@ -42,6 +43,13 @@ public class SpringbootElasticsearchApplicationTests {
 		for (Book book : list) {
 			System.out.println(book);
 		}
+
+	}
+
+    @Autowired
+	public	RestHighLevelClient restHighLevelClient;
+	@Test
+	public void testRestHeightClient(){
 
 	}
 

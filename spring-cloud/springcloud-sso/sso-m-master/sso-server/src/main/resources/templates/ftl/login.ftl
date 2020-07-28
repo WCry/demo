@@ -19,6 +19,7 @@
                     登录
                 </div>
                 <form action="/uaa/authentication/form" method="post">
+<#--<form action="/uaa/authentication/form" method="post">-->
 
                     <div class="form_text_ipt">
                         <input name="username" type="text" placeholder="手机号/邮箱" value="admin">

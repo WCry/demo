@@ -13,6 +13,10 @@ public class TransSql {
     private static final String left = "(";
     private static final String right = ")";
 
+    /**
+     * sql 简单能够解析sql的where条件到栈中
+     * @param args
+     */
     public static void main(String[] args) {
         String querySql = "(rf = 2) and (a = 1 and d=9) or c=0 and (b = 2)";
         querySql = querySql.replaceAll(" ", "");
@@ -29,8 +33,10 @@ public class TransSql {
             }
             int indexOfRight = s.indexOf(right);
             if (indexOfRight != -1) {
+                queryString.add(left);
                 //进行组合得到一个结果
                 queryString.addAll(splitBrackets(s.substring(indexOfLeft + 1, indexOfRight)));
+                queryString.add(right);
                 queryString.addAll(splitBrackets(s.substring(indexOfRight + 1)));
             } else {
                 //左右不匹配

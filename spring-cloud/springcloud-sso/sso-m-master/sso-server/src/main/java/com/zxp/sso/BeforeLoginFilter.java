@@ -1,5 +1,6 @@
 package com.zxp.sso;
 
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;

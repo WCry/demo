@@ -3,6 +3,14 @@ server:
   servlet:
     context-path: /uaa
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            provider: google
+            clientId: dsad
+            clientSecret: dsa
   freemarker:
     allow-request-override: false
     allow-session-override: false
