@@ -25,6 +25,7 @@ public class SsoClient2Application {
         //获取OAuth2的身份认证  这个是根据具体认证  转换成具体类
         OAuth2Authentication oAuth2Authentication=(OAuth2Authentication)user;
         System.out.println(oAuth2Authentication.getOAuth2Request().getScope());
+
         return user;
     }
 
