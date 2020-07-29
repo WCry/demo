@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
-
+//https://blog.csdn.net/weixin_43931625/article/details/105944727
+//
 @SpringBootApplication
 public class SsoServerApplication {
 

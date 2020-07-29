@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -44,6 +44,9 @@
                         <span>还没有帐号？</span><a href="/register">马上注册</a>
                     </div>
                 </form>
+                <div th:align="center">
+                    <a th:href="@{/oauth2/authorization/weibo}">weibo</a><br>
+                </div>
                 <div class="other_login">
                     <div class="left other_left">
                         <span>其它登录方式</span>&nbsp;&nbsp;<a href="/authentication/mobilePage">短信登录</a>
