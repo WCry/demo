@@ -53,8 +53,8 @@ public class SpringbootRabbitmqApplicationTests {
         String message = "路由key：" + routeKey;
         //设置消息唯一标识，生产上可以准确定位消息,用来在方法方法和事件之间传递唯一标识
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
-        rabbitTemplate.setConfirmCallback(Confirm.confirmCallback);
-        rabbitTemplate.setReturnCallback(Confirm.returnCallback);
+        rabbitTemplate.setConfirmCallback(SendConfirm.confirmCallback);
+        rabbitTemplate.setReturnCallback(SendConfirm.returnCallback);
         //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
         rabbitTemplate.setUsePublisherConnection(true);
 
@@ -62,7 +62,7 @@ public class SpringbootRabbitmqApplicationTests {
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 
-        rabbitTemplate.convertAndSend("direct", routeKey, getMessage(message),correlationData);
+        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 
     }
 

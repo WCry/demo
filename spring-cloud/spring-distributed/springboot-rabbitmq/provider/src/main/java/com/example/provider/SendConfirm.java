@@ -6,7 +6,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
  * @author zhangxuepei
  * @since 3.0
  */
-public class Confirm {
+public class SendConfirm {
     /**
       *消息成功被接收到了，消息到达Broker之后返回
      */

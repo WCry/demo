@@ -3,8 +3,10 @@ package com.example.consumer;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class RabbitmqConsumer {
     /**
      * Consumer启动时候需要
@@ -13,7 +15,6 @@ public class RabbitmqConsumer {
      * 一个配置声明队列
      * queuesToDeclare可以强制声明一个队列，不存在生成队列为绑定交换器，需要有生产者绑定
      * 直接字符串无法声明一个队列，只能简单消费队列
-     *
      * @param message
      */
     @RabbitListener(queues = "topic.queue.a")
@@ -23,6 +24,7 @@ public class RabbitmqConsumer {
     }
 
     @RabbitListener(queues = "topic.queue.b")
+    //@SendTo(value="topic.queue.b")
     public void processMessage(Message message) {
         System.out.println("收到来自于主题交换B队列消息:");
         System.out.println(new String(message.getBody()));
@@ -36,6 +38,7 @@ public class RabbitmqConsumer {
     }
 
     @RabbitListener(queuesToDeclare = @Queue(value = "direct.queue.b"))
+    @SendTo(value="direct.queue.b")
     public void directBQueueConsumer(Message message) {
         System.out.println("收到来自于直接交换B队列消息:");
         System.out.println(new String(message.getBody()));
