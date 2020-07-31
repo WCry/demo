@@ -3,6 +3,8 @@ package com.example.provider;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.amqp.RabbitTemplateConfigurer;
+
 /**
  * 自动配置
  * 1. RabbitAutoConfiguration
@@ -26,6 +28,8 @@ public class ProviderApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProviderApplication.class, args);
+        RabbitTemplateConfigurer dasd;
+
     }
 
 }
