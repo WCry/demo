@@ -45,9 +45,6 @@ public class SpringbootRabbitmqApplicationTests {
         //topicB.start();
     }
 
-
-
-
     @Test
     public void sendBDirectAndListener() {
         String routeKey = "b";

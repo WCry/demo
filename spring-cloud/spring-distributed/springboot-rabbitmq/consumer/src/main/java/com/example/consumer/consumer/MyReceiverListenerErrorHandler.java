@@ -1,4 +1,4 @@
-package com.example.consumer;
+package com.example.consumer.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
