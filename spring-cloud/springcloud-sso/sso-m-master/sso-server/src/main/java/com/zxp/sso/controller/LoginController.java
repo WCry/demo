@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @RequestMapping("/authentication/require")
-    public ModelAndView require() {
-        return new ModelAndView("login");
+    public String require() {
+        return "login";
     }
 }

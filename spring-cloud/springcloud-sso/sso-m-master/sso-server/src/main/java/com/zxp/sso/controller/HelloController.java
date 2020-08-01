@@ -19,8 +19,8 @@ public class HelloController {
         return "hello " + principal.getName();
     }
 
-//    @GetMapping("/")
-//    public String redirect() {
-//        return "redirect";
-//    }
+    @GetMapping("/")
+    public String redirect() {
+        return "redirect";
+    }
 }

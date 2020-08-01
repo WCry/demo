@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -20,12 +19,15 @@
     </script>
 </head>
 <body>
-<form th:action="uaa/message/login" th:align="center" method="post">
+<form action="/uaa/message/login" method="post" enctype="multipart/form-data">
     phone：<input type="text" id="phone" name="phone"><br>
     code：<input type="text" id="code" name="code">
     <input id="get_code" type="button" name="btn1" value="获取短信验证码">
-    <input type="button" value="code"></input>
+    <input type="submit" value="验证"></input>
 </form>
-<div th:id="result_code" align="center">sadasda</div>
+<div align="center">
+    <a href="/uaa/oauth2/authorization/weibo">weibo</a><br>
+</div>
+<div id="result_code" align="center">sadasda</div>
 </body>
 </html>

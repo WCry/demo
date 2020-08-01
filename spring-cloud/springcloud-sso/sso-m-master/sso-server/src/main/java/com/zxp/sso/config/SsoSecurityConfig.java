@@ -1,7 +1,9 @@
-package com.zxp.sso.server;
+package com.zxp.sso.config;
 
 
 import com.zxp.sso.mobile.PhoneCodeSecurityConfig;
+import com.zxp.sso.weibo.WeiboOAuth2AccessTokenResponseClient;
+import com.zxp.sso.weibo.WeiboOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +19,14 @@ import javax.annotation.Resource;
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
+    private final WeiboOAuth2AccessTokenResponseClient weiboOAuth2AccessTokenResponseClient;
 
+    private final WeiboOAuth2UserService weiboOAuth2UserService;
     @Autowired
-    public SsoSecurityConfig(@Qualifier("ssoUserDetailsService") UserDetailsService userDetailsService) {
+    public SsoSecurityConfig(@Qualifier("ssoUserDetailsService") UserDetailsService userDetailsService, WeiboOAuth2AccessTokenResponseClient weiboOAuth2AccessTokenResponseClient, WeiboOAuth2UserService weiboOAuth2UserService) {
         this.userDetailsService = userDetailsService;
+        this.weiboOAuth2AccessTokenResponseClient = weiboOAuth2AccessTokenResponseClient;
+        this.weiboOAuth2UserService = weiboOAuth2UserService;
     }
 
     @Resource
@@ -32,6 +38,11 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/message").permitAll().and().authorizeRequests()
                 .antMatchers("/hello").hasAuthority("ROLE_USER");
         http.csrf().disable();
+        http.oauth2Login().loginPage("/authentication/require")
+                .tokenEndpoint().accessTokenResponseClient(weiboOAuth2AccessTokenResponseClient)
+                .and()
+                .userInfoEndpoint()
+                .userService(weiboOAuth2UserService);
 
 //        http.formLogin()
 //                //展示登录界面的URL
