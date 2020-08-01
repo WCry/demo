@@ -1,6 +1,7 @@
 package com.example.provider;
 
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -12,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
+@Ignore
 @SpringBootTest(classes = ProviderApplication.class)
 public class SpringbootRabbitmqApplicationTests {
     @Autowired
@@ -44,17 +45,14 @@ public class SpringbootRabbitmqApplicationTests {
         //topicB.start();
     }
 
-
-
-
     @Test
     public void sendBDirectAndListener() {
         String routeKey = "b";
         String message = "路由key：" + routeKey;
         //设置消息唯一标识，生产上可以准确定位消息,用来在方法方法和事件之间传递唯一标识
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString().substring(0, 4));
-        rabbitTemplate.setConfirmCallback(Confirm.confirmCallback);
-        rabbitTemplate.setReturnCallback(Confirm.returnCallback);
+        rabbitTemplate.setConfirmCallback(SendConfirm.confirmCallback);
+        rabbitTemplate.setReturnCallback(SendConfirm.returnCallback);
         //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
         rabbitTemplate.setUsePublisherConnection(true);
 
@@ -62,7 +60,7 @@ public class SpringbootRabbitmqApplicationTests {
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 
-        rabbitTemplate.convertAndSend("direct", routeKey, getMessage(message),correlationData);
+        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 
     }
 

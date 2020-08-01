@@ -1,4 +1,4 @@
-package com.example.consumer;
+package com.example.consumer.consumer;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Queue;
