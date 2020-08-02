@@ -1,4 +1,4 @@
-package com.zxp.sso.weibo;
+package com.zxp.sso.socialconfig;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -12,6 +12,7 @@ import java.util.Map;
 /**
  * user:zxp
  * Day:2020,07,27
+ * 定义认证的用户信息
  **/
 public class WeiboOAuth2User implements OAuth2User {
 

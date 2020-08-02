@@ -2,8 +2,8 @@ package com.zxp.sso.config;
 
 
 import com.zxp.sso.mobile.PhoneCodeSecurityConfig;
-import com.zxp.sso.weibo.WeiboOAuth2AccessTokenResponseClient;
-import com.zxp.sso.weibo.WeiboOAuth2UserService;
+import com.zxp.sso.socialconfig.SocialOAuth2AccessTokenResponseClient;
+import com.zxp.sso.socialconfig.SocialOAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -12,38 +12,50 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import javax.annotation.Resource;
-
 
 @Configuration
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
-    private final WeiboOAuth2AccessTokenResponseClient weiboOAuth2AccessTokenResponseClient;
-
-    private final WeiboOAuth2UserService weiboOAuth2UserService;
+    private final SocialOAuth2AccessTokenResponseClient socialOAuth2AccessTokenResponseClient;
+    private final PhoneCodeSecurityConfig messageCodeSecurityConfig;
+    private final SocialOAuth2UserService socialOAuth2UserService;
+   // private final SocialOAuth2AuthorizationRequestResolver SocialOAuth2AuthorizationRequestResolver;
     @Autowired
-    public SsoSecurityConfig(@Qualifier("ssoUserDetailsService") UserDetailsService userDetailsService, WeiboOAuth2AccessTokenResponseClient weiboOAuth2AccessTokenResponseClient, WeiboOAuth2UserService weiboOAuth2UserService) {
+    public SsoSecurityConfig(@Qualifier("ssoUserDetailsService") UserDetailsService userDetailsService,
+                             SocialOAuth2AccessTokenResponseClient socialOAuth2AccessTokenResponseClient,
+                             SocialOAuth2UserService socialOAuth2UserService,
+                             PhoneCodeSecurityConfig messageCodeSecurityConfig)
+                          //   SocialOAuth2AuthorizationRequestResolver SocialOAuth2AuthorizationRequestResolver)
+    {
         this.userDetailsService = userDetailsService;
-        this.weiboOAuth2AccessTokenResponseClient = weiboOAuth2AccessTokenResponseClient;
-        this.weiboOAuth2UserService = weiboOAuth2UserService;
+        this.socialOAuth2AccessTokenResponseClient = socialOAuth2AccessTokenResponseClient;
+        this.socialOAuth2UserService = socialOAuth2UserService;
+        this.messageCodeSecurityConfig = messageCodeSecurityConfig;
+   //     this.SocialOAuth2AuthorizationRequestResolver = SocialOAuth2AuthorizationRequestResolver;
     }
 
-    @Resource
-    private PhoneCodeSecurityConfig messageCodeSecurityConfig;
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/authentication/require").and().authorizeRequests()
                 .antMatchers("/message").permitAll().and().authorizeRequests()
                 .antMatchers("/hello").hasAuthority("ROLE_USER");
+        //进行电话验证码处理
+        http.apply(messageCodeSecurityConfig);
         http.csrf().disable();
-        http.oauth2Login().loginPage("/authentication/require")
-                .tokenEndpoint().accessTokenResponseClient(weiboOAuth2AccessTokenResponseClient)
-                .and()
-                .userInfoEndpoint()
-                .userService(weiboOAuth2UserService);
+//        http. oauth2Login().loginPage("/authentication/require").tokenEndpoint().and().authorizationEndpoint().
+//                baseUri("").authorizationRequestResolver(null);
 
+        http. oauth2Login().loginPage("/authentication/require").tokenEndpoint().
+                accessTokenResponseClient(socialOAuth2AccessTokenResponseClient)
+                .and().userInfoEndpoint().userService(socialOAuth2UserService);
+
+        //.authorizationEndpoint().
+        //                authorizationRequestResolver(this.SocialOAuth2AuthorizationRequestResolver)
+        //                .and()
+        //
 //        http.formLogin()
 //                //展示登录界面的URL
 //                .loginPage("/authentication/require")
@@ -64,7 +76,7 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .authenticated()
 //                .and()
 //                .csrf().disable();
-        http.apply(messageCodeSecurityConfig);
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.zxp.sso.weibo;
+package com.zxp.sso.socialconfig;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AccessTokenResponseClient;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AuthorizationCodeGrantRequest;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationExchange;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,14 +20,15 @@ import java.util.Map;
 /**
  * user:zxp
  * Day:2020,07,27
+ * 这边的ClientID 也需要更新注册信息处理
  **/
 @Component
-public class WeiboOAuth2AccessTokenResponseClient implements OAuth2AccessTokenResponseClient<OAuth2AuthorizationCodeGrantRequest> {
+public class SocialOAuth2AccessTokenResponseClient implements OAuth2AccessTokenResponseClient<OAuth2AuthorizationCodeGrantRequest> {
 
     private final ObjectMapper objectMapper;
     private final RestTemplate restTemplate;
     @Autowired
-    public WeiboOAuth2AccessTokenResponseClient(ObjectMapper objectMapper, RestTemplate restTemplate) {
+    public SocialOAuth2AccessTokenResponseClient(ObjectMapper objectMapper, RestTemplate restTemplate) {
         this.objectMapper = objectMapper;
         this.restTemplate = restTemplate;
     }
