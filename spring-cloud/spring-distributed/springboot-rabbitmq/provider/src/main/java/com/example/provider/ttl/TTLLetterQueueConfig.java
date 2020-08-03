@@ -67,6 +67,9 @@ public class TTLLetterQueueConfig {
      */
     @Bean
     public Binding ttlRedirectBinding() {
-        return new Binding(RabbitPropertiesConstant.REDIRECT_QUEUE, Binding.DestinationType.QUEUE, RabbitPropertiesConstant.DEAD_LETTER_EXCHANGE, RabbitPropertiesConstant.DEAD_LETTER_REDIRECT_ROUTING_KEY, null);
+        return new Binding(RabbitPropertiesConstant.TTL_REDIRECT_QUEUE,
+                Binding.DestinationType.QUEUE,
+                RabbitPropertiesConstant.TTL_LETTER_EXCHANGE,
+                RabbitPropertiesConstant.TTL_LETTER_REDIRECT_ROUTING_KEY, null);
     }
 }

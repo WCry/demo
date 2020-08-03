@@ -1,7 +1,6 @@
-package com.example.consumer.consumer.deadletter;
+package com.example.consumer.consumer.dead;
 
 import com.example.consumer.consumer.RabbitPropertiesConstant;
-import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Argument;
 import org.springframework.amqp.rabbit.annotation.Queue;

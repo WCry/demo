@@ -17,13 +17,11 @@ import org.springframework.stereotype.Component;
 public class TTLRedirectQueueConsumer {
 
     /**
-     *
-     *
      * @param number
      */
     @RabbitHandler
     public void fromDeadLetter(Integer number) {
-        log.warn("延时消费 : {}", number);
+        log.warn("延时1秒消费 : {}", number);
         //这里可以对于死信队列进行消息记录
         // 对应的操作
         int i = number / 1;

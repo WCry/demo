@@ -17,6 +17,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 可以通过消息异常处理，或者死信，
+ * 自定义消息处理进行异常消息的记录
+ * 如果需要通知其他应用处理，可以采用死信
+ * 如果自身应用处理可以使用异常处理
  */
 @Slf4j
 @Component
@@ -26,11 +30,13 @@ public class MyReceiverListenerErrorHandler implements RabbitListenerErrorHandle
     private ObjectMapper objectMapper;
 
     /**
-     *
+     *MessagingMessageListenerAdapter 的if (this.errorHandler != null) { 中进行处理的
      */
     @Override
     public Object handleError(Message amqpMessage, org.springframework.messaging.Message<?> message, ListenerExecutionFailedException exception) throws Exception {
-        log.error("消息接收发生了错误，消息内容:{},错误原因:{}", objectMapper.writeValueAsString(message.getPayload()), objectMapper.writeValueAsString(exception.getCause().getMessage()));
+        log.error("消息接收发生了错误，消息内容:{},错误原因:{}",
+                objectMapper.writeValueAsString(message.getPayload()),
+                objectMapper.writeValueAsString(exception.getCause().getMessage()));
         throw new AmqpRejectAndDontRequeueException("超出次数");
     }
 }

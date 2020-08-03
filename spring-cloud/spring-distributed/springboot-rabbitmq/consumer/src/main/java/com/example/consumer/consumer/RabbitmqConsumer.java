@@ -22,20 +22,21 @@ public class RabbitmqConsumer {
      * 大部分设置可以在properties文件中进行配置，这里也可以进行设置覆盖
      * 最终按照RabbitListener中的配置进行
      *
-     *
+     *if (this.errorHandler != null) {
      * @param message 接收到消息
      * @param channel 执行该消息队列的channel，可以通过该channel进行手动确认一些操作
      */
     @RabbitListener(queues = "topic.queue.a",errorHandler = "myReceiverListenerErrorHandler",returnExceptions="")
     public void topicQueueAMessage(Message message, Channel channel) {
         System.out.println("收到来自于主题交换A队列消息:");
-        try {
-            //进行消息的手动确认
-            //发送来自有发送者的标签
-            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(1/0);
+//        try {
+//            //进行消息的手动确认
+//            //发送来自有发送者的标签
+//            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         System.out.println(new String(message.getBody()));
     }
 

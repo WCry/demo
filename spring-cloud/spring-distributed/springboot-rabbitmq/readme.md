@@ -171,6 +171,9 @@ ConnectionBlockedEvent
 ```java
 #用来处理注解处理
 RabbitListenerAnnotationBeanPostProcessor
+
+#Rabbitmq的消费重试次数，是指在消费的客户端，进行消费重试。不是指从Brocker中去取数据
+
 ```
 
 

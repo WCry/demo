@@ -1,4 +1,4 @@
-package com.example.consumer.consumer.deadletter;
+package com.example.consumer.consumer.dead;
 
 import com.example.consumer.consumer.RabbitPropertiesConstant;
 import lombok.extern.slf4j.Slf4j;
