@@ -1,4 +1,4 @@
-package com.zxp.sso.server;
+package com.zxp.sso.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

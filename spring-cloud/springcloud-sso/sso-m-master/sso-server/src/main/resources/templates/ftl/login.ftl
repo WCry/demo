@@ -1,86 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <title>登录界面</title>
-    <link rel="stylesheet" href="/uaa/css/reset.css"/>
-    <link rel="stylesheet" href="/uaa/css/common.css"/>
-    <link rel="stylesheet" href="/uaa/css/font-awesome.min.css"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/uaa/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#result_code").text("Hello world!");
+            $("#get_code").click(function () {
+                $.get({
+                    url: "/uaa/message/code?phone=" + $("#phone").val(),
+                    success: function (result) {
+                        $("#result_code").html(result.code)
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
-<div class="wrap login_wrap">
-    <div class="content">
-        <div class="logo"></div>
-        <div class="login_box">
-
-            <div class="login_form">
-                <div class="login_title">
-                    登录
-                </div>
-                <form action="/uaa/authentication/form" method="post">
-<#--<form action="/uaa/authentication/form" method="post">-->
-
-                    <div class="form_text_ipt">
-                        <input name="username" type="text" placeholder="手机号/邮箱" value="admin">
-                    </div>
-                    <div class="ececk_warning"><span>手机号/邮箱不能为空</span></div>
-                    <div class="_warning"><span>${message!''}</span></div>
-                    <div class="form_text_ipt">
-                        <input name="password" type="password" placeholder="密码" value="123456">
-                    </div>
-                    <div class="ececk_warning"><span>密码不能为空</span></div>
-                    <div class="form_check_ipt">
-                        <div class="left check_left">
-                            <label><input name="remember-me" type="checkbox"> 下次自动登录</label>
-                        </div>
-                        <div class="right check_right">
-                            <a href="#">忘记密码</a>
-                        </div>
-                    </div>
-                    <div class="form_btn">
-                        <button type="submit">登录</button>
-                    </div>
-                    <div class="form_reg_btn">
-                        <span>还没有帐号？</span><a href="/register">马上注册</a>
-                    </div>
-                </form>
-                <div th:align="center">
-                    <a th:href="@{/oauth2/authorization/weibo}">weibo</a><br>
-                </div>
-                <div class="other_login">
-                    <div class="left other_left">
-                        <span>其它登录方式</span>&nbsp;&nbsp;<a href="/authentication/mobilePage">短信登录</a>
-                    </div>
-                    <div id="wixin" style="height: 100px;width:100px"></div>
-                    <div class="right other_right">
-                        <a href="/login/qq"><i class="fa fa-qq fa-2x"></i></a>
-                        <a href="/login/weixin"><i class="fa fa-weixin fa-2x"></i></a>
-                        <a href="/login/weibo"><i class="fa fa-weibo fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<form action="/uaa/message/login" method="post" enctype="multipart/form-data">
+    phone：<input type="text" id="phone" name="phone"><br>
+    code：<input type="text" id="code" name="code">
+    <input id="get_code" type="button" name="btn1" value="获取短信验证码">
+    <input type="submit" value="验证"></input>
+</form>
+<div align="center">
+    <a href="/uaa/oauth2/authorization/weibo">weibo</a><br>
 </div>
-<script>
-    function setWxerwma (){
-        const wxElement = document.body.appendChild(s)
-        wxElement.onload = function () {
-            var obj = new WxLogin({
-                id: 'wixin', // 需要显示的容器id
-                appid: '', // 公众号appid wx*******
-                scope: 'snsapi_login', // 网页默认即可
-                redirect_uri: encodeURIComponent(''), // 授权成功后回调的url
-                state: Math.ceil(Math.random() * 1000), // 可设置为简单的随机数加session用来校验
-                style: 'black', // 提供"black"、"white"可选。二维码的样式
-                href: '' // 外部css文件url，需要https
-            })
-        }
-    }
-</script>
-<script type="text/javascript" src="/uaa/js/jquery.min.js"></script>
-<script type="text/javascript" src="/uaa/js/common.js"></script>
-<script type="text/javascript" src="https://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<div id="result_code" align="center">sadasda</div>
 </body>
 </html>

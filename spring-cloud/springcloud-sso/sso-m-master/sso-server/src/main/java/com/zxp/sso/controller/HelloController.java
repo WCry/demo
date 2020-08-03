@@ -1,5 +1,6 @@
 package com.zxp.sso.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class HelloController {
         return "hello " + principal.getName();
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String redirect() {
         return "redirect";
     }

@@ -1,4 +1,4 @@
-package com.zxp.sso.server;
+package com.zxp.sso.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
