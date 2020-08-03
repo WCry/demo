@@ -18,7 +18,7 @@ public class DeadLetterSenderController {
     private RabbitTemplate rabbitTemplate;
     @GetMapping("/test/provider")
     public void send(@RequestParam("number") int number) {
-        log.warn("DeadLetterSender : {}", number);
+        //log.warn("DeadLetterSender : {}", number);
         // 这里的Exchange可以是业务的Exchange，为了方便测试这里直接往死信Exchange里投递消息
         rabbitTemplate.convertAndSend(RabbitPropertiesConstant.DEAD_LETTER_EXCHANGE, RabbitPropertiesConstant.DEAD_LETTER_TEST_ROUTING_KEY, number);
     }

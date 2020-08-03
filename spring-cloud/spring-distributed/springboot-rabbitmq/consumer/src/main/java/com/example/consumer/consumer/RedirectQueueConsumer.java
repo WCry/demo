@@ -22,7 +22,7 @@ public class RedirectQueueConsumer {
      */
     @RabbitHandler
     public void fromDeadLetter(Integer number) {
-        log.warn("RedirectQueueConsumer : {}", number);
+        log.warn("RedirectQueueConsumer : xfcsda{}", number);
         // 对应的操作
         int i = number / 1;
     }
