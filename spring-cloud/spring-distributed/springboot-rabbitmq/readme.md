@@ -103,13 +103,13 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
  amqpAdmin.declareExchange( new DirectExchange( "exchange.direct") );           
  amqpAdmin.declareQueue( new Queue( "direct.queue" , true ) );
  amqpAdmin.declareBinding( new Binding( "direct.queue" , Binding.DestinationType.QUEUE , "exchange.direct" , "direct.queue" , null ) );
- 
+
  对于消费者可以只声明队列，暂时不进行绑定到交换器上。如果只用名称，则队列的名称必须已经存在           
  @RabbitListener(queuesToDeclare = @Queue(value = "consumer_queue5"))
  只使用字符串，队列名称是必须已经存在的
   @RabbitListener(queues = "consumer_queue4")
- 
- 
+
+
  header交换器和队列使用比较少
  消息发送到交换机确认机制,是否返回回馈
  publisher-returns单一设置就开启发送端确认模式
@@ -163,3 +163,31 @@ ConnectionUnblockedEvent
 ConnectionBlockedEvent
 
 如果RabbitMQ的能力达不到要求，换用kafka消息队里，kafka的吞吐量是RabbitMq的十倍
+
+
+
+
+
+```java
+#用来处理注解处理
+RabbitListenerAnnotationBeanPostProcessor
+```
+
+
+
+RabbitMQ手动确认消费：
+
+```
+channel
+```
+
+```
+
+```
+
+
+
+```
+
+```
+
