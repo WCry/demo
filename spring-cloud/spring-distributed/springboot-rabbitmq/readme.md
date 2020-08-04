@@ -184,13 +184,21 @@ RabbitMQ手动确认消费：
 channel
 ```
 
-```
-
-```
 
 
 
-```
 
-```
+Springboot 消息手动确认模式：
+
+1.监听方法需要参数channel进行去人消息，包括消息成功或者消费失败。
+2.不确认也无异常，消息不会自动重新推送。
+3.rabbitmq断开连接，消息会重新推送
+4.spring.rabbitmq.listener.retry配置的重发是在消费端应用内处理的，不是rabbitqq重发。消息重试次数用完完之后，消息不会重发。
+可以配置MessageRecoverer对异常消息进行处理，此处理会在5.listener.retry次数尝试完并还是抛出异常的情况下才会调用，默认有两个实现：RepublishMessageRecoverer将消息发送到指定队列，RejectAndDontRequeueRecoverer如果不手动配置MessageRecoverer，会默认使用这个，实现仅仅是将异常打印抛出。
+
+
+Springboot：
+@sendto注解：消息经过一个消费完成之后，将结果转发到下一个消息处理过程。@sendto的值采用 exchangeName/routekey 的方式。同时支持spel表达式的方式书写
+
+https://docs.spring.io/spring-amqp/docs/2.2.9.RELEASE/reference/html/#choose-container
 

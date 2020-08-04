@@ -6,6 +6,7 @@ import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
@@ -27,6 +28,7 @@ public class RabbitmqConsumer {
      * @param channel 执行该消息队列的channel，可以通过该channel进行手动确认一些操作
      */
     @RabbitListener(queues = "topic.queue.a",errorHandler = "myReceiverListenerErrorHandler",returnExceptions="")
+    @SendToUser(value = "")
     public void topicQueueAMessage(Message message, Channel channel) {
         System.out.println("收到来自于主题交换A队列消息:");
         System.out.println(1/0);
@@ -41,10 +43,11 @@ public class RabbitmqConsumer {
     }
 
     @RabbitListener(queues = "topic.queue.b")
-    //@SendTo(value="topic.queue.b")
-    public void processMessage(Message message) {
+    @SendTo(value="topic.exchange/key.a.aas")
+    public String processMessage(Message message) {
         System.out.println("收到来自于主题交换B队列消息:");
         System.out.println(new String(message.getBody()));
+        return  "转发了一下队列消息";
     }
 
 
