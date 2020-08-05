@@ -202,3 +202,13 @@ Springboot：
 
 https://docs.spring.io/spring-amqp/docs/2.2.9.RELEASE/reference/html/#choose-container
 
+RabbitMQ支持异步处理
+
+AsyncRabbitTemplate asyncRabbitTemplate;
+
+
+RbbitMQ的带有回复功能的接口采用的默认回复队列名称，调用不需要显示的创建回复队列
+
+主要针对SpringBoot的**convertAndSend**和**convertSendAndReceive**两个方法：
+
+https://blog.csdn.net/fan521dan/article/details/104930982

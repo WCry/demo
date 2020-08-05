@@ -5,6 +5,7 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.rabbit.AsyncRabbitTemplate;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class SpringbootRabbitmqApplicationTests {
     @Autowired
     public RabbitTemplate rabbitTemplate;
+
     @Autowired
     public AmqpAdmin amqpAdmin;
     @Test
