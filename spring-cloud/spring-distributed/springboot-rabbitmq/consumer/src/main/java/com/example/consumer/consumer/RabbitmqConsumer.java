@@ -4,7 +4,11 @@ import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -26,19 +30,20 @@ public class RabbitmqConsumer {
      *if (this.errorHandler != null) {
      * @param message 接收到消息
      * @param channel 执行该消息队列的channel，可以通过该channel进行手动确认一些操作
+     * 直接采用template接收信息采用的是同步消费的方式
+     * @RabbitListener 采用Springboot异步消费的方式
      */
     @RabbitListener(queues = "topic.queue.a",errorHandler = "myReceiverListenerErrorHandler",returnExceptions="")
     @SendToUser(value = "")
     public void topicQueueAMessage(Message message, Channel channel) {
         System.out.println("收到来自于主题交换A队列消息:");
-        System.out.println(1/0);
-//        try {
-//            //进行消息的手动确认
-//            //发送来自有发送者的标签
-//            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            //进行消息的手动确认
+            //发送来自有发送者的标签
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println(new String(message.getBody()));
     }
 

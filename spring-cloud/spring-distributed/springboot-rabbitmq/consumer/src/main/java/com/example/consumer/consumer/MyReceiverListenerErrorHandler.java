@@ -37,6 +37,7 @@ public class MyReceiverListenerErrorHandler implements RabbitListenerErrorHandle
         log.error("消息接收发生了错误，消息内容:{},错误原因:{}",
                 objectMapper.writeValueAsString(message.getPayload()),
                 objectMapper.writeValueAsString(exception.getCause().getMessage()));
+        //抛出异常 不在放回队里当中
         throw new AmqpRejectAndDontRequeueException("超出次数");
     }
 }
