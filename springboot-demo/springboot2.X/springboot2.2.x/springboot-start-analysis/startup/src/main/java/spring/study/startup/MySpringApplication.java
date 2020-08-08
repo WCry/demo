@@ -5,10 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import spring.study.startup.bean.SimpleBean;
+import spring.study.startup.customerscan.MetaComponentScan;
 
 /**
  * Spring 应用程序启动
+ * https://zhuanlan.zhihu.com/p/147754540
  */
+//@MetaComponentScan
 @SpringBootApplication
 public class MySpringApplication {
     public static void main(String[] args) {

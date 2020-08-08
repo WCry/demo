@@ -11,8 +11,7 @@ import org.springframework.stereotype.Component;
 public class SimpleCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
-        //获取参数 String 列表形式
-        //获取Spring程
+        //命令行启动参数,获取参数 String 列表形式
         System.out.println("我CommandLineRunner被调用，获取参数数量："+args.length);
     }
 }

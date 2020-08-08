@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Format on 2017/5/1.
  */
-//Lombok注解参数
-
-@ToString
+//Lombok注解参数,Lombok 注解是在Complete过程中进行处理的
+@ToString(includeFieldNames = true)
 //Spring注解参数  注册一个组成
 //Spring注解参数  注册一个组件
 @Component
