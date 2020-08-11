@@ -5,28 +5,27 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
+        <version>2.2.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
-        <module>eurekaserver</module>
+        <module>demo-gateway</module>
         <module>service-hi</module>
-        <module>serice-feign</module>
+        <module>service-feign</module>
         <module>service-zuul</module>
         <module>common</module>
     </modules>
     <groupId>com.example.springclouddemo</groupId>
     <artifactId>springclouddemo-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springclouddemo-parent</name>
+    <name>spring-cloud-demo-parent</name>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <!--Greenwich.SR2 属于 2.1.X版本-->
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
@@ -45,11 +44,11 @@
                 <scope>import</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.locationtech.geomesa/geomesa-hbase-datastore -->
-            <dependency>
+          <!--  <dependency>
                 <groupId>org.locationtech.geomesa</groupId>
                 <artifactId>geomesa-hbase-datastore_2.11</artifactId>
                 <version>2.3.1</version>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
     <build>
