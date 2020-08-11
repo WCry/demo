@@ -24,7 +24,8 @@ public class MyFeignClientsConfiguration {
 
     @Bean
     public Contract feignContract(FormattingConversionService feignConversionService) {
-        //在原配置类中是用ConversionService类型的参数，但ConversionService接口不支持addConverter操作，使用FormattingConversionService仍然可以实现feignContract配置。
+        //在原配置类中是用ConversionService类型的参数，但ConversionService接口不支持addConverter操作，
+        // 使用FormattingConversionService仍然可以实现feignContract配置。
         feignConversionService.addConverter(new UniversalReversedEnumConverter());
         return new SpringMvcContract(this.parameterProcessors, feignConversionService);
     }

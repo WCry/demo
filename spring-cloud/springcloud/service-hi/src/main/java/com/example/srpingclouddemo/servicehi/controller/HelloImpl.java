@@ -1,6 +1,7 @@
 package com.example.srpingclouddemo.servicehi.controller;
 
-import common.user;
+import com.zxp.api.HelloAPI;
+import com.zxp.dto.user;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class HelloA {
+@RestController("/hello")
+public class HelloImpl implements HelloAPI {
     @Value("${server.port}")
     String port;
 

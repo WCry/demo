@@ -2,11 +2,10 @@ package com.example.springclouddemo.sericefeign.controller;
 
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.agent.model.Check;
-import com.example.springclouddemo.sericefeign.SchedualServiceHi;
-import common.user;
+import com.example.springclouddemo.sericefeign.HelloClient;
+import com.zxp.dto.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +18,7 @@ import java.util.Map;
 public class HiController {
     //编译器报错，无视。 因为这个Bean是在程序启动的时候注入的，编译器感知不到，所以报错。
     @Autowired
-    SchedualServiceHi schedualServiceHi;
+   private HelloClient helloClient;
     @Autowired
     private LoadBalancerClient loadBalancerClient;
     /**
@@ -33,7 +32,7 @@ public class HiController {
         String json = "{indexname：\"test\"}";
         user dasd = new user();
         dasd.setName("dasd");
-        System.out.println(schedualServiceHi.sayHiOne(dasd));
+        System.out.println(helloClient.hi(dasd));
         return "json";
     }
 

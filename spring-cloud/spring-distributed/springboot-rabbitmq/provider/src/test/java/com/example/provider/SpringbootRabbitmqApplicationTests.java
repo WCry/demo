@@ -4,7 +4,9 @@ package com.example.provider;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +58,6 @@ public class SpringbootRabbitmqApplicationTests {
         rabbitTemplate.setReturnCallback(SendConfirm.returnCallback);
         //针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
         rabbitTemplate.setUsePublisherConnection(true);
-
         //rabbitTemplate.setMandatory(true);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);
 //        rabbitTemplate.convertAndSend("direct.exchange", routeKey, getMessage(message),correlationData);

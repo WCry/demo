@@ -1,4 +1,4 @@
-package common;
+package com.zxp.dto;
 
 public class user {
     private String name;

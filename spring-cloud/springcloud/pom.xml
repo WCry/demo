@@ -9,6 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
+        <module>storage-service</module>
+        <module>order-service</module>
+        <module>business-service</module>
+        <module>account-service</module>
         <module>demo-gateway</module>
         <module>service-hi</module>
         <module>service-feign</module>
@@ -26,6 +30,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
     <dependencies>
         <dependency>
@@ -48,6 +53,23 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.10</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.11</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.locationtech.geomesa/geomesa-hbase-datastore -->
           <!--  <dependency>
