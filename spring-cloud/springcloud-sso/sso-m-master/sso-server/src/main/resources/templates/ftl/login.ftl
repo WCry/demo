@@ -28,6 +28,9 @@
 <div align="center">
     <a href="/uaa/oauth2/authorization/weibo">weibo</a><br>
 </div>
+<div align="center">
+    <a href="/uaa/login/openid">openid</a><br>
+</div>
 <div id="result_code" align="center">sadasda</div>
 </body>
 </html>

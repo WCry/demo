@@ -47,11 +47,10 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 //        http. oauth2Login().loginPage("/authentication/require").tokenEndpoint().and().authorizationEndpoint().
 //                baseUri("").authorizationRequestResolver(null);
-
         http. oauth2Login().loginPage("/authentication/require").tokenEndpoint().
                 accessTokenResponseClient(socialOAuth2AccessTokenResponseClient)
                 .and().userInfoEndpoint().userService(socialOAuth2UserService);
-
+        
         //.authorizationEndpoint().
         //                authorizationRequestResolver(this.SocialOAuth2AuthorizationRequestResolver)
         //                .and()
