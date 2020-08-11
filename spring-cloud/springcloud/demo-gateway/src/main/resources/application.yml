@@ -1,14 +1,14 @@
 spring:
   application:
-    name: gatway
+    name: demo-gatway
   cloud:
     consul:
-      host: localhost
+      host: 10.19.154.66
       port: 8500
       discovery:
         enabled: true
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-        service-name: xxxx
+        service-name: ${spring.application.name}
         prefer-ip-address: true
     gateway:
       discovery:
@@ -18,8 +18,14 @@ spring:
       routes:
         # This route rule used to forward request to activity server
         - id: activity-route  #每一个路由节点的ID
-          uri: lb://activity  #路由转发的URL配置规则
+          uri: lb://service-hi  #路由转发的URL配置规则
           predicates:         #路由的谓词处理  有多种谓词处理
-            - Path=/activity/**
+            - Path=/client/**
           filters:            #路由用呢些处理
             - StripPrefix=1   #gatway使用哪些过滤的处理和过滤器的参数 这里的名称约定方式 前缀可以不写
+        - id: hi
+          uri: lb://service-feign  #路由转发的URL配置规则
+            predicates:         #路由的谓词处理  有多种谓词处理
+              - Path=/hi/**
+            filters:            #路由用呢些处理
+              - StripPrefix=1   #gatway使用哪些过滤的处理和过滤器的参数 这里的名称约定方式 前缀可以不写
