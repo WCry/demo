@@ -9,15 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modules>
-        <module>storage-service</module>
-        <module>order-service</module>
-        <module>business-service</module>
-        <module>account-service</module>
-        <module>demo-gateway</module>
-        <module>service-hi</module>
-        <module>service-feign</module>
-        <module>service-zuul</module>
+        <module>gateway-service</module>
         <module>common</module>
+        <module>business-model</module>
     </modules>
     <groupId>com.example.springclouddemo</groupId>
     <artifactId>springclouddemo-parent</artifactId>
@@ -33,6 +27,10 @@
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
