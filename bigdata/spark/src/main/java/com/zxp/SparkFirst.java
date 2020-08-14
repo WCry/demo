@@ -1,5 +1,7 @@
 package com.zxp;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -12,6 +14,8 @@ import java.util.List;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * Spark 基本介绍：
+ * https://www.jianshu.com/p/6411fff954cf
  */
 public class SparkFirst {
     //需要在环境变量中配置HADOOP_HOME路径
@@ -20,6 +24,8 @@ public class SparkFirst {
     private static String master = "local[*]";
 
     public static void main(String[] args) {
+        //修改日志级别
+        Logger.getLogger("org").setLevel(Level.ERROR);
         JavaSparkContext sc = null;
         try {
             //初始化 JavaSparkContext
