@@ -16,7 +16,25 @@
         <module>authour-service</module>
         <module>seckill-service</module>
         <module>cart-service</module>
+        <module>goods-service</module>
+        <module>service-user</module>
     </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.example.springclouddemo</groupId>
+                <artifactId>service-account-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.example.springclouddemo</groupId>
+                <artifactId>service-user-api</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -25,6 +43,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example.springclouddemo</groupId>
+            <artifactId>common</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BusinessController {
 
     private final BusinessService businessService;
-    @Autowired
+
     public BusinessController(BusinessService businessService) {
         this.businessService = businessService;
     }
