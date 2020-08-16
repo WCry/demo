@@ -39,95 +39,98 @@ public class SparkThreeDegreeRelationship {
 
             //并行化创建rdd 创建第一个RDD
             JavaRDD<String> rdd = sc.textFile("config/DegreedRelationship.txt");
-            //对于数据进行拆分
-            JavaPairRDD<String, String> split = rdd.flatMapToPair((PairFlatMapFunction<String, String, String>) s -> {
-                String[] AB = s.split(",");
-                List<Tuple2<String, String>> abList = new ArrayList<>(2);
-                //以哪个为key的对象放在前面
-                abList.add(new Tuple2(AB[0], AB[1]));
-                abList.add(new Tuple2(AB[1], AB[0]));
-                return abList.iterator();
+            //构建一度双向关系
+            JavaPairRDD<String, String> r1 = rdd.flatMapToPair(new PairFlatMapFunction<String, String, String>() {
+                @Override
+                public Iterator<Tuple2<String, String>> call(String t) throws Exception {
+                    List<Tuple2<String, String>> list = new ArrayList();
+                    String[] eachterm = t.split(",");
+                    list.add(new Tuple2(eachterm[0], eachterm[0] + "," + eachterm[1] + "," + "deg1friend" + "," + eachterm[0] + "->" + eachterm[1]));
+                    list.add(new Tuple2(eachterm[1], eachterm[1] + "," + eachterm[0] + "," + "deg1friend" + "," + eachterm[1] + "->" + eachterm[0]));
+                    return list.iterator();
+                }
             });
+            r1.persist(StorageLevel.DISK_ONLY());
             //通过key进行分组
-            JavaPairRDD<String, Iterable<String>> abGroupByKey = split.groupByKey();
+            JavaPairRDD<String, Iterable<String>> r2 = r1.groupByKey();
             //求解二度关系
-            JavaPairRDD<String, String> r3 = abGroupByKey.flatMapToPair((PairFlatMapFunction<Tuple2<String, Iterable<String>>, String, String>) t -> {
+            JavaPairRDD<String, String> r3 = r2.flatMapToPair((PairFlatMapFunction<Tuple2<String, Iterable<String>>, String, String>) t -> {
                 //对于共同认识某一个key的人
                 List<Tuple2<String, String>> list = new ArrayList();
                 for (Iterator iter = t._2.iterator(); iter.hasNext(); ) {
-                    String str1_1 = (String) iter.next();
-                    //标识关系
-                    list.add(new Tuple2(t._1+ "->" + str1_1, "deg1,"+t._1+ "->" + str1_1));
-                    for (Iterator iter2 = t._2.iterator(); iter2.hasNext(); ) {
-                        String str2_1 = (String) iter2.next();
-                        if (!str1_1.equals(str2_1)) {
-                            list.add(new Tuple2(str1_1 + "->" + str2_1, "deg2," + str1_1 + "->" + t._1 + "->" + str2_1));
+                    String str1 = (String)iter.next();
+                    String str1_1 = str1.split(",")[1];
+                    list.add(new Tuple2(t._1+ "->" + str1_1,"deg1friend,"+t._1+ "->" + str1_1));
+                    for (Iterator iter2 = t._2.iterator(); iter2.hasNext();) {
+                        String str2 = (String)iter2.next();
+                        String str2_1 = str2.split(",")[1];
+                        if(!str1_1.equals(str2_1)){
+                            list.add(new Tuple2(str1_1+ "->" + str2_1 ,"deg2friend,"+str1_1 + "->" + t._1 + "->" + str2_1));
                         }
                     }
                 }
                 return list.iterator();
             });
             //直接关系结果
-            JavaPairRDD<String, String> r4 = r3.filter(new Function<Tuple2<String,String>,Boolean>(){
+            JavaPairRDD<String, String> r4 = r3.filter(new Function<Tuple2<String, String>, Boolean>() {
                 @Override
                 public Boolean call(Tuple2<String, String> v1) throws Exception {
                     //如果包含直接关系 表示是否接受
-                    return v1._2.indexOf("deg1")>-1;
+                    return v1._2.indexOf("deg1friend") > -1;
                 }
             });
             //存储结果到磁盘当中
             r4.persist(StorageLevel.DISK_ONLY());
             //二度和一度  根据key减去一度关系
-            JavaPairRDD<String, String> r5=r3.subtractByKey(r4);
-            System.out.println("二度关系信息：");
-            JavaPairRDD<String, String> r6 = r5.flatMapToPair(new PairFlatMapFunction<Tuple2<String,String>,String,String>(){
+            JavaPairRDD<String, String> r5 = r3.subtractByKey(r4);
+            //不进行去重 需要在这里需要进行分类 然后在重新构建二度双向关系
+            JavaPairRDD<String, String> r6 = r5.flatMapToPair(new PairFlatMapFunction<Tuple2<String, String>, String, String>() {
                 @Override
                 public Iterator<Tuple2<String, String>> call(Tuple2<String, String> t) throws Exception {
                     List<Tuple2<String, String>> list = new ArrayList();
                     String t0 = t._1.split("->")[0];
                     String t1 = t._1.split("->")[1];
                     String t2_1 = t._2.split(",")[1];
-                    list.add(new Tuple2(t0, t0 + "," + t1 + "," + "deg2friend"+ "," +t2_1));
-                    list.add(new Tuple2(t1, t1 + "," + t0 + "," + "deg2friend"+ "," +t2_1));
+                    list.add(new Tuple2(t0, t0 + "," + t1 + "," + "deg2friend" + "," + t2_1));
+                    list.add(new Tuple2(t1, t1 + "," + t0 + "," + "deg2friend" + "," + t2_1));
                     return list.iterator();
                 }
             });
             //初始和R6进行求和
-            JavaPairRDD<String, String> r7= split.union(r6);
+            JavaPairRDD<String, String> r7 = r1.union(r6);
             //对于R7进行按照key进行排序
             JavaPairRDD<String, Iterable<String>> r8 = r7.groupByKey();
 
-            System.out.println("线路走向："+ StringUtils.join(r8.collect(), ","));
             //分析出三度关系
-            JavaPairRDD<String, String> r9 = r8.flatMapToPair(new PairFlatMapFunction<Tuple2<String,Iterable<String>>,String,String>(){
+            JavaPairRDD<String, String> r9 = r8.flatMapToPair(new PairFlatMapFunction<Tuple2<String, Iterable<String>>, String, String>() {
                 @Override
-                public Iterator<Tuple2<String, String>> call(
-                        Tuple2<String, Iterable<String>> t) throws Exception {
+                public Iterator<Tuple2<String, String>> call(Tuple2<String, Iterable<String>> t) throws Exception {
                     List<Tuple2<String, String>> list = new ArrayList();
-                    for (Iterator iter = t._2.iterator(); iter.hasNext();) {
-                        String str1 = (String)iter.next();
+                    for (Iterator iter = t._2.iterator(); iter.hasNext(); ) {
+                        String str1 = (String) iter.next();
                         String str1_0 = str1.split(",")[0];
                         String str1_1 = str1.split(",")[1];
                         String str1_2 = str1.split(",")[2];
                         String str1_3 = str1.split(",")[3];
-                        for (Iterator iter2 = t._2.iterator(); iter2.hasNext();) {
-                            String str2 = (String)iter2.next();
+                        for (Iterator iter2 = t._2.iterator(); iter2.hasNext(); ) {
+                            String str2 = (String) iter2.next();
                             String str2_0 = str2.split(",")[0];
                             String str2_1 = str2.split(",")[1];
                             String str2_2 = str2.split(",")[2];
                             String str2_3 = str2.split(",")[3];
-                            if(!str1_1.equals(str2_1) && str1_2.equals("deg2friend") && str2_2.equals("deg1friend") && !(str1_3.indexOf(str2_1)>-1) && (str1_3.split("->")[0].equals(str1_1))
-                                    &&str1_0.equals(str2_0)) {
-                                list.add(new Tuple2(str1_1+ "->" + str2_1 ,"deg3friend,"+str1_3+"->"+str2_1));
+                            if (!str1_1.equals(str2_1) && str1_2.equals("deg2friend") && str2_2.
+                                    equals("deg1friend") && !(str1_3.indexOf(str2_1) > -1) && (str1_3.split("->")[0].equals(str1_1)) && str1_0.equals(str2_0)) {
+                                list.add(new Tuple2(str1_1 + "->" + str2_1, "deg3friend," + str1_3 + "->" + str2_1));
                             }
                         }
                     }
                     return list.iterator();
                 }
             });
+            //减去一度关系和二度关系， 得到三度关系
             JavaPairRDD<String, String> r10 = r9.subtractByKey(r4);
 
-            System.out.println("线路走向："+StringUtils.join(r10.collect(), ","));
+            System.out.println("线路走向：" + StringUtils.join(r10.collect(), ","));
 
             Map<String, Long> r11 = r10.countByKey();
 
