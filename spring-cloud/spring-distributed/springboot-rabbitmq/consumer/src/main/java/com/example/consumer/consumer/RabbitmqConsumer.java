@@ -56,11 +56,11 @@ public class RabbitmqConsumer {
     }
 
 
-    @RabbitListener(queues = "direct.queue.a")
-    public void directAQueueConsumer(Message message) {
-        System.out.println("收到来自于直接交换A队列消息:");
-        System.out.println(new String(message.getBody()));
-    }
+//    @RabbitListener(queues = "direct.queue.a")
+//    public void directAQueueConsumer(Message message) {
+//        System.out.println("收到来自于直接交换A队列消息:");
+//        System.out.println(new String(message.getBody()));
+//    }
 
     @RabbitListener(queuesToDeclare = @Queue(value = "direct.queue.b"))
     @SendTo(value="direct.queue.b")
