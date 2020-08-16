@@ -16,6 +16,8 @@ import java.util.List;
  * @since 3.0
  * Spark 基本介绍：
  * https://www.jianshu.com/p/6411fff954cf
+ * spark类库说明
+ * http://spark.apache.org/docs/2.4.4/api/java/index.html
  */
 public class SparkFirst {
     //需要在环境变量中配置HADOOP_HOME路径
