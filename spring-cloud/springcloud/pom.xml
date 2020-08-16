@@ -13,6 +13,7 @@
         <module>gateway-service</module>
         <module>common</module>
         <module>business-model</module>
+        <module>service-api</module>
     </modules>
     <groupId>com.example.springclouddemo</groupId>
     <artifactId>springclouddemo-parent</artifactId>

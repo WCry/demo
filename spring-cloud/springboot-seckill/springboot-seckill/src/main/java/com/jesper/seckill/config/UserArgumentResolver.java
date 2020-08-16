@@ -21,8 +21,12 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
-    @Autowired
+    final
     UserService userService;
+
+    public UserArgumentResolver(UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * 当参数类型为User才做处理
