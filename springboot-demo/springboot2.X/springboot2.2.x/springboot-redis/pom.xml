@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <!-- redis操作 默认采用jedis的连接操作-->
+        <!-- redis操作 默认采用lettuce的连接操作-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>

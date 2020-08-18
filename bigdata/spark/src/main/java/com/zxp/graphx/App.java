@@ -183,12 +183,14 @@ public class App {
         int check = toJavaPairRDD(g2.vertices(), tagInteger).join(toJavaPairRDD(g.vertices(), tagInteger)).
                 map(new Function<Tuple2<Object, Tuple2<Integer, Integer>>, Integer>() {
             public Integer call(Tuple2<Object, Tuple2<Integer, Integer>> t) {
-                //相同减去_2_1是新数据 _2_2是原图的数据
+                //对于所有的顶点都进行这样的运算相同减去_2_1是新数据
+                // _2_2是原图的数据，映射到一个Key上面
                 System.out.println("t._2._1"+t._2._1+" t._2._2"+ t._2._2);
                 return t._2._1 - t._2._2;
             }
         }).reduce(new Function2<Integer, Integer, Integer>() {
             public Integer call(Integer a, Integer b) {
+                //对于所有顶点相减的结果 进行求和
                 System.out.println("a"+a+"b"+b);
                 return a + b;
             }
