@@ -12,10 +12,13 @@ import org.apache.spark.graphx.EdgeTriplet;
 import org.apache.spark.graphx.Graph;
 import org.apache.spark.graphx.Pregel;
 import org.apache.spark.graphx.util.GraphGenerators;
-
-//主要是Scala的版本冲突  稍后解决
-import scala.Predef.$eq$colon$eq;
+import scala.Function1;
+import scala.Function2;
 import scala.Tuple2;
+//主要是Scala的版本冲突  稍后解决
+import scala.Predef.*;//
+// .$eq$colon$eq$;
+
 
 import scala.collection.Iterator;
 import scala.collection.JavaConverters;
@@ -29,14 +32,6 @@ import scala.runtime.AbstractFunction3;
  * @author zhangxuepei
  * @since 3.0
  */
-
-
-
-
-
-
-
-
 public class SingleSourceShortestPath {
 
     static abstract class SerializableFunction1<T1, R> extends AbstractFunction1<T1, R>
@@ -55,7 +50,8 @@ public class SingleSourceShortestPath {
     }
     private static final ClassTag<Double> tagDouble = ClassTag$.MODULE$.apply(Double.class);
 
-    private static final $eq$colon$eq<Object,Double> eqDouble = new $eq$colon$eq<Object, Double>(){
+    private static final $eq$colon$eq eqDouble = new $eq$colon$eq(){
+        @Override
         public Double apply(Object arg0) {
             return Double.parseDouble(arg0.toString());
         };
@@ -77,6 +73,7 @@ public class SingleSourceShortestPath {
         },tagDouble);
         Integer verteId = 42;
 
+        //通过操作顶点映射成为一个新的图
         Graph<Double, Double> initalGraph = shortGraph.mapVertices(new SerializableFunction2<Object, Object, Double>() {
             @Override
             public Double apply(Object a, Object b) {
