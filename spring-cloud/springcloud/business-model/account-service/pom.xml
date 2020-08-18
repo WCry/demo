@@ -16,6 +16,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.example.springclouddemo</groupId>
+            <artifactId>service-account-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -45,6 +49,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

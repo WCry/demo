@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 
 //https://blog.csdn.net/weixin_43931625/article/details/105944727
+//https://blog.csdn.net/weixin_43931625/article/details/106455666
 //
 @SpringBootApplication
 public class SsoServerApplication {

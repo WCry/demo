@@ -18,12 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/demo")
 public class DemoController {
 
-    @Autowired
+    final
     RedisService redisService;
 
 
-    @Autowired
+    final
     MQSender sender;
+
+    public DemoController(RedisService redisService, MQSender sender) {
+        this.redisService = redisService;
+        this.sender = sender;
+    }
 
 //    @RequestMapping("/mq")
 //    @ResponseBody

@@ -8,3 +8,8 @@ spring:
     type: ehcache
     ehcache:
       config: dasd
+
+server:
+  tomcat:
+    max-threads: 1000
+    max-connections: 10000
