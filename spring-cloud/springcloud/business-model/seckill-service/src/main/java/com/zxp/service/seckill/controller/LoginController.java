@@ -1,10 +1,9 @@
 package com.zxp.service.seckill.controller;
 
-import com.jesper.seckill.result.Result;
-import com.jesper.seckill.service.UserService;
-import com.jesper.seckill.vo.LoginVo;
+
 import com.zxp.resoponse.Result;
 import com.zxp.service.seckill.service.UserService;
+import com.zxp.service.seckill.vo.LoginVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

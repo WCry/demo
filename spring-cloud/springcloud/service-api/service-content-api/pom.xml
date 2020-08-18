@@ -9,4 +9,5 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>content-api</artifactId>
+    <packaging>jar</packaging>
 </project>

@@ -34,9 +34,10 @@
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>    
+            <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>   
+            <version>1.18.12</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -71,21 +72,8 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.11</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.locationtech.geomesa/geomesa-hbase-datastore -->
-            <!--  <dependency>
-                  <groupId>org.locationtech.geomesa</groupId>
-                  <artifactId>geomesa-hbase-datastore_2.11</artifactId>
-                  <version>2.3.1</version>
-              </dependency>-->
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+
 
 </project>

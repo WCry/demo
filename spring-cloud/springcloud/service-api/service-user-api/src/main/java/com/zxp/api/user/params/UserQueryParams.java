@@ -1,4 +1,4 @@
-package com.zxp.api.user.pojo;
+package com.zxp.api.user.params;
 
 import lombok.Data;
 

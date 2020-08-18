@@ -7,18 +7,14 @@ import lombok.Data;
  */
 @Data
 public class UserParams {
-
-    private String username;//用户名
-
-    private String password;//密码
-
-    private String phone;//注册手机号
-
-    private String email;//注册邮箱
-
-    private String sourceType;//会员来源：1:PC，2：H5，3：Android，4：IOS
-
-    private String nickName;//昵称
-
-    private String name;//真实姓名
+    //用户名
+    private String username;
+    //密码
+    private String password;
+    //注册手机号
+    private String phone;
+    //昵称
+    private String nickName;
+    //真实姓名
+    private String name;
 }
