@@ -32,7 +32,6 @@ public class SparkFirst {
         try {
             //初始化 JavaSparkContext
             SparkConf conf = new SparkConf().setAppName(appName).setMaster(master);
-           // conf.setSparkHome("D:\\hadoop-2.9.2\\bin");
             sc = new JavaSparkContext(conf);
             // 构造数据源
             List<Integer> data = Arrays.asList(1, 2, 3, 4, 5);

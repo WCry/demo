@@ -30,10 +30,6 @@ import scala.runtime.BoxedUnit;
  * @since 3.0
  */
 
-
-
-
-
 public class EdgeCount {
     // sendMsg and mergeMsg supplied to aggregateMessages()need to be
     // both Scala (for GraphX API) and Serializable (for Spark)
