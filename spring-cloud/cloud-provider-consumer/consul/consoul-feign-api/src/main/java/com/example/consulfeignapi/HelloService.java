@@ -1,5 +1,6 @@
 package com.example.consulfeignapi;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,8 +10,12 @@ import java.util.Map;
 
 
 public interface HelloService {
-    @GetMapping("/hello")
-    String hello(String name);
+
+    @GetMapping("/helloBytes")
+    ResponseEntity<byte[]> hello2();
+
+    @PostMapping("/hello")
+    String hello(@RequestBody String name);
 
     @PostMapping("/county")
     Language countyLanguage(String name);

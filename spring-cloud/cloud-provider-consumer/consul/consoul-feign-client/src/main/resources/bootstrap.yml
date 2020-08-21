@@ -13,7 +13,7 @@ spring:
         prefer-ip-address: true
         health-check-path: ${server.servlet.context-path}/actuator/health
         health-check-interval: 15s
-        instance-id: consul-feign-client
+        #instance-id: consul-feign-client
         enabled: true
         deregister: true
         serviceName: ${spring.application.name}
