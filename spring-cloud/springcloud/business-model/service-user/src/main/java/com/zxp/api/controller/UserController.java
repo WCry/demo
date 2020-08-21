@@ -2,7 +2,7 @@ package com.zxp.api.controller;
 
 import com.zxp.api.user.UserFeignAPI;
 import com.zxp.api.user.params.UserParams;
-import com.zxp.api.user.pojo.UserQueryParams;
+import com.zxp.api.user.params.UserQueryParams;
 import com.zxp.api.user.vo.UserVo;
 import com.zxp.resoponse.Result;
 

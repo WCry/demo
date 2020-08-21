@@ -1,15 +1,6 @@
 package com.zxp.service.seckill.controller;
 
-import com.jesper.seckill.bean.OrderInfo;
-import com.jesper.seckill.bean.User;
-import com.jesper.seckill.redis.RedisService;
-import com.jesper.seckill.result.CodeMsg;
-import com.jesper.seckill.result.Result;
-import com.jesper.seckill.service.GoodsService;
-import com.jesper.seckill.service.OrderService;
-import com.jesper.seckill.service.UserService;
-import com.jesper.seckill.vo.GoodsVo;
-import com.jesper.seckill.vo.OrderDetailVo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

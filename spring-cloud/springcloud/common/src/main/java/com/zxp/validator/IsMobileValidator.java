@@ -1,7 +1,6 @@
 package com.zxp.validator;
 
 
-import com.zxp.service.util.ValidatorUtil;
 import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintValidator;

@@ -25,4 +25,5 @@ public class GenericExtendsTest {
 
         Fruit object = fruits.get(0);    // compile success
     }
+
 }

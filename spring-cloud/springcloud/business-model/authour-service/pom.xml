@@ -12,7 +12,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>service-feign</name>
     <description>Demo project for Spring Boot</description>
-
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

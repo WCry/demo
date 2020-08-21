@@ -1,4 +1,4 @@
-package com.zxp.service.seckill.util;
+package com.zxp.validator;
 
 
 
