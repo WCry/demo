@@ -1,7 +1,6 @@
-package com.zxp.springbootfirstapplication;
+package com.zxp.controller;
 
-import com.zxp.controller.TestParamsValidatedController;
-import com.zxp.entry.TestValidatedParams;
+import com.zxp.validatedata.ValidatedParams;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TestParamValidated {
     @Autowired
-    private TestParamsValidatedController testParamsValidatedController;
+    private ParamsValidatedController paramsValidatedController;
     @Test
     public void contextLoads() {
-        TestValidatedParams testValidatedParams=new TestValidatedParams();
+        ValidatedParams testValidatedParams=new ValidatedParams();
         testValidatedParams.setNumbers(10000);
-        testParamsValidatedController.testValidated(testValidatedParams);
+        paramsValidatedController.testValidated(testValidatedParams);
     }
 }

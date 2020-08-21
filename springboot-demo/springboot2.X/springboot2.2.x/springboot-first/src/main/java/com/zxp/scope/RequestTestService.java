@@ -1,6 +1,6 @@
-package com.zxp.service;
+package com.zxp.scope;
 
-import com.zxp.config.RequestScopeAction;
+import com.zxp.scope.RequestScopeAction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

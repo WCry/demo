@@ -1,4 +1,4 @@
-package com.zxp;
+package com.zxp.customerserver;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -11,8 +11,9 @@ import java.net.URI;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 利用JAVA 实现一个Server的监听
  */
-public class TestServer extends Thread{
+public class CustomerServer extends Thread{
     @Override
     public void run() {
         super.run();
@@ -40,8 +41,6 @@ public class TestServer extends Thread{
         public void handle(HttpExchange exchange) throws IOException {
             URI uri = exchange.getRequestURI();
             System.out.println(uri);
-            TestInstance.getInstance().setString(uri.toString());
-            System.out.println(TestInstance.getInstance());
             //        System.out.println("getProtocol:" + exchange.getProtocol());//协议版本
             //        System.out.println("getRequestMethod:" + exchange.getRequestMethod());//请求方法GET、POST
             //        System.out.println("getResponseCode:" + exchange.getResponseCode());//返回已经设置的响应code，还没设置返回-1

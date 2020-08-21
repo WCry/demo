@@ -1,14 +1,11 @@
-package com.zxp.entry;
+package com.zxp.validatedata;
 
-
-import javax.validation.constraints.Max;
 
 /**
  * @author zhangxuepei
  * @since 3.0
  */
-public class TestValidatedParams extends AbstractTestValidatedParams {
-
+public class ValidatedParams extends AbstractValidatedParams {
 
     public void setNumbers( Integer numbers) {
         super.setNumbers(numbers);

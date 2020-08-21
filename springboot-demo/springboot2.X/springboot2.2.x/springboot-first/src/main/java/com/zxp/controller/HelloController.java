@@ -1,8 +1,7 @@
 package com.zxp.controller;
 
-import com.zxp.TestInstance;
-import com.zxp.service.SingleAService;
-import com.zxp.service.SingleCService;
+import com.zxp.scope.SingleAService;
+import com.zxp.scope.SingleCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachePut;
@@ -18,19 +17,11 @@ public class HelloController {
     @Autowired
     private SingleAService singleAService;
 
-
-
     @Autowired
     private SingleCService singleCService;
     @GetMapping("/dsad/{name}")
     @CachePut("dsad")
     public String hello(@PathVariable(name = "name")  String name) {
-        System.out.println(TestInstance.getInstance());
-//        classAService.printClass();
-//        classC.setName(name);
-//        System.out.println("classC：："+classC.getName());
-//        classAService.setName(name);
-//        System.out.println("classAService::"+classAService.getName());
         return "hello , " +port+":"+ name;
     }
     @GetMapping("/getName")

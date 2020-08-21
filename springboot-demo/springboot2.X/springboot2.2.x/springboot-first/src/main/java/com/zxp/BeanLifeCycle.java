@@ -16,23 +16,25 @@ import org.springframework.stereotype.Component;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * Bean的声明感知流程
  */
 @Component
-public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingBean,
+public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, InitializingBean,
         DisposableBean, BeanFactoryAware, BeanFactoryPostProcessor {
     private String name;
+    //测试是用@Autowired定义的初始化方法
     @Autowired
-    public void testIni(){
+    public void testIniMethod(){
         System.out.println("Autowired 方法执行");
     }
 
     /**
-     * 设置Bean的Name
+     * BeanNameAware感知的设置Bean的Name
      * @param name
      */
     @Override
     public void setBeanName(String name) {
-        System.out.println("设置对象的Name"+name);
+        System.out.println("BeanNameAware " + "设置对象的Name"+name);
     }
 
     /**
@@ -45,7 +47,8 @@ public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingB
     @Nullable
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("处理在构造对象在Bean的初始化之前");
+        //在这里可以实现Bean 对象上注解的处理  所有的Bean对象都会经过这里
+        System.out.println("BeanPostProcessor " + "处理在构造对象在Bean的初始化之前");
         return bean;
     }
 
@@ -59,6 +62,8 @@ public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingB
     @Nullable
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        //在这里可以实现Bean 对象上注解的处理  所有的Bean对象都会经过这里
+        // 这里也可以
         System.out.println("处理在构造对象之后");
         return bean;
     }
@@ -69,7 +74,9 @@ public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingB
      */
     @Override
     public void destroy() throws Exception {
-        System.out.println("程序结束，对象销毁");
+        System.out.println(" " +
+                "程序结束，DisposableBean" +
+                "对象销毁，主要用来处理资源的释放");
     }
 
     /**
@@ -78,20 +85,12 @@ public class BeanLife implements BeanNameAware, BeanPostProcessor, InitializingB
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("属性设置之后处理");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        System.out.println("Bean属性设置之后处理");
     }
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("设置Bean对象的工厂");
+        System.out.println("BeanFactoryAware 设置Bean对象的工厂");
     }
 
     @Override

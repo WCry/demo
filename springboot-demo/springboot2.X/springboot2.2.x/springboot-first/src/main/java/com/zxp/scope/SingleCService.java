@@ -1,4 +1,4 @@
-package com.zxp.service;
+package com.zxp.scope;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

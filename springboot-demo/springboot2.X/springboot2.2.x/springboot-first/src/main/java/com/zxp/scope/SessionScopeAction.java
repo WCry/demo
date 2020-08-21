@@ -1,12 +1,13 @@
-package com.zxp.config;
+package com.zxp.scope;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 可以针对一个Seesion请求创建一个对象
+ * 只在同一个Session是同一个对象
  */
 @Component
 @SessionScope

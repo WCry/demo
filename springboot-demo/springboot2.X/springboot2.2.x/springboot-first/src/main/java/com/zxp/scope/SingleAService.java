@@ -1,4 +1,4 @@
-package com.zxp.service;
+package com.zxp.scope;
 
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Service;

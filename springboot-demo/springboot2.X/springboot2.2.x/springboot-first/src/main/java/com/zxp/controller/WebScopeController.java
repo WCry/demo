@@ -1,7 +1,7 @@
 package com.zxp.controller;
 
-import com.zxp.config.RequestScopeAction;
-import com.zxp.config.SessionScopeAction;
+import com.zxp.scope.RequestScopeAction;
+import com.zxp.scope.SessionScopeAction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
  * session在同一个浏览器中可以获取到设置的值
  */
 @RestController
-public class TestWebScope {
+public class WebScopeController {
     private final RequestScopeAction requestScopeAction;
     private final SessionScopeAction sessionScopeAction;
 
-    public TestWebScope(RequestScopeAction requestScopeAction, SessionScopeAction sessionScopeAction) {
+    public WebScopeController(RequestScopeAction requestScopeAction, SessionScopeAction sessionScopeAction) {
         this.requestScopeAction = requestScopeAction;
         this.sessionScopeAction = sessionScopeAction;
     }

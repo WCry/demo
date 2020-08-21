@@ -1,4 +1,4 @@
-package com.zxp.entry;
+package com.zxp.validatedata;
 
 import javax.validation.constraints.Max;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
  * @since 3.0
  */
 
-public abstract class AbstractTestValidatedParams {
+public abstract class AbstractValidatedParams {
 
     @Max(value = 100,groups = Groups.groups100.class, message = "数量不能超过一百")
     @Max(value = 1000,groups = Groups.groups1000.class,message = "数量不能超过一千")

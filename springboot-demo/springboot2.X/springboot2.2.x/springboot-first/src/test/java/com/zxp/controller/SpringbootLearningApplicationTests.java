@@ -1,7 +1,7 @@
-package com.zxp.springbootfirstapplication;
+package com.zxp.controller;
 
-import com.zxp.service.SingleAService;
-import com.zxp.service.WorkAsyncService;
+import com.zxp.scope.SingleAService;
+import com.zxp.asytask.WorkAsyncService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootFirstApplicationTests {
+public class SpringbootLearningApplicationTests {
 
     @Autowired
     private SingleAService classA;
