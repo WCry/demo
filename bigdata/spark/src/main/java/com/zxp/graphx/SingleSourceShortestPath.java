@@ -4,14 +4,12 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
-import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.graphx.Edge;
 import org.apache.spark.graphx.EdgeDirection;
 import org.apache.spark.graphx.EdgeTriplet;
 import org.apache.spark.graphx.Graph;
 import org.apache.spark.graphx.Pregel;
 import org.apache.spark.graphx.util.GraphGenerators;
-//报错 不影响使用
 import scala.Predef.$eq$colon$eq;
 import scala.Tuple2;
 import scala.collection.Iterator;
@@ -25,6 +23,8 @@ import scala.runtime.AbstractFunction3;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+//报错 不影响使用
 
 /**
  * @author zhangxuepei
@@ -52,10 +52,10 @@ public class SingleSourceShortestPath {
         Logger.getLogger("org").setLevel(Level.ERROR);
         //初始化 JavaSparkContext
         SparkConf conf = new SparkConf().setAppName(appName).setMaster(master);
-        // conf.setSparkHome("D:\\hadoop-2.9.2\\bin");
-        JavaSparkContext sc = new JavaSparkContext(conf);
+        SparkContext sparkContext=new SparkContext(conf);
+       // JavaSparkContext sc =new JavaSparkContext(conf);
         //产生一百个随机顶点的图
-        Graph<Object, Double> shortGraph = GraphGenerators.logNormalGraph(sc, 100, 1, 4.0, 1.3, -1).
+        Graph<Object, Double> shortGraph = GraphGenerators.logNormalGraph(sparkContext, 100, 1, 4.0, 1.3, -1).
                 mapEdges(new SerializableFunction1<Edge<Object>, Double>() {
                     @Override
                     public Double apply(Edge<Object> a) {
@@ -80,7 +80,6 @@ public class SingleSourceShortestPath {
 
         Pregel.apply(initalGraph, Double.POSITIVE_INFINITY, Integer.MAX_VALUE, EdgeDirection.Out(),
                 new SerializableFunction3<Object, Double, Double, Double>() {
-
                     @Override
                     public Double apply(Object a, Double b, Double c) {
                         System.out.println("b before" + b);
@@ -121,7 +120,7 @@ public class SingleSourceShortestPath {
                     }
                 }, tagDouble, tagDouble, tagDouble);
         //.vertices().toJavaRDD().foreach(f->System.out.println("Show the generated graph"+f));
-        sc.stop();
+        sparkContext.stop();
     }
 
     static abstract class SerializableFunction1<T1, R> extends AbstractFunction1<T1, R> implements Serializable {
