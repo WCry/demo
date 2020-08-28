@@ -1,9 +1,12 @@
 package com.zxp.controller;
 
 import com.sun.deploy.net.HttpResponse;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +19,7 @@ import java.io.UnsupportedEncodingException;
  */
 @RestController
 public class ResponseSetStatus {
-    @PostMapping("/responseEntry")
+    @GetMapping(value = "/responseEntry", produces={MediaType.APPLICATION_OCTET_STREAM_VALUE})
     public ResponseEntity<byte[]> returnResponseEntry() throws UnsupportedEncodingException {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-MD5", "8ac8489932db6327334c9b6d58544cfe");
