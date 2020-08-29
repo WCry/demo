@@ -1,0 +1,8 @@
+package com.zxp.user.service.seckill.mapper;
+
+/**
+ * user:zxp
+ * Day:2020,08,15
+ **/
+public class repositty {
+}
