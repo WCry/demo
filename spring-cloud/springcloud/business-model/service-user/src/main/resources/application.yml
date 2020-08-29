@@ -1,0 +1,15 @@
+server:
+  port: 8760
+spring:
+  application:
+    name: service-user
+  cloud:
+    consul:
+      host: 10.19.154.66
+      port: 8500
+      discovery:
+        register: true
+        serviceName: ${spring.application.name}}
+        port: ${server.port}
+        hostname: ${spring.cloud.client.ip-address}
+        enabled: true
