@@ -49,6 +49,11 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.example.springclouddemo</groupId>
+            <artifactId>account-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

@@ -11,6 +11,6 @@
 
     <artifactId>goods-api</artifactId>
     <packaging>jar</packaging>
-    <description>商品微服务的POJO feign</description>
+    <description>商品微服务的</description>
 
 </project>

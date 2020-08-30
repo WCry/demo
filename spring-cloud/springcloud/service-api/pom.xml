@@ -12,13 +12,14 @@
     <groupId>com.example.springclouddemo</groupId>
     <artifactId>service-api</artifactId>
     <modules>
-        <module>service-content-api</module>
-        <module>service-goods-api</module>
-        <module>service-order-api</module>
-        <module>service-search-api</module>
-        <module>service-seckill-api</module>
-        <module>service-account-api</module>
-        <module>service-user-api</module>
+        <module>content-api</module>
+        <module>goods-api</module>
+        <module>order-api</module>
+        <module>search-api</module>
+        <module>seckill-api</module>
+        <module>account-api</module>
+        <module>user-api</module>
+        <module>item-api</module>
     </modules>
     <dependencies>
         <dependency>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-search-api</artifactId>
+    <artifactId>search-api</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <!--SpringDataES依赖-->
