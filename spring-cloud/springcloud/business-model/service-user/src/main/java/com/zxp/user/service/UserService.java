@@ -5,6 +5,7 @@ import com.zxp.user.params.UserParams;
 import com.zxp.user.params.UserQueryParams;
 import com.zxp.user.po.User;
 import com.zxp.user.repository.UserRepository;
+import com.zxp.user.vo.UserVo;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,7 +13,9 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<UserDTO> findById(String id);
+    Optional<UserVo> findUserVOById(String id);
+
+    Optional<UserDTO> findUserDTOById(String id);
 
 
     Boolean existsById(String id);

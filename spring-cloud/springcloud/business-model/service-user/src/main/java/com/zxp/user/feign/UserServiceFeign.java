@@ -22,7 +22,7 @@ public class UserServiceFeign implements UserFeignAPI {
 
     @Override
     public Result<Optional<UserDTO>> findById(String id) {
-        return Result.success(this.userService.findById(id));
+        return Result.success(this.userService.findUserDTOById(id));
     }
 
     @Override

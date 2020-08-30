@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 public class HelloController {
     //注解方式获取配置文件中的属性
@@ -29,6 +33,14 @@ public class HelloController {
         System.out.println("classC::"+ singleCService.getName());
         System.out.println("classAService::"+ singleAService.getName());
         return "hello";
+    }
+    @GetMapping("/getOptional")
+    public Map helloOptional(String name) {
+        Map<String,Object> dasd=new HashMap<>();
+        System.out.println("classC::"+ singleCService.getName());
+        System.out.println("classAService::"+ singleAService.getName());
+        dasd.put("data",Optional.ofNullable(name));
+        return dasd;
     }
 
 }

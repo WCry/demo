@@ -3,33 +3,35 @@ package com.zxp.user.controller;
 
 import com.zxp.user.params.UserParams;
 import com.zxp.user.params.UserQueryParams;
-import com.zxp.user.resoponse.Result;
+import com.zxp.user.vo.UserVo;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 
 @RestController
 public class UserController{
 
-    public Result<UserVo> findById(String id) {
+    public Optional<Boolean> findUserVoById(String id) {
+        return Optional.empty();
+    }
+
+
+    public Boolean existsById(String id) {
         return null;
     }
 
 
-    public Result<Boolean> existsById(String id) {
+    public Boolean existsByQuery(UserQueryParams userQueryParams) {
         return null;
     }
 
 
-    public Result<Boolean> existsByQuery(UserQueryParams userQueryParams) {
+    public Boolean registerUser(UserParams user) {
         return null;
     }
 
-
-    public Result<UserVo> registerUser(UserParams user) {
-        return null;
-    }
-
-    public Result<UserVo> unRegisterUser(String id) {
+    public Boolean unRegisterUser(String id) {
         return null;
     }
 
