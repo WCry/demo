@@ -45,7 +45,7 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/register")
-    Result<UserDTO> registerUser(UserParams user);
+    Result<Boolean> registerUser(UserParams user);
 
     /**
      * 解除注册
@@ -54,7 +54,7 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/unRegister")
-    Result<UserDTO> unRegisterUser(String id);
+    Result<Boolean> unRegisterUser(String id);
 
 
 }

@@ -2,7 +2,7 @@ package com.zxp.user.service.impl;
 
 import com.zxp.user.dto.UserDTO;
 import com.zxp.user.params.UserQueryParams;
-import com.zxp.user.po.User;
+import com.zxp.user.po.UserDO;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.user.service.UserService;
 import org.springframework.stereotype.Service;
@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean registerUser(User user) {
-        userRepository.save(user);
+    public Boolean registerUser(UserDO userDO) {
+        userRepository.save(userDO);
         return true;
     }
 

@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Data
 @Table(name="tb_user")
-public class User implements Serializable{
+public class UserDO implements Serializable{
 
 	@Id
 	private String openID;

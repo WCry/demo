@@ -5,8 +5,10 @@ import com.zxp.user.UserFeignAPI;
 import com.zxp.user.dto.UserDTO;
 import com.zxp.user.params.UserParams;
 import com.zxp.user.params.UserQueryParams;
+import com.zxp.user.po.UserDO;
 import com.zxp.user.resoponse.Result;
 import com.zxp.user.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -36,12 +38,15 @@ public class UserServiceFeign implements UserFeignAPI {
     }
 
     @Override
-    public Result<UserDTO> registerUser(UserParams user) {
+    public Result<Boolean> registerUser(UserParams userParams) {
+        UserDO userDO =new UserDO();
+        BeanUtils.copyProperties(userParams, userDO);
+        this.userService.registerUser(userDO);
         return null;
     }
 
     @Override
-    public Result<UserDTO> unRegisterUser(String id) {
+    public Result<Boolean> unRegisterUser(String id) {
         return null;
     }
 
