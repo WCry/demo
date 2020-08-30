@@ -4,6 +4,7 @@ spring:
   application:
     name: service-user
   cloud:
+    #Consul配置
     consul:
       host: 10.19.154.66
       port: 8500
@@ -13,3 +14,10 @@ spring:
         port: ${server.port}
         hostname: ${spring.cloud.client.ip-address}
         enabled: true
+#datasource 配置
+  datasource:
+    url: jdbc:mysql://192.168.2.131:3306/db_account?useSSL=false&serverTimezone=UTC
+    username: root
+    data-password: 123456
+  jpa:
+    show-sql: true

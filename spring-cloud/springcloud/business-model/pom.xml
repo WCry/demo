@@ -24,13 +24,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.example.springclouddemo</groupId>
-                <artifactId>service-account-api</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.example.springclouddemo</groupId>
-                <artifactId>service-user-api</artifactId>
+                <artifactId>user-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>

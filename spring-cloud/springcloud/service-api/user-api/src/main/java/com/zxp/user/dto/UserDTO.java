@@ -1,10 +1,10 @@
-package com.zxp.user.vo;
+package com.zxp.user.dto;
 
 import lombok.Data;
 
 
 @Data
-public class UserVo {
+public class UserDTO {
     private String openID;
     private String nickname;
     private String phone;

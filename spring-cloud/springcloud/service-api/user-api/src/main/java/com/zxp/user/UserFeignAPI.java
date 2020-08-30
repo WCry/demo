@@ -1,11 +1,13 @@
 package com.zxp.user;
 
+import com.zxp.user.dto.UserDTO;
 import com.zxp.user.params.UserParams;
 import com.zxp.user.params.UserQueryParams;
-import com.zxp.user.vo.UserVo;
 import com.zxp.user.resoponse.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.Optional;
 
 
 public interface UserFeignAPI {
@@ -16,7 +18,7 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/load/{id}")
-    Result<UserVo> findById(@PathVariable(name = "id") String id);
+    Result<Optional<UserDTO>> findById(@PathVariable(name = "id") String id);
 
     /**
      * 通过OpenID查询用户是否存在
@@ -43,7 +45,7 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/register")
-    Result<UserVo> registerUser(UserParams user);
+    Result<UserDTO> registerUser(UserParams user);
 
     /**
      * 解除注册
@@ -52,7 +54,7 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/unRegister")
-    Result<UserVo> unRegisterUser(String id);
+    Result<UserDTO> unRegisterUser(String id);
 
 
 }
