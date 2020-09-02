@@ -1,5 +1,6 @@
 package sec;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -9,7 +10,7 @@ import java.util.Base64;
  * @since 3.0
  */
 public class MD5Util {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
        String plainText= "dassssssssssssssssdddddddddddddddddddddddssssss1";
         byte[] secretBytes = null;
         try {
