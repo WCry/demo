@@ -1,7 +1,7 @@
 package com.zxp.service.seckill.controller;
 
 
-import com.zxp.resoponse.Result;
+import com.zxp.user.resoponse.Result;
 import com.zxp.service.seckill.service.UserService;
 import com.zxp.service.seckill.vo.LoginVo;
 import org.slf4j.Logger;

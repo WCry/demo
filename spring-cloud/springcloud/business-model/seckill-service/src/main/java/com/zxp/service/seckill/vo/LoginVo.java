@@ -2,7 +2,7 @@ package com.zxp.service.seckill.vo;
 
 
 
-import com.zxp.validator.IsMobile;
+import com.zxp.user.validator.IsMobile;
 
 import javax.validation.constraints.NotNull;
 

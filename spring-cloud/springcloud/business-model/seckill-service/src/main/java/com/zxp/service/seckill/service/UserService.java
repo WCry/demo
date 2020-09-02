@@ -2,7 +2,7 @@ package com.zxp.service.seckill.service;
 
 
 import com.zxp.service.seckill.bean.User;
-import com.zxp.exception.GlobalException;
+import com.zxp.user.exception.GlobalException;
 import com.zxp.service.seckill.mapper.UserMapper;
 import com.zxp.service.seckill.redis.RedisService;
 import com.zxp.service.seckill.redis.UserKey;

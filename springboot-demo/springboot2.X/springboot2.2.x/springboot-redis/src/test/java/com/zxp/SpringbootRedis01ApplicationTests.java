@@ -102,7 +102,6 @@ public class SpringbootRedis01ApplicationTests {
         String uerInfoKey = "user_info";
         //删除对应的key，所有的缓存时间都是相对于key进行设置
         stringUserRedisTemplate.delete(uerInfoKey);
-
         for (int i = 0; i < 2; i++) {
             int count = 2;
             for (int j = 0; j < 1000000; j++) {

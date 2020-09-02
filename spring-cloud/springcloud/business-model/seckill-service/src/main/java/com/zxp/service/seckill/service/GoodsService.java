@@ -14,8 +14,7 @@ public class GoodsService {
     //乐观锁冲突最大重试次数
     private static final int DEFAULT_MAX_RETRIES = 5;
 
-    final
-    GoodsMapper goodsMapper;
+    final GoodsMapper goodsMapper;
 
     public GoodsService(GoodsMapper goodsMapper) {
         this.goodsMapper = goodsMapper;

@@ -18,19 +18,19 @@
         <module>seckill-service</module>
         <module>cart-service</module>
         <module>goods-service</module>
-        <module>service-user</module>
+        <module>service-userDO</module>
     </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.example.springclouddemo</groupId>
-                <artifactId>service-account-api</artifactId>
+                <artifactId>userDO-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.example.springclouddemo</groupId>
-                <artifactId>service-user-api</artifactId>
+                <artifactId>account-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>
