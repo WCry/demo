@@ -9,8 +9,6 @@ spring:
       config: dasd
 #开启远程调试
   devtools:
-    restart:
-      enabled: true
     remote:
       #调试客户端和服务器之间的秘钥
       secret: 123456
