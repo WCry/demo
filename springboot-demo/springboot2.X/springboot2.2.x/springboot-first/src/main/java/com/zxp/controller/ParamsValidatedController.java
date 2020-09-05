@@ -2,6 +2,7 @@ package com.zxp.controller;
 
 import com.zxp.validatedata.AbstractValidatedParams;
 import com.zxp.validatedata.ValidatedParams;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author zhangxuepei
  * @since 3.0
  */
+@Slf4j
 @RestController
 public class ParamsValidatedController {
     @GetMapping("/test/params/validated100")

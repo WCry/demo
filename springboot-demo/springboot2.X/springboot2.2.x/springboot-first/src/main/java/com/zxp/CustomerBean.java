@@ -1,14 +1,17 @@
 package com.zxp;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author zhangxuepei
  * @since 3.0
  */
+@Slf4j
 public class CustomerBean {
     public void initMethod(){
-        System.out.println("@Bean 初始化设置，资源初始化");
+        log.debug("@Bean 初始化设置，资源初始化");
     }
     public void destroyMethod(){
-        System.out.println("@Bean资源释放，资源被释放了");
+        log.debug("@Bean资源释放，资源被释放了");
     }
 }

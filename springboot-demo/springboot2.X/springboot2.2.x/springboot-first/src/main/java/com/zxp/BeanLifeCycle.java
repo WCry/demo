@@ -1,5 +1,6 @@
 package com.zxp;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
  * @since 3.0
  * Bean的声明感知流程
  */
+@Slf4j
 @Component
 public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, InitializingBean,
         DisposableBean, BeanFactoryAware, BeanFactoryPostProcessor {
@@ -25,7 +27,7 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
     //测试是用@Autowired定义的初始化方法
     @Autowired
     public void testIniMethod(){
-        System.out.println("Autowired 方法执行");
+        log.debug("Autowired 方法执行");
     }
 
     /**
@@ -34,7 +36,7 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
      */
     @Override
     public void setBeanName(String name) {
-        System.out.println("BeanNameAware " + "设置对象的Name"+name);
+        log.debug("BeanNameAware " + "设置对象的Name"+name);
     }
 
     /**
@@ -48,7 +50,7 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         //在这里可以实现Bean 对象上注解的处理  所有的Bean对象都会经过这里
-        System.out.println("BeanPostProcessor " + "处理在构造对象在Bean的初始化之前");
+        log.debug("BeanPostProcessor " + "处理在构造对象在Bean的初始化之前");
         return bean;
     }
 
@@ -64,7 +66,7 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         //在这里可以实现Bean 对象上注解的处理  所有的Bean对象都会经过这里
         // 这里也可以
-        System.out.println("处理在构造对象之后");
+        log.debug("处理在构造对象之后");
         return bean;
     }
 
@@ -74,7 +76,7 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
      */
     @Override
     public void destroy() throws Exception {
-        System.out.println(" " +
+        log.debug(" " +
                 "程序结束，DisposableBean" +
                 "对象销毁，主要用来处理资源的释放");
     }
@@ -85,16 +87,16 @@ public class BeanLifeCycle implements BeanNameAware, BeanPostProcessor, Initiali
      */
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("Bean属性设置之后处理");
+        log.debug("Bean属性设置之后处理");
     }
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("BeanFactoryAware 设置Bean对象的工厂");
+        log.debug("BeanFactoryAware 设置Bean对象的工厂");
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        System.out.println("配置Bean对象工厂");
+        log.debug("配置Bean对象工厂");
     }
 }
