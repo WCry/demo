@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class SpringbootLearningApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(SpringbootLearningApplication.class, args);
 	}
 	@Bean(initMethod = "initMethod", destroyMethod = "destroyMethod")

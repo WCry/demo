@@ -1,5 +1,6 @@
 package com.zxp.scope;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Service;
 
@@ -7,12 +8,13 @@ import org.springframework.stereotype.Service;
  * @author zhangxuepei
  * @since 3.0
  */
+@Slf4j
 @Service
 public class SingleAService {
 
     public void printClass() {
-        System.out.println("This is Class A: " + this);
-        System.out.println(getClassB());
+        log.debug("This is Class A: " + this);
+        log.debug(getClassB().getName());
     }
 
     public String getName() {
@@ -22,7 +24,7 @@ public class SingleAService {
     public void setName(String name) {
         ScopeBInstance scopeBInstance = getClassB();
         scopeBInstance.setName(name);
-        System.out.println(scopeBInstance.getName());
+        log.debug(scopeBInstance.getName());
     }
 
     /**
