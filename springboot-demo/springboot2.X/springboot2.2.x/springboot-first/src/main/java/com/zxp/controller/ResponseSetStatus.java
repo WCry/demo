@@ -1,7 +1,5 @@
 package com.zxp.controller;
 
-import com.sun.deploy.net.HttpResponse;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

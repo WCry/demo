@@ -26,3 +26,6 @@
   singletonObjects：已经实力化好，初始化完成的对象
   earlySingletonObjects：当前简单的实力化好，为进行初始化对象（可以通过引用地址找到对象）
   singletonFactories：常见bean对象的工厂，负责实力化Bean
+  
+开启远程调试部署：
+https://blog.csdn.net/u010588262/article/details/86999228?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param  
