@@ -14,13 +14,4 @@ public class GoodsApplication {
         SpringApplication.run(GoodsApplication.class, args);
     }
 
-    /* @Bean
-    public IRule feignRulesas() {
-        return new MyRule();
-    }
-    @Bean
-    public ServerListUpdater ribbonServerListUpdater() {
-        return new EurekaNotificationServerListUpdater();
-    }*/
-
 }
