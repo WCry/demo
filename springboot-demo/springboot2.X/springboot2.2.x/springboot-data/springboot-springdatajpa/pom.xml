@@ -8,9 +8,9 @@
         <version>2.2.5.RELEASE</version>
     </parent>
     <groupId>com.wyj</groupId>
-    <artifactId>springboot-springdatajpa01</artifactId>
+    <artifactId>springboot-springdatajpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-springdatajpa01</name>
+    <name>springboot-springdatajpa</name>
     <description>springboot整合springdatajpa实现增删改查、分页、排序功能</description>
 
     <properties>

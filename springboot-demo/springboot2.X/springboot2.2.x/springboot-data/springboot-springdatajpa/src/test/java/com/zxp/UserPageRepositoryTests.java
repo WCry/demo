@@ -25,7 +25,7 @@ public class UserPageRepositoryTests {
      */
     @Test
     public void findAllBySort() {
-        List<User> userList = (List<User>) userPageRepository.findAll(new Sort(Sort.Direction.ASC, "age"));
+        List<User> userList = (List<User>) userPageRepository.findAll(Sort.by(Sort.Direction.ASC, "age"));
         System.out.println(userList.size());
         System.out.println(userList);
     }
@@ -35,7 +35,7 @@ public class UserPageRepositoryTests {
      */
     @Test
     public void findAllByPageable() {
-        Page<User> userPage = userPageRepository.findAll(new PageRequest(0, 20));
+        Page<User> userPage = userPageRepository.findAll(PageRequest.of(0, 20));
         userPage.getNumber();//页数
         userPage.getContent();//分页的数据
         userPage.getTotalPages();//总共的页数

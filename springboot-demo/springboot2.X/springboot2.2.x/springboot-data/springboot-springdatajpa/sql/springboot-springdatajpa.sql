@@ -12,9 +12,9 @@ MySQL - 5.6.43-log : Database - springboot-springdatajpa01
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`springboot-springdatajpa01` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`jpatest` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `springboot-springdatajpa01`;
+USE `jpatest`;
 
 /*Table structure for table `hibernate_sequence` */
 

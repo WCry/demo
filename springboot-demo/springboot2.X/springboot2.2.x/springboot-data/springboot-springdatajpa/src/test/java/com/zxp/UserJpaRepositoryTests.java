@@ -90,7 +90,7 @@ public class UserJpaRepositoryTests {
      */
     @Test
     public void findAllByPage() {
-        PageRequest pageRequest = new PageRequest(0, 1);
+        PageRequest pageRequest = PageRequest.of(0, 1);
         Page<User> userPage = userJpaRepository.findAll(pageRequest);
         Assert.assertTrue(userPage.getContent().size() == 1);
     }
@@ -100,7 +100,7 @@ public class UserJpaRepositoryTests {
      */
     @Test
     public void findAllByPageAndSort() {
-        PageRequest pageRequest = new PageRequest(0, 3, Sort.by(Sort.Direction.ASC, "age"));
+        PageRequest pageRequest =  PageRequest.of(0, 3, Sort.by(Sort.Direction.ASC, "age"));
         Page<User> userPage = userJpaRepository.findAll(pageRequest);
         List<User> userList = userPage.getContent();
         for (User user : userList) {
@@ -202,7 +202,7 @@ public class UserJpaRepositoryTests {
         List<User> userList = userJpaRepository.findAll(example);
         System.out.println(userList);
     }
-    
+
     @Test
     public void findByNameAndAge() {
         List<User> userList = userJpaRepository.findByNameAndAge("ljk", 18);

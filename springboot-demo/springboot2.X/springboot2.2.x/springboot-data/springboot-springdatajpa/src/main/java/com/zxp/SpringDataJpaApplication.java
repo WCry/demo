@@ -2,7 +2,10 @@ package com.zxp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+//开启JPA仓库
+@EnableJpaRepositories
 @SpringBootApplication
 public class SpringDataJpaApplication {
 

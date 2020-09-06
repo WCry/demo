@@ -9,9 +9,9 @@
         <relativePath/>
     </parent>
     <groupId>com.wyj</groupId>
-    <artifactId>springboot-tkmybatis01</artifactId>
+    <artifactId>springboot-tkmybatis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-tkmybatis01</name>
+    <name>springboot-tkmybatis</name>
     <description>通用mapper</description>
 
     <properties>
