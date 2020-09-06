@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDTO> findById(String id) {
-        return this.userRepository.findByOpenID(id);
+    public Optional<UserDTO> findUserDTOById(String id) {
+        return Optional.empty();
     }
 
     @Override

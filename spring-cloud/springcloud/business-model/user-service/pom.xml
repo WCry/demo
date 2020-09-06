@@ -9,17 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example.springclouddemo</groupId>
-    <artifactId>service-userDO</artifactId>
+    <artifactId>service-user</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.example.springclouddemo</groupId>
-            <artifactId>userDO-api</artifactId>
+            <artifactId>user-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
     </dependencies>
 </project>

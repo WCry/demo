@@ -18,13 +18,13 @@
         <module>seckill-service</module>
         <module>cart-service</module>
         <module>goods-service</module>
-        <module>service-userDO</module>
+        <module>user-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.example.springclouddemo</groupId>
-                <artifactId>userDO-api</artifactId>
+                <artifactId>user-api</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>
@@ -37,6 +37,10 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>

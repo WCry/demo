@@ -42,6 +42,7 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>com.example.springclouddemo</groupId>
                 <artifactId>common</artifactId>
