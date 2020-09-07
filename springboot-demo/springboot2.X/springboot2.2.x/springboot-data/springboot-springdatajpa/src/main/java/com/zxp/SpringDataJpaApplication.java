@@ -1,17 +1,16 @@
-package com.zxp.goods;
+package com.zxp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-@EnableFeignClients
 //开启JPA仓库
 @EnableJpaRepositories
-public class GoodsApplication {
+@SpringBootApplication
+public class SpringDataJpaApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(GoodsApplication.class, args);
+        SpringApplication.run(SpringDataJpaApplication.class, args);
     }
 
 }

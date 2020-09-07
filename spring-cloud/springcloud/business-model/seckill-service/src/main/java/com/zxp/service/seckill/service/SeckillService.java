@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by jiangyunxiong on 2018/5/23.
- */
+
 @Service
 public class SeckillService {
 

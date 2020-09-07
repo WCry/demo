@@ -18,7 +18,7 @@
         <module>search-api</module>
         <module>seckill-api</module>
         <module>account-api</module>
-        <module>userDO-api</module>
+        <module>user-api</module>
         <module>item-api</module>
     </modules>
     <dependencies>

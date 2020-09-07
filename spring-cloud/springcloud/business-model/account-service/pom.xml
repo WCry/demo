@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.example.springclouddemo</groupId>
-            <artifactId>service-account-api</artifactId>
+            <artifactId>account-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,10 +42,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
@@ -54,9 +50,7 @@
             <artifactId>account-api</artifactId>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

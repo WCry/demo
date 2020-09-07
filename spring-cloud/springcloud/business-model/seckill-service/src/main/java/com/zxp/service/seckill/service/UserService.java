@@ -17,9 +17,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by jiangyunxiong on 2018/5/22.
- */
+
 @Service
 public class UserService {
 

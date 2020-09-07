@@ -1,7 +1,8 @@
 package com.zxp.storage.service;
 
-import com.zxp.account.entity.Storage;
-import com.zxp.account.repository.StorageDAO;
+
+import com.zxp.storage.entity.Storage;
+import com.zxp.storage.repository.StorageDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
