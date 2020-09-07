@@ -8,21 +8,22 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author zhangxuepei
  * @since 3.0
  */
 @RestController
-public class DownloadFile {
-    @GetMapping(value = "dowload",produces =
-            MediaType.APPLICATION_OCTET_STREAM_VALUE)
+public class FileOperation {
+    @GetMapping(value = "dowload",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResourceRegion downloadResourceRegion(@Nullable @RequestHeader(HttpHeaders.RANGE) StringReader range) throws IOException {
         if(!Objects.isNull(range)){
            //解析Range参数
@@ -42,5 +43,32 @@ public class DownloadFile {
         //ResourceRegion 没有在头部设置下在文件的名称
         //解析是通过ResourceRegionHttpMessageConverter进行解析返回Response
         return resourceRegion;
+    }
+
+    /**
+     * 获取上传ID
+     * @return
+     */
+    @PostMapping(value = "init")
+    public String uploadInit(){
+        return UUID.randomUUID().toString();
+    }
+
+    /**
+     * 根据ID进行上传分片数据
+     * @return
+     */
+    @PostMapping(value = "uploadFile")
+    public String uploadFile(){
+        return UUID.randomUUID().toString();
+    }
+
+    /**
+     * 上传完成
+     * @return
+     */
+    @PostMapping(value = "completeUploadFile")
+    public String completeUploadFile(){
+        return UUID.randomUUID().toString();
     }
 }
