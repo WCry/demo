@@ -1,14 +1,12 @@
 package com.zxp.controller;
 
 import com.zxp.SpringbootLearningApplication;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -17,8 +15,7 @@ import java.io.UnsupportedEncodingException;
  * @author zhangxuepei
  * @since 3.0
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringbootLearningApplication.class)
+@SpringBootTest(classes= SpringbootLearningApplication.class)
 public class ResponseSetStatusTest {
     @Autowired
     private ResponseSetStatus responseSetStatus;

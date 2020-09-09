@@ -57,6 +57,16 @@
     <build>
         <finalName>firstApp</finalName>
         <plugins>
+            <!--SpringBoot的测试-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!--maven插件的使用关于打包编译版本控制 https://www.cnblogs.com/huangtao1927/articles/8734934.html-->
+            <!--https://blog.csdn.net/qq_40489025/article/details/98510967 关于maven-plugin打包出来的jar不可依赖问题-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
