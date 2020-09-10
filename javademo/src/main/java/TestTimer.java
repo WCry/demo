@@ -1,5 +1,3 @@
-import com.sun.org.apache.xerces.internal.impl.xs.traversers.XSAttributeChecker;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
