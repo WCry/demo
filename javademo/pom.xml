@@ -91,5 +91,11 @@
             <artifactId>commons-compress</artifactId>
             <version>1.20</version>
         </dependency>
+        <!--Minio客户端-->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>7.1.2</version>
+        </dependency>
     </dependencies>
 </project>
