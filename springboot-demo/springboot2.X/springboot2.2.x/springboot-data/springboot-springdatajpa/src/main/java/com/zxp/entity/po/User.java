@@ -3,11 +3,7 @@ package com.zxp.entity.po;
 import lombok.*;
 
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 必须有Entity 是表的实体
@@ -23,5 +19,7 @@ public class User {
     private Integer age;
     private String sex;
     private String address;
+    @Version
+    private int version;
 
 }

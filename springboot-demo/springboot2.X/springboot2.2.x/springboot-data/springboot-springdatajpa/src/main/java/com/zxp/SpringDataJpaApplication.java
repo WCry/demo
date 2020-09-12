@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //开启JPA仓库
+//https://www.cnblogs.com/yihuihui/p/11071949.html
 @EnableJpaRepositories
 @SpringBootApplication
 public class SpringDataJpaApplication {

@@ -1,0 +1,21 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /consumer
+
+spring:
+  application:
+    name: consumer
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        health-check-path: ${server.servlet.context-path}/actuator/health
+        health-check-interval: 15s
+        enabled: true
+        deregister: true
+        serviceName: ${spring.application.name}
+      defaultContext: ${server.servlet.context-path}
+      enabled: true

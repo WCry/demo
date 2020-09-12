@@ -2,14 +2,15 @@
 
 **springboot整合springdatajpa实现增删改查、分页、排序功能**
 
-## springboot整合springdatajpa、分页、排序功能关键点
+springboot整合springdatajpa、分页、排序功能关键点
+
     1、在pom.xml文件中添加依赖
         <!-- redis -->
         <dependency>
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
+    
     2、在application.properties文件中配置jpa配置
         # datasource
         spring.datasource.url=jdbc:mysql://188.131.247.26:3306/springboot-springdatajpa01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
@@ -82,3 +83,17 @@
                     .withIgnorePaths("id");//忽略字段，即不管id是什么值都不加入查询条件
             Example<User> example = Example.of(user, matcher);
             List<User> userList = userJpaRepository.findAll(example);
+Springboot事务：
+
+​      读事务和读写事务。
+
+​      SpringBoot的@Transactional(readOnly=true)  ，readOnly=true代表只读事务
+
+​       https://www.cnblogs.com/jpfss/p/9151797.html
+
+​       https://blog.csdn.net/lztyll123/article/details/9130133
+
+​      SpringBoot事务参数说明。
+
+​      https://www.cnblogs.com/clwydjgs/p/9317849.html
+
