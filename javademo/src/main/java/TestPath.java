@@ -1,3 +1,5 @@
+import com.sun.corba.se.impl.naming.cosnaming.NamingContextDataStore;
+
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
@@ -9,5 +11,6 @@ public class TestPath {
     public static void main(String[] args) {
         Path path= FileSystems.getDefault().getPath("/dasd/dasd/dasd");
         System.out.println(path.subpath(1,2));
+        //泛型接口 不能直接使用
     }
 }

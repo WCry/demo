@@ -1,21 +1,20 @@
 package com.zxp.controller;
 
-import com.zxp.scope.SingleAService;
+import com.zxp.SpringbootLearningApplication;
 import com.zxp.asytask.WorkAsyncService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.zxp.scope.SingleAService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes= SpringbootLearningApplication.class)
 public class SpringbootLearningApplicationTests {
 
     @Autowired
@@ -36,7 +35,8 @@ public class SpringbootLearningApplicationTests {
 
     @Test
     public void asyncTest() throws Exception {
-        List<CompletableFuture> cfList = Stream.of("h1", "h2", "h3", "h4").map(v -> workAsyncService.doWork(v)).collect(Collectors.toList());
+        List<CompletableFuture> cfList = Stream.of("h1", "h2", "h3", "h4").
+                map(v -> workAsyncService.doWork(v)).collect(Collectors.toList());
         StringBuilder sb = new StringBuilder();
         CompletableFuture rs = CompletableFuture.allOf(cfList.toArray(new CompletableFuture[cfList.size()])).whenComplete((v, t) -> {
             cfList.forEach(cf -> {
@@ -50,4 +50,23 @@ public class SpringbootLearningApplicationTests {
         }
         System.out.println("------------------------" + sb.toString());
     }
+
+
+    @Test
+    public void asyncTestCancel() throws Exception {
+        Future<Boolean> completableFuture= workAsyncService.doCanCancelWork(100000033L);
+        System.out.println("asa");
+        Thread.sleep(1000);
+        System.out.println("即将取消");
+        //cancel 调用异步任务线程会立马中断 执行
+        completableFuture.cancel(true);
+        if(!completableFuture.isCancelled()){
+            System.out.println(completableFuture.get());
+            //异步任务的保存应该在主线程中进行保存 写入状态
+            //不应该在异步任务线程中进行保存任务
+            completableFuture.get();
+        }
+        Thread.sleep(10000);
+    }
+
 }
