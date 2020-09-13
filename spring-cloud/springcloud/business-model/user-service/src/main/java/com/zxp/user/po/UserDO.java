@@ -4,18 +4,17 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @ToString
 @Data
-@Entity
-@Table(name="tb_user")
+@Entity(name = "tb_user")
+@EntityListeners(AuditingEntityListener.class)
+//@Table(name="tb_user")
 public class UserDO implements Serializable{
 
 	@Id

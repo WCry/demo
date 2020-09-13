@@ -10,11 +10,12 @@ import com.zxp.user.resoponse.Result;
 import com.zxp.user.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 
-@Service
+@RestController
 public class UserServiceFeign implements UserFeignAPI {
     private final UserService userService;
 
