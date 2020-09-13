@@ -3,8 +3,10 @@ package com.zxp.user.service.impl;
 import com.zxp.user.dto.UserDTO;
 import com.zxp.user.params.UserQueryParams;
 import com.zxp.user.po.UserDO;
+import com.zxp.user.po.UsrNameNickNameOpenID;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.user.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,7 +21,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserDTO> findUserDTOById(String id) {
-        return Optional.empty();
+        Optional<UsrNameNickNameOpenID> result= userRepository.findByOpenID(id);
+        return  result.map(v->{ UserDTO userDTO=new UserDTO();
+        BeanUtils.copyProperties(v,userDTO);return Optional.of(userDTO);}).orElse(Optional.empty());
     }
 
     @Override

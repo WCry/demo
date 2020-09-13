@@ -1,21 +1,22 @@
 package com.zxp.service.seckill.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.common.util.concurrent.RateLimiter;
 import com.zxp.service.seckill.bean.SeckillOrder;
 import com.zxp.service.seckill.bean.User;
 import com.zxp.service.seckill.rabbitmq.MQSender;
 import com.zxp.service.seckill.rabbitmq.SecKillMessage;
 import com.zxp.service.seckill.redis.GoodsKey;
 import com.zxp.service.seckill.redis.RedisService;
-import com.zxp.service.seckill.result.CodeMsg;
 import com.zxp.service.seckill.result.Result;
 import com.zxp.service.seckill.service.GoodsService;
 import com.zxp.service.seckill.service.OrderService;
 import com.zxp.service.seckill.service.SeckillService;
 import com.zxp.service.seckill.vo.GoodsVo;
+import com.zxp.user.resoponse.CodeMsg;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.gateway.filter.ratelimit.RateLimiter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,7 +68,7 @@ public class SeckillController implements InitializingBean {
      */
     @RequestMapping(value = "/do_seckill", method = RequestMethod.POST)
     @ResponseBody
-    public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
+    public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) throws JsonProcessingException {
 
         if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
             return  Result.error(CodeMsg.ACCESS_LIMIT_REACHED);

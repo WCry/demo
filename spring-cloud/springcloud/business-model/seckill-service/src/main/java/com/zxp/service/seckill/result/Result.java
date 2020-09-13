@@ -1,5 +1,7 @@
 package com.zxp.service.seckill.result;
 
+import com.zxp.user.resoponse.CodeMsg;
+
 public class Result<T> {
 	
 	private int code;

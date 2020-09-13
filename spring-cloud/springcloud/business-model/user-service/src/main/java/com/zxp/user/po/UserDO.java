@@ -1,16 +1,20 @@
 package com.zxp.user.po;
 
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+@ToString
 @Data
+@Entity
 @Table(name="tb_user")
 public class UserDO implements Serializable{
 
@@ -55,9 +59,6 @@ public class UserDO implements Serializable{
 
     @Column(name = "sex")
 	private String sex;//性别，1男，0女
-
-    @Column(name = "user_level")
-	private Integer userLevel;//会员等级
 
     @Column(name = "birthday")
 	private Date birthday;//出生年月日

@@ -22,11 +22,11 @@ public class HelloTestController {
     public Optional<Integer> test() {
         Random random=new Random(10);
         Integer calculateNumber=(random.nextInt(10)+1)*100;
-        try {
-            Thread.sleep(calculateNumber);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(calculateNumber);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         return Optional.ofNullable(calculateNumber);
     }
 

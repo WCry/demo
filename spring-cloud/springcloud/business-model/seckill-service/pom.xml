@@ -9,9 +9,9 @@
     </parent>
     <packaging>jar</packaging>
     <groupId>com.example.springclouddemo</groupId>
-    <artifactId>service-hi</artifactId>
+    <artifactId>seckill-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>service-hi</name>
+    <name>seckill-service</name>
     <description>Demo project for Spring Boot</description>
     <dependencies>
         <!-- thymeleaf -->
@@ -64,6 +64,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>29.0-android</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
