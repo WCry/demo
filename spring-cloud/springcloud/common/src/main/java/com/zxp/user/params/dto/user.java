@@ -1,4 +1,4 @@
-package com.zxp.user.dto;
+package com.zxp.user.params.dto;
 
 public class user {
     private String name;

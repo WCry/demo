@@ -1,12 +1,13 @@
-package com.zxp.user.params;
+package com.zxp.user.params.register;
 
+import com.zxp.user.params.UserRegister;
 import lombok.Data;
 
 /**
  * 用户注册参数
  */
 @Data
-public class UserParams {
+public class UserRegisterParams implements UserRegister {
     //用户名
     private String username;
     //密码

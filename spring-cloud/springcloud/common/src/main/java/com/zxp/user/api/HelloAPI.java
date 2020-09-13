@@ -1,6 +1,6 @@
 package com.zxp.user.api;
 
-import com.zxp.user.dto.user;
+import com.zxp.user.params.dto.user;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

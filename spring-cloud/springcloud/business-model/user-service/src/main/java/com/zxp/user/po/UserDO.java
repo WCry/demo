@@ -1,5 +1,7 @@
 package com.zxp.user.po;
 
+import com.zxp.user.params.UserIdentifies;
+import com.zxp.user.params.UserBaseRegister;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,16 +14,16 @@ import java.util.Date;
 
 @ToString
 @Data
-@Entity(name = "tb_user")
+@Entity
+@Table(schema = "db_account",name = "tb_user")
 @EntityListeners(AuditingEntityListener.class)
-//@Table(name="tb_user")
-public class UserDO implements Serializable{
+public class UserDO implements Serializable, UserBaseRegister, UserIdentifies {
 
 	@Id
 	private String openID;
 
-    @Column(name = "username")
-	private String username;//用户名
+    @Column(name = "user_account")
+	private String userAccount;//用户名
 
     @Column(name = "password")
 	private String password;//密码，加密存储
