@@ -2,7 +2,7 @@ package com.zxp.user.api;
 
 import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.register.UserRegisterParams;
+import com.zxp.user.params.update.UserRegisterParams;
 import com.zxp.user.params.query.UserBaseQuery;
 import com.zxp.user.resoponse.Result;
 import org.springframework.web.bind.annotation.GetMapping;

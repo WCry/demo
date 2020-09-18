@@ -3,9 +3,7 @@ package com.zxp.user.service;
 import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.params.query.UserBaseQuery;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.register.UserRegisterParams;
-import com.zxp.user.po.UserDO;
-import org.springframework.lang.Nullable;
+import com.zxp.user.params.update.UserRegisterParams;
 
 import java.util.Optional;
 
@@ -18,7 +16,9 @@ public interface UserService {
 
     Boolean existsByQuery(UserBaseQuery userBaseQuery);
 
-    Boolean registerUser(UserRegisterParams userRegisterParams, Optional<UserIdentifyQuery> userIdentifyQuery);
+    Boolean registerUser(UserRegisterParams userRegisterParams);
+
+    Boolean updateUser(UserIdentifyQuery userIdentifyQuery,UserRegisterParams userRegisterParams);
 
     Boolean unRegisterUser(String id);
 }

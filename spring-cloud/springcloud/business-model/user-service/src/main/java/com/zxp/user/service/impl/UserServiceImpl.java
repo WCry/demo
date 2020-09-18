@@ -4,7 +4,7 @@ import com.zxp.user.params.UserBase;
 import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.params.query.UserBaseQuery;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.register.UserRegisterParams;
+import com.zxp.user.params.update.UserRegisterParams;
 import com.zxp.user.po.UserDO;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.user.service.UserService;
@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -47,20 +45,23 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Boolean registerUser(UserRegisterParams userRegisterParams, Optional<UserIdentifyQuery> userIdentifyQuery) {
-        Optional<UserDO> optionalUserDO = userIdentifyQuery.flatMap(v -> userRepository.findById(v.getOpenID()));
-        UserDO userDO = optionalUserDO.orElse(newUserDo());
-        BeanUtils.copyProperties(userRegisterParams, userDO);
-        userRepository.save(userDO);
-        return optionalUserDO.isPresent();
-    }
-
-    private UserDO newUserDo() {
+    public Boolean registerUser(UserRegisterParams userRegisterParams) {
         UserDO userDO = new UserDO();
         userDO.setOpenID(UUID.randomUUID().toString());
-        return userDO;
+        BeanUtils.copyProperties(userRegisterParams, userDO);
+        userRepository.save(userDO);
+        return true;
     }
 
+    @Override
+    public Boolean updateUser(UserIdentifyQuery userIdentifyQuery,UserRegisterParams userRegisterParams) {
+        Optional<UserDO> userDOOptional = userRepository.findById(userIdentifyQuery.getOpenID());
+        return userDOOptional.map(v -> {
+            BeanUtils.copyProperties(userRegisterParams, v);
+            userRepository.save(v);
+            return true;
+        }).orElse(false);
+    }
     @Override
     public Boolean unRegisterUser(String id) {
         try {

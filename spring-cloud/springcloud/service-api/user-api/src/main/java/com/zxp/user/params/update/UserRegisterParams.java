@@ -1,4 +1,4 @@
-package com.zxp.user.params.register;
+package com.zxp.user.params.update;
 
 import com.zxp.user.params.UserRegister;
 import lombok.Data;

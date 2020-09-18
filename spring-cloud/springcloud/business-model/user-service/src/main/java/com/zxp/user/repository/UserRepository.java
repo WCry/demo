@@ -8,6 +8,5 @@ import java.util.Optional;
 
 
 public interface UserRepository extends JpaRepository<UserDO, String> {
-
     Optional<UserBase> findByOpenID(String openid);
 }

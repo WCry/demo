@@ -4,12 +4,10 @@ package com.zxp.user.feign;
 import com.zxp.user.api.UserFeignAPI;
 import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.register.UserRegisterParams;
+import com.zxp.user.params.update.UserRegisterParams;
 import com.zxp.user.params.query.UserBaseQuery;
-import com.zxp.user.po.UserDO;
 import com.zxp.user.resoponse.Result;
 import com.zxp.user.service.UserService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,13 +44,12 @@ public class UserServiceFeign implements UserFeignAPI {
 
     @Override
     public Result<Boolean> updateUser(UserIdentifyQuery userIdentifyQuery, UserRegisterParams userRegisterParams) {
-        return null;
+        return Result.success(this.userService.updateUser(userIdentifyQuery,userRegisterParams));
     }
 
     @Override
     public Result<Boolean> registerUser(UserRegisterParams userRegisterParams) {
-
-        return Result.success(this.userService.registerUser(userRegisterParams,Optional.empty()));
+        return Result.success(this.userService.registerUser(userRegisterParams));
     }
 
     @Override
