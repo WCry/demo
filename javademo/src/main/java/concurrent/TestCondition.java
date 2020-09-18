@@ -1,5 +1,7 @@
 package concurrent;
 
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
@@ -29,6 +31,8 @@ public class TestCondition {
         waiter.start();
         Thread signaler = new Thread(new signaler());
         signaler.start();
+        Vector vector=new Vector();
+        vector.add("dsad");
     }
 
     static class waiter implements Runnable {

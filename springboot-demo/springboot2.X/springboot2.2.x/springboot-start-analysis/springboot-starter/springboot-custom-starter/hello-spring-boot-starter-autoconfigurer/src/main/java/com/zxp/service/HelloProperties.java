@@ -2,6 +2,9 @@ package com.zxp.service;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * 开启属性文件的映射到实体对象
+ */
 @ConfigurationProperties(prefix = "zxp.hello")
 public class HelloProperties {
 

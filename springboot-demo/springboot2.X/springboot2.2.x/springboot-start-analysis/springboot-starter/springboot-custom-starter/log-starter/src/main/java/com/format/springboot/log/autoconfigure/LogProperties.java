@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.CountDownLatch;
 
 
 @ConfigurationProperties(prefix = "mylog")
