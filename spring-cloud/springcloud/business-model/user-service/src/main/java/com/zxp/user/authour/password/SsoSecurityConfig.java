@@ -7,48 +7,38 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 
 @Configuration
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
-
+    private  final LoginSuccessHandler loginSuccessHandler;
+    private final JdbcTokenRepositoryImpl jdbcTokenRepository;
     @Autowired
-    public SsoSecurityConfig(@Qualifier("passwordDetailsService") UserDetailsService userDetailsService)
+    public SsoSecurityConfig(@Qualifier("passwordDetailsService") UserDetailsService userDetailsService, LoginSuccessHandler loginSuccessHandler, JdbcTokenRepositoryImpl jdbcTokenRepository)
     {
         this.userDetailsService = userDetailsService;
+        this.loginSuccessHandler = loginSuccessHandler;
+        this.jdbcTokenRepository = jdbcTokenRepository;
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/authentication/require").and().authorizeRequests()
-                .antMatchers("/message").permitAll().and().authorizeRequests()
-                .antMatchers("/hello").hasAuthority("ROLE_USER");
-        http.csrf().disable();
-        http.formLogin()
-                //展示登录界面的URL
-                .loginPage("/authentication/require")
-                //配置登录处理的URL 在认证中心的登录界面 登录表单的提交地方
-                .loginProcessingUrl("/authentication/form")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/authentication/require",
-                        "/authentication/form",
-                        "/**/*.js",
-                        "/**/*.css",
-                        "/**/*.jpg",
-                        "/**/*.png",
-                        "/**/*.woff2"
-                )
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .csrf().disable();
-
+//        http.formLogin().loginPage("/authentication/require").and().authorizeRequests()
+//                .antMatchers("/message").permitAll().and().authorizeRequests()
+//                .antMatchers("/hello").hasAuthority("ROLE_USER");
+        http.formLogin().loginPage("/authentication/require").permitAll().
+                successHandler(loginSuccessHandler).and().authorizeRequests()
+                .antMatchers("/images/**", "/checkCode", "/scripts/**", "/styles/**")
+                .permitAll().anyRequest().authenticated()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
+                .and().exceptionHandling().accessDeniedPage("/deny")
+                .and().rememberMe().tokenValiditySeconds(86400).tokenRepository(jdbcTokenRepository);
     }
 
     @Override

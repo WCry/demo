@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Controller
 public class LoginController {
-    @RequestMapping("/login")
+    @RequestMapping("/authentication/require")
     public String login(){
         System.out.println("dddddddddddddddddd");
         return "login";

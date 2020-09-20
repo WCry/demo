@@ -32,6 +32,7 @@ public class PasswordDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserAccountQuery userAccountQuery=new UserAccountQuery(username);
         Optional<UserSecurity> userSecurity= userService.findUserSecurityDTOByUserAccount(userAccountQuery);
+        //当前为固定角色信息
         return new User(username, passwordEncoder.encode(userSecurity.get().getPassword()),
                 AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER,ROLE_LOW,ROLE_MID"));
     }

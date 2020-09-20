@@ -2,11 +2,9 @@ package com.zxp.user.test;
 
 
 import com.zxp.user.UserApplication;
-import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.feign.UserServiceFeign;
 import com.zxp.user.params.query.UserIdentifyQuery;
 import com.zxp.user.po.UserDO;
-import com.zxp.user.params.UserBase;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.user.resoponse.Result;
 import org.junit.jupiter.api.Test;
@@ -29,7 +27,7 @@ public class TestAddUserDOInfo {
     @Test
     public void testQueryByIdentify(){
         String openID="e927d2ea-a460-4563-afd2-6a05e4567439";
-        System.out.println(userRepository.findBydsdsOpenID("张三"));
+        System.out.println(userRepository.findUserDTOByOpenID(openID));
         //System.out.println(userRepository.findBydsdsOpenID(openID));
 
 //        UserIdentifyQuery userIdentifyQuery=new UserIdentifyQuery();
@@ -70,7 +68,7 @@ public class TestAddUserDOInfo {
         userDO.setIsMobileCheck(false);
         UserDO ds = userRepository.save(userDO);
         userRepository.flush();
-        Optional<UserDO> dds = userRepository.findByOpenID(openID);
+        Optional<UserDO> dds = userRepository.findById(openID);
         System.out.println(dds.get());
         System.out.println(userRepository.findById(openID).get());
     }
