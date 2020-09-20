@@ -10,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
-import javax.sql.DataSource;
-
 @Configuration
 @Order(SecurityProperties.DEFAULT_FILTER_ORDER)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

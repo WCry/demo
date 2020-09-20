@@ -17,17 +17,17 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--和spring-cloud-starter-oauth2 可以二选一，这里只引用自动配置就可以-->
+<!--        和spring-cloud-starter-oauth2 可以二选一，这里只引用自动配置就可以-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
 <!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
 <!--            <scope>compile</scope>-->
 <!--        </dependency>-->
-        <!--starter 中包含的oauth2 的客户端服务端等maen依赖-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-oauth2</artifactId>-->
-<!--        </dependency>-->
+<!--        starter 中包含的oauth2 的客户端服务端等maen依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
 
     </dependencies>
     <build>

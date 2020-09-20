@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>business-service</artifactId>
+    <artifactId>cart-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>business-service</name>
+    <name>cart-service</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

@@ -30,21 +30,12 @@ public class SsoClient2Config extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
        //应用配置 自定义安全配置  SecurityConfigurerAdapter  配置自定义的Se
-       //  http.apply()  通过配置文件处理
-      //  http.securityContext(null);
-       // http.authenticationProvider(mobileCodeAuthenticationProvider());
-//        http.logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler())
-//                .permitAll();
+         //http.apply()  通过配置文件处理
+        //http.securityContext(null);
+        http.logout().logoutUrl("/logout").logoutSuccessHandler(new logoutSuccessHandler())
+                .permitAll();
     }
 
-//    public UsernamePasswordAuthenticationProvider usernamePasswordAuthenticationProvider() {
-//        return new UsernamePasswordAuthenticationProvider();
-//    }
-//
-//
-//    public MobileCodeAuthenticationProvider mobileCodeAuthenticationProvider() {
-//        return new MobileCodeAuthenticationProvider();
-//    }
 
     class logoutSuccessHandler implements LogoutSuccessHandler {
 

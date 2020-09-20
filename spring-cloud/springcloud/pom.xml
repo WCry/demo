@@ -10,7 +10,7 @@
         <!-- lookup parent from repository -->
     </parent>
     <modules>
-        <module>gateway-service</module>
+        <module>service-gateway</module>
         <module>common</module>
         <module>business-model</module>
         <module>service-api</module>
@@ -25,7 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
     <dependencies>

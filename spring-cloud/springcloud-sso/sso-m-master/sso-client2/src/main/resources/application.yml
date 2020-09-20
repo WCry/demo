@@ -1,4 +1,4 @@
-auth-server: http://localhost:8082/uaa
+auth-server: http://localhost:8089/uaa
 server:
   port: 8084
   servlet:
