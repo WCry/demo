@@ -2,6 +2,7 @@ package com.zxp.user.po;
 
 import com.zxp.user.params.UserIdentifies;
 import com.zxp.user.params.UserBaseRegister;
+import com.zxp.user.params.UserSecurity;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,7 +18,7 @@ import java.util.Date;
 @Entity
 @Table(schema = "db_account",name = "tb_user")
 @EntityListeners(AuditingEntityListener.class)
-public class UserDO implements Serializable, UserBaseRegister, UserIdentifies {
+public class UserDO implements Serializable, UserBaseRegister, UserIdentifies, UserSecurity {
 
 	@Id
 	private String openID;

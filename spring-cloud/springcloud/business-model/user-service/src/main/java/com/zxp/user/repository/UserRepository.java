@@ -1,12 +1,22 @@
 package com.zxp.user.repository;
 
+import com.zxp.user.params.UserSecurity;
+import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.po.UserDO;
-import com.zxp.user.params.UserBase;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
 
 public interface UserRepository extends JpaRepository<UserDO, String> {
-    Optional<UserBase> findByOpenID(String openid);
+
+    @Query("select  new com.zxp.user.params.dto.UserDTO(u.openID,u.nickName) from  UserDO u where u.openID=?1")
+    Optional<UserDTO> findUserDTOByOpenID(String openid);
+
+    @Query("select  new com.zxp.user.params.update.UserSecurityParams(u.userAccount,u.password,u.phone) from  UserDO u where u.openID=?1")
+    Optional<UserSecurity> findUserSecurityByOpenID(String openid);
+
+    @Query("select  new com.zxp.user.params.update.UserSecurityParams(u.userAccount,u.password,u.phone) from  UserDO u where u.userAccount=?1")
+    Optional<UserSecurity> findUserSecurityByUserAccount(String userAccount);
 }

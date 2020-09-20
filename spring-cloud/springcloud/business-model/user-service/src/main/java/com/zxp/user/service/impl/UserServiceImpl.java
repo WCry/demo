@@ -1,10 +1,11 @@
 package com.zxp.user.service.impl;
 
-import com.zxp.user.params.UserBase;
+import com.zxp.user.params.UserSecurity;
 import com.zxp.user.params.dto.UserDTO;
+import com.zxp.user.params.query.UserAccountQuery;
 import com.zxp.user.params.query.UserBaseQuery;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.update.UserRegisterParams;
+import com.zxp.user.params.update.UserSecurityParams;
 import com.zxp.user.po.UserDO;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.user.service.UserService;
@@ -24,18 +25,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserDTO> findUserDTOById(String id) {
-        Optional<UserBase> result = userRepository.findByOpenID(id);
-        return result.map(v -> {
-            UserDTO userDTO = new UserDTO();
-            BeanUtils.copyProperties(v, userDTO);
-            return Optional.of(userDTO);
-        }).orElse(Optional.empty());
+    public Optional<UserDTO> findUserDTOById(UserIdentifyQuery userIdentifyQuery) {
+        return userRepository.findUserDTOByOpenID(userIdentifyQuery.getOpenID());
     }
 
     @Override
-    public Boolean existsById(String id) {
-        return userRepository.existsById(id);
+    public Optional<UserSecurity> findUserSecurityDTOById(UserIdentifyQuery userIdentifyQuery) {
+        return userRepository.findUserSecurityByOpenID(userIdentifyQuery.getOpenID());
+    }
+
+    @Override
+    public Optional<UserSecurity> findUserSecurityDTOByUserAccount(UserAccountQuery userAccountQuery) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Boolean existsById(UserIdentifyQuery userIdentifyQuery) {
+        return userRepository.existsById(userIdentifyQuery.getOpenID());
     }
 
     @Override
@@ -45,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Boolean registerUser(UserRegisterParams userRegisterParams) {
+    public Boolean registerUser(UserSecurityParams userRegisterParams) {
         UserDO userDO = new UserDO();
         userDO.setOpenID(UUID.randomUUID().toString());
         BeanUtils.copyProperties(userRegisterParams, userDO);
@@ -54,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean updateUser(UserIdentifyQuery userIdentifyQuery,UserRegisterParams userRegisterParams) {
+    public Boolean updateUser(UserIdentifyQuery userIdentifyQuery, UserSecurityParams userRegisterParams) {
         Optional<UserDO> userDOOptional = userRepository.findById(userIdentifyQuery.getOpenID());
         return userDOOptional.map(v -> {
             BeanUtils.copyProperties(userRegisterParams, v);
@@ -62,6 +68,7 @@ public class UserServiceImpl implements UserService {
             return true;
         }).orElse(false);
     }
+
     @Override
     public Boolean unRegisterUser(String id) {
         try {

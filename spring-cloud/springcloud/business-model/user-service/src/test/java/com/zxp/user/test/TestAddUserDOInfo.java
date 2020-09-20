@@ -28,11 +28,15 @@ public class TestAddUserDOInfo {
 
     @Test
     public void testQueryByIdentify(){
-        String openID="4ea6f233-08e7-4d18-a02f-35a805c13e6e";
-        UserIdentifyQuery userIdentifyQuery=new UserIdentifyQuery();
-        userIdentifyQuery.setOpenID(openID);
-        Result<Optional<UserDTO>> result= userServiceFeign.queryUserByIdentify(userIdentifyQuery);
-        System.out.println(result.getData().get());
+        String openID="e927d2ea-a460-4563-afd2-6a05e4567439";
+        System.out.println(userRepository.findBydsdsOpenID("张三"));
+        //System.out.println(userRepository.findBydsdsOpenID(openID));
+
+//        UserIdentifyQuery userIdentifyQuery=new UserIdentifyQuery();
+//        userIdentifyQuery.setOpenID(openID);
+//        Result<Optional<UserDTO>> result= userServiceFeign.queryUserByIdentify(userIdentifyQuery);
+//        System.out.println(result.getData().get().getClass());
+//        System.out.println(result.getData().get());
     }
     @Test
     public void testDeleteByIdentify(){
@@ -66,7 +70,7 @@ public class TestAddUserDOInfo {
         userDO.setIsMobileCheck(false);
         UserDO ds = userRepository.save(userDO);
         userRepository.flush();
-        Optional<UserBase> dds = userRepository.findByOpenID(openID);
+        Optional<UserDO> dds = userRepository.findByOpenID(openID);
         System.out.println(dds.get());
         System.out.println(userRepository.findById(openID).get());
     }

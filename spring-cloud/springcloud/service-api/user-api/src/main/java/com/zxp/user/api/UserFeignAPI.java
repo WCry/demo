@@ -2,7 +2,7 @@ package com.zxp.user.api;
 
 import com.zxp.user.params.dto.UserDTO;
 import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.update.UserRegisterParams;
+import com.zxp.user.params.update.UserSecurityParams;
 import com.zxp.user.params.query.UserBaseQuery;
 import com.zxp.user.resoponse.Result;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,14 +50,14 @@ public interface UserFeignAPI {
      * @return
      */
     @GetMapping("/update")
-    Result<Boolean> updateUser(UserIdentifyQuery userIdentifyQuery,UserRegisterParams userRegisterParams);
+    Result<Boolean> updateUser(UserIdentifyQuery userIdentifyQuery, UserSecurityParams userRegisterParams);
     /**
      * 注册用户
      * @param userRegisterParams
      * @return
      */
     @GetMapping("/register")
-    Result<Boolean> registerUser(UserRegisterParams userRegisterParams);
+    Result<Boolean> registerUser(UserSecurityParams userRegisterParams);
 
     /**
      * 解除注册
