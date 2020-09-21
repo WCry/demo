@@ -51,12 +51,6 @@
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-com.zxp.account.test</artifactId>
-            <scope>com.zxp.account.test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
