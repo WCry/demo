@@ -1,7 +1,10 @@
 package com.zxp.account.service;
 
-import com.zxp.account.repository.AccountDAO;
 import com.zxp.account.entity.Account;
+import com.zxp.account.pojo.AccountParams;
+import com.zxp.account.pojo.ChangeParams;
+import com.zxp.account.pojo.TransferParams;
+import com.zxp.account.repository.AccountDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +13,7 @@ import java.math.BigDecimal;
 
 
 @Service
-public class AccountService {
+public class AccountService  {
 
     private static final String ERROR_USER_ID = "1002";
     private final AccountDAO accountDAO;
@@ -33,5 +36,35 @@ public class AccountService {
         if (ERROR_USER_ID.equals(userId)) {
             throw new RuntimeException("account branch exception");
         }
+    }
+
+
+    public Boolean debitAccount(ChangeParams changeParams) {
+        return null;
+    }
+
+
+    public Boolean existAccount(AccountParams accountParams) {
+        return null;
+    }
+
+
+    public Boolean accountRecharge(ChangeParams changeParams) {
+        return null;
+    }
+
+
+    public Boolean accountTransfer(TransferParams transferParams) {
+        return null;
+    }
+
+
+    public Boolean accountFreeze(ChangeParams changeParams) {
+        return null;
+    }
+
+
+    public Boolean accountUnFreeze(ChangeParams changeParams) {
+        return null;
     }
 }
