@@ -17,5 +17,4 @@ spring:
         enabled: true
         deregister: true
         serviceName: ${spring.application.name}
-      defaultContext: ${server.servlet.context-path}
       enabled: true
