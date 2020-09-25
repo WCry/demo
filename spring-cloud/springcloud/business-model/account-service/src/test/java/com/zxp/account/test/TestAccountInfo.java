@@ -15,7 +15,7 @@ public class TestAccountInfo {
     private AccountDAO accountDAO;
 
     @Test
-    public void testDebitAccount(){
-        accountDAO.debitMoney("1001",new BigDecimal("10000"));
+    public void testDebitAccount() {
+        System.out.println(accountDAO.debitMoney("1001", new BigDecimal("100")));
     }
 }

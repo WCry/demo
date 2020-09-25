@@ -1,14 +1,14 @@
 //package com.zxp.goods.feign;
 //
 //
-//import com.zxp.service.bean.User;
-//import com.zxp.service.redis.GoodsKey;
-//import com.zxp.service.redis.RedisService;
-//import com.zxp.service.result.Result;
-//import com.zxp.service.service.GoodsService;
-//import com.zxp.service.service.UserService;
-//import com.zxp.service.vo.GoodsDetailVo;
-//import com.zxp.service.vo.GoodsVo;
+//import com.zxp.order.service.bean.User;
+//import com.zxp.order.service.redis.GoodsKey;
+//import com.zxp.order.service.redis.RedisService;
+//import com.zxp.order.service.result.Result;
+//import com.zxp.order.service.service.GoodsService;
+//import com.zxp.order.service.service.UserService;
+//import com.zxp.order.service.vo.GoodsDetailVo;
+//import com.zxp.order.service.vo.GoodsVo;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;

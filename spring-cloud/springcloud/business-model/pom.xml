@@ -18,6 +18,7 @@
         <module>cart-service</module>
         <module>goods-service</module>
         <module>author-service</module>
+		<module>id-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>

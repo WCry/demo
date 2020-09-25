@@ -16,44 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @SpringBootTest(classes = UserApplication.class)
-public class TestAddUserDOInfo {
-    public static void main(String[] args) {
-        HashSet<Long> ds = new HashSet<>();
-        for (int i = 0; i < 10000000; i++) {
-            //  System.out.println(getID(i)+"");
-            Long id = getID(i);
-            if (id < 9999999999L) {
-                if (!ds.contains(id)) {
-                    System.out.println(id);
-                    ds.add(id);
-                } else {
-                    System.out.println("dsaddddddddd");
-                }
-            } else {
-                System.out.println(i);
-                System.out.println("dsaadad");
-            }
-        }
-        System.out.println(ds.size());
-    }
-
-    public static Long getID(int id) {
-        String[] chars = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E"};
-        int len = 7 - ((int) Math.log10(id) + 1);
-        int i = 1;
-        Random random = new Random();
-        String numberID = (random.nextInt(1) + 1 + "") + (random.nextInt(3) + 1) + "";
-        for (; i <= len - 1; i++) {
-            numberID += chars[random.nextInt(12)];
-        }
-        String hex;
-        if (len > 0) {
-            hex = numberID + "E" + id;
-        } else {
-            hex = id + "E" + numberID;
-        }
-        return Long.parseLong(hex, 16);
-    }
+public class TestQueryUserDOInfo {
 
     @Autowired
     UserRepository userRepository;

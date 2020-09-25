@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 
 @Service
@@ -30,7 +31,8 @@ public class AccountService  {
      */
     @Transactional(rollbackFor = Exception.class)
     public void debit(String userId, BigDecimal num) {
-        Account account = accountDAO.findByUserId(userId);
+        Optional<Account> accountOptional = accountDAO.findByUserId(userId);
+        Account account=accountOptional.get();
         account.setMoney(account.getMoney().subtract(num));
         accountDAO.save(account);
         if (ERROR_USER_ID.equals(userId)) {
