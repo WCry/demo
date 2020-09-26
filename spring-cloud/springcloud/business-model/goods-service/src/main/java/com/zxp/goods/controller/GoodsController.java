@@ -10,7 +10,7 @@ import java.util.UUID;
 
 
 @RestController
-@RequestMapping("/goods/preOccupation")
+@RequestMapping("/goods")
 public class GoodsController {
     private GoodsService goodsService;
     public GoodsController(GoodsService goodsService) {
@@ -20,7 +20,7 @@ public class GoodsController {
     /**
      * 商品预占，下订单，但是未付款
      */
-    @RequestMapping(value = "/try")
+    @RequestMapping(value = "/preOccupation")
 
     public String goodsPreOccupation(GoodsPreOccupationDTO goodsPreOccupationDTO) {
         this.goodsService.goodsPreOccupation(goodsPreOccupationDTO);

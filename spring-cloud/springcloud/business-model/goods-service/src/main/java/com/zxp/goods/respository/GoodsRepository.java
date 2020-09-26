@@ -9,6 +9,6 @@ import javax.persistence.LockModeType;
 
 
 public interface GoodsRepository extends JpaRepository<Goods, Long> {
-    @Lock(LockModeType.WRITE)
+
     Goods findGoodsById(String goodsID);
 }

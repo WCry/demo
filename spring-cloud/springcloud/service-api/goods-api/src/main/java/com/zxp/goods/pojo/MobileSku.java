@@ -1,12 +1,18 @@
 package com.zxp.goods.pojo;
 
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
 /**
  * 商品信息
+ * 比如内存大小
  */
-public class GoodsVo {
+@Data
+@ToString
+public class MobileSku {
     private Long id;
     private String goodsName;
     private String goodsTitle;
@@ -14,7 +20,7 @@ public class GoodsVo {
     private String goodsDetail;
     private Double goodsPrice;
     private Integer goodsStock;
-    private Double seckillPrice;
+    private Double secKillPrice;
     private Integer stockCount;
     private Date startDate;
     private Date endDate;
@@ -44,12 +50,12 @@ public class GoodsVo {
         this.endDate = endDate;
     }
 
-    public Double getSeckillPrice() {
-        return seckillPrice;
+    public Double getSecKillPrice() {
+        return secKillPrice;
     }
 
-    public void setSeckillPrice(Double seckillPrice) {
-        this.seckillPrice = seckillPrice;
+    public void setSecKillPrice(Double secKillPrice) {
+        this.secKillPrice = secKillPrice;
     }
 
     public Integer getVersion() {
