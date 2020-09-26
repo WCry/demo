@@ -1,4 +1,4 @@
-package com.zxp.goods.pojo;
+package com.zxp.goods.pojo.vo;
 
 
 import lombok.Data;
