@@ -1,6 +1,8 @@
-package com.zxp.seckill.pojo;
+package com.zxp.seckill.pojo.vo;
 
 
+import com.zxp.seckill.pojo.SecKillGoodsDetailed;
+import com.zxp.seckill.pojo.SecKillVerification;
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @ToString
-public class SecKillDetailVo implements SecKillGoodsDetailed{
+public class VerificationSecKillDetailVo implements SecKillGoodsDetailed, SecKillVerification {
     private Long secKillID;
     private String goodsName;
     private String goodsTitle;
@@ -23,5 +25,7 @@ public class SecKillDetailVo implements SecKillGoodsDetailed{
     private Integer stockCount;
     private Date startDate;
     private Date endDate;
+    private String verificationID;
+    private String verificationCode;
 }
 
