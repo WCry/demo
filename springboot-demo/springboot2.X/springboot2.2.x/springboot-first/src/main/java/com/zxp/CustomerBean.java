@@ -1,6 +1,7 @@
 package com.zxp;
 
 import lombok.extern.slf4j.Slf4j;
+import sun.misc.Contended;
 
 /**
  * @author zhangxuepei
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class CustomerBean {
+    private String dsds;
     public void initMethod(){
         log.debug("@Bean 初始化设置，资源初始化");
     }
