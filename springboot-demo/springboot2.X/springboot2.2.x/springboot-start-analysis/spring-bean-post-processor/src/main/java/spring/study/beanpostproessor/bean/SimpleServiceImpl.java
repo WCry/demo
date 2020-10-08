@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Format on 2017/6/18.
- */
+
 @Getter
 @Setter
 @ToString

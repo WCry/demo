@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.format.springboot.log.autoconfigure.LogAutoConfiguration
