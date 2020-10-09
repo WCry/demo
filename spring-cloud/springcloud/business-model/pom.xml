@@ -14,11 +14,11 @@
         <module>storage-service</module>
         <module>order-service</module>
         <module>account-service</module>
-        <module>authour-service</module>
         <module>seckill-service</module>
         <module>cart-service</module>
         <module>goods-service</module>
-        <module>user-service</module>
+        <module>author-service</module>
+		<module>id-service</module>
     </modules>
     <dependencyManagement>
         <dependencies>

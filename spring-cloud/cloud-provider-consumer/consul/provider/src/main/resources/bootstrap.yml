@@ -7,7 +7,7 @@ spring:
     name: consul-feign-client
   cloud:
     consul:
-      host: 10.19.154.66
+      host: localhost
       port: 8500
       discovery:
         prefer-ip-address: true

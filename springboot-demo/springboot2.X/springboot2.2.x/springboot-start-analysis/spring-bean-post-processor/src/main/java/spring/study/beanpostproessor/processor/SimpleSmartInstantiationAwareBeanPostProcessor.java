@@ -10,14 +10,12 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
-/**
- * Created by Format on 2017/6/19.
- */
+
 //@Component
 public class SimpleSmartInstantiationAwareBeanPostProcessor
         implements SmartInstantiationAwareBeanPostProcessor {
 
-    private String name = "simpleServiceForS/mart";
+    private String name = "simpleServiceForSmart";
 
     @Override
     public Class<?> predictBeanType(Class<?> beanClass, String beanName) throws BeansException {

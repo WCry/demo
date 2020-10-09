@@ -1,7 +1,6 @@
 package concurrent;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -12,6 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 自旋锁和监视锁实现
  */
 public class TestLock {
+
     private static Lock lock;
 
     public static void main(String[] args) throws InterruptedException {

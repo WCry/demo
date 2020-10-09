@@ -5,9 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Format on 2017/6/22.
- */
+
 //@Component
 public class BeanForBeanValidation {
 

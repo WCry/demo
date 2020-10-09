@@ -4,9 +4,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 
-/**
- * Created by Format on 2017/6/23.
- */
+
 @Component
 public class BeanForAsync {
 

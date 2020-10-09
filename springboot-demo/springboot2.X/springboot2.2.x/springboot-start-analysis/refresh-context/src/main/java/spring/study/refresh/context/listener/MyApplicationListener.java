@@ -1,6 +1,6 @@
 package spring.study.refresh.context.listener;
 
-import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
+import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebApplicationContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -15,9 +15,9 @@ public class MyApplicationListener implements ApplicationListener<ApplicationEve
     public void onApplicationEvent(ApplicationEvent event) {
         if(event instanceof ContextRefreshedEvent) {
             ApplicationContext applicationContext = ((ContextRefreshedEvent) event).getApplicationContext();
-            if(applicationContext instanceof AnnotationConfigEmbeddedWebApplicationContext) {
+            if(applicationContext instanceof AnnotationConfigServletWebApplicationContext) {
                 //在监听处理中注入一个简单Bean对象
-                ((AnnotationConfigEmbeddedWebApplicationContext) applicationContext).getBeanFactory().
+                ((AnnotationConfigServletWebApplicationContext) applicationContext).getBeanFactory().
                         registerSingleton("simpleBeanInListener", new SimpleBeanInListener());
             }
         }

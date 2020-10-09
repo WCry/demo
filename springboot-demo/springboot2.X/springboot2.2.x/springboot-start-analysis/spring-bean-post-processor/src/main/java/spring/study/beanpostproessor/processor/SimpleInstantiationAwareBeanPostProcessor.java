@@ -12,9 +12,7 @@ import java.beans.PropertyDescriptor;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * Created by Format on 2017/6/18.
- */
+
 //@Component
 public class SimpleInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
