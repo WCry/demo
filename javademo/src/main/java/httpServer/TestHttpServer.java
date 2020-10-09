@@ -1,8 +1,9 @@
+package httpServer;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URI;
 
-import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
@@ -24,7 +25,7 @@ public class TestHttpServer {
             //			server.bind(new InetSocketAddress(8080), 0);
             server.createContext("/start", new StartHandler());
             //			HttpContext context = server.createContext("/start");//需要后面设置handler
-            //			context.setHandler(new StartHandler());
+            //			context.setHandler(new httpServer.StartHandler());
             //			server.removeContext(context);//移除context
             //			server.removeContext("/start");//移除context
             server.start();
@@ -35,7 +36,7 @@ public class TestHttpServer {
             //			server.bind(new InetSocketAddress(8080), 0);
             server2.createContext("/start2", new StartHandler());
             //			HttpContext context = server.createContext("/start");//需要后面设置handler
-            //			context.setHandler(new StartHandler());
+            //			context.setHandler(new httpServer.StartHandler());
             //			server.removeContext(context);//移除context
             //			server.removeContext("/start");//移除context
             server2.start();
