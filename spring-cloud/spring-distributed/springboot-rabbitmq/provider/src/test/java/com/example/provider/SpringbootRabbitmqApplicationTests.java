@@ -4,9 +4,7 @@ package com.example.provider;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
-import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
 @Ignore
 @SpringBootTest(classes = ProviderApplication.class)
 public class SpringbootRabbitmqApplicationTests {

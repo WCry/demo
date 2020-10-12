@@ -1,6 +1,6 @@
 package spring.study.mytest.controller;
 
-import com.zxp.loggerstarter.annotation.Log;
+import com.zxp.logger.starter.annotation.Log;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,5 +13,4 @@ public class TestController {
     public String test() {
         return "only test";
     }
-
 }
