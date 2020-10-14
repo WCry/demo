@@ -1,6 +1,3 @@
-import sun.nio.ch.DefaultSelectorProvider;
-
-import java.nio.channels.spi.SelectorProvider;
 import java.util.Map;
 import java.util.Properties;
 

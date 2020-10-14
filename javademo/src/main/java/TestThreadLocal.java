@@ -2,7 +2,7 @@
  * @author zhangxuepei
  * @since 3.0
  */
-public class Test {
+public class TestThreadLocal {
     public static void main(String[] args) throws InterruptedException {
         A a = new A();
         Thread das = new Thread(() -> a.soud("dsad"));

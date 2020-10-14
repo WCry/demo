@@ -12,11 +12,8 @@ public class CglibProxy implements MethodInterceptor
     public Object CreatProxyedObj(Class<?> clazz)
     {
         Enhancer enhancer = new Enhancer();
-
         enhancer.setSuperclass(clazz);
-
         enhancer.setCallback(this);
-
         return enhancer.create();
     }
 
@@ -25,7 +22,6 @@ public class CglibProxy implements MethodInterceptor
     {
         // 这里增强
         System.out.println("收钱");
-
         return arg3.invokeSuper(arg0, arg2);
     }
 }
