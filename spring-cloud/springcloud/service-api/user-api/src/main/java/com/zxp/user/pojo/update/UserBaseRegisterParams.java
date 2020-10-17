@@ -1,6 +1,6 @@
-package com.zxp.user.params.update;
+package com.zxp.user.pojo.update;
 
-import com.zxp.user.params.UserBaseRegister;
+import com.zxp.user.pojo.UserBaseRegister;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

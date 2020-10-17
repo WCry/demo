@@ -20,11 +20,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-demo-parent</name>
     <packaging>pom</packaging>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo for spring cloud</description>
     <properties>
+        <java.version>1.8</java.version>
+        <lombok.version>1.18.12</lombok.version>
+        <druid.version>1.1.10</druid.version>
+        <mysql.version>8.0.11</mysql.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
@@ -32,7 +35,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -49,7 +52,7 @@
             <dependency>
                 <groupId>com.zxp.demo</groupId>
                 <artifactId>common</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${project.version}</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
@@ -69,12 +72,12 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>1.1.10</version>
+                <version>${druid.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.11</version>
+                <version>${mysql.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

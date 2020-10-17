@@ -1,7 +1,7 @@
-package com.zxp.user.params.dto;
+package com.zxp.user.pojo.dto;
 
-import com.zxp.user.params.UserBase;
-import com.zxp.user.params.UserIdentifies;
+import com.zxp.user.pojo.UserBase;
+import com.zxp.user.pojo.UserIdentifies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

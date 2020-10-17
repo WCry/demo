@@ -1,6 +1,6 @@
-package com.zxp.user.params.query;
+package com.zxp.user.pojo.query;
 
-import com.zxp.user.params.UserBaseRegister;
+import com.zxp.user.pojo.UserBaseRegister;
 import lombok.Data;
 
 

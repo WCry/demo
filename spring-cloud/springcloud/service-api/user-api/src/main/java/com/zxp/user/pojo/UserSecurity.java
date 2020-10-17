@@ -1,4 +1,4 @@
-package com.zxp.user.params;
+package com.zxp.user.pojo;
 
 /**
  * 用户安全验证有关信息

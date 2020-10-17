@@ -1,5 +1,6 @@
 package com.zxp.order.service;
 
+import com.zxp.account.pojo.ChangeParams;
 import com.zxp.order.entity.Order;
 import com.zxp.order.feign.AccountFeignClient;
 import com.zxp.order.repository.OrderDAO;
@@ -33,8 +34,8 @@ public class OrderService {
         order.setMoney(orderMoney);
 
         orderDAO.save(order);
-
-        accountFeignClient.debit(userId, orderMoney);
+        ChangeParams changeParams=new ChangeParams(userId,orderMoney);
+        accountFeignClient.debitAccount(changeParams);
 
     }
 

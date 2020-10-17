@@ -1,12 +1,11 @@
 package com.zxp.user.service;
 
-import com.zxp.user.params.UserSecurity;
-import com.zxp.user.params.dto.UserDTO;
-import com.zxp.user.params.query.UserAccountQuery;
-import com.zxp.user.params.query.UserBaseQuery;
-import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.update.UserSecurityParams;
-import com.zxp.user.po.UserDO;
+import com.zxp.user.pojo.UserSecurity;
+import com.zxp.user.pojo.dto.UserDTO;
+import com.zxp.user.pojo.query.UserAccountQuery;
+import com.zxp.user.pojo.query.UserBaseQuery;
+import com.zxp.user.pojo.query.UserIdentifyQuery;
+import com.zxp.user.pojo.update.UserSecurityParams;
 
 import java.util.Optional;
 

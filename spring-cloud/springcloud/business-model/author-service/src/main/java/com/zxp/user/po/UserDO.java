@@ -1,8 +1,8 @@
 package com.zxp.user.po;
 
-import com.zxp.user.params.UserIdentifies;
-import com.zxp.user.params.UserBaseRegister;
-import com.zxp.user.params.UserSecurity;
+import com.zxp.user.pojo.UserIdentifies;
+import com.zxp.user.pojo.UserBaseRegister;
+import com.zxp.user.pojo.UserSecurity;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;

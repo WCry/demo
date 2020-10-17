@@ -1,4 +1,4 @@
-package com.zxp.user.params;
+package com.zxp.user.pojo;
 
 /**
  * 用户注册基本信息

@@ -1,6 +1,6 @@
-package com.zxp.user.params.update;
+package com.zxp.user.pojo.query;
 
-import com.zxp.user.params.UserSecurity;
+import com.zxp.user.pojo.UserAccount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,11 +11,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class UserSecurityParams implements UserSecurity {
+public class UserAccountQuery implements UserAccount {
     //用户名
     private String userAccount;
-    //密码
-    private String password;
-    //注册手机号
-    private String phone;
 }

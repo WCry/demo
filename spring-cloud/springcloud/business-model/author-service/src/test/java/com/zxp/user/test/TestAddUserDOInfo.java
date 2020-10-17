@@ -3,7 +3,7 @@ package com.zxp.user.test;
 
 import com.zxp.user.UserApplication;
 import com.zxp.user.feign.UserServiceFeign;
-import com.zxp.user.params.query.UserIdentifyQuery;
+import com.zxp.user.pojo.query.UserIdentifyQuery;
 import com.zxp.user.po.UserDO;
 import com.zxp.user.repository.UserRepository;
 import com.zxp.resoponse.Result;
