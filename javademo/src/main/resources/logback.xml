@@ -1,26 +1,29 @@
 <?xml version="1.0"?>
+<!--日志文件的我配置根标签-->
 <configuration>
+    <!--每一个Appender 代表一种输出方式，输出到不同的地方，
+    可以是控制台，可以是文件，可以是数据库-->
     <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n
-            </pattern>
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
-    <appender name="file"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Encoding>UTF-8</Encoding>
+        <!--输出文件名称-->
         <File>/home/test.log</File>
+        <!--进行滚动输出，单个文件输出时间长会很大-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>/home/test-%d{yyyy-MM-dd}.log
-            </FileNamePattern>
+            <FileNamePattern>/home/test-%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>10</MaxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>5MB</MaxFileSize>
             </TimeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
+        <!--格式化输出布局-->
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n
             </pattern>
@@ -29,8 +32,10 @@
     <!-- 日志级别 -->
     <root>
         <!-- 定义了ERROR和INFO级别的日志，分别在FILE文件和控制台输出 -->
+        <!--debug < info < warn < error-->
         <level value="error" />
         <level value="info" />
+        <!--使用那些appender作为输出-->
         <appender-ref ref="file" />
         <appender-ref ref="console" />
     </root>

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.zxp.loggerstarter.autoconfigure.LogAutoConfiguration
+com.zxp.logger.starter.autoconfigure.LogAutoConfiguration

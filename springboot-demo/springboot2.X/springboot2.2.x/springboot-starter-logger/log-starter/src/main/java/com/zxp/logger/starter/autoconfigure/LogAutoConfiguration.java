@@ -1,7 +1,7 @@
-package com.zxp.loggerstarter.autoconfigure;
+package com.zxp.logger.starter.autoconfigure;
 
-import com.zxp.loggerstarter.annotation.Log;
-import com.zxp.loggerstarter.aop.LogMethodInterceptor;
+import com.zxp.logger.starter.annotation.Log;
+import com.zxp.logger.starter.aop.LogMethodInterceptor;
 import org.aopalliance.aop.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,7 @@ import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.AbstractPointcutAdvisor;
 import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

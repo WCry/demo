@@ -21,10 +21,9 @@ import io.netty.handler.codec.string.StringEncoder;
  * ServerBootstrap 启动加载器
  * NioServerSocketChannel 处理通道
  * ChannelInitializer 链接通道初始化操作
- *
+ * <p>
  * 这里Parent和Children主要是处理Parent处理Accept和处Children理Write和Reader事件
  * 管道处理按照顺序进行处理 首先进行编解码处理，然后自己具体业务处理
- *
  */
 
 public class ChatServer {
@@ -39,27 +38,32 @@ public class ChatServer {
     }
 
     public void run() throws Exception {
+        //用来处理 接收客户端 Accept 事件
         EventLoopGroup bossGroup = new NioEventLoopGroup();
+        //用来处理服务端对于数据流的读取和写入
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
+            //初始化一个服务端的启动器
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).
+            b.group(bossGroup, workerGroup).
+                    channel(NioServerSocketChannel.class).
                     option(ChannelOption.SO_BACKLOG, 128).
                     childOption(ChannelOption.SO_KEEPALIVE, true).
                     childHandler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                public void initChannel(SocketChannel ch) {
-                    ChannelPipeline pipeline = ch.pipeline();
-                    //往pipeline链中添加一个解码器
-                    pipeline.addLast("decoder", new StringDecoder());
-                    //往pipeline链中添加一个编码器
-                    pipeline.addLast("encoder", new StringEncoder());
-                    //往pipeline链中添加自定义的handler(业务处理类)
-                    pipeline.addLast(new ChatServerHandler());
-                }
-            });
+                        @Override
+                        public void initChannel(SocketChannel ch) {
+                            ChannelPipeline pipeline = ch.pipeline();
+                            //往pipeline链中添加一个解码器
+                            pipeline.addLast("decoder", new StringDecoder());
+                            //往pipeline链中添加一个编码器
+                            pipeline.addLast("encoder", new StringEncoder());
+                            //往pipeline链中添加自定义的handler(业务处理类)
+                            pipeline.addLast(new ChatServerHandler());
+                        }
+                    });
             System.out.println("Netty Chat Server启动......");
-            ChannelFuture f = b.bind(port).sync();
+            //绑定端口启动，同步的方式
+            ChannelFuture f = b.bind(port);
             //获取通道的关闭事件， 并且实行同步操作
             f.channel().closeFuture().sync();
         } finally {

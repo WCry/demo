@@ -1,4 +1,4 @@
-package com.zxp.loggerstarter.autoconfigure;
+package com.zxp.logger.starter.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StringUtils;

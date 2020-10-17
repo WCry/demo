@@ -4,4 +4,4 @@
  * Content: 编写一个Springboot log Starter
  *          通过注解自动配置aop的日志处理
  */
-package com.zxp.loggerstarter;
+package com.zxp.logger.starter;

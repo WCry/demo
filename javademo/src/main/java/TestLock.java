@@ -1,4 +1,3 @@
-import java.util.LinkedHashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.locks.Lock;
@@ -6,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author zhangxuepei
- * @since 3.0
+ * @since 3.0O
  */
 public class TestLock {
     private static Lock lock;
