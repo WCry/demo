@@ -7,11 +7,7 @@ import org.springframework.util.StringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by jiangyunxiong on 2018/5/22.
- *
- * 登录校验工具类
- */
+
 public class ValidatorUtil {
 
     //默认以1开头后面加10个数字为手机号

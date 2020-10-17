@@ -13,7 +13,6 @@ public class IsMobileValidator implements ConstraintValidator<IsMobile, String> 
 
     private boolean required = false;
 
-    //初始化
     @Override
     public void initialize(IsMobile isMobile) {
         required = isMobile.required();

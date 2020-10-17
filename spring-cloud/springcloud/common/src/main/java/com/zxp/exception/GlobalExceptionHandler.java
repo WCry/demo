@@ -16,12 +16,10 @@ import java.util.List;
  * 自定义全局异常拦截器
  */
 @ControllerAdvice
-@ResponseBody
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)//拦截所有异常
     public Result<String> exceptionHandler(HttpServletRequest request, Exception e){
-        e.printStackTrace();
         if(e instanceof GlobalException) {
             GlobalException ex = (GlobalException)e;
             return Result.error(ex.getCodeMsg());
