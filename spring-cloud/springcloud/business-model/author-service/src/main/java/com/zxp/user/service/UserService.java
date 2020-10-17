@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 /**
- * 用户服务 数据持久层和展示层的防腐层
+ * 用户服务操作API接口
  */
 public interface UserService {
 

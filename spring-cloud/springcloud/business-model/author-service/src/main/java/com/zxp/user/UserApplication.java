@@ -17,11 +17,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 //开启JPA仓库
 @EnableJpaRepositories
+//开启JPA核查
 @EnableJpaAuditing
 public class UserApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);
     }
+
+
+
     /**
      * 为测试环境添加相关的 Request Dumper information，便于调试
      * @return
