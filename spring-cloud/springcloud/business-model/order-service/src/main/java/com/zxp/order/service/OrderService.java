@@ -3,7 +3,6 @@ package com.zxp.order.service;
 import com.zxp.order.entity.Order;
 import com.zxp.order.feign.AccountFeignClient;
 import com.zxp.order.repository.OrderDAO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +12,14 @@ import java.math.BigDecimal;
 @Service
 public class OrderService {
 
-    @Autowired
-    private AccountFeignClient accountFeignClient;
+    private final AccountFeignClient accountFeignClient;
 
-    @Autowired
-    private OrderDAO orderDAO;
+    private final OrderDAO orderDAO;
+
+    public OrderService(AccountFeignClient accountFeignClient, OrderDAO orderDAO) {
+        this.accountFeignClient = accountFeignClient;
+        this.orderDAO = orderDAO;
+    }
 
     @Transactional
     public void create(String userId, String commodityCode, Integer count) {

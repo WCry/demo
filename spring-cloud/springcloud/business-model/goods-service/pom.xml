@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.example.springclouddemo</groupId>
+        <groupId>com.zxp.demo</groupId>
         <artifactId>business-model</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.example.springclouddemo</groupId>
+    <groupId>com.zxp.demo</groupId>
     <artifactId>goods-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>goods-service</name>
@@ -31,18 +31,18 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>goods-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

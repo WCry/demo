@@ -36,7 +36,7 @@ public class AccountService  {
         account.setMoney(account.getMoney().subtract(num));
         accountDAO.save(account);
         if (ERROR_USER_ID.equals(userId)) {
-            throw new RuntimeException("account branch exception");
+            throw new RuntimeException("account branch com.zxp.exception");
         }
     }
 

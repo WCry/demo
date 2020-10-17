@@ -1,10 +1,10 @@
 package com.zxp.cart.feign;
 
-import com.zxp.user.api.storage.StorageAPI;
+import com.zxp.stock.StockAPI;
 import org.springframework.cloud.openfeign.FeignClient;
 
 
-@FeignClient(name = "storage-service", url = "localhost:8081")
-public interface StorageFeignClient extends StorageAPI {
+@FeignClient(name = "storage-service")
+public interface StorageFeignClient extends StockAPI {
 
 }

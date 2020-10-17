@@ -1,6 +1,6 @@
 package com.zxp.order.feign;
 
-import com.zxp.user.api.account.AccountAPI;
+import com.zxp.account.AccountAPI;
 import org.springframework.cloud.openfeign.FeignClient;
 
 

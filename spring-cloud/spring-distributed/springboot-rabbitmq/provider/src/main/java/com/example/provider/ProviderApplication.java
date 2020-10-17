@@ -22,7 +22,7 @@ import org.springframework.boot.autoconfigure.amqp.RabbitTemplateConfigurer;
  *  RabbitMq使用
  *  https://www.jianshu.com/p/090ed51006d5
  */
-@EnableRabbit
+//@EnableRabbit
 @SpringBootApplication
 public class ProviderApplication {
 

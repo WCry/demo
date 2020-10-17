@@ -4,7 +4,7 @@ import com.zxp.seckill.pojo.dto.VerificationSecSkillOrder;
 import com.zxp.seckill.pojo.query.SkillGoodsIdentifyQuery;
 import com.zxp.seckill.pojo.query.SkillGoodsQuery;
 import com.zxp.seckill.pojo.vo.SecKillDetailVo;
-import com.zxp.user.resoponse.Result;
+import com.zxp.resoponse.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 

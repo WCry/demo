@@ -2,7 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.example.springclouddemo</groupId>
+        <groupId>com.zxp.demo</groupId>
         <artifactId>business-model</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -16,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>account-api</artifactId>
         </dependency>
         <dependency>
@@ -46,7 +46,7 @@
             <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>account-api</artifactId>
             <scope>compile</scope>
         </dependency>

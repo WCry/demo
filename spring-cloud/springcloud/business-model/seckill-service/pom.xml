@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.example.springclouddemo</groupId>
+        <groupId>com.zxp.demo</groupId>
         <artifactId>business-model</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
-    <groupId>com.example.springclouddemo</groupId>
+    <groupId>com.zxp.demo</groupId>
     <artifactId>seckill-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>seckill-service</name>
@@ -36,7 +36,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.example.springclouddemo</groupId>
+            <groupId>com.zxp.demo</groupId>
             <artifactId>common</artifactId>
         </dependency>
         <!-- redis操作 默认采用jedis的连接操作-->

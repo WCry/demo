@@ -6,7 +6,7 @@ import com.zxp.user.feign.UserServiceFeign;
 import com.zxp.user.params.query.UserIdentifyQuery;
 import com.zxp.user.po.UserDO;
 import com.zxp.user.repository.UserRepository;
-import com.zxp.user.resoponse.Result;
+import com.zxp.resoponse.Result;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

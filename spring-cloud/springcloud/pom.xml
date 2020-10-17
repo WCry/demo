@@ -15,8 +15,8 @@
         <module>business-model</module>
         <module>service-api</module>
     </modules>
-    <groupId>com.example.springclouddemo</groupId>
-    <artifactId>springclouddemo-parent</artifactId>
+    <groupId>com.zxp.demo</groupId>
+    <artifactId>demo.parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-cloud-demo-parent</name>
     <packaging>pom</packaging>
@@ -47,7 +47,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.example.springclouddemo</groupId>
+                <groupId>com.zxp.demo</groupId>
                 <artifactId>common</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
                 <scope>compile</scope>

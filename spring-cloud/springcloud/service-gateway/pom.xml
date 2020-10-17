@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.example.springclouddemo</groupId>
-        <artifactId>springclouddemo-parent</artifactId>
+        <groupId>com.zxp.demo</groupId>
+        <artifactId>demo.parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.example.springclouddemo</groupId>
+    <groupId>com.zxp.demo</groupId>
     <artifactId>service-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>service-gateway</name>
