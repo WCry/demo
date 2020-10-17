@@ -31,9 +31,8 @@ public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.formLogin().loginPage("/authentication/require").permitAll().
-                successHandler(loginSuccessHandler).and().authorizeRequests()
+        http.formLogin().loginPage("/authentication/require").permitAll()
+                .successHandler(loginSuccessHandler).and().authorizeRequests()
                 .antMatchers("/images/**", "/checkCode", "/scripts/**", "/styles/**")
                 .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
