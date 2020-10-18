@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConsumerApplication {
 
     public static void main(String[] args) {
-        //rabbitListenerEndpointRegistry.getListenerContainer();
         SpringApplication.run(ConsumerApplication.class, args);
     }
 
