@@ -6,12 +6,12 @@ import java.lang.annotation.*;
 
 /**
  * 自定义手机格式校验注解
+ * @Target  可以使用在字段，参数上
+ * @Retention 表明保存到运行时候
+ * @Documented 在帮助文档中展示
+ * @Constraint 约束
  */
-@Target({ElementType.METHOD,
-        ElementType.FIELD,
-        ElementType.ANNOTATION_TYPE,
-        ElementType.CONSTRUCTOR,
-        ElementType.PARAMETER})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = {IsMobileValidator.class})

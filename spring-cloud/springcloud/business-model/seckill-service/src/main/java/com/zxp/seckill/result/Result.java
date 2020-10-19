@@ -1,6 +1,6 @@
 package com.zxp.seckill.result;
 
-import com.zxp.resoponse.CodeMsg;
+import com.zxp.resoponse.CodeMsgEnum;
 
 public class Result<T> {
 	
@@ -18,8 +18,8 @@ public class Result<T> {
 	/**
 	 *  失败时候的调用
 	 * */
-	public static  <T> Result<T> error(CodeMsg codeMsg){
-		return new Result<T>(codeMsg);
+	public static  <T> Result<T> error(CodeMsgEnum codeMsgEnum){
+		return new Result<T>(codeMsgEnum);
 	}
 	
 	private Result(T data) {
@@ -31,10 +31,10 @@ public class Result<T> {
 		this.msg = msg;
 	}
 	
-	private Result(CodeMsg codeMsg) {
-		if(codeMsg != null) {
-			this.code = codeMsg.getCode();
-			this.msg = codeMsg.getMsg();
+	private Result(CodeMsgEnum codeMsgEnum) {
+		if(codeMsgEnum != null) {
+			this.code = codeMsgEnum.getCode();
+			this.msg = codeMsgEnum.getMsg();
 		}
 	}
 	

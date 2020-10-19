@@ -1,7 +1,5 @@
 package com.zxp.validator;
 
-
-
 import org.springframework.util.StringUtils;
 
 import java.util.regex.Matcher;

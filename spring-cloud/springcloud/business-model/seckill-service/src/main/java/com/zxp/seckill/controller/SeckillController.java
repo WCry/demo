@@ -14,7 +14,7 @@ import com.zxp.seckill.service.GoodsService;
 import com.zxp.seckill.service.OrderService;
 import com.zxp.seckill.service.SeckillService;
 import com.zxp.seckill.vo.GoodsVo;
-import com.zxp.resoponse.CodeMsg;
+import com.zxp.resoponse.CodeMsgEnum;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,17 +71,17 @@ public class SeckillController implements InitializingBean {
     public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) throws JsonProcessingException {
 
         if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
-            return  Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
+            return  Result.error(CodeMsgEnum.ACCESS_LIMIT_REACHED);
         }
 
         if (user == null) {
-            return Result.error(CodeMsg.SESSION_ERROR);
+            return Result.error(CodeMsgEnum.SESSION_ERROR);
         }
         model.addAttribute("user", user);
         //内存标记，减少redis访问
         boolean over = localOverMap.get(goodsId);
         if (over) {
-            return Result.error(CodeMsg.SECKILL_OVER);
+            return Result.error(CodeMsgEnum.SECKILL_OVER);
         }
         //预减库存
         long stock = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
@@ -90,13 +90,13 @@ public class SeckillController implements InitializingBean {
             long stock2 = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
             if(stock2 < 0){
                 localOverMap.put(goodsId, true);
-                return Result.error(CodeMsg.SECKILL_OVER);
+                return Result.error(CodeMsgEnum.SECKILL_OVER);
             }
         }
         //判断重复秒杀
         SeckillOrder order = orderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
         if (order != null) {
-            return Result.error(CodeMsg.REPEATE_SECKILL);
+            return Result.error(CodeMsgEnum.REPEATE_SECKILL);
         }
         //入队
         SecKillMessage message = new SecKillMessage();
@@ -133,7 +133,7 @@ public class SeckillController implements InitializingBean {
                                       @RequestParam("goodsId") long goodsId) {
         model.addAttribute("user", user);
         if (user == null) {
-            return Result.error(CodeMsg.SESSION_ERROR);
+            return Result.error(CodeMsgEnum.SESSION_ERROR);
         }
         long orderId = seckillService.getSeckillResult(user.getId(), goodsId);
         return Result.success(orderId);
