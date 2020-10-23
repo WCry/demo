@@ -1,7 +1,7 @@
 package com.zxp.content.feign;
 
 import com.zxp.content.pojo.Content;
-import com.zxp.user.resoponse.Result;
+import com.zxp.resoponse.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

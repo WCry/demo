@@ -2,7 +2,7 @@ package com.zxp.seckill.pojo.dto;
 
 import com.zxp.seckill.pojo.SecKillGoodIdentify;
 import com.zxp.seckill.pojo.SecKillVerification;
-import com.zxp.user.params.UserIdentifies;
+import com.zxp.user.pojo.UserIdentifies;
 import lombok.Data;
 import lombok.ToString;
 

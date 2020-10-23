@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 /**
  * user:zxp
  * Day:2020,08,16
- * 对于与消费 进行先冻结结账
+ * 对于与消费 进行先冻结再结账
  **/
 @Data
 public class DebitFreezeParams {

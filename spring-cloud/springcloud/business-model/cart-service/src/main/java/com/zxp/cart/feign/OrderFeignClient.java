@@ -1,9 +1,10 @@
 package com.zxp.cart.feign;
 
-import com.zxp.user.api.order.OrderAPI;
+
+import com.zxp.order.OrderAPI;
 import org.springframework.cloud.openfeign.FeignClient;
 
 
-@FeignClient(name = "order-service", url = "localhost:8082")
+@FeignClient(name = "order-service")
 public interface OrderFeignClient extends OrderAPI {
 }

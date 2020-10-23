@@ -2,7 +2,7 @@ package com.zxp.goods.feign;
 
 
 import com.zxp.goods.pojo.vo.GoodsDetailVo;
-import com.zxp.user.resoponse.Result;
+import com.zxp.resoponse.Result;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

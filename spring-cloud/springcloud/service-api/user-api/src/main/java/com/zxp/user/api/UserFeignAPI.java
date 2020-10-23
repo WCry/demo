@@ -1,10 +1,10 @@
 package com.zxp.user.api;
 
-import com.zxp.user.params.dto.UserDTO;
-import com.zxp.user.params.query.UserIdentifyQuery;
-import com.zxp.user.params.update.UserSecurityParams;
-import com.zxp.user.params.query.UserBaseQuery;
-import com.zxp.user.resoponse.Result;
+import com.zxp.user.pojo.dto.UserDTO;
+import com.zxp.user.pojo.query.UserIdentifyQuery;
+import com.zxp.user.pojo.update.UserSecurityParams;
+import com.zxp.user.pojo.query.UserBaseQuery;
+import com.zxp.resoponse.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -67,6 +67,5 @@ public interface UserFeignAPI {
      */
     @GetMapping("/unRegister")
     Result<Boolean> unRegisterUser(UserIdentifyQuery userIdentifyQuery);
-
 
 }
