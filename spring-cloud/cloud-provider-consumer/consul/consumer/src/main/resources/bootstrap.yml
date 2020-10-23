@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8084
   servlet:
     context-path: /consumer
 
@@ -8,8 +8,8 @@ spring:
     name: consumer
   cloud:
     consul:
-      host: localhost
-      port: 8500
+      host: 10.19.176.86
+      port: 8068
       discovery:
         prefer-ip-address: true
         health-check-path: ${server.servlet.context-path}/actuator/health
@@ -18,3 +18,6 @@ spring:
         deregister: true
         serviceName: ${spring.application.name}
       enabled: true
+
+ZoneAwareNIWSDiscoveryLoadBalancer:
+  enabled: false

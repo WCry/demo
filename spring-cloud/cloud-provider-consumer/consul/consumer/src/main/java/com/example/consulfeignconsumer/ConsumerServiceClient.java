@@ -20,7 +20,7 @@ import java.util.Optional;
  * Path 设置调用端的Controller接口前的路径，
  * Feign可以消费自身服务
  * */
-@FeignClient(name = "consumer",path = "consumer")
+@FeignClient(name = "consumer",path = "consumer",configuration = FeignInterceptorConfig.class)
 public interface ConsumerServiceClient{
     @PostMapping("/test")
     Optional<Integer> test();

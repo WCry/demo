@@ -22,9 +22,9 @@
         <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
     </properties>
     <modules>
-        <module>consoul-feign-api</module>
-        <module>consoul-feign-client</module>
-        <module>consoul-feign-consumer</module>
+        <module>feign-api</module>
+        <module>provider</module>
+        <module>consumer</module>
     </modules>
     <dependencies>
         <dependency>

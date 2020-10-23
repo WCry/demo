@@ -7,8 +7,8 @@ spring:
     name: consul-feign-client
   cloud:
     consul:
-      host: localhost
-      port: 8500
+      host: 10.19.176.86
+      port: 8068
       discovery:
         prefer-ip-address: true
         health-check-path: ${server.servlet.context-path}/actuator/health
