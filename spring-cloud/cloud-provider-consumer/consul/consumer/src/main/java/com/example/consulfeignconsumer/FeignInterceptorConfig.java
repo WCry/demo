@@ -3,6 +3,7 @@ package com.example.consulfeignconsumer;
 import feign.Logger;
 import feign.RequestInterceptor;
 import org.slf4j.MDC;
+import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

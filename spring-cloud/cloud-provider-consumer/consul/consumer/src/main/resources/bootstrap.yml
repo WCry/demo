@@ -18,6 +18,11 @@ spring:
         deregister: true
         serviceName: ${spring.application.name}
       enabled: true
+    loadbalancer:
+      ribbon:
+        enabled: true
 
-ZoneAwareNIWSDiscoveryLoadBalancer:
-  enabled: false
+consumer:
+  ribbon:
+    ReatimeOut: 6000
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
