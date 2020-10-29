@@ -1,5 +1,5 @@
-//import org.zxp.graph.ThreadLocalEdge;
-//import org.zxp.graph.ThreadLocalNode;
+//import graph.ThreadLocalEdge;
+//import graph.ThreadLocalNode;
 //import org.geotools.graph.path.AStarShortestPathFinder;
 //import org.geotools.graph.path.Path;
 //import org.geotools.graph.structure.Graph;

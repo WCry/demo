@@ -1,6 +1,6 @@
-//import org.zxp.graph.DistanceAccessibilityPathFinder;
-//import org.zxp.graph.EdgeWeighter;
-//import org.zxp.graph.ThreadLocalNode;
+//import graph.DistanceAccessibilityPathFinder;
+//import graph.EdgeWeighter;
+//import graph.ThreadLocalNode;
 //import org.geotools.graph.structure.Graph;
 //import org.geotools.graph.structure.Graphable;
 //import org.geotools.graph.structure.Node;

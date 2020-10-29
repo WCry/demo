@@ -1,5 +1,5 @@
-//import org.zxp.graph.EdgeWeighter;
-//import org.zxp.graph.ThreadLocalNode;
+//import graph.EdgeWeighter;
+//import graph.ThreadLocalNode;
 //import org.geotools.graph.path.DijkstraShortestPathFinder;
 //import org.geotools.graph.path.Path;
 //import org.geotools.graph.structure.Graph;

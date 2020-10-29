@@ -1,4 +1,4 @@
-package org.zxp.graph;
+package graph;
 
 import org.geotools.graph.structure.Edge;
 import org.geotools.graph.traverse.standard.DijkstraIterator;

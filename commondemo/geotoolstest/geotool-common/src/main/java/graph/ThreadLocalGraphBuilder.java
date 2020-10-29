@@ -1,4 +1,4 @@
-package org.zxp.graph;
+package graph;
 
 import org.geotools.graph.build.GraphBuilder;
 import org.geotools.graph.build.basic.BasicGraphBuilder;

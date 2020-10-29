@@ -1,4 +1,4 @@
-package org.zxp.graph;
+package graph;
 
 import org.geotools.graph.structure.basic.BasicNode;
 import org.locationtech.jts.geom.Coordinate;
