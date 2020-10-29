@@ -78,6 +78,7 @@ public class TestGeotoolHBase {
 
     private static Map getParams() {
         Map params = new HashMap();
+        params.put("geomesa.merged.stores", true);
         params.put("hbase.zookeepers", zookeepers);
         params.put("hbase.catalog", catalog);
         return params;

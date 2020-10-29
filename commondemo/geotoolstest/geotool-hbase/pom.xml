@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <hbase.version>1.4.5</hbase.version>
-        <geomesa.version>2.2.0</geomesa.version>
+        <geomesa.version>2.4.0</geomesa.version>
     </properties>
     <artifactId>geotools-hbase</artifactId>
     <dependencies>
