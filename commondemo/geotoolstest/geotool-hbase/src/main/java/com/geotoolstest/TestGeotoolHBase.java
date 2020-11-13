@@ -23,8 +23,8 @@ import java.util.Map;
  */
 public class TestGeotoolHBase {
     private static String catalog = "China";
-    //集群
-    private static String zookeepers = "172.16.18.8:2181";
+    //HBase 采用单机模式时候 使用的是自身自带的Zookeeper启动
+    private static String zookeepers = "";
 
     public static void main(String[] args) {
         try {
@@ -76,9 +76,13 @@ public class TestGeotoolHBase {
     }
 
 
+    private static void createSchema(){
+
+    }
+
+
     private static Map getParams() {
         Map params = new HashMap();
-        params.put("geomesa.merged.stores", true);
         params.put("hbase.zookeepers", zookeepers);
         params.put("hbase.catalog", catalog);
         return params;

@@ -16,6 +16,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,51 +26,24 @@ import java.util.Map;
  */
 public class TestShpFileReader {
     public static void main(String[] args) throws IOException {
-        TestShpFileReader testShpFileReader=new TestShpFileReader();
-        testShpFileReader.dss();
-//        File file = new File("D:\\道路\\R.shp");
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("url", file.toURI().toURL());
-//        DataStore dataStore = DataStoreFinder.getDataStore(map);
-//        String typeName = dataStore.getTypeNames()[0];
-//        String[] returnName = new String[1];
-//        Query query = new Query();
-//        returnName[0] = "SnodeID as dd";
-//        query.setPropertyNames(returnName);
-//        query.setTypeName(typeName);
-//
-//        FeatureReader<SimpleFeatureType, SimpleFeature> featureSource = dataStore.getFeatureReader(query, Transaction.AUTO_COMMIT);
-//        featureSource.getFeatureType().getTypes().forEach(attributeType -> {
-//            System.out.println(attributeType.getName());
-//        });
-    }
+        File file = new File("D:\\道路\\R.shp");
+        Map<String, Object> map = new HashMap<>();
+        map.put("url", file.toURI().toURL());
+        map.put("filetype","shapefile");
+        map.put("charset", StandardCharsets.UTF_8);
+        map.put("fstype", "shape");
 
-    private void dss() throws IOException {
-        Map<String, Serializable> params = new HashMap();
-        params.put(JDBCDataStoreFactory.DBTYPE.key, "Oracle");
-        params.put(JDBCDataStoreFactory.HOST.key, "10.19.154.66");
-        params.put(JDBCDataStoreFactory.PORT.key, "1521");
-        params.put(JDBCDataStoreFactory.DATABASE.key, "GEOG");
-        params.put(JDBCDataStoreFactory.USER.key, "ZHE");
-        params.put(JDBCDataStoreFactory.PASSWD.key, "ZHE");
-        //设置等待时间
-        params.put(JDBCDataStoreFactory.MAXWAIT.key, 500);
-        //设置最大链接数
-        params.put(JDBCDataStoreFactory.MAXCONN.key, 100);
-        //设置一次批量处理数据大小，建议设置100条 批量处理一次
-        params.put(JDBCDataStoreFactory.BATCH_INSERT_SIZE.key, 100);
-        // params.put(JDBCDataStoreFactory.PK_METADATA_TABLE.key,"user_constraints");
-        params.put(JDBCDataStoreFactory.SCHEMA.key, "ZHE");
-        //针对于 主键是否暴露 主键不暴露无法对于主键进行操作
-        //params.put(JDBCDataStoreFactory.EXPOSE_PK.key, true);
-        OracleNGDataStoreFactory m_JDBCDataStoreFactory = new OracleNGDataStoreFactory();
-        JDBCDataStore jdbcDataStore= m_JDBCDataStoreFactory.createDataStore(params);
+        DataStore dataStore = DataStoreFinder.getDataStore(map);
+        String typeName = dataStore.getTypeNames()[0];
         String[] returnName = new String[1];
         Query query = new Query();
-        returnName[0] = "NAME";
+        returnName[0] = "SnodeID as dd";
         query.setPropertyNames(returnName);
-        query.setTypeName("POI2");
-        FeatureReader<SimpleFeatureType, SimpleFeature> featureSource = jdbcDataStore.getFeatureReader(query,
-                Transaction.AUTO_COMMIT);
+        query.setTypeName(typeName);
+
+        FeatureReader<SimpleFeatureType, SimpleFeature> featureSource = dataStore.getFeatureReader(query, Transaction.AUTO_COMMIT);
+        featureSource.getFeatureType().getTypes().forEach(attributeType -> {
+            System.out.println(attributeType.getName());
+        });
     }
 }

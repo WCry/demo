@@ -23,6 +23,7 @@ public class DataSourceConfig {
         return new DruidDataSource();
     }
 
+
 //    /**
 //     * 需要将 DataSourceProxy 设置为主数据源，否则事务无法回滚
 //     *   采用自动配置了所以这里不能再设置了SeataDataSourceBeanPostProcessor中进行处理主要判断Bean类型
