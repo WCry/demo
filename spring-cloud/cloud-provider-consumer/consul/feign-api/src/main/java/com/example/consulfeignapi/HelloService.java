@@ -14,8 +14,8 @@ public interface HelloService {
     @GetMapping("/helloBytes")
     ResponseEntity<byte[]> hello2();
 
-    @PostMapping("/hello")
-    String hello(@RequestBody String name);
+    @GetMapping("/hello")
+    String hello(String name);
 
     @PostMapping("/county")
     Language countyLanguage(String name);
