@@ -1,6 +1,8 @@
 package com.example.consumer.ttl;
 
 import com.example.consumer.handler.RabbitPropertiesConstant;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

@@ -18,7 +18,6 @@ public class DeadRedirectQueueConsumer {
 
     /**
      * 重定向队列和死信队列形参一致Integer number
-     *
      * @param number
      */
     @RabbitHandler

@@ -129,6 +129,8 @@ rabbitMq 声明队列方式，主要使用在provider端声明队列，避免写
 
 
  针对于发布者新建一个链接，发布者和监听采用不同链接不相互影响
+ 主要是RabbitMQ采用ELarg语言，进程间授信机制，如果不分开，
+ 链接没有分开，发送阻塞的同时也会阻塞掉读取的连接。
  rabbitTemplate.setUsePublisherConnection(true);
 
 RabbitMQ的ack或nack机制使用不当导致的队列堵塞或死循环问题
@@ -212,3 +214,36 @@ RbbitMQ的带有回复功能的接口采用的默认回复队列名称，调用�
 主要针对SpringBoot的**convertAndSend**和**convertSendAndReceive**两个方法：
 
 https://blog.csdn.net/fan521dan/article/details/104930982
+
+在这里可以看到使用的是推送的方式进行获取消息
+BlockingQueueConsumer的setQosAndreateConsumers方法
+SpringBoot的默认预取数量是250个消息
+ChannelN
+异步处理消息主循环处理操作线程
+AsyncMessageProcessingConsumer的mainLoop循环
+
+RabbitMQ的MessageProperties的getDeliveryTag是每一个会话从1开始的
+RabbitMQ的消费端，每一次都是从最新的一个消息进行消费的，消息被确认之后，消息将被
+RabbitMQ的服务标记为删除，等到一定程度在进行删除。
+MessageID采用整个程序的消息的ID
+
+
+RabbitMQ的Lazy Queue队列保证，消息存储在磁盘上，减少内存，应对大量消息积压的情况。
+1千万消息，普通模式占用内存大概是1.2G，但是使用lazy模式占用内存大概是1.5M。
+https://blog.csdn.net/u013256816/article/details/77987216
+
+
+RabbitMQ采用追加的方式增加消息到文件的末尾
+RabbitMQ的重放回队列的策略是，将消息重新放到消息队列开头。
+这条消息可能会被很快再次拿到，再次进行消费。这样操作能够保证消息按照顺序进行消费，但是对于普通的消息，
+但是如果处理不当可能造成重复放回队列，造成消息阻塞。
+
+RabbitMQ多个消费者可以采用公平的方式进行消费或者：
+RabbitMQ如果消费端不设置预取数量，将会一直轮询方式向多个消费端发送消息。
+如果设置预提取数量，将会采用公平的方式进行分配给多个消费者。
+
+RabbitMQ的消息元数据存储是在ETS表，当数据到达时候插入元数据记录，读取确认之后删除元数据记录。同时标记数据。
+https://blog.csdn.net/yongche_shi/article/details/51500534
+
+RabbitMQ实战：
+https://blog.csdn.net/u013256816/article/details/77987216
