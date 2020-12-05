@@ -105,6 +105,11 @@ public class AIOClient implements CompletionHandler<Void, AIOClient>{
                         //如果发送缓冲区中仍有尚未发送的字节，将继续异步发送，如果已经发送完成，则执行异步读取操作。
                         if (buffer.hasRemaining()) {
                             client.write(buffer, buffer, this);
+                            try {
+                                client.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                     @Override

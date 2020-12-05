@@ -25,7 +25,7 @@ public class BIOService {
                 socket = serverSocket.accept();
                 //每一个连接需要创建一个线程处理，创建一个线程处理
                 BIOServerHandler bioServerHandler=new BIOServerHandler(socket);
-                bioServerHandler.run();
+                bioServerHandler.start();
             }
         } catch (IOException e) {
             e.printStackTrace();

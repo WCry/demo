@@ -101,8 +101,10 @@ public class ChatRoomServer {
         ServerSocketChannel serverSocketChannel;
         SocketChannel socketChannel;
         if (sk.isAcceptable()) {//可接收
+
             //从SelectionKey中获取 ServerSocketChannel通道
             serverSocketChannel = (ServerSocketChannel) sk.channel();
+            System.out.println(serverSocketChannel.socket().getLocalPort());
             //接受来自客户端的连接
             socketChannel = serverSocketChannel.accept();
             //设置新连接的通道为非阻塞

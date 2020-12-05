@@ -24,7 +24,6 @@ import spring.study.beanpostproessor.registrar.SimpleRegistrar;
  */
 public class BeanPostProcessorApplication {
     public static void main(String[] args) {
-
         SpringApplication.run(BeanPostProcessorApplication.class, args);
     }
 
@@ -36,7 +35,7 @@ public class BeanPostProcessorApplication {
     }
 
     @Bean
-    public BeanPostProcessor methodValidationPostProcessor() {
+    public BeanPostProcessor methodValidationPostProcessor2() {
         MethodValidationPostProcessor processor = new MethodValidationPostProcessor();
         return processor;
     }

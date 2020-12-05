@@ -30,8 +30,8 @@ public class AIOServer {
         //注册有连接成功之后的回调处理
         listener.accept(null, new CompletionHandler<AsynchronousSocketChannel, Void>() {
             public void completed(AsynchronousSocketChannel ch, Void att) {
-                //listener.accept(null, this);// 接受下一个连接
                 handle(ch);// 处理当前连接
+                listener.accept(null, this);// 接受下一个连接
             }
             @Override
             public void failed(Throwable exc, Void attachment) {

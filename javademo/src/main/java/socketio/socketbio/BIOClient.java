@@ -11,7 +11,7 @@ import java.net.Socket;
  **/
 public class BIOClient {
     //测试端口
-    final int CLIENT_PORT = 8080;
+    final int Servere_PORT = 8080;
     //用于本机测试
     final String HOST = "127.0.0.1";
     public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class BIOClient {
         PrintWriter out = null;
         try {
             //创建提个Socket 连接
-            socket = new Socket(HOST, CLIENT_PORT);
+            socket = new Socket(HOST, Servere_PORT);
             //另外启一个线程处理接收消息
             ClientAccept clientAccept=new ClientAccept(socket);
             clientAccept.start();
