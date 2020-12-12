@@ -10,9 +10,9 @@ spring:
     sentinel:
       transport:
         #sentinel 动态检测端口
-        port: 8719
+        port: 8739
         #仪表
-        dashboard: 10.19.154.187:8080
+        dashboard: localhost:8080
     consul:
       enabled: true
       host: 10.19.154.66

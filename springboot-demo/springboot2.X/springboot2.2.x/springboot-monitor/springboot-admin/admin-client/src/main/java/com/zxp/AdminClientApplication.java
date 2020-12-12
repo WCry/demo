@@ -1,9 +1,11 @@
-package com.gf;
+package com.zxp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
+@ServletComponentScan
 public class AdminClientApplication {
 
     public static void main(String[] args) {
