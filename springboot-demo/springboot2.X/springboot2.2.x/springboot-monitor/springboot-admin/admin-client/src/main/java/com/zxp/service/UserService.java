@@ -16,14 +16,14 @@ public class UserService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public String findUser() {
-        Optional<User> user = lockUserJpaRepository.findById(1L);
+    public String findUser(Long userID) {
+        Optional<User> user = lockUserJpaRepository.findById(userID);
         return user.get().getName();
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public String updateUser() {
-        lockUserJpaRepository.updateStateByMoney(1L, 38);
+    public String updateUser(Long userID,Integer age) {
+        lockUserJpaRepository.updateAgeByID(userID, age);
         return "更新成功";
     }
 }

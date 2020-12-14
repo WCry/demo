@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 使用AOP 配置处理
  */
 @Aspect
 @Component
