@@ -4,7 +4,7 @@
  */
 public class TestString {
     public static void main(String[] args) {
-        String dada="as/as";
-        System.out.println(dada.replaceFirst("as", ""));
+        String replaceString="as/as";
+        System.out.println(replaceString.replaceFirst("as", ""));
     }
 }

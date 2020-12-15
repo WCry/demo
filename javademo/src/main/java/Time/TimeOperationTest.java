@@ -16,10 +16,12 @@ public class TimeOperationTest {
         printWeekNumber();
     }
     private static void BasicUse(){
+        //日期时间操作
         LocalDateTime localDateTime = LocalDateTime.now();
         //计算周期性质的时间差值
         long chronoUnit = ChronoUnit.HOURS.between(localDateTime, LocalDateTime.now());
         System.out.println("时间差（纳秒）：" + chronoUnit);
+        //时间节点
         Duration durationOff = Duration.ofHours(1);
         durationOff = durationOff.plusMinutes(50);
         //时间区间  计算时间差
@@ -28,6 +30,7 @@ public class TimeOperationTest {
         //只会输出整数部分
         System.out.println(durationOff.toHours());
         System.out.println(durationOff);
+
         //推荐使用 Instant 中文意思 片刻 瞬间
         Instant instant = Instant.now();
         //获取当前 毫秒时间
