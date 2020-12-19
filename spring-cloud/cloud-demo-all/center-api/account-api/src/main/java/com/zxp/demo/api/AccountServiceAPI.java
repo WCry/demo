@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @author fangliangsheng
  */
 
-public interface AccountController {
+public interface AccountServiceAPI {
 
 
     @RequestMapping("/debit")

@@ -1,18 +1,14 @@
 package com.zxp.demo.controller;
 
+import com.zxp.demo.api.StorageServiceAPI;
 import com.zxp.demo.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Description：
- *
- * @author fangliangsheng
- * @date 2019/3/28
- */
+
 @RestController
-public class StorageController {
+public class StorageController implements StorageServiceAPI {
 
     private final StorageService storageService;
 

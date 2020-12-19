@@ -1,5 +1,4 @@
-package scalademo
-
+package scalademo.basisdemo
 
 /**
  * Hello scala
@@ -8,6 +7,12 @@ package scalademo
  */
 object AppMain {
   def main(args: Array[String]) = {
+    for (x <- args) {
+      println(x)
+    }
+    args.foreach(Predef.println)
+    args.foreach( f => println(f) )
+    println(args(2))
     println(FunctionParam(splicingString))
   }
 

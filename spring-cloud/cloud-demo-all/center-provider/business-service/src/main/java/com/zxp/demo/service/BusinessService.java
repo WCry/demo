@@ -6,12 +6,7 @@ import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * Description：
- *
- * @author fangliangsheng
- * @date 2019-04-05
- */
+
 @Service
 public class BusinessService {
 
