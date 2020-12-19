@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 
 public interface AccountServiceAPI {
-
     @RequestMapping("/debit")
     Boolean debit(@RequestParam("userId") String userId, @RequestParam("money") BigDecimal money);
 }

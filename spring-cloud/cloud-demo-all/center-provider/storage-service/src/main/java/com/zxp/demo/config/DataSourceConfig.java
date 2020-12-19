@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class DataSourceConfig {
 
     @Bean
+    //配置文件的属性注入到对应的类中
     @ConfigurationProperties(prefix = "spring.datasource")
     public DruidDataSource druidDataSource() {
         return new DruidDataSource();

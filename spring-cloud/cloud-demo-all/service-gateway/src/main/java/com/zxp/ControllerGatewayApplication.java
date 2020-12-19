@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 
 /**
- * 自身应用调用网关
+ * 微服务网关
  */
 @EnableDiscoveryClient
 @SpringBootApplication
