@@ -1,2 +1,14 @@
 server:
   port: 8085
+spring:
+  #zipkin 可以使用 zipkin 不支持服务注册返现方式调用
+  #Spring早些版本有提供 但是后期停止
+  zipkin:
+    base-url: http://localhost:9411
+    #不让Spring将base-url服务注册发现识别成为一个服务
+    discoveryClientEnabled: false
+    enabled: true
+  sleuth:
+    enabled: true
+  application:
+    name: first-demo

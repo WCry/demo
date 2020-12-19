@@ -19,6 +19,7 @@ import java.util.Optional;
 @Slf4j
 @RestController
 public class HelloController {
+
     //注解方式获取配置文件中的属性
     @Value( "${server.port}" )
     private String port;
@@ -35,6 +36,8 @@ public class HelloController {
     }
     @GetMapping("/getName")
     public String hello() {
+        log.info("测试输出");
+        log.error("测试输ddd出");
         log.debug("classC::"+ singleCService.getName());
         log.debug("classAService::"+ singleAService.getName());
         return "hello";

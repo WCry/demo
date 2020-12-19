@@ -20,7 +20,7 @@
         <java.version>1.8</java.version>
         <spring.cloud.version>Hoxton.SR5</spring.cloud.version>
         <!--alibaba组件的使用-->
-        <spring..cloud.alibaba.version>2.1.0.RELEASE</spring..cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
     </properties>
     <modules>
         <module>center-provider</module>
@@ -30,8 +30,20 @@
     </modules>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!-- 集成sleuth\zipkin -->
+        <!--全链路追踪  经过Controller之后 才可以进行监控生成TranceID和SpanID-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -70,7 +82,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring..cloud.alibaba.version}</version>
+                <version>${spring.cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
