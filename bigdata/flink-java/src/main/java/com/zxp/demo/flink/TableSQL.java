@@ -28,7 +28,6 @@ public class TableSQL {
         input.print();
 
         DataSet<PlayerData> topInput = input.map(new MapFunction<String, PlayerData>() {
-            @Override
             public PlayerData map(String s) throws Exception {
                 String[] split = s.split(",");
                 return new PlayerData(String.valueOf(split[0]),

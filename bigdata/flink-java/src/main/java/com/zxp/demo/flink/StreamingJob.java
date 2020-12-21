@@ -18,7 +18,6 @@ public class StreamingJob {
         //flink 作为Socket客户端监听 Server 端发出的消息 进行统计
         DataStream<String> text = env.socketTextStream("localhost", 9000);
         DataStream<Tuple2<String, Integer>> dataStream = text.flatMap(new FlatMapFunction<String, Tuple2<String, Integer>>() {
-            @Override
             public void flatMap(String s, Collector<Tuple2<String, Integer>> collector) throws Exception {
                 String[] tokens = s.toLowerCase().split("\\W+");
                 for (String token : tokens) {

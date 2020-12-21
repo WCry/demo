@@ -29,6 +29,11 @@
             <version>${xstream.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.coddingapi</groupId>
+            <artifactId>tx-lcn</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
