@@ -1,3 +1,8 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,7 +13,7 @@ import java.util.Iterator;
  */
 public class TestHashSet {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Set set = new HashSet();
         set.add(null);
         //重复添加不会报错

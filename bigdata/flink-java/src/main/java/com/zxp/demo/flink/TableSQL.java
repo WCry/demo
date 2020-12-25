@@ -27,20 +27,18 @@ public class TableSQL {
         DataSet<String> input = env.readTextFile("testresource/score.csv");
         input.print();
 
-        DataSet<PlayerData> topInput = input.map(new MapFunction<String, PlayerData>() {
-            public PlayerData map(String s) throws Exception {
-                String[] split = s.split(",");
-                return new PlayerData(String.valueOf(split[0]),
-                        String.valueOf(split[1]),
-                        String.valueOf(split[2]),
-                        Integer.valueOf(split[3]),
-                        Double.valueOf(split[4]),
-                        Double.valueOf(split[5]),
-                        Double.valueOf(split[6]),
-                        Double.valueOf(split[7]),
-                        Double.valueOf(split[8])
-                );
-            }
+        DataSet<PlayerData> topInput = input.map((MapFunction<String, PlayerData>) s -> {
+            String[] split = s.split(",");
+            return new PlayerData(String.valueOf(split[0]),
+                    String.valueOf(split[1]),
+                    String.valueOf(split[2]),
+                    Integer.valueOf(split[3]),
+                    Double.valueOf(split[4]),
+                    Double.valueOf(split[5]),
+                    Double.valueOf(split[6]),
+                    Double.valueOf(split[7]),
+                    Double.valueOf(split[8])
+            );
         });
         //3\. 注册成内存表
         Table topScore = tableEnv.fromDataSet(topInput);

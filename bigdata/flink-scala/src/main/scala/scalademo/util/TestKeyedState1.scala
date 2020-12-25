@@ -1,15 +1,11 @@
 package scalademo.util
 
-import java.net.{URL, URLDecoder}
-
 import org.apache.flink.api.common.functions.RichFlatMapFunction
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
-import org.apache.flink.api.java.functions.KeySelector
 import org.apache.flink.configuration.Configuration
-import org.apache.flink.streaming.api.datastream.{DataStreamSink, SingleOutputStreamOperator}
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
 import org.apache.flink.util.Collector
-import org.apache.flink.streaming.api.scala._
 
 /**
  * 第一种方法的实现
