@@ -1,4 +1,4 @@
-package com.zxp.demo.flink;
+package com.zxp.demo.flink.stream.taxi;
 
 import org.apache.commons.lang3.StringUtils;
 import org.locationtech.jts.geom.Coordinate;

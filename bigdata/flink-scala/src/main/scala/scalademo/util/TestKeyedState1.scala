@@ -1,7 +1,8 @@
 package scalademo.util
 
-import org.apache.flink.api.common.functions.RichFlatMapFunction
+import org.apache.flink.api.common.functions.{MapFunction, RichFlatMapFunction}
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
+import org.apache.flink.api.java.functions.KeySelector
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment
@@ -18,13 +19,21 @@ object TestKeyedState1 {
     import org.apache.flink.streaming.api.scala._
     println(getClass.getResource("/station.log").getPath)
     //读取文件数据
-    val data : SingleOutputStreamOperator[StationLog] = streamEnv.readTextFile(getClass.getResource("/station.log").getPath)
-      .map(line => {
-        val arr = line.split(",")
-       StationLog(arr(0).trim, arr(1).trim, arr(2).trim, arr(3).trim, arr(4).trim.toLong, arr(5).trim.toLong)
-      })
-    data.keyBy((in: StationLog) => in.callOut) // 按照主键分组
-      .flatMap(new CallIntervalFunc())  // 定义一个富函数
+    val data: SingleOutputStreamOperator[StationLog] = streamEnv.readTextFile(getClass.getResource("/station.log").getPath)
+      .map(new MapFunction[String, StationLog] {
+        override def map(line: String): StationLog = {
+          val arr = line.split(",")
+          StationLog(arr(0).trim, arr(1).trim, arr(2).trim, arr(3).trim, arr(4).trim.toLong, arr(5).trim.toLong)
+        }
+      }
+      )
+
+    data.keyBy(new KeySelector[StationLog, String] {
+      override def getKey(in: StationLog): String = {
+        in.callOut
+      }
+    }) // 按照主键分组
+      .flatMap(new CallIntervalFunc()) // 定义一个富函数
       .print()
     streamEnv.execute()
   }
@@ -56,4 +65,5 @@ object TestKeyedState1 {
       }
     }
   }
+
 }

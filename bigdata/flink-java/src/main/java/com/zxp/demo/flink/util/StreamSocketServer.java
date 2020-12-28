@@ -14,10 +14,9 @@ public class StreamSocketServer {
         test();
     }
     public static void test() {
-        ServerSocket server = null;
-        Socket socket = null;
-        DataOutputStream out = null;
-
+        ServerSocket server;
+        Socket socket;
+        DataOutputStream out;
         try {
             server = new ServerSocket(PORT);
             socket = server.accept();
@@ -31,7 +30,6 @@ public class StreamSocketServer {
                 out.writeUTF(MYstr);
                 num = num + 4;
                 System.out.println("我发" + MYstr + "序号是" + num + "时间是" + System.currentTimeMillis());
-                //System.out.println(System.currentTimeMillis());
                 out.flush();
                 if (time >= 60000) {
                     System.out.println("我沉睡了" + System.currentTimeMillis());
