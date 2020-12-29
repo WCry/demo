@@ -40,7 +40,6 @@ public class TestProcessWinFunctionOnWindow {
         //对于计算记过进行Sink 这里的Sink 是简单的输出
         avgScore.print();
         env.execute("TestProcessWinFunctionOnWindow");
-
     }
 
 

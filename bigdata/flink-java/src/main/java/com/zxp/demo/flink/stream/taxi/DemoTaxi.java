@@ -20,11 +20,8 @@ import java.util.Objects;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 出租车的GPS 点位数据运算
  * GPS 点位数据存在突然很大情况
- * //1.车道道面
- * //2.车道面          渲染方向出来  转向线
- * //3.避免上下行效果  类似百度 高德样式
- * //4.想提前预览
  */
 public class DemoTaxi {
     private static final String dataFormatter = "yyyy-MM-dd HH:mm:ss";
