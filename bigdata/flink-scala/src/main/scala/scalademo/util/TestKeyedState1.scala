@@ -32,7 +32,7 @@ object TestKeyedState1 {
       override def getKey(in: StationLog): String = {
         in.callOut
       }
-    }) // 按照主键分组
+    })// 按照主键分组
       .flatMap(new CallIntervalFunc()) // 定义一个富函数
       .print()
     streamEnv.execute()

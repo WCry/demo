@@ -21,7 +21,7 @@ public class TableSQL {
     public static void main(String[] args) throws Exception{
         //1\. 获取上下文环境 table的环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-        BatchTableEnvironment tableEnv = BatchTableEnvironment.getTableEnvironment(env);
+        BatchTableEnvironment tableEnv = BatchTableEnvironment.create(env);
 
         //2\. 读取score.csv
         DataSet<String> input = env.readTextFile("testresource/score.csv");
