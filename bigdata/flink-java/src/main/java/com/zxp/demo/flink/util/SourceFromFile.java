@@ -17,7 +17,7 @@ public class SourceFromFile extends RichSourceFunction<String> {
 
     @Override
     public void run(SourceContext ctx) throws Exception {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(Enve.startDir+"\\testData\\test.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(EnvironmentUtil.startDir+"\\testData\\test.txt"));
         while (isRunning) {
             String line = bufferedReader.readLine();
            // System.out.println(line);
