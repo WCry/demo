@@ -2,6 +2,7 @@ package com.zxp.demo.flink.stream.trigger;
 
 import org.apache.flink.streaming.api.windowing.triggers.Trigger;
 import org.apache.flink.streaming.api.windowing.triggers.TriggerResult;
+import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 
 /**
@@ -9,7 +10,7 @@ import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
  * @since 3.0
  * 自定义触发时间
  */
-public class CustomProcessingTimeTrigger extends Trigger<Object, TimeWindow> {
+public class CustomProcessingTimeTrigger extends Trigger<Object, GlobalWindow> {
     private static final long serialVersionUID = 1L;
     private static int flag = 0;
 
@@ -33,7 +34,7 @@ public class CustomProcessingTimeTrigger extends Trigger<Object, TimeWindow> {
      * @return
      */
     @Override
-    public TriggerResult onElement(Object element, long timestamp, TimeWindow window, TriggerContext ctx) {
+    public TriggerResult onElement(Object element, long timestamp, GlobalWindow window, TriggerContext ctx) {
         ctx.registerProcessingTimeTimer(window.maxTimestamp());
         // CONTINUE是代表不做输出，也即是，此时我们想要实现比如100条输出一次，
         // 而不是窗口结束再输出就可以在这里实现。
@@ -56,7 +57,7 @@ public class CustomProcessingTimeTrigger extends Trigger<Object, TimeWindow> {
      * @throws Exception
      */
     @Override
-    public TriggerResult onEventTime(long time, TimeWindow window, TriggerContext ctx) throws Exception {
+    public TriggerResult onEventTime(long time, GlobalWindow window, TriggerContext ctx) throws Exception {
         return TriggerResult.FIRE_AND_PURGE;
     }
 
@@ -68,12 +69,12 @@ public class CustomProcessingTimeTrigger extends Trigger<Object, TimeWindow> {
      * @return
      */
     @Override
-    public TriggerResult onProcessingTime(long time, TimeWindow window, TriggerContext ctx) {
+    public TriggerResult onProcessingTime(long time, GlobalWindow window, TriggerContext ctx) {
         return TriggerResult.FIRE_AND_PURGE;
     }
 
     @Override
-    public void clear(TimeWindow window, TriggerContext ctx) throws Exception {
+    public void clear(GlobalWindow window, TriggerContext ctx) throws Exception {
         //清除时间
         ctx.deleteProcessingTimeTimer(window.maxTimestamp());
     }
@@ -84,7 +85,7 @@ public class CustomProcessingTimeTrigger extends Trigger<Object, TimeWindow> {
     }
 
     @Override
-    public void onMerge(TimeWindow window, OnMergeContext ctx) {
+    public void onMerge(GlobalWindow window, OnMergeContext ctx) {
         // only register a timer if the time is not yet past the end of the merged window
         // this is in line with the logic in onElement(). If the time is past the end of
         // the window onElement() will fire and setting a timer here would fire the window twice.
