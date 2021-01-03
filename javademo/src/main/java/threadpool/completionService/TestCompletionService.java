@@ -42,6 +42,8 @@ public class TestCompletionService {
             //            //方法2.使用内部阻塞队列的take()
             for (int i = 0; i < taskCount; i++) {
                 //采用completionService.take()，内部维护阻塞队列，任务先完成的先获取到
+                //内部采用 阻塞队里 当队列中有结果时候 取出结果
+                //当队列中没有结果的时候进行阻塞
                 Integer result = completionService.take().get();
                 System.out.println("任务i==" + result + "完成!" + new Date());
                 list.add(result);

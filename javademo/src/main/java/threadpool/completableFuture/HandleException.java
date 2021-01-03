@@ -12,8 +12,6 @@ public class HandleException {
         CompletableFuture<Integer> future2s = CompletableFuture.supplyAsync(() -> 100);
         CompletableFuture<String> f = future2s.thenCompose( i -> CompletableFuture.supplyAsync(() -> (i * 10) + ""));
         System.out.println(f.get()); //1000
-
-
         String name = null;
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
             if (name == null) {

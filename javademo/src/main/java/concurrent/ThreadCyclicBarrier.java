@@ -1,6 +1,7 @@
 package concurrent;
 
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CyclicBarrier;
 
 /**
@@ -31,7 +32,6 @@ public class ThreadCyclicBarrier {
                     cyclicBarrier.await();
                     System.out.println("有等待了");
                     cyclicBarrier.await();
-
                     System.out.println("产品经理规划需求！");
                     cyclicBarrier1.await();
                 } catch (InterruptedException e) {

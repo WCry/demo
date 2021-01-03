@@ -19,7 +19,8 @@ public class TestInterProcessMultiLock {
         // 可重入锁
         InterProcessLock interProcessLock1 = new InterProcessMutex(CuratorHelper.curatorFramework(), CuratorHelper.CURATOR_LOCK);
         // 不可重入锁
-        InterProcessLock interProcessLock2 = new InterProcessSemaphoreMutex(CuratorHelper.curatorFramework(), CuratorHelper.CURATOR_LOCK);
+        InterProcessLock interProcessLock2 = new InterProcessSemaphoreMutex(CuratorHelper.curatorFramework(),
+                CuratorHelper.CURATOR_LOCK);
         // 创建多重锁对象
         InterProcessLock lock = new InterProcessMultiLock(Arrays.asList(interProcessLock1, interProcessLock2));
         lock.acquire();
