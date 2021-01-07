@@ -1,7 +1,8 @@
 package com.example.consumer;
 
-import com.rabbitmq.client.impl.AMQImpl;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,7 +17,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConsumerApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(ConsumerApplication.class, args);
     }
 
