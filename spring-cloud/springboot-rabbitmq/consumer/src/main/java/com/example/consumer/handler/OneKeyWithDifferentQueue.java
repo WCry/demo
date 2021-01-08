@@ -22,14 +22,15 @@ import java.io.IOException;
 @Component
 public class OneKeyWithDifferentQueue {
 
-    @RabbitListener(bindings = @QueueBinding(value = @Queue(value = "TOPIC-A-1", durable = "true", autoDelete = "false"), exchange = @Exchange(value = "TOPIC-EXCHANGE", type = ExchangeTypes.TOPIC), key = "A.*"))
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(value = "TOPIC-A-1", durable = "true", autoDelete = "false"),
+            exchange = @Exchange(value = "TOPIC-EXCHANGE", type = ExchangeTypes.TOPIC), key = "A.*"))
     public void handlerA(@Payload String payload, Message message,Channel channel) throws InterruptedException, IOException {
         System.out.println(message.getMessageProperties().getDeliveryTag());
         System.out.println("监听TOPIC-A-1的消费者收的消息：" + payload);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
     }
     @RabbitListener(bindings = @QueueBinding(value = @Queue(value = "TOPIC-A-1", durable = "true",
-            autoDelete = "false"), exchange = @Exchange(value = "TOPIC-EXCHANGE", type = ExchangeTypes.TOPIC), key = "A.*"))
+            autoDelete = "false"), exchange = @Exchange(value = "TOPIC-EXCHANGE", type = ExchangeTypes.TOPIC), key = "A.C.*"))
     public void handlerAC(@Payload String payload, Message message, Channel channel) throws IOException {
         System.out.println("监听TOPIC-A-1的消费者收的消息：");
         System.out.println(message.getMessageProperties().getDeliveryTag());

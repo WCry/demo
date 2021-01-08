@@ -247,3 +247,7 @@ https://blog.csdn.net/yongche_shi/article/details/51500534
 
 RabbitMQ实战：
 https://blog.csdn.net/u013256816/article/details/77987216
+
+
+RabbitMQ 的Stop时候不要强制关闭连接
+messageListenerContainer.setForceCloseChannel(false);
