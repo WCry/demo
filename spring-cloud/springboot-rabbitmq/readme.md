@@ -251,3 +251,6 @@ https://blog.csdn.net/u013256816/article/details/77987216
 
 RabbitMQ 的Stop时候不要强制关闭连接
 messageListenerContainer.setForceCloseChannel(false);
+
+RabbitMQ  运行过程中产生的事件基类 可以在listener包中找到对应的事件
+AmqpEvent
