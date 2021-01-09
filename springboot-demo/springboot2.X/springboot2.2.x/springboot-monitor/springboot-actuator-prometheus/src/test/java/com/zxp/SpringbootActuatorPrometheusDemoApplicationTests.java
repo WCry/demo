@@ -1,4 +1,4 @@
-package com.gf;
+package com.zxp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
