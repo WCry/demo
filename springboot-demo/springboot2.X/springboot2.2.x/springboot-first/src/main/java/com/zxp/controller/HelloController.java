@@ -2,9 +2,7 @@ package com.zxp.controller;
 
 import com.zxp.scope.SingleAService;
 import com.zxp.scope.SingleCService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.parser.Ranges;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachePut;

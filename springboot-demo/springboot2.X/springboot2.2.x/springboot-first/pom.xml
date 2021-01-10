@@ -31,6 +31,11 @@
     </properties>
 
     <dependencies>
+        <!--undertow包的依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
         <!--全链路追踪  经过Controller之后 才可以进行监控生成TranceID和SpanID-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -49,6 +54,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

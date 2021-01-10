@@ -16,6 +16,8 @@ server:
   tomcat:
     max-threads: 1000
     max-connections: 10000
+  undertow:
+    io-threads: 8
 logging:
   level:
     #appender

@@ -28,11 +28,11 @@
             <artifactId>xstream</artifactId>
             <version>${xstream.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.coddingapi</groupId>
-            <artifactId>tx-lcn</artifactId>
-            <version>4.2.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.coddingapi</groupId>-->
+<!--            <artifactId>tx-lcn</artifactId>-->
+<!--            <version>4.2.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
@@ -93,6 +93,11 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-jcl</artifactId>-->
+<!--            <version>5.14.0</version>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>
