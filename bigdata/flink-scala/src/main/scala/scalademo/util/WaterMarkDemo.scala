@@ -46,20 +46,32 @@ object WaterMarkDemo {
 
       override def cancel(): Unit = isRunning = false
     })
-    // 5. 添加水印
+    // 5. 添加水位线 计算方法
     val watermarkDataStream = orderDataStream.assignTimestampsAndWatermarks(new AssignerWithPeriodicWatermarks[Order] {
       var currentTimestamp = 0L
       val delayTime = 2000
 
+      /**
+       * 获取水位线
+       * @return
+       */
       override def getCurrentWatermark: Watermark = {
         //   - 允许延迟2秒
         // - 在获取水印方法中，打印水印时间、当前事件时间和当前系统时间
         val watermark = new Watermark(currentTimestamp - delayTime)
         val dateFormat = FastDateFormat.getInstance("HH:mm:ss")
-        println(s"当前水印时间:${dateFormat.format(watermark.getTimestamp)}, 当前事件时间: ${dateFormat.format(currentTimestamp)}, 当前系统时间: ${dateFormat.format(System.currentTimeMillis())}")
+        println(s"当前水印时间:${dateFormat.format(watermark.getTimestamp)}, " +
+          s"当前事件时间: ${dateFormat.format(currentTimestamp)}, 当前系统时间: " +
+          s"${dateFormat.format(System.currentTimeMillis())}")
         watermark
       }
 
+      /**
+       * 获取事件戳
+       * @param element 当前元素
+       * @param previousElementTimestamp  前一个2021年1月12日11:37:33戳
+       * @return
+       */
       override def extractTimestamp(element: Order, previousElementTimestamp: Long): Long = {
         val timestamp = element.timestamp
         currentTimestamp = Math.max(currentTimestamp, timestamp)
