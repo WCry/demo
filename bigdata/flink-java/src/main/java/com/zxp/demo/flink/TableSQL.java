@@ -10,15 +10,14 @@ import org.apache.flink.api.java.DataSet;
 //需要引入 Flink Table 依赖  进行批处理
 import org.apache.flink.table.api.Table;
 import org.apache.flink.table.api.java.BatchTableEnvironment;
+
 /**
  * @author zhangxuepei
  * @since 3.0
  */
-
-
 public class TableSQL {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         //1\. 获取上下文环境 table的环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         BatchTableEnvironment tableEnv = BatchTableEnvironment.create(env);
@@ -46,11 +45,11 @@ public class TableSQL {
 
         //4\. 编写sql 然后提交执行
         //select player, count(season) as num from score group by player order by num desc;
-        Table queryResult = tableEnv.sqlQuery("select player, count(season) as num from score group by player order by num desc limit 3");
+        Table queryResult = tableEnv.sqlQuery("select player, count(season) as num from score group by player "
+                + "order by num desc limit 3");
 
         //5\. 结果进行打印
         DataSet<Result> result = tableEnv.toDataSet(queryResult, Result.class);
         result.print();
-
     }
 }
