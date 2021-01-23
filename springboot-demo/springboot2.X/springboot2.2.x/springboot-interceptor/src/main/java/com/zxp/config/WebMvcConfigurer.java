@@ -1,4 +1,4 @@
-package com.wyj.config;
+package com.zxp.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

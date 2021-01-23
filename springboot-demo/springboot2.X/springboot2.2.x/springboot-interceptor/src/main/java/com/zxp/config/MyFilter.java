@@ -1,14 +1,12 @@
-package com.wyj.config;
+package com.zxp.config;
 
 /**
  * @author zhangxuepei
  * @since 3.0
  */
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Component

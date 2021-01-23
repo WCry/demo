@@ -1,4 +1,4 @@
-package com.wyj.entity.po;
+package com.zxp.entity.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

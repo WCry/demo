@@ -1,7 +1,7 @@
-package com.wyj.controller;
+package com.zxp.controller;
 
-import com.wyj.entity.po.User;
-import com.wyj.session.UserInfo;
+import com.zxp.entity.po.User;
+import com.zxp.session.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,4 +1,4 @@
-package com.wyj.session;
+package com.zxp.session;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
