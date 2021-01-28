@@ -20,6 +20,7 @@
         <commons-codec.version>1.13</commons-codec.version>
         <minio.version>7.1.2</minio.version>
         <cglib.version>2.2.2</cglib.version>
+        <javaEWAH.version>1.1.6</javaEWAH.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
@@ -29,10 +30,15 @@
             <version>${xstream.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.coddingapi</groupId>
-            <artifactId>tx-lcn</artifactId>
-            <version>4.2.0</version>
+            <groupId>com.googlecode.javaewah</groupId>
+            <artifactId>JavaEWAH</artifactId>
+            <version>${javaEWAH.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.coddingapi</groupId>-->
+<!--            <artifactId>tx-lcn</artifactId>-->
+<!--            <version>4.2.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
