@@ -50,6 +50,7 @@ public class ChatRoomServer {
         sschannel.configureBlocking(false);
         //获取selector
         selector = Selector.open();
+        System.out.println(sschannel.hashCode());
         //注册通道到selectror
         sschannel.register(selector, SelectionKey.OP_ACCEPT);
         System.out.println("server is running at" + sschannel.getLocalAddress());
@@ -104,6 +105,7 @@ public class ChatRoomServer {
 
             //从SelectionKey中获取 ServerSocketChannel通道
             serverSocketChannel = (ServerSocketChannel) sk.channel();
+            System.out.println(serverSocketChannel.hashCode());
             System.out.println(serverSocketChannel.socket().getLocalPort());
             //接受来自客户端的连接
             socketChannel = serverSocketChannel.accept();
@@ -111,7 +113,7 @@ public class ChatRoomServer {
             socketChannel.configureBlocking(false);
             //将该通道注册到selectror上,并设置对读事件感兴趣
             socketChannel.register(selector, SelectionKey.OP_READ);
-            System.out.println("[" + socketChannel.getRemoteAddress() + "] is already connected to the server!");
+            System.out.println("[" + socketChannel.getRemoteAddress() + "] is  connected to the server!");
             //告诉客户端输入昵称
             writeMsg("请输入昵称,进行身份确认后聊天：", socketChannel);
         } else if (sk.isReadable()) {//读就绪

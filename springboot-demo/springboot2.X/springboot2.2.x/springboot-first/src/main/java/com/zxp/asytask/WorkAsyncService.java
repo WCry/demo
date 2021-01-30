@@ -18,8 +18,13 @@ import java.util.concurrent.Future;
 @Slf4j
 @Service
 public class WorkAsyncService {
-    @Autowired
+    final
     ObjectMapper objectMapper;
+
+    public WorkAsyncService(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
     @Async
     public CompletableFuture<String> doWork(String value) {
         log.debug("--------start work------" + Thread.currentThread().getName());
