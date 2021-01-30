@@ -21,6 +21,7 @@ import java.util.Random;
 public class ReduceWithProcessFunction {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.getConfig().setAutoWatermarkInterval(200L);
         DataStream<Tuple2<String, Long>> dataStreamSource = env.addSource(new SourceFunction<Tuple2<String, Long>>() {
             private volatile Boolean isRunning = true;
 
@@ -47,9 +48,12 @@ public class ReduceWithProcessFunction {
                 isRunning = false;
             }
         });
+
+
+
         SingleOutputStreamOperator<Tuple2<Long, Tuple2<String, Long>>> result = dataStreamSource.keyBy(t -> t.f0).
                 //定义窗口
-                        timeWindow(Time.seconds(10000))
+                timeWindow(Time.seconds(10000))
                 //进行规约计算
                 .reduce(new QhReduceAggregate(), new QhProcessWindowFunction());
         result.print();

@@ -28,8 +28,7 @@ public class ForkJoinPoolRecursiveActionTest extends RecursiveAction {
         // 创建包含Runtime.getRuntime().availableProcessors()返回值作为个数的并行线程的ForkJoinPool
         System.out.println("可以利用处理器："+Runtime.getRuntime().availableProcessors());
         //默认最大线程数量是 CPU数量
-        ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().
-                availableProcessors());
+        ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
         // 提交可分解的PrintTask任务
         forkJoinPool.submit(new ForkJoinPoolRecursiveActionTest(0, 1000));
         // 关闭线程池

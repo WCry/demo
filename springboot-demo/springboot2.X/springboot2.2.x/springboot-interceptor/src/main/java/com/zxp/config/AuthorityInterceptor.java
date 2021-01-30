@@ -1,6 +1,6 @@
-package com.wyj.config;
+package com.zxp.config;
 
-import com.wyj.session.UserInfo;
+import com.zxp.session.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

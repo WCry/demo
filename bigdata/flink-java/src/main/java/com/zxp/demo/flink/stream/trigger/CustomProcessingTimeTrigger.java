@@ -3,7 +3,9 @@ package com.zxp.demo.flink.stream.trigger;
 import org.apache.flink.streaming.api.windowing.triggers.Trigger;
 import org.apache.flink.streaming.api.windowing.triggers.TriggerResult;
 import org.apache.flink.streaming.api.windowing.windows.GlobalWindow;
-import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author zhangxuepei
@@ -35,6 +37,10 @@ public class CustomProcessingTimeTrigger extends Trigger<Object, GlobalWindow> {
      */
     @Override
     public TriggerResult onElement(Object element, long timestamp, GlobalWindow window, TriggerContext ctx) {
+        final long now = ctx.getCurrentProcessingTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(timestamp);
+        System.out.printf(simpleDateFormat.format(date));
         ctx.registerProcessingTimeTimer(window.maxTimestamp());
         // CONTINUE是代表不做输出，也即是，此时我们想要实现比如100条输出一次，
         // 而不是窗口结束再输出就可以在这里实现。

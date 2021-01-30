@@ -53,6 +53,17 @@ public class SpringbootRedis01ApplicationTests {
     }
 
     @Test
+    public void testRedisGetNotExistsKey() {
+        String dsad=null;
+        if(dsad==null){
+            System.out.println(dsad);
+        }
+        User jsonUser = (User)stringObjectRedisTemple.opsForValue().get("jsdddon");
+        System.out.println(jsonUser);
+    }
+
+
+    @Test
     public void testRedisTemple() {
         User user = new User();
         user.setId(1);

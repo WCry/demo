@@ -1,4 +1,4 @@
-package com.wyj.utils;
+package com.zxp.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
@@ -9,7 +9,7 @@ import java.util.List;
 public class JsonUtils {
 
     // 定义jackson对象
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 将对象转换成json字符串。
@@ -19,7 +19,7 @@ public class JsonUtils {
      */
     public static String objectToJson(Object data) {
         try {
-            String string = MAPPER.writeValueAsString(data);
+            String string = objectMapper.writeValueAsString(data);
             return string;
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -36,7 +36,7 @@ public class JsonUtils {
      */
     public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {
         try {
-            T t = MAPPER.readValue(jsonData, beanType);
+            T t = objectMapper.readValue(jsonData, beanType);
             return t;
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,14 +52,13 @@ public class JsonUtils {
      * @return
      */
     public static <T> List<T> jsonToList(String jsonData, Class<T> beanType) {
-        JavaType javaType = MAPPER.getTypeFactory().constructParametricType(List.class, beanType);
+        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, beanType);
         try {
-            List<T> list = MAPPER.readValue(jsonData, javaType);
+            List<T> list = objectMapper.readValue(jsonData, javaType);
             return list;
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 

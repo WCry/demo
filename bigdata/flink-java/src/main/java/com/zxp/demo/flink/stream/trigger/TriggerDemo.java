@@ -28,6 +28,8 @@ public class TriggerDemo {
     public static void main(String[] args) {
         //获取处理流
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setStreamTimeCharacteristic(TimeCharacteristic.IngestionTime);
+      //  TimeCharacteristic.IngestionTime
         DataStream<Tuple2<String, Integer>> dataStreamSource = env.addSource(new TestStudentScoresStreamSource());
         dataStreamSource.keyBy(t -> t.f0).
                 //首先创建窗口 计算

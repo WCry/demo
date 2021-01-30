@@ -20,18 +20,17 @@ import java.util.Random;
  */
 @RestController
 public class RedisBloomFilterController {
+    static int sizeOfNumberSet = 10000;
+    static Random generator = new Random();
     private final StringRedisTemplate redisTemplate;
+
     @Autowired
     public RedisBloomFilterController(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
-    static int sizeOfNumberSet =10000;
-
-    static Random generator = new Random();
-
 
     @RequestMapping(value = "/test/bloomFilter")
-    public  String testBloomFilter() {
+    public String testBloomFilter() {
         int error = 0;
         HashSet<Integer> hashSet = new HashSet<>();
         //Funnel 漏斗  泛型对象中那些属性需要用来做Bloom运算
@@ -39,35 +38,36 @@ public class RedisBloomFilterController {
         //参数：总共放多少数据
         //参数：数据错误率
         BloomFilter<Integer> filter = BloomFilter.create(Funnels.integerFunnel(), sizeOfNumberSet);
-        for(int i = 0; i < sizeOfNumberSet; i++) {
+        for (int i = 0; i < sizeOfNumberSet; i++) {
             int number = generator.nextInt();
-            if(filter.mightContain(number) != hashSet.contains(number)) {
+            if (filter.mightContain(number) != hashSet.contains(number)) {
                 error++;
             }
             filter.put(number);
             hashSet.add(number);
         }
-        System.out.println("Error count: " + error + ", " +
-                "error rate = " + String.format("%f", (float)error/(float)sizeOfNumberSet));
+        System.out.println("Error count: " + error + ", " + "error rate = " + String.format("%f",
+                (float) error / (float) sizeOfNumberSet));
         return null;
     }
 
     @RequestMapping(value = "/test/redis/bloomFilter")
-    public  String redisBloomFilter() {
+    public String redisBloomFilter() {
         int error = 0;
         HashSet<String> hashSet = new HashSet<>();
 
-        RedisBloomFilter<String> filter = RedisBloomFilter.create(redisTemplate,Funnels.stringFunnel(Charset.forName("UTF-8")), sizeOfNumberSet,0.03D);
-        for(int i = 0; i < sizeOfNumberSet; i++) {
+        RedisBloomFilter<String> filter = RedisBloomFilter.create(redisTemplate,
+                Funnels.stringFunnel(Charset.forName("UTF-8")), sizeOfNumberSet, 0.03D);
+        for (int i = 0; i < sizeOfNumberSet; i++) {
             int number = generator.nextInt();
-            if(filter.mightContain(String.valueOf(number)) != hashSet.contains(number)) {
+            if (filter.mightContain(String.valueOf(number)) != hashSet.contains(number)) {
                 error++;
             }
             filter.put(String.valueOf(number));
             hashSet.add(String.valueOf(number));
         }
-        System.out.println("Error count: " + error + ", " +
-                "error rate = " + String.format("%f", (float)error/(float)sizeOfNumberSet));
+        System.out.println("Error count: " + error + ", " + "error rate = " + String.format("%f",
+                (float) error / (float) sizeOfNumberSet));
         return null;
     }
 
