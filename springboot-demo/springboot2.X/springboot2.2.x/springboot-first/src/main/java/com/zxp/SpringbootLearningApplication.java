@@ -16,6 +16,7 @@ public class SpringbootLearningApplication {
         SpringApplication.run(SpringbootLearningApplication.class, args);
     }
 
+
     @Bean(initMethod = "initMethod", destroyMethod = "destroyMethod")
     public CustomerBean testIniBean() {
         return new CustomerBean();

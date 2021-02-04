@@ -23,7 +23,7 @@ public class TableSQL {
         BatchTableEnvironment tableEnv = BatchTableEnvironment.create(env);
 
         //2\. 读取score.csv
-        DataSet<String> input = env.readTextFile("testresource/score.csv");
+        DataSet<String> input = env.readTextFile("testData/score.csv");
         input.print();
 
         DataSet<PlayerData> topInput = input.map((MapFunction<String, PlayerData>) s -> {
