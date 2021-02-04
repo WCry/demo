@@ -1,4 +1,4 @@
-package com.zxp.demo.flink;
+package com.zxp.demo.flink.dataset;
 
 import com.zxp.demo.flink.entry.PlayerData;
 import com.zxp.demo.flink.entry.Result;
@@ -21,11 +21,8 @@ public class TableSQL {
         //1\. 获取上下文环境 table的环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         BatchTableEnvironment tableEnv = BatchTableEnvironment.create(env);
-
         //2\. 读取score.csv
         DataSet<String> input = env.readTextFile("testData/score.csv");
-        input.print();
-
         DataSet<PlayerData> topInput = input.map((MapFunction<String, PlayerData>) s -> {
             String[] split = s.split(",");
             return new PlayerData(String.valueOf(split[0]),
