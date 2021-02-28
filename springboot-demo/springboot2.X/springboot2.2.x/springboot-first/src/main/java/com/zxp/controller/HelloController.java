@@ -42,6 +42,7 @@ public class HelloController {
     }
     @GetMapping("/getName")
     public String hello() {
+
         log.info("测试输出");
         log.error("测试输ddd出");
         log.debug("classC::"+ singleCService.getName());

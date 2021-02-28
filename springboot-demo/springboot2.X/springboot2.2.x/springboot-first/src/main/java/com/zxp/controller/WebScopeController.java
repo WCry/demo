@@ -2,6 +2,7 @@ package com.zxp.controller;
 
 import com.zxp.scope.RequestScopeAction;
 import com.zxp.scope.SessionScopeAction;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,14 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebScopeController {
     private final RequestScopeAction requestScopeAction;
     private final SessionScopeAction sessionScopeAction;
-
+    @Value("${zxp}")
+    private String ddd;
     public WebScopeController(RequestScopeAction requestScopeAction, SessionScopeAction sessionScopeAction) {
         this.requestScopeAction = requestScopeAction;
         this.sessionScopeAction = sessionScopeAction;
     }
 
     @GetMapping("/addRequestValue")
-    private String addRequestScope(String name) {
+    public String addRequestScope(String name) {
+
         if (name.equals("李四")) {
             requestScopeAction.setName(name);
         }
@@ -33,11 +36,12 @@ public class WebScopeController {
     }
 
     @GetMapping("/testGetRequestValue")
-    private String getRequestScope() {
+    public String getRequestScope() {
+        System.out.println(ddd);
         return "获取到的Request的Value是"+requestScopeAction.getName();
     }
     @GetMapping("/addSessionValue")
-    private String addSessionScope(String name) {
+    public String addSessionScope(String name) {
         if (name.equals("李四")) {
             sessionScopeAction.setName(name);
         }
@@ -46,7 +50,7 @@ public class WebScopeController {
         return "设置的Session的Value"+sessionScopeAction.getName();
     }
     @GetMapping("/getSessionValue")
-    private String getSessionScope() {
+    public String getSessionScope() {
         System.out.println(sessionScopeAction);
         System.out.println(sessionScopeAction.getName());
         return "获取到的Session的Value"+sessionScopeAction.getName();

@@ -6,21 +6,9 @@ public class dsad {
     public static void main(String[] arges){
         Map<Integer,Integer> numbers2=new HashMap<>();
         numbers2.put(1,5);
-        numbers2.computeIfAbsent(1, new Function<Integer, Integer>() {
-            @Override
-            public Integer apply(Integer integer) {
-                return null;
-            }
-        });
+        numbers2.computeIfAbsent(1, integer -> null);
         System.out.println(Character.getNumericValue('2'));
-
-
-        numbers2.computeIfPresent(1, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer integer, Integer integer2) {
-                return integer2+5;
-            }
-        });
+        numbers2.computeIfPresent(1, (integer, integer2) -> integer2+5);
         Scanner sc=new Scanner(System.in);
         Long number=sc.nextLong();
         List<Integer> numbers=new LinkedList();

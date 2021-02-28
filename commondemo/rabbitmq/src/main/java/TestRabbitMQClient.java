@@ -1,8 +1,4 @@
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
+import com.rabbitmq.client.*;
 
 /**
  * @author zhangxuepei
@@ -60,18 +56,26 @@ public class TestRabbitMQClient {
             //            //声明推送的消费方式 采用
             //            channel2.basicConsume("test", false, consumer2);
             Boolean isCancel = false;
+
+
+            String callbackQueueName = channel.queueDeclare().getQueue();
+            com.rabbitmq.client.AMQP.BasicProperties props = new com.rabbitmq.client.AMQP.BasicProperties.Builder().replyTo(callbackQueueName)
+                    .build();
+            String message="dsad";
+            channel.basicPublish("", "rpc_queue", props, message.getBytes());
+
             while (true) {
                 //获取收到的推送消息
                 QueueingConsumer.Delivery deliver = consumer.nextDelivery();
                 System.out.println("reciver messager:" + new String(deliver.getBody()));
                 if (!isCancel) {
-
                     channel.basicCancel(consumer.getConsumerTag());
                     isCancel = true;
                 }
                 Thread.sleep(1000);
                 channel.basicAck(deliver.getEnvelope().getDeliveryTag(), false);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

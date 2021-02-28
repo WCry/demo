@@ -1,4 +1,4 @@
-package com.zxp;
+package com.zxp.Test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

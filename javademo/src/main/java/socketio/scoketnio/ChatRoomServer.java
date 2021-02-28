@@ -171,6 +171,7 @@ public class ChatRoomServer {
         int len = 0;
         StringBuilder stringBuilder = new StringBuilder();
         while ((len = socketChannel.read(buffer)) > 0) {
+            //flip 调整缓冲区  有写入模式 变成读取模式 ， 或者有读取模式变成写入模式
             buffer.flip();
             stringBuilder.append(new String(buffer.array(), 0, len, StandardCharsets.UTF_8));
         }

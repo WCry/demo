@@ -3,6 +3,7 @@ package com.zxp.controller;
 import com.zxp.entity.Employee;
 import com.zxp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-
+   @Value("zxp")
+   private String ddd;
     private final EmployeeService employeeService;
 
     @Autowired

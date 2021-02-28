@@ -11,8 +11,11 @@ import java.util.List;
 @Service("demoService")
 public class DemoServiceImpl implements DemoService {
 
-    @Autowired
-    private DemoMapper demoMapper;
+    private final DemoMapper demoMapper;
+
+    public DemoServiceImpl(DemoMapper demoMapper) {
+        this.demoMapper = demoMapper;
+    }
 
     @Override
     public List<Message> findMessage() {

@@ -14,9 +14,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/**
- * Created by wangkai8 on 17/1/5.
- */
+
 public class Server {
 
     public static final Logger LOG = LoggerFactory.getLogger(Server.class);

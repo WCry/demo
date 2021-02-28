@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.dubbo.protocol.port",
+      "type": "java.lang.String",
+      "description": "Description for spring.dubbo.protocol.port."
+  }
+] }
