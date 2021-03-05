@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WebLogAspect {
     private Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
+
     /**
      * 定义切入点，切入点为com.wyj下的所有函数
      */

@@ -7,13 +7,18 @@ package com.example.demo;
  */
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+
 @ConfigurationProperties(prefix = "student")
 public class StudentConfig {
     private String name;
     private int age;
     private String sex;
 
+
     public String getName() {
+
         return name;
     }
 
