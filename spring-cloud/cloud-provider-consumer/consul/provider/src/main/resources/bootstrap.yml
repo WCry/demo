@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8084
   servlet:
     context-path: /consul-feign-client
 spring:
@@ -7,8 +7,8 @@ spring:
     name: consul-feign-client
   cloud:
     consul:
-      host: 10.19.176.86
-      port: 8068
+      host: 10.19.154.66
+      port: 8500
       discovery:
         prefer-ip-address: true
         health-check-path: ${server.servlet.context-path}/actuator/health

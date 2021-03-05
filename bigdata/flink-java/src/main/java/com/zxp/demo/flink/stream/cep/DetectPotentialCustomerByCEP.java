@@ -1,7 +1,7 @@
 package com.zxp.demo.flink.stream.cep;
 
 import com.zxp.demo.flink.entry.CustomerEvent;
-import org.apache.flink.api.java.functions.KeySelector;
+import com.zxp.demo.flink.util.EnvironmentUtil;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.functions.PatternProcessFunction;
@@ -21,14 +21,17 @@ import java.util.Objects;
 /**
  * @author zhangxuepei
  * @since 3.0
- * 检测潜在客户通过CEP表达式
+ * DetectPotential 检测潜在客户通过CEP表达式
  */
 public class DetectPotentialCustomerByCEP {
     public static void main(String[] args) throws Exception {
+        String filePath = EnvironmentUtil.startDir + "\\testData\\customer.txt";
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        DataStreamSource<String> dataStreamSource = env.socketTextStream("localhost", 9999, "\n");
+        env.setParallelism(1);
+        DataStreamSource<String> dataStreamSource = env.readTextFile(filePath);
         //首先过滤掉对象为空的
-        KeyedStream<CustomerEvent, String> partitionedInput = dataStreamSource.filter(Objects::nonNull).map(s -> {
+        KeyedStream<CustomerEvent, String> partitionedInput =
+                dataStreamSource.filter(Objects::nonNull).map(s -> {
             // 输入的string，逗号分隔，第一个字段为用户名，第二个字段为事件类型
             String[] strings = s.split(",");
             if (strings.length != 2) {
@@ -37,32 +40,35 @@ public class DetectPotentialCustomerByCEP {
             CustomerEvent event = new CustomerEvent();
             event.setName(strings[0]);
             event.setType(Integer.parseInt(strings[1]));
+            System.out.println(event);
             return event;
-        }).returns(CustomerEvent.class).keyBy(CustomerEvent::getName);
+        }).keyBy(CustomerEvent::getName);
 
         // 先点击浏览商品，然后将商品加入收藏
-        Pattern<CustomerEvent, ?> patternA = Pattern.<CustomerEvent>begin("firstly").where(new SimpleCondition<CustomerEvent>() {
+        Pattern<CustomerEvent, CustomerEvent> patternA =
+                Pattern.<CustomerEvent>begin("firstly").where(new SimpleCondition<CustomerEvent>() {
             @Override
-            public boolean filter(CustomerEvent event) throws Exception {
+            public boolean filter(CustomerEvent event) {
                 // 点击商品
                 return event.getType() == 0;
             }
-        }).followedBy("and").where(new SimpleCondition<CustomerEvent>() {
+            //next操作 紧挨着
+        }).next("and").where(new SimpleCondition<CustomerEvent>() {
             @Override
-            public boolean filter(CustomerEvent event) throws Exception {
+            public boolean filter(CustomerEvent event) {
                 // 将商品加入收藏
                 return event.getType() == 1;
             }
         });
-
         // 1分钟内点击浏览了商品3次。
-        Pattern<CustomerEvent, ?> patternB = Pattern.<CustomerEvent>begin("start").where(new SimpleCondition<CustomerEvent>() {
-            @Override
-            public boolean filter(CustomerEvent event) throws Exception {
-                // 浏览商品
-                return event.getType() == 0;
-            }
-        }).timesOrMore(3).within(Time.minutes(1));
+        Pattern<CustomerEvent, ?> patternB =
+                Pattern.<CustomerEvent>begin("start").where(new SimpleCondition<CustomerEvent>() {
+                    @Override
+                    public boolean filter(CustomerEvent event) {
+                        // 浏览商品
+                        return event.getType() == 0;
+                    }
+                }).timesOrMore(3).within(Time.minutes(1));
 
         // CEP用pattern将输入的时间事件流转化为复杂事件流
         PatternStream<CustomerEvent> patternStreamA = CEP.pattern(partitionedInput, patternA);

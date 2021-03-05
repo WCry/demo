@@ -15,13 +15,11 @@ public class Base64Test {
          *  Base64 MIME
          *  Base64  RFC4648 用于URL编码
          */
-       File dasd=new File("C:\\Users" +
-               "\\zhangxuepei\\Desktop" +
-               "\\新建文件夹\\28M.jpg");
+        File dasd = new File("C:\\Users" + "\\zhangxuepei\\Desktop" + "\\新建文件夹\\28M.jpg");
 
-        byte[] bytes=new byte[(int)dasd.length()];
+        byte[] bytes = new byte[(int) dasd.length()];
         new FileInputStream(dasd).read(bytes);
-        byte[] target= Base64.getEncoder().encode(bytes);
+        byte[] target = Base64.getEncoder().encode(bytes);
         System.out.println(target.length);
     }
 }

@@ -38,42 +38,23 @@ public class SparkWorldCountSortResult {
             //并行化创建rdd 创建第一个RDD
             JavaRDD<String> rdd = sc.parallelize(data);
             //映射成为key和Value模式的 得到map之后的RDD
-            JavaPairRDD<String, Integer> mapToPair = rdd.mapToPair(new PairFunction<String, String, Integer>() {
-                @Override
-                public Tuple2<String, Integer> call(String s) throws Exception {
-                    Tuple2<String, Integer> tuple2 = new Tuple2<>(s, 1);
-                    return tuple2;
-                }
+            JavaPairRDD<String, Integer> mapToPair = rdd.mapToPair((PairFunction<String, String, Integer>) s -> {
+                Tuple2<String, Integer> tuple2 = new Tuple2<>(s, 1);
+                return tuple2;
             });
             //按照key进行规约reduce处理
-            JavaPairRDD<String, Integer> reduceByKey = mapToPair.reduceByKey(new Function2<Integer, Integer, Integer>() {
-                @Override
-                public Integer call(Integer v1, Integer v2) throws Exception {
-                    return v1 + v2;
-                }
-            });
+            JavaPairRDD<String, Integer> reduceByKey = mapToPair.reduceByKey((Function2<Integer, Integer, Integer>) (v1, v2) -> v1 + v2);
             //交换Value和Key的顺序 然后按照Value进行排序
-            JavaPairRDD<Integer, String> value2Key= reduceByKey.mapToPair(new PairFunction<Tuple2<String, Integer>, Integer, String>() {
-                @Override
-                public Tuple2<Integer, String> call(Tuple2<String, Integer> stringIntegerTuple2) throws Exception {
-                    return stringIntegerTuple2.swap();
-                }
-            });
+            JavaPairRDD<Integer, String> value2Key= reduceByKey.mapToPair((PairFunction<Tuple2<String, Integer>,
+                    Integer, String>) stringIntegerTuple2 -> stringIntegerTuple2.swap());
             //将Value和Key重新交换回来
             //按照降序进行排序
-            JavaPairRDD<String, Integer> result= value2Key.sortByKey(true).mapToPair(new PairFunction<Tuple2<Integer, String>, String, Integer>() {
-                @Override
-                public Tuple2<String, Integer> call(Tuple2<Integer, String> integerStringTuple2) throws Exception {
-                    return integerStringTuple2.swap();
-                }
-            });
+            JavaPairRDD<String, Integer> result= value2Key.sortByKey(true).mapToPair((PairFunction<Tuple2<Integer,
+                    String>, String, Integer>) integerStringTuple2 -> integerStringTuple2.swap());
             //对于规约结果进行输出
-            result.foreach(new VoidFunction<Tuple2<String, Integer>>() {
-                @Override
-                public void call(Tuple2<String, Integer> stringIntegerTuple2) throws Exception {
-                    stringIntegerTuple2.swap();
-                    System.out.println(stringIntegerTuple2);
-                }
+            result.foreach((VoidFunction<Tuple2<String, Integer>>) stringIntegerTuple2 -> {
+                stringIntegerTuple2.swap();
+                System.out.println(stringIntegerTuple2);
             });
         } catch (Exception e) {
             e.printStackTrace();

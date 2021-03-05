@@ -40,27 +40,14 @@ public class SparkWorldCount {
             //并行化创建rdd 创建第一个RDD
             JavaRDD<String> rdd = sc.parallelize(data);
             //映射成为key和Value模式的 得到map之后的RDD
-            JavaPairRDD<String, Integer> mapToPair = rdd.mapToPair(new PairFunction<String, String, Integer>() {
-                @Override
-                public Tuple2<String, Integer> call(String s) throws Exception {
-                    Tuple2<String, Integer> tuple2 = new Tuple2<>(s, 1);
-                    return tuple2;
-                }
+            JavaPairRDD<String, Integer> mapToPair = rdd.mapToPair((PairFunction<String, String, Integer>) s -> {
+                Tuple2<String, Integer> tuple2 = new Tuple2<>(s, 1);
+                return tuple2;
             });
             //按照key进行规约reduce处理
-            JavaPairRDD<String, Integer> reduceByKey = mapToPair.reduceByKey(new Function2<Integer, Integer, Integer>() {
-                @Override
-                public Integer call(Integer v1, Integer v2) throws Exception {
-                    return v1 + v2;
-                }
-            });
+            JavaPairRDD<String, Integer> reduceByKey = mapToPair.reduceByKey((Function2<Integer, Integer, Integer>) (v1, v2) -> v1 + v2);
             //对于规约结果进行输出
-            reduceByKey.foreach(new VoidFunction<Tuple2<String, Integer>>() {
-                @Override
-                public void call(Tuple2<String, Integer> stringIntegerTuple2) throws Exception {
-                    System.out.println(stringIntegerTuple2);
-                }
-            });
+            reduceByKey.foreach((VoidFunction<Tuple2<String, Integer>>) stringIntegerTuple2 -> System.out.println(stringIntegerTuple2));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
