@@ -20,8 +20,16 @@
         <commons-codec.version>1.13</commons-codec.version>
         <minio.version>7.1.2</minio.version>
         <cglib.version>2.2.2</cglib.version>
+        <googlecode.version>1.1.6</googlecode.version>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.javaewah/JavaEWAH -->
+        <dependency>
+            <groupId>com.googlecode.javaewah</groupId>
+            <artifactId>JavaEWAH</artifactId>
+            <version>${googlecode.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>

@@ -11,6 +11,7 @@ import java.io.IOException;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * Google采用压缩的方式实现对于BitMap的压缩管理，减少数量少的时候占用内存大的问题。
  * bitMap 实践
  * https://blog.csdn.net/weixin_42142408/article/details/89426499
  */

@@ -3,7 +3,6 @@ package com.jesper.seckill.vo;
 import com.jesper.seckill.bean.OrderInfo;
 
 /**
- * Created by jiangyunxiong on 2018/5/28.
  */
 public class OrderDetailVo {
     private GoodsVo goods;

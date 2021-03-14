@@ -3,9 +3,6 @@ package com.jesper.seckill.redis;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/**
- * 读取配置文件的redis信息
- */
 
 @Component
 @ConfigurationProperties(prefix = "redis")

@@ -1,8 +1,6 @@
 package com.jesper.seckill.bean;
 
-/**
- * Created by jiangyunxiong on 2018/5/22.
- */
+
 public class Goods {
     private Long id;
     private String goodsName;

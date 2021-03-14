@@ -2,9 +2,7 @@ package com.jesper.seckill.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-/**
- * Created by jiangyunxiong on 2018/5/21.
- */
+
 public class MD5Util {
 
     public static String md5(String src){

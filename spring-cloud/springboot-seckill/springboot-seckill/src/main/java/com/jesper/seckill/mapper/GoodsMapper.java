@@ -9,9 +9,7 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-/**
- * Created by jiangyunxiong on 2018/5/22.
- */
+
 @Mapper
 public interface GoodsMapper {
 

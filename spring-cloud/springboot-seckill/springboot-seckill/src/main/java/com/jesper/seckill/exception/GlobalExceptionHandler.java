@@ -12,8 +12,6 @@ import org.springframework.validation.BindException;
 import java.util.List;
 
 /**
- * Created by jiangyunxiong on 2018/5/22.
- *
  * 自定义全局异常拦截器
  */
 @ControllerAdvice

@@ -2,9 +2,7 @@ package com.jesper.seckill.bean;
 
 import java.util.Date;
 
-/**
- * Created by jiangyunxiong on 2018/5/22.
- */
+
 public class SeckillGoods {
     private Long id;
     private Long goodsId;

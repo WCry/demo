@@ -36,7 +36,8 @@ public class TestRabbitMQClient {
                     System.out.println("取消成功");
                 }
             };
-
+            channel.waitForConfirms()
+            channel.confirmSelect()
            // channel.basicQos(0,2,true);
             //采用拉的方式消费
             //channel.basicGet()
@@ -63,7 +64,6 @@ public class TestRabbitMQClient {
                     .build();
             String message="dsad";
             channel.basicPublish("", "rpc_queue", props, message.getBytes());
-
             while (true) {
                 //获取收到的推送消息
                 QueueingConsumer.Delivery deliver = consumer.nextDelivery();

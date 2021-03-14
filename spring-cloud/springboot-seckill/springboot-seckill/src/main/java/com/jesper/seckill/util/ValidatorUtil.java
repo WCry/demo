@@ -6,8 +6,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by jiangyunxiong on 2018/5/22.
- *
  * 登录校验工具类
  */
 public class ValidatorUtil {
