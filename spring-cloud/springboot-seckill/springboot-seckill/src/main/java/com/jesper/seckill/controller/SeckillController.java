@@ -46,8 +46,7 @@ public class SeckillController implements InitializingBean {
     @Autowired
     MQSender sender;
 
-    //基于令牌桶算法的限流实现类
-    RateLimiter rateLimiter = RateLimiter.create(10);
+
 
     //做标记，判断该商品是否被处理过了
     private HashMap<Long, Boolean> localOverMap = new HashMap<Long, Boolean>();

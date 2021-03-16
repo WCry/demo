@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * @author zhangxuepei
  * @since 3.0
+ *  Either代表任意一个任务完成都可以继续执行下一个函数
  */
 public class TestEither {
     public static void main(String[] args) throws NoSuchAlgorithmException {
@@ -33,7 +34,8 @@ public class TestEither {
             return "from future2";
         });
         //Either代表任意一个任务完成都可以继续执行下一个函数
-        CompletableFuture<String> future = future1.applyToEither(future2, str -> "The future is " + str);
+        CompletableFuture<String> future = future1.
+                applyToEither(future2, str -> "The future is " + str);
         try {
             System.out.println(future.get());
         } catch (InterruptedException e) {

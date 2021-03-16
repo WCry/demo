@@ -53,7 +53,6 @@ public class TestCompletableFuture {
         executorService.shutdown();
     }
 
-
     public static int calc(Integer i) {
         try {
             if (i == 1) {

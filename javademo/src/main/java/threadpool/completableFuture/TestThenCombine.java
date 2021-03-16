@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * @author zhangxuepei
  * @since 3.0
+ * 两个任务同时进行执行，然后等待两个任务执行完成之后，对于两个任务的结果进行合并
  */
 public class TestThenCombine {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
