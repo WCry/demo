@@ -50,9 +50,12 @@ completeExceptionally.completeExceptionally(Throwable ex);
 不论是否执行完成,全部按照指定的方式进行返回结果
 public void obtrudeValue(T value) 和 public void obtrudeException(Throwable ex)
 
+主要是任意一个完成就可以继续执行下一步
 apply对应的接口主要是，对于上一步的结果可以进行消费，然后得到新的结果
 accept对应的接口是,对于上一步的结果进行消费,不需要返回结果
-Then基本代表执行完成之后,进行下一部操作。
+
+
+then基本代表执行完成之后,进行下一部操作。
 
 除了handle和whenComplete其他的在发生异常的时候，都不会进行执行，在Get的时候会抛出错误。
 可以利用isCompletedExceptionally判断对象是否是完整的执行，然后决定是否需要获取结果

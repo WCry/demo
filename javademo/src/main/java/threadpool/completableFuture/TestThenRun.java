@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
  * @since 3.0
  * 执行任务 等待结束的时候运行一个Runnable的对象
  * future.thenRun
- * get方法和Join方法一样  join不抛出异常，避免方法臃肿
+ * get方法和join方法一样  join不抛出异常，避免方法臃肿
  * get方法需要显示的抛出异常
  */
 public class TestThenRun {

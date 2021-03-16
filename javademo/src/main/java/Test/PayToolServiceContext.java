@@ -37,12 +37,5 @@ public class PayToolServiceContext implements PayToolService{
                 CompletableFuture.
                         anyOf(completableFutures.toArray(new CompletableFuture[0]));
         return  (PayToolEnum)dsd.get();
-//        while (true){
-//            for (CompletableFuture<PayToolEnum> completableFuture : completableFutures) {
-//                if(completableFuture.isDone()){
-//                    return completableFuture.get();
-//                }
-//            }
-//        }
     }
 }
