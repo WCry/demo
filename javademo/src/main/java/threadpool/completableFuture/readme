@@ -1,3 +1,8 @@
+CompletableFuture是一个很牛的任务编排框架牛叉叉
+可以支持数据操作完成之后扇出
+
+CompletableFuture
+如果的方法如果没有设置线程池，将会按照同步的方法进行执行
 
 CompletableFuture的底层默认使用的ForkJoinThreadPool,也可以在异步提交的时候执行任务的
 时候进行指定
@@ -10,7 +15,7 @@ CompletableFuture.supplyAsync
 多个任务等待任务全部完成，然后继续向下执行
 CompletableFuture.allOf()
 多个任务中其中有一个任务完成就返回结果
-CompletableFuture.anyOf
+CompletableFuture.anyOf()
 
 编排任务执行顺序的时候执行
 正常情况下会继续向下执行，当出现异常的时候不在继续向下执行，只有handle的可以继续向下执行
