@@ -10,7 +10,7 @@ public class StreamTest {
     public static void main(String[] args) {
         List<String> dsa=new ArrayList<>();
         dsa.add("dsadsad");
-        dsa.add("dsad");
+        dsa.add("测试.dsad");
         List dsad= dsa.parallelStream().filter(s -> false).collect(Collectors.toList());
         System.out.println(dsad);
     }

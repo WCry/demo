@@ -32,7 +32,7 @@ public class TestCondition {
         Thread signaler = new Thread(new signaler());
         signaler.start();
         Vector vector=new Vector();
-        vector.add("dsad");
+        vector.add("测试.dsad");
     }
 
     static class waiter implements Runnable {

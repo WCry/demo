@@ -1,3 +1,5 @@
+package 测试;
+
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;

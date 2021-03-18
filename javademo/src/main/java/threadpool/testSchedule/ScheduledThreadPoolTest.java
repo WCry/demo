@@ -29,11 +29,11 @@ import static java.lang.Thread.sleep;
  *    //判断任务是否中断
  *    if（Thread.currentThread().isInterrupted() == true）
  **/
-public class ScheduledThreadPool {
+public class ScheduledThreadPoolTest {
     private  Random random=new Random();
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ScheduledThreadPool scheduledThreadPool=new ScheduledThreadPool();
-        scheduledThreadPool.testScheduleAtFixedRate();
+        ScheduledThreadPoolTest scheduledThreadPoolTest =new ScheduledThreadPoolTest();
+        scheduledThreadPoolTest.testScheduleAtFixedRate();
     }
 
     /**
@@ -94,7 +94,7 @@ public class ScheduledThreadPool {
         }, 1, 2, TimeUnit.SECONDS);  // 延迟 1s，周期 2s
         sa.cancel(true);
         pool.setRemoveOnCancelPolicy(true);
-        System.out.println("dsad");
+        System.out.println("测试.dsad");
         System.out.println(sa.get());
     }
 }

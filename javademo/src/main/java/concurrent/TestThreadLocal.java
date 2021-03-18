@@ -7,7 +7,7 @@ package concurrent;
 public class TestThreadLocal {
     public static void main(String[] args) throws InterruptedException {
         A a = new A();
-        Thread das = new Thread(() -> a.soud("dsad"));
+        Thread das = new Thread(() -> a.soud("测试.dsad"));
         Thread das2 = new Thread(() -> a.soud("dsad22"));
         das.start();
         das2.start();
@@ -19,7 +19,7 @@ public class TestThreadLocal {
         ThreadLocal<Integer> threadLocal = new ThreadLocal();
         
         public void soud(String dsa) {
-            if (dsa.equals("dsad")) {
+            if (dsa.equals("测试.dsad")) {
                 threadLocal.set(10);
             }
             System.out.println(threadLocal.get());

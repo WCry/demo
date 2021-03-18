@@ -11,6 +11,6 @@ public class TestMain {
         Object obj = proxy.CreatProxyedObj();
 
         Star star = (Star)obj;
-        star.dance("dsad");
+        star.dance("测试.dsad");
     }
 }

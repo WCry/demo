@@ -55,7 +55,7 @@ public class TestMinio {
             composeSourceList.add(composeSource2);
             minioClient.composeObject(ComposeObjectArgs.builder().sources(composeSourceList).
                     bucket("asiatrip").object(
-                            "dsad").build());
+                            "测试.dsad").build());
             minioClient.removeObject("asiatrip","asiaphotos.zip");
             minioClient.removeObject("asiatrip"
                     ,"asiaphotos2.zip");
