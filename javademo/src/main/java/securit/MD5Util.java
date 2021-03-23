@@ -1,4 +1,4 @@
-package sec;
+package securit;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

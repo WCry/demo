@@ -1,6 +1,9 @@
+import org.apache.logging.log4j.core.appender.MemoryMappedFileAppender;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.Base64;
 
 /**
@@ -15,10 +18,9 @@ public class Base64Test {
          *  Base64 MIME
          *  Base64  RFC4648 用于URL编码
          */
-        File dasd = new File("C:\\Users" + "\\zhangxuepei\\Desktop" + "\\新建文件夹\\28M.jpg");
-
-        byte[] bytes = new byte[(int) dasd.length()];
-        new FileInputStream(dasd).read(bytes);
+        File imageFile = new File("C:\\Users" + "\\zhangxuepei\\Desktop" + "\\新建文件夹\\28M.jpg");
+        byte[] bytes = new byte[(int) imageFile.length()];
+        new FileInputStream(imageFile).read(bytes);
         byte[] target = Base64.getEncoder().encode(bytes);
         System.out.println(target.length);
     }

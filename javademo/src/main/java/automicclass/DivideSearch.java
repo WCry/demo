@@ -22,7 +22,6 @@ public class DivideSearch {
     }
 
     static class Searcher<E> extends CountedCompleter<E> {
-
         final E[] array;
         final AtomicReference<E> result;
         final int lo, hi;
@@ -43,10 +42,9 @@ public class DivideSearch {
             int l = this.lo;
             int h = this.hi;
             while (result.get() == null && h >= l) {
-
                 if (h - l >= 2) {
                     int mid = (l + h) >>> 1;
-                    //添加挂起任务数量,这样当出现tryComplete时可以触发root的结束(未查到)
+                    //t添加挂起任务数量,这样当出现ryComplete时可以触发root的结束(未查到)
                     addToPendingCount(1);
                     new Searcher<E>(this, array, result, mid, h, matcher).fork();
                     h = mid;

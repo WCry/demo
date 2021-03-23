@@ -50,6 +50,7 @@ public class ForkJoinPoolRecursiveActionTest extends RecursiveAction {
             ForkJoinPoolRecursiveActionTest right = new ForkJoinPoolRecursiveActionTest(middle, end);
             left.fork();
             right.fork();
+            right.join();
         }
     }
 }

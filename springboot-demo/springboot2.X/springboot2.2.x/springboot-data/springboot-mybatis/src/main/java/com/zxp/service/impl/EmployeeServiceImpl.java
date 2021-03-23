@@ -5,6 +5,7 @@ import com.zxp.mapper.EmployeeMapper;
 import com.zxp.service.EmployeeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
  * <p>
@@ -16,5 +17,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> implements EmployeeService {
-
+   @TransactionalEventListener
 }

@@ -1,4 +1,4 @@
-package ser;
+package serializable;
 
 import java.io.Serializable;
 import java.net.MalformedURLException;
