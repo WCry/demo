@@ -16,7 +16,7 @@ Jedis客户端原生的是线程不安全吗，JedisPool连接资源池，可以
 
 Lettuce是线程安全的，可以进行异步操作，采用nettry作为底层的网络通信。
 
-
+Redission实现分布式锁
 
 
 

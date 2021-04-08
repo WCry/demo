@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebScopeController {
     private final RequestScopeAction requestScopeAction;
     private final SessionScopeAction sessionScopeAction;
-    @Value("${zxp}")
-    private String ddd;
+
     public WebScopeController(RequestScopeAction requestScopeAction, SessionScopeAction sessionScopeAction) {
         this.requestScopeAction = requestScopeAction;
         this.sessionScopeAction = sessionScopeAction;
@@ -37,7 +36,6 @@ public class WebScopeController {
 
     @GetMapping("/testGetRequestValue")
     public String getRequestScope() {
-        System.out.println(ddd);
         return "获取到的Request的Value是"+requestScopeAction.getName();
     }
     @GetMapping("/addSessionValue")

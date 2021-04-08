@@ -1,12 +1,8 @@
 package com.zxp;
 
 
-import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.File;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Redis的String类型可以使用任意类型 可以使bit操作
@@ -17,7 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
 @SpringBootApplication
 public class ApiApplication {
     public static void main(String[] args) {
-        DefaultSingletonBeanRegistry
         SpringApplication.run(ApiApplication.class, args);
     }
 }

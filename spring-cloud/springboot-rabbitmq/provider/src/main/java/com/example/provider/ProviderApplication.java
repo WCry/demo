@@ -1,5 +1,7 @@
 package com.example.provider;
 
+import com.example.provider.event.RabbitMqApplicationEvent;
+import com.rabbitmq.client.Channel;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;

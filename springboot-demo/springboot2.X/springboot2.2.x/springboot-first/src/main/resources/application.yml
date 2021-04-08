@@ -12,12 +12,21 @@ spring:
     remote:
       #调试客户端和服务器之间的秘钥
       secret: 123456
+  #配置Spring框架中使用的jackson的objectMapper的参数
+  jackson:
+    #可以自定义指定对应类型的名称去转换日期，可以设置日期格式 模式使用的是
+    #SimpleDateFormat 然后传入格式进行转换
+    date-format: 'yyyy-MM-dd HH:mm:ss'
+    time-zone: 'GMT+8'
+  mvc:
+    #可以自定义指定对应类型的名称去转换日期，可以设置日期格式 模式使用的是
+    date-format: yyyy/MM-dd HH:mm:ss
+#配置web容器的参数 可以是 undertow
 server:
   tomcat:
-    max-threads: 1000
-    max-connections: 10000
-  undertow:
-    io-threads: 8
+    max-threads: 10
+    max-connections: 1000
+#配置日志级别
 logging:
   level:
     #appender

@@ -3,22 +3,9 @@ package socketio.scoketnio;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.Channel;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.nio.channels.spi.SelectorProvider;
-import java.nio.charset.Charset;
+import java.nio.channels.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /**
  * user:zxp
@@ -44,7 +31,7 @@ public class ChatRoomServer {
         //创建通道
         ServerSocketChannel sschannel = null;
         sschannel = ServerSocketChannel.open();
-        //绑定端口
+        //绑定端口  可以设置绑定的TCP的accept队列的大小
         sschannel.bind(new InetSocketAddress(port));
         //设置非阻塞模式
         sschannel.configureBlocking(false);

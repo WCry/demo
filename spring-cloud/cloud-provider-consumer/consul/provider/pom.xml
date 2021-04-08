@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hikvision.hmap-geoAnalysis</groupId>
-            <artifactId>geoAnalysis-staticmap</artifactId>
-            <version>2.1.5-RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>com.cloud.consuldemo</groupId>
             <artifactId>feign-api</artifactId>
         </dependency>
