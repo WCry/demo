@@ -119,7 +119,7 @@ public class StreamTest {
 
         @Override
         public String toString() {
-            return "Student{" +
+            return "Time.Student{" +
                     "name='" + name + '\'' +
                     ", score=" + score +
                     '}';

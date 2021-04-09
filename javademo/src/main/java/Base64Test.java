@@ -1,9 +1,6 @@
-import org.apache.logging.log4j.core.appender.MemoryMappedFileAppender;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.Base64;
 
 /**
@@ -24,4 +21,5 @@ public class Base64Test {
         byte[] target = Base64.getEncoder().encode(bytes);
         System.out.println(target.length);
     }
+
 }

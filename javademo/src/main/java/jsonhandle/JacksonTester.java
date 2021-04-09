@@ -11,11 +11,8 @@ import org.w3c.dom.ls.LSInput;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class JacksonTester {
 
@@ -88,6 +85,18 @@ public class JacksonTester {
         System.out.println(studentsConvert.get(0).getName());
     }
 
+    public static void testHashSet() throws IOException {
+        Time.Student student=new Time.Student();
+        student.setName("A");
+        Time.Student student1=new Time.Student();
+        student1.setName("A");
+        List<Time.Student> ds=new ArrayList<>();
+        ds.add(student);
+        ds.add(student1);
+        ObjectMapper objectMapper=new ObjectMapper();
+        String dsad= objectMapper.writeValueAsString(ds);
+        HashSet<Time.Student> hashSet=objectMapper.readValue(dsad,new TypeReference<HashSet<Time.Student>>(){});
+    }
 }
 
 
@@ -114,6 +123,6 @@ class Student {
     }
 
     public String toString() {
-        return "jsonhandle.Student [ name: " + name + ", age: " + age + " ]";
+        return "jsonhandle.Time.Student [ name: " + name + ", age: " + age + " ]";
     }
 }
