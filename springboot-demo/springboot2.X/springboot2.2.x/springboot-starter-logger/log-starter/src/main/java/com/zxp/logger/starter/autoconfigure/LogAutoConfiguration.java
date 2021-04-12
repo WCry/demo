@@ -28,8 +28,11 @@ public class LogAutoConfiguration extends AbstractPointcutAdvisor {
 
     private Advice advice;
 
-    @Autowired
-    private LogProperties logProperties;
+    private final LogProperties logProperties;
+
+    public LogAutoConfiguration(LogProperties logProperties) {
+        this.logProperties = logProperties;
+    }
 
     @PostConstruct
     public void init() {

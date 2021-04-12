@@ -3,7 +3,7 @@ package com.zxp.controller;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zxp.TestDTO;
+import com.zxp.dto.TestDateDTO;
 import com.zxp.scope.SingleAService;
 import com.zxp.scope.SingleCService;
 import lombok.extern.slf4j.Slf4j;
@@ -67,11 +67,11 @@ public class HelloController {
                                          Date start) throws JsonProcessingException {
         System.out.println(request.getServletPath());
         log.info(start.toString());
-        TestDTO testDTO=  new TestDTO();
-        testDTO.setDate(start);
+        TestDateDTO testDateDTO =  new TestDateDTO();
+        testDateDTO.setDate(start);
         ObjectMapper objectMapper=new ObjectMapper();
         System.out.println(objectMapper.writeValueAsString(start));
-        System.out.println(objectMapper.writeValueAsString(testDTO));
+        System.out.println(objectMapper.writeValueAsString(testDateDTO));
         return start;
     }
 
