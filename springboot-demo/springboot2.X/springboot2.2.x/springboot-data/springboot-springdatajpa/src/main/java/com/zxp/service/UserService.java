@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private final LockUserJpaRepository lockUserJpaRepository;
+    private final  LockUserJpaRepository lockUserJpaRepository;
 
     public UserService(LockUserJpaRepository lockUserJpaRepository) {
         this.lockUserJpaRepository = lockUserJpaRepository;
