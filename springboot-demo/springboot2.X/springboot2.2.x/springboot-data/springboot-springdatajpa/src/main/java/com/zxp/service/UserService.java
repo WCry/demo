@@ -1,4 +1,4 @@
-package com.zxp;
+package com.zxp.service;
 
 import com.zxp.dao.LockUserJpaRepository;
 import com.zxp.entity.po.User;
@@ -15,7 +15,7 @@ public class UserService {
         this.lockUserJpaRepository = lockUserJpaRepository;
     }
     @Transactional(rollbackFor = Exception.class)
-    public String findUser() throws InterruptedException {
+    public String findUser() {
         Optional<User> user=lockUserJpaRepository.findById(1L);
         return "dsd";
     }
@@ -31,12 +31,10 @@ public class UserService {
         Thread.sleep(10000);
         return "dsd";
     }
-
     @Transactional(rollbackFor = Exception.class)
     public String updateUser() {
         lockUserJpaRepository.updateStateByMoney(1L, 38);
         //Optional<User> userList = lockUserJpaRepository.findById(1L);
         return "dssssssd";
     }
-
 }

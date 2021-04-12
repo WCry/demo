@@ -6,7 +6,10 @@ import lombok.*;
 import javax.persistence.*;
 
 /**
- * 必须有Entity 是表的实体
+ *Entity 是表的实体
+ *@Table 的catalog 代表数据库实例
+ *@schema 表空间类似的概念
+ *
  */
 @Entity
 @Table(name = "user")

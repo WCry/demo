@@ -1,5 +1,6 @@
-package com.zxp;
+package com.zxp.controller;
 
+import com.zxp.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
