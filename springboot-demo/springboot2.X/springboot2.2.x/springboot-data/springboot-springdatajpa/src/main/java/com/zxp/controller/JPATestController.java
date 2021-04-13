@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class JPATestController {
 
-
    private final UserService userService;
 
     public JPATestController(UserService userService) {
         this.userService = userService;
-
     }
     @GetMapping("/test/get")
     public String getUser() throws InterruptedException {
