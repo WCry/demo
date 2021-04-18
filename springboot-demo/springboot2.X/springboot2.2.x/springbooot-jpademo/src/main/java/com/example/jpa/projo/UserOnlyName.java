@@ -1,4 +1,4 @@
-package com.example.springjpademo.projo;
+package com.example.jpa.projo;
 
 public interface UserOnlyName {
      String getName();

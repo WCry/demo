@@ -1,7 +1,5 @@
-package com.example.springjpademo.config;
+package com.example.jpa.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -15,10 +13,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.example.springjpademo.repositorie", transactionManagerRef = "jpaTransactionManager", entityManagerFactoryRef = "localContainerEntityManagerFactoryBean")
+@EnableJpaRepositories(basePackages = "com.example.jpa.repository",
+        transactionManagerRef = "jpaTransactionManager",
+        entityManagerFactoryRef = "localContainerEntityManagerFactoryBean")
 @EnableTransactionManagement
 public class JpaConfig {
-    @Autowired
     @Bean
     public JpaTransactionManager jpaTransactionManager(DataSource dataSource, EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
@@ -31,7 +30,7 @@ public class JpaConfig {
     LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource);
-        localContainerEntityManagerFactoryBean.setPackagesToScan("com.example.springjpademo.projo");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("com.example.jpa.projo");
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter);
         return localContainerEntityManagerFactoryBean;
     }

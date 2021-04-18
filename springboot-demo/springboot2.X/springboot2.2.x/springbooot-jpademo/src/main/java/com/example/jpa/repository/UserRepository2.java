@@ -1,7 +1,7 @@
-package com.example.springjpademo.repositorie;
+package com.example.jpa.repository;
 
-import com.example.springjpademo.projo.User;
-import com.example.springjpademo.projo.UserOnlyName;
+import com.example.jpa.projo.User;
+import com.example.jpa.projo.UserOnlyName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

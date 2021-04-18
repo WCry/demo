@@ -1,7 +1,7 @@
-package com.example.springjpademo;
+package com.example.jpa;
 
-import com.example.springjpademo.projo.User;
-import com.example.springjpademo.repositorie.UserRepository;
+import com.example.jpa.projo.User;
+import com.example.jpa.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 @SpringBootTest
-class SpringjpademoApplicationTests {
+class SpringJpaDemoApplicationTests {
 
     @Test
     void contextLoads() {
@@ -20,10 +20,7 @@ class SpringjpademoApplicationTests {
 
     @Test
     public void insert() {
-        User user= new User();
-        user.setName("zhang san");
-        user.setBirth("1990");
-        testUserDao.save(user);
+
     }
 
     @Test

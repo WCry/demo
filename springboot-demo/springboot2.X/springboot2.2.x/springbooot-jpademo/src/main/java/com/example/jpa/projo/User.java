@@ -1,11 +1,14 @@
-package com.example.springjpademo.projo;
+package com.example.jpa.projo;
 
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_user")
-public class User extends JpaRepositoriesAutoConfiguration {
+public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
