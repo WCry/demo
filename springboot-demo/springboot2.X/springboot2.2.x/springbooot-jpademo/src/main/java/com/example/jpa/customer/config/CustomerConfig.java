@@ -1,6 +1,8 @@
 package com.example.jpa.customer.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
@@ -31,13 +33,27 @@ public class CustomerConfig {
 
     @Resource
     private HibernateProperties properties;
-
+    @Resource
+    private DataSourceProperties dataSourceProperties;
     @Primary
     @Bean(name = "customerDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.customer")
     public DataSource customerDataSource() {
-        return DataSourceBuilder.create().build();
+//       XADataSource xaDataSource=(XADataSource) DataSourceBuilder.create()
+//                .type(dataSourceProperties.getType())
+//        .build();
+        // 将本地事务注册到创 Atomikos全局事务
+        AtomikosDataSourceBean xaDataSourceBean = new AtomikosDataSourceBean();
+        return xaDataSourceBean;
     }
+//    @Primary
+//    @Bean(name = "customerDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.customer")
+//    public DataSource customerDataSource() {
+//        return DataSourceBuilder.create()
+////                .type(dataSourceProperties.getType())
+//       .build();
+//    }
 
     @Primary
     @Bean(name = "customerEntityManagerFactory")

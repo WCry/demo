@@ -1,11 +1,11 @@
 package com.example.jpa.product.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+//注册产品的数据库
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "productEntityManagerFactory",
@@ -32,11 +33,23 @@ public class ProductConfig {
     @Resource
     private HibernateProperties properties;
 
+
     @Bean(name = "productDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.product")
     public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
+//        // 将本地事务注册到创 Atomikos全局事务
+        AtomikosDataSourceBean xaDataSourceBean = new AtomikosDataSourceBean();
+//        xaDataSourceBean.setXaDataSource(xaDataSource);
+//        xaDataSourceBean.setUniqueResourceName("product");
+        return xaDataSourceBean;
     }
+//    @Bean(name = "productDataSource")
+//    @ConfigurationProperties(prefix = "spring.datasource.product")
+//    public DataSource dataSource() {
+//       return DataSourceBuilder.create()
+//                // .type(dataSourceProperties.getType())
+//                .build();
+//    }
 
     @Bean(name = "productEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean barEntityManagerFactory(
@@ -45,7 +58,7 @@ public class ProductConfig {
         return builder.dataSource(dataSource).packages("com.example.jpa.product.models").
                 persistenceUnit("product").
                 properties(properties.determineHibernateProperties(jpaProperties.getProperties(),
-                new HibernateSettings())).build();
+                        new HibernateSettings())).build();
     }
 
     @Bean(name = "productTransactionManager")
