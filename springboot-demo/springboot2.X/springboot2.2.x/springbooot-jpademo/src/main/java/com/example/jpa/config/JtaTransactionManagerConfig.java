@@ -25,7 +25,7 @@ public class JtaTransactionManagerConfig {
         JtaTransactionManager jtaTransactionManager=new JtaTransactionManager(userTransaction
                 ,userTransactionManager);
         //设置缓存用户的事务
-        jtaTransactionManager.setCacheUserTransaction(true);
+        //jtaTransactionManager.setCacheUserTransaction(true);
         return jtaTransactionManager;
     }
 }

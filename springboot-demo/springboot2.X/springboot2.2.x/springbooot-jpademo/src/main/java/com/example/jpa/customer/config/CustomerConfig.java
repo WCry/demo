@@ -47,20 +47,18 @@ public class CustomerConfig {
 
     @Primary
     @Bean(name = "customerEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            EntityManagerFactoryBuilder builder,
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
             @Qualifier("customerDataSource") DataSource dataSource) {
         Map<String, Object> jtpaProperties =
                 properties.determineHibernateProperties(jpaProperties.getProperties(),
                         new HibernateSettings());
-//        jtpaProperties.put("hibernate.transaction.jta.platform", AtomikosJtaPlatform.class.getName());
-//        jtpaProperties.put("javax.persistence.transactionType", "JTA");
         LocalContainerEntityManagerFactoryBean  entityManager=builder.dataSource(dataSource).
                 //设置主体位置
                         packages("com.example.jpa.customer.models").
-                        persistenceUnit("customer").
+                        //必须两个都开启走位JTA事务进行管理
+                        persistenceUnit("customer").jta(true).
                         properties(jtpaProperties).
-                        build();;
+                        build();
         return entityManager;
     }
 
