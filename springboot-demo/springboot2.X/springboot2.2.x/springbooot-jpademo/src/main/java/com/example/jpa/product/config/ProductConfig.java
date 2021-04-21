@@ -47,15 +47,17 @@ public class ProductConfig {
         Map<String, Object> jtpaProperties =
                 properties.determineHibernateProperties(jpaProperties.getProperties(),
                 new HibernateSettings());
-//        jtpaProperties.put("hibernate.transaction.jta.platform", AtomikosJtaPlatform.class.getName());
-//        jtpaProperties.put("javax.persistence.transactionType", "JTA");
         LocalContainerEntityManagerFactoryBean  entityManager=builder.
                 dataSource(dataSource).packages("com.example.jpa.product.models").
+                //需要分布式事务管理 开启jta 分布式事务
                 persistenceUnit("product").jta(true).
                 properties(jtpaProperties).build();
         return entityManager;
     }
 
+    /**
+     * 这个是一个简单的jpa事务管理  使用
+     */
 //    @Bean(name = "productTransactionManager")
 //    public PlatformTransactionManager productTransactionManager(
 //            @Qualifier("productEntityManagerFactory") EntityManagerFactory productEntityManagerFactory) {
