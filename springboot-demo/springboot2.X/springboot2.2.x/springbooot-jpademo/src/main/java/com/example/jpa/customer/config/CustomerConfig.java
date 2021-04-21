@@ -1,6 +1,7 @@
 package com.example.jpa.customer.config;
 
 import com.atomikos.jdbc.AtomikosDataSourceBean;
+import com.example.jpa.config.AtomikosJtaPlatform;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
@@ -21,11 +22,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "customerEntityManagerFactory",
-        transactionManagerRef = "customerTransactionManager",
+        transactionManagerRef = "transactionManager",
         basePackages = {"com.example.jpa.customer.repository"})
 public class CustomerConfig {
     @Resource
@@ -33,46 +35,39 @@ public class CustomerConfig {
 
     @Resource
     private HibernateProperties properties;
-    @Resource
-    private DataSourceProperties dataSourceProperties;
+
     @Primary
     @Bean(name = "customerDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.customer")
     public DataSource customerDataSource() {
-//       XADataSource xaDataSource=(XADataSource) DataSourceBuilder.create()
-//                .type(dataSourceProperties.getType())
-//        .build();
         // 将本地事务注册到创 Atomikos全局事务
         AtomikosDataSourceBean xaDataSourceBean = new AtomikosDataSourceBean();
         return xaDataSourceBean;
     }
-//    @Primary
-//    @Bean(name = "customerDataSource")
-//    @ConfigurationProperties(prefix = "spring.datasource.customer")
-//    public DataSource customerDataSource() {
-//        return DataSourceBuilder.create()
-////                .type(dataSourceProperties.getType())
-//       .build();
-//    }
 
     @Primary
     @Bean(name = "customerEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             EntityManagerFactoryBuilder builder,
             @Qualifier("customerDataSource") DataSource dataSource) {
-        return builder.dataSource(dataSource).
+        Map<String, Object> jtpaProperties =
+                properties.determineHibernateProperties(jpaProperties.getProperties(),
+                        new HibernateSettings());
+//        jtpaProperties.put("hibernate.transaction.jta.platform", AtomikosJtaPlatform.class.getName());
+//        jtpaProperties.put("javax.persistence.transactionType", "JTA");
+        LocalContainerEntityManagerFactoryBean  entityManager=builder.dataSource(dataSource).
                 //设置主体位置
-                packages("com.example.jpa.customer.models").
-                persistenceUnit("customer").
-                properties(properties.determineHibernateProperties(jpaProperties.getProperties(),
-                                new HibernateSettings())).
-                build();
+                        packages("com.example.jpa.customer.models").
+                        persistenceUnit("customer").
+                        properties(jtpaProperties).
+                        build();;
+        return entityManager;
     }
 
-    @Primary
-    @Bean(name = "customerTransactionManager")
-    public PlatformTransactionManager customerTransactionManager(
-            @Qualifier("customerEntityManagerFactory") EntityManagerFactory customerEntityManagerFactory) {
-        return new JpaTransactionManager(customerEntityManagerFactory);
-    }
+//    @Primary
+//    @Bean(name = "customerTransactionManager")
+//    public PlatformTransactionManager customerTransactionManager(
+//            @Qualifier("customerEntityManagerFactory") EntityManagerFactory customerEntityManagerFactory) {
+//        return new JpaTransactionManager(customerEntityManagerFactory);
+//    }
 }
