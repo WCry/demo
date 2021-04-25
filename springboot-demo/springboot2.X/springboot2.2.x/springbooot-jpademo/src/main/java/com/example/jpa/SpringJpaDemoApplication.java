@@ -9,5 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class SpringJpaDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringJpaDemoApplication.class, args);
+
+
     }
 }
