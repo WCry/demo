@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 public class SpringJpaDemoApplication {
     public static void main(String[] args) {
+
         SpringApplication.run(SpringJpaDemoApplication.class, args);
     }
 }
