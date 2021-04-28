@@ -1,6 +1,6 @@
-package com.wyj.mapper;
+package com.dubbo.demo.mapper;
 
-import com.wyj.entity.po.Message;
+import com.dubbo.demo.entity.po.Message;
 
 import java.util.List;
 

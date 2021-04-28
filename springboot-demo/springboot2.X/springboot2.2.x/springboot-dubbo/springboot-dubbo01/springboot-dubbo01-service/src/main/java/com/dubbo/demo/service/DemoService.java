@@ -1,6 +1,6 @@
-package com.wyj.service;
+package com.dubbo.demo.service;
 
-import com.wyj.entity.po.Message;
+import com.dubbo.demo.entity.po.Message;
 
 import java.util.List;
 

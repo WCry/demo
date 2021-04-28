@@ -1,4 +1,4 @@
-package com.wyj.entity.po;
+package com.dubbo.demo.entity.po;
 
 import java.io.Serializable;
 

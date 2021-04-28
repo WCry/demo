@@ -1,4 +1,4 @@
-package com.wyj;
+package com.dubbo.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,9 +1,10 @@
-package com.wyj.controller;
+package com.dubbo.demo.controller;
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.wyj.entity.po.Message;
-import com.wyj.entity.vo.ApiResponse;
-import com.wyj.service.DemoService;
+
+import com.dubbo.demo.entity.po.Message;
+import com.dubbo.demo.entity.vo.ApiResponse;
+import com.dubbo.demo.service.DemoService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @RestController
 public class DemoController {
 
-    @Reference
+    @DubboReference
     private DemoService demoService;
 
     @RequestMapping(value = "/query")

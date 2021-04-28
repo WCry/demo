@@ -1,9 +1,9 @@
-package com.wyj.service.impl;
+package com.dubbo.demo.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.wyj.entity.po.Message;
-import com.wyj.mapper.DemoMapper;
-import com.wyj.service.DemoService;
+import com.dubbo.demo.entity.po.Message;
+import com.dubbo.demo.mapper.DemoMapper;
+import com.dubbo.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
