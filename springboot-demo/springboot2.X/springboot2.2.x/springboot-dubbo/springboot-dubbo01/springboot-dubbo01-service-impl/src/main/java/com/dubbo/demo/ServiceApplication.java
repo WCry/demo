@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.wyj.mapper")
+@MapperScan(basePackages = "com.dubbo.demo.mapper")
 public class ServiceApplication {
 
     public static void main(String[] args) {
