@@ -3,12 +3,12 @@ package com.dubbo.demo.service.impl;
 import com.dubbo.demo.entity.po.Message;
 import com.dubbo.demo.mapper.DemoMapper;
 import com.dubbo.demo.service.DemoService;
-import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@DubboService(timeout = 6000)
+@Service(timeout = 6000)
 public class DemoServiceImpl implements DemoService {
 
     @Autowired

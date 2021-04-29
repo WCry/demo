@@ -4,7 +4,7 @@ package com.dubbo.demo.controller;
 import com.dubbo.demo.entity.po.Message;
 import com.dubbo.demo.entity.vo.ApiResponse;
 import com.dubbo.demo.service.DemoService;
-import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class DemoController {
 
-    @DubboReference
+    @Reference
     private DemoService demoService;
 
     @RequestMapping(value = "/query")
