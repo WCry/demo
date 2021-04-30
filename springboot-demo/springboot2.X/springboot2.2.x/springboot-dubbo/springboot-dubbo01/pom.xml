@@ -15,7 +15,7 @@
     </parent>
     <properties>
         <spring.cloud.version>Hoxton.SR11</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.1.2.RELEASE</spring.cloud.alibaba.version>
     </properties>
     <modules>
         <module>springboot-dubbo01-api-web</module>
