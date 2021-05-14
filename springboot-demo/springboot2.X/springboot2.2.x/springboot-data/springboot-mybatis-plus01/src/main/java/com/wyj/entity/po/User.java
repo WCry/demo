@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
-/**
- * @author wyj
- * @create 2019-03-17 22:32
- */
+
 @TableName("user")
 public class User implements Serializable {
 

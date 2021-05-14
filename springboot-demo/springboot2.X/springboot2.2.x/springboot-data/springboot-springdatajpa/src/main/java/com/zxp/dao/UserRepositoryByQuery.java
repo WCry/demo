@@ -1,16 +1,21 @@
 package com.zxp.dao;
 
 import com.zxp.entity.po.User;
+import com.zxp.entity.po.UserIdAndName;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
+import javax.persistence.Convert;
 import java.util.List;
 
 /**
  * 可以快速自定义查询方法
  */
-public interface UserRepositoryByQuery extends Repository<User, Long> {
+public interface UserRepositoryByQuery extends JpaRepository<User, Long>,
+        JpaSpecificationExecutor<User>{
 
     /**
      * 根据id查询用户信息，其中User为ORM映射的类名，即为ORM映射的实体类名
@@ -72,8 +77,8 @@ public interface UserRepositoryByQuery extends Repository<User, Long> {
      * @param id
      * @return
      */
-    @Query(value = "select * from user where id=?1", nativeQuery = true)
-    public User findUserByNativeQuery(int id);
+    @Query(value = "select id,name from user where id=?1",nativeQuery = true)
+    UserIdAndName findUserByNativeQuery(Integer id);
 
     /**
      * 使用SpEL表达式

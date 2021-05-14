@@ -3,6 +3,7 @@ package com.zxp;
 
 import com.zxp.dao.UserRepositoryByQuery;
 import com.zxp.entity.po.User;
+import com.zxp.entity.po.UserIdAndName;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class UserRepositoryByQueryTests {
     public void findUserTest() {
         Long id = 1L;
         User user = userRepository.findUser(id);
-        System.out.println("user:" + user);
+        user.setName("dsad");
+        userRepository.save(user);
+        UserIdAndName dsa=userRepository.findUserByNativeQuery(1);
+        System.out.println(dsa.getClass());
     }
 
     @Test
@@ -63,7 +67,7 @@ public class UserRepositoryByQueryTests {
     @Test
     public void findUserByNativeQueryTest() {
         int id = 1;
-        User user = userRepository.findUserByNativeQuery(id);
+        UserIdAndName user = userRepository.findUserByNativeQuery(id);
         System.out.println("user:" + user);
     }
 
