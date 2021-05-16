@@ -1,0 +1,13 @@
+package com.zxp.repository;
+
+
+import com.zxp.model.EmployeeLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+
+/**
+ * @author ChangLiang
+ * @date 2019/6/5
+ */
+public interface EmployeeLogRepository extends JpaRepository<EmployeeLog,Long>, JpaSpecificationExecutor<EmployeeLog> {
+}

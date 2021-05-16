@@ -2,6 +2,7 @@ package streamtest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,8 +19,8 @@ import java.util.stream.LongStream;
  */
 public class StreamTest {
     public static void main(String[] args) {
-        //testFilter();
-        testGroupBy3();
+        testGroupBy();
+        //testGroupBy3();
     }
 
     public static void testFilter() {
@@ -47,6 +48,13 @@ public class StreamTest {
         //简单通过Name进行分组
         Map<String, List<Student>> stringListGroupByName = studentList.stream().
                 collect(Collectors.groupingBy(Student::getName));
+        Map<String, List<Integer>> dsad= studentList.stream().collect(Collectors.groupingBy(Student::getName,
+                Collectors.mapping(Student::getScore,Collectors.toList())));
+        System.out.println(dsad);
+//        //简单通过Name进行分组
+//        Map<String, Map<Object, Integer>> stringListGroupByName2 = studentList.stream().
+//                collect(Collectors.groupingBy(Student::getName,
+//                        Collectors.toList(Student::getScore)));
         System.out.println(stringListGroupByName);
     }
     public static void testGroupBy3() {
@@ -80,10 +88,10 @@ public class StreamTest {
     private static List<Student> prepareData(){
         Student student = new Student();
         student.setName("A");
-        student.setScore(1);
+        student.setScore(12);
         Student student1 = new Student();
         student1.setName("B");
-        student1.setScore(1);
+        student1.setScore(90);
         Student student2 = new Student();
         student2.setName("A");
         student2.setScore(1);

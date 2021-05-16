@@ -37,7 +37,7 @@
             @Query("select u from User u where u.id=:id")
             public User findUserByParam(@Param("id") Long id);
         (3)、指定了nativeQuery = true，即使用原生的sql语句查询
-            @Query(value = "select * from user where id=?1", nativeQuery = true)
+            @Query(value = "select * from userStudent where id=?1", nativeQuery = true)
             public User findUserByNativeQuery(int id);
         (4)、使用SpEL表达式，#{#entityName}表示实体类对应的数据库表名
             @Query("select u from #{#entityName} u where u.name = ?1")

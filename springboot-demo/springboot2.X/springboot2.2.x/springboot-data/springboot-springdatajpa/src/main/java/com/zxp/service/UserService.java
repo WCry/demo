@@ -1,7 +1,7 @@
 package com.zxp.service;
 
 import com.zxp.dao.LockUserJpaRepository;
-import com.zxp.entity.po.User;
+import com.zxp.entity.po.UserStudent;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +16,12 @@ public class UserService {
     }
     @Transactional(rollbackFor = Exception.class)
     public String findUser() {
-        Optional<User> user=lockUserJpaRepository.findById(1L);
+        Optional<UserStudent> user=lockUserJpaRepository.findById(1L);
         return "dsd";
     }
 
     public String findUserSleep() throws InterruptedException {
-        Optional<User> user=lockUserJpaRepository.findById(1L);
+        Optional<UserStudent> user=lockUserJpaRepository.findById(1L);
         Thread.sleep(10000);
         return "dsd";
     }

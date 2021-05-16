@@ -29,11 +29,11 @@ CREATE TABLE `hibernate_sequence` (
 insert  into `hibernate_sequence`(`next_val`) values 
 (1);
 
-/*Table structure for table `user` */
+/*Table structure for table `userStudent` */
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `userStudent`;
 
-CREATE TABLE `user` (
+CREATE TABLE `userStudent` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
@@ -42,9 +42,9 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `user` */
+/*Data for the table `userStudent` */
 
-insert  into `user`(`id`,`name`,`age`,`sex`,`address`) values 
+insert  into `userStudent`(`id`,`name`,`age`,`sex`,`address`) values
 (1,'ljk',18,'男','北京市'),
 (2,'wyj',18,'男','北京市');
 

@@ -1,6 +1,6 @@
 package com.zxp.dao;
 
-import com.zxp.entity.po.User;
+import com.zxp.entity.po.UserStudent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,16 +15,16 @@ import java.util.Optional;
  *
  *https://blog.csdn.net/wangchengming1/article/details/90898302
  */
-public interface LockUserJpaRepository extends JpaRepository<User, Long> {
+public interface LockUserJpaRepository extends JpaRepository<UserStudent, Long> {
 
     @Modifying
-    @Query("update User m set m.age=?2 where  m.id=?1")
+    @Query("update UserStudent m set m.age=?2 where  m.id=?1")
     @Lock(LockModeType.WRITE)
     void updateStateByMoney(Long id, Integer age);
 
 
     @Lock(LockModeType.WRITE)
-    Optional<User> findById(Long id);
+    Optional<UserStudent> findById(Long id);
 
 
 }

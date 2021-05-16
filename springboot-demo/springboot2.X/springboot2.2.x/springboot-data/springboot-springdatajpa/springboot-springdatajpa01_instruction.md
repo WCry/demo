@@ -30,20 +30,20 @@ springboot整合springdatajpa、分页、排序功能关键点
         
     3、新建UserCrudRepository接口继承CrudRepository<User, Long>，User为实体类，CrudRepository接口中实现了基本的增删改查方法，直接调用即可
         (1)、新增：
-            User result = userCrudRepository.save(user);
+            User result = userCrudRepository.save(userStudent);
         (2)、修改：
-            User result = userCrudRepository.save(user);
+            User result = userCrudRepository.save(userStudent);
         (3)、查询
             Optional<User> userOptional = userCrudRepository.findById(1L);
             User result = userOptional.get();
         (4)、查询所有：
-            List<User> userList = (List<User>) userCrudRepository.findAll();
+            List<User> userStudentList = (List<User>) userCrudRepository.findAll();
         (5)、计算总数：
             long count = userCrudRepository.count();
     
     4、新建UserPageRepository接口继承JpaRepository<User, Long>，JpaRepository接口中实现了分页、排序方法，直接调用即可
         (1)、排序查询：
-            List<User> userList = (List<User>) userPageRepository.findAll(new Sort(Sort.Direction.ASC, "age"));
+            List<User> userStudentList = (List<User>) userPageRepository.findAll(new Sort(Sort.Direction.ASC, "age"));
         (2)、分页查询：
             Page<User> userPage = userPageRepository.findAll(new PageRequest(0, 20));
             
@@ -59,30 +59,30 @@ springboot整合springdatajpa、分页、排序功能关键点
         (5)、分页排序查询：
             PageRequest pageRequest = new PageRequest(0, 3, Sort.by(Sort.Direction.ASC, "age"));
             Page<User> userPage = userJpaRepository.findAll(pageRequest);
-            List<User> userList = userPage.getContent();
+            List<User> userStudentList = userPage.getContent();
         (6)、根据id 的集合获取所有数据：
-            List<User> userList = userJpaRepository.findAllById(ids);
+            List<User> userStudentList = userJpaRepository.findAllById(ids);
         (7)、批量删除所有数据：
             userJpaRepository.deleteAllInBatch();
         (8)、保存数据并刷新缓存：
-            User result = userJpaRepository.saveAndFlush(user);
+            User result = userJpaRepository.saveAndFlush(userStudent);
         (9)、批量删除：
-            userJpaRepository.deleteInBatch(userList);
+            userJpaRepository.deleteInBatch(userStudentList);
         (10)、根据id 获取数据：
-            User user = userJpaRepository.findById(1L).get();
+            User userStudent = userJpaRepository.findById(1L).get();
         (11)、模糊查询，示例匹配器ExampleMatcher：
-            List<User> list = userJpaRepository.findAll(Example.of(user));
+            List<User> list = userJpaRepository.findAll(Example.of(userStudent));
         (12)、模糊查询：
-            User user = new User();
-            user.setName("ljk");
-            user.setAddress("beijing");
-            user.setAge(18);
+            User userStudent = new User();
+            userStudent.setName("ljk");
+            userStudent.setAddress("beijing");
+            userStudent.setAge(18);
             ExampleMatcher matcher = ExampleMatcher.matching()
                     .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.startsWith())//模糊查询匹配开头，即{username}%
                     .withMatcher("address", ExampleMatcher.GenericPropertyMatchers.contains())//全部模糊查询，即%{address}%
                     .withIgnorePaths("id");//忽略字段，即不管id是什么值都不加入查询条件
-            Example<User> example = Example.of(user, matcher);
-            List<User> userList = userJpaRepository.findAll(example);
+            Example<User> example = Example.of(userStudent, matcher);
+            List<User> userStudentList = userJpaRepository.findAll(example);
 Springboot事务：
 
 ​      读事务和读写事务。

@@ -1,6 +1,6 @@
 package com.zxp.dao;
 
-import com.zxp.entity.po.User;
+import com.zxp.entity.po.UserStudent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * 根据规则组织方法名称
  * 可以快速自定义查询方法
  */
- public interface UserJpaRepository extends JpaRepository<User, Long> {
+ public interface UserJpaRepository extends JpaRepository<UserStudent, Long> {
     /**
      * And
      * 对应sql：where name=? and age=?
@@ -20,7 +20,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByNameAndAge(String name, int age);
+     List<UserStudent> findByNameAndAge(String name, int age);
 
     /**
      * Or
@@ -30,7 +30,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByNameOrAge(String name, int age);
+     List<UserStudent> findByNameOrAge(String name, int age);
 
     /**
      * Is
@@ -39,7 +39,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameIs(String name);
+     List<UserStudent> findByNameIs(String name);
 
     /**
      * Equals
@@ -48,7 +48,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameEquals(String name);
+     List<UserStudent> findByNameEquals(String name);
 
     /**
      * Between
@@ -58,7 +58,7 @@ import java.util.List;
      * @param bigAge
      * @return
      */
-     List<User> findByAgeBetween(int LittleAge, int bigAge);
+     List<UserStudent> findByAgeBetween(int LittleAge, int bigAge);
 
     /**
      * LessThan
@@ -67,7 +67,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeLessThan(int age);
+     List<UserStudent> findByAgeLessThan(int age);
 
     /**
      * AgeLessThanEqual
@@ -76,7 +76,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeLessThanEqual(int age);
+     List<UserStudent> findByAgeLessThanEqual(int age);
 
     /**
      * LessThan
@@ -85,7 +85,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeGreaterThan(int age);
+     List<UserStudent> findByAgeGreaterThan(int age);
 
     /**
      * GreaterThanEqual
@@ -94,7 +94,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeGreaterThanEqual(int age);
+     List<UserStudent> findByAgeGreaterThanEqual(int age);
 
     /**
      * After
@@ -103,7 +103,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeAfter(int age);
+     List<UserStudent> findByAgeAfter(int age);
 
     /**
      * Before
@@ -112,7 +112,7 @@ import java.util.List;
      * @param age
      * @return
      */
-     List<User> findByAgeBefore(int age);
+     List<UserStudent> findByAgeBefore(int age);
 
     /**
      * IsNull（不用参数）
@@ -120,7 +120,7 @@ import java.util.List;
      *
      * @return
      */
-     List<User> findByNameIsNull();
+     List<UserStudent> findByNameIsNull();
 
     /**
      * IsNotNull（不用参数）
@@ -128,7 +128,7 @@ import java.util.List;
      *
      * @return
      */
-     List<User> findByNameIsNotNull();
+     List<UserStudent> findByNameIsNotNull();
 
     /**
      * NotNull（不用参数）
@@ -136,7 +136,7 @@ import java.util.List;
      *
      * @return
      */
-     List<User> findByNameNotNull();
+     List<UserStudent> findByNameNotNull();
 
     /**
      * Not
@@ -145,7 +145,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameNot(String name);
+     List<UserStudent> findByNameNot(String name);
 
     /**
      * In
@@ -154,7 +154,7 @@ import java.util.List;
      * @param ageList
      * @return
      */
-     List<User> findByAgeIn(List<Integer> ageList);
+     List<UserStudent> findByAgeIn(List<Integer> ageList);
 
     /**
      * NotIn
@@ -163,7 +163,7 @@ import java.util.List;
      * @param ageList
      * @return
      */
-     List<User> findByAgeNotIn(List<Integer> ageList);
+     List<UserStudent> findByAgeNotIn(List<Integer> ageList);
 
     /**
      * NotLike
@@ -172,7 +172,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameNotLike(String name);
+     List<UserStudent> findByNameNotLike(String name);
 
     /**
      * Like
@@ -181,7 +181,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameLike(String name);
+     List<UserStudent> findByNameLike(String name);
 
     /**
      * StartingWith
@@ -190,7 +190,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameStartingWith(String name);
+     List<UserStudent> findByNameStartingWith(String name);
 
     /**
      * EndingWith
@@ -199,7 +199,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameEndingWith(String name);
+     List<UserStudent> findByNameEndingWith(String name);
 
     /**
      * Containing
@@ -208,7 +208,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameContaining(String name);
+     List<UserStudent> findByNameContaining(String name);
 
     /**
      * Contains
@@ -217,7 +217,7 @@ import java.util.List;
      * @param name
      * @return
      */
-     List<User> findByNameContains(String name);
+     List<UserStudent> findByNameContains(String name);
 
     /**
      * OrderBy
@@ -226,7 +226,7 @@ import java.util.List;
      *
      * @return
      */
-     List<User> findByOrderByAgeDesc();
+     List<UserStudent> findByOrderByAgeDesc();
 
     /**
      * Ignorecase
@@ -234,7 +234,7 @@ import java.util.List;
      *
      * @return
      */
-     List<User> findByNameIgnoreCase(String name);
+     List<UserStudent> findByNameIgnoreCase(String name);
 
 
 

@@ -13,16 +13,16 @@ import javax.persistence.*;
  * 参看UserIDAndName的定义返回
  */
 @Entity
-@Table(name = "user")
 @Data
-public class User {
+public class UserStudent {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String name;
     private Integer age;
     private String sex;
     private String address;
+    @Column(name="ddd_dsad")
+    private Integer dddDsad;
     @Version
     private int version;
 
