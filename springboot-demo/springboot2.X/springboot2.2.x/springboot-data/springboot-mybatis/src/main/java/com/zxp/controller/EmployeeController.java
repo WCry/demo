@@ -17,9 +17,6 @@ import java.util.List;
  * <p>
  *  前端控制器
  * </p>
- *
- * @author gf
- * @since 2018-11-25
  */
 @RestController
 @RequestMapping("/employee")

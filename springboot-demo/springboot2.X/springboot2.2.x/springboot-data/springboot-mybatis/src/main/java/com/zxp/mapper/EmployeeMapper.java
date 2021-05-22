@@ -1,7 +1,7 @@
 package com.zxp.mapper;
 
-import com.zxp.entity.Employee;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.zxp.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
