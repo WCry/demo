@@ -2,6 +2,10 @@
 
 **springboot整合dubbo**
 
+### dubbo的starter 中的默认多协议，多版本的配置 在2.6 的版本是没有默认开启，如果需要使用需要进行手动开启
+### 在2.7的版本才默认开启
+
+
 ## springboot整合dubbo说明
     springboot-dubbo01-api-web：
         存放controller
