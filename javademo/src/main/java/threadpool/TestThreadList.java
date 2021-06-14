@@ -18,22 +18,28 @@ public class TestThreadList {
         testList.add(3);
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 10; i++) {
-            executorService.execute(() -> post(Thread.currentThread().getId()));
+            int finalI = i;
+            executorService.execute(() -> post(finalI));
         }
         executorService.shutdown();
     }
 
     public static void main(String[] args) {
-        TestThreadList testThreadList=new TestThreadList();
+        TestThreadList testThreadList = new TestThreadList();
     }
 
     private void post(long number) {
         //对于ArrayList的对象，采用的是方法中遍历数组的方式
         //对于LinkedList 的迭代器是是新生成一个对象，保存next等信息，进行遍历。
         //所以是多线程安全的
-        for (Integer integer : testList) {
-            System.out.println("线程：" + number +"值："+ integer);
+        if (number > 4 && number < 6) {
+            throw new RuntimeException("ddddddddddddddddddddd");
+        } else {
+            System.out.println(number);
         }
+//        for (Integer integer : testList) {
+//            System.out.println("线程：" + number +"值："+ integer);
+//        }
 //        //多线程遍历是安全的
 //        testList.forEach(value -> {
 //            System.out.println("线程：" + number +"值："+ value);

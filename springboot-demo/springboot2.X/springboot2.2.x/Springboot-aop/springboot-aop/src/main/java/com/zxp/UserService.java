@@ -1,4 +1,4 @@
-package com.zxp.springaop;
+package com.zxp;
 
 /**
  * @author zhangxuepei

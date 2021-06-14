@@ -11,13 +11,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class WebLogAspect {
     private Logger logger = LoggerFactory.getLogger(WebLogAspect.class);
-
-    /**
-     * 定义切入点，切入点为com.wyj下的所有函数
-     */
-    @Pointcut("execution(public * com.zxp.*.*(..))")
+    @Pointcut("@annotation(com.zxp.springaop.InterceptorAnnotation)")
     public void webLog() {
     }
+//    @Pointcut("execution(public * com.zxp.controller.*.*(..))")
+//    public void webLog() {
+//    }
+//    @Pointcut("execution(public * com.zxp.*.*(..))")
+//    public void webLog() {
+//    }
     /**
      * 前置通知：在连接点之前执行的通知
      *
@@ -27,6 +29,7 @@ public class WebLogAspect {
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) {
         logger.info("前置通知");
+     //   throw new RuntimeException("ddd");
     }
 
     /**
@@ -56,25 +59,23 @@ public class WebLogAspect {
         logger.info("最终通知");
     }
 
-    /**
-     * 环绕通知
-     *
-     * @param pjp
-     * @return
-     */
-    @Around("webLog()")
-    public Object aroundPrintLog(ProceedingJoinPoint pjp) {
-        Object rtValue = null;
-        try {
-            logger.info("环绕通知 -> 前置通知");
-            rtValue = pjp.proceed();
-            logger.info("环绕通知 -> 后置通知");
-        } catch (Throwable e) {
-            logger.info("环绕通知 -> 异常通知");
-            e.printStackTrace();
-        } finally {
-            logger.info("环绕通知 -> 最终通知");
-        }
-        return rtValue;
-    }
+//    /**
+//     * 环绕通知
+//     */
+//    @Around("webLog()")
+//    public Object aroundPrintLog(ProceedingJoinPoint pjp) {
+//        Object rtValue = null;
+//        try {
+//            logger.info("环绕通知 -> 前置通知");
+//            rtValue = pjp.proceed();
+//            logger.info("环绕通知 -> 后置通知");
+//        } catch (Throwable e) {
+//            logger.info("环绕通知 -> 异常通知");
+//            e.printStackTrace();
+//
+//        } finally {
+//            logger.info("环绕通知 -> 最终通知");
+//        }
+//        return "d";
+//    }
 }

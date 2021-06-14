@@ -7,19 +7,25 @@ public class ApiResponse implements Serializable {
     private int code;
     private String msg;
     private Object data;
+    private  Boolean success=false;
 
-    public ApiResponse() {
+    private ApiResponse(){
+
     }
 
     public ApiResponse(int code, String msg) {
         this.code = code;
         this.msg = msg;
+        success = false;
     }
 
-    public ApiResponse(int code, String msg, Object data) {
-        this.code = code;
-        this.msg = msg;
+    public ApiResponse(Object data) {
         this.data = data;
+        success = false;
+    }
+
+    public Boolean  isSuccess(){
+        return success;
     }
 
     public int getCode() {
